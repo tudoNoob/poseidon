@@ -1,9 +1,8 @@
+[![Stories in Ready](https://badge.waffle.io/tudoNoob/poseidon.svg?label=ready&title=Ready)](http://waffle.io/tudoNoob/poseidon)
 # POSEIDON
 
 Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
 
 
 
-## Waffle
 
-[![Throughput Graph](https://graphs.waffle.io/willmenn/Pegasus/throughput.svg)](https://waffle.io/willmenn/Pegasus/metrics)
