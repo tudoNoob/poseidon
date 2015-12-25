@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import org.joda.time.LocalTime;
+import org.joda.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class Paciente {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-	private LocalTime data_nasc;
+	private LocalDate data_nasc;
 	private String email;
 	private String telefone;
 	private String cpf;
