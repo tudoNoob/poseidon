@@ -1,6 +1,5 @@
 package com.poseidon.model;
 
-import com.poseidon.PoseidonApplicationTests;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
