@@ -1,4 +1,4 @@
-package com.poseidon.entity;
+package com.poseidon.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

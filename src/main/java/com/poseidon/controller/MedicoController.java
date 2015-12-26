@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dao.MedicoDao;
-import com.poseidon.entity.Medico;
+import com.poseidon.model.Medico;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
