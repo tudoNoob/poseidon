@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Cadastro de Paciente</title>
@@ -12,7 +12,7 @@
 
     <div class="form-container" style="width:860px;margin:auto">
         <form id="form-cadastro" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
-            <p>Nome: <input type="text" th:field="*{nome}" /></p>
+            <p>Nome: <input type="text" th:field="*{nome}" required="true" /></p>
             <p>Email: <input type="text" th:field="*{email}" /></p>
             <p>Telefone: <input type="text" th:field="*{telefone}" /></p>
             <p>Cpf: <input type="text" th:field="*{cpf}" /></p>

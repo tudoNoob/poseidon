@@ -33,10 +33,11 @@ public class PacienteController {
     }
 
     @RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
-    public String salvarPaciente(@ModelAttribute Paciente paciente, ) {
+    public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
         pacienteDao.save(paciente);
         logger.info("salvou paciente.");
-        return "Cadastro efetuado com sucesso.";
+        modelAndView.setViewName("home");
+        return modelAndView;
     }
 
     @RequestMapping("/pesquisarPaciente")
