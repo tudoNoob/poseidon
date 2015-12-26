@@ -6,30 +6,13 @@
   <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Poseidon</a>
-		    </div>
-		    <div>
-		      <ul class="nav navbar-nav">
-			<li><a th:href="@{/home}">Home</a></li>
-			<li><a th:href="@{/cadastroPaciente}">Cadastro Paciente</a></li>
-			<li><a th:href="@{/pesquisarPaciente}">Pesquisa</a></li>
-			<li class="active"><a th:href="@{/sobre}">Sobre</a></li>
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
+		<div th:include="template/header :: header">...</div>
 
 		<div class = "textoDeAbertura">
 			<p>Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas.
 			Criado Por Pedro Henrique, Rafael Ahrons e William Ahrons</p>
         </div>
-		<footer class ="footer">
-			<div class="contain">
-				<p class = "text-muted text-align"> Poseidon </p>
-			</div>
+		<div th:include="template/footer :: footer">...</div>
 		</footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

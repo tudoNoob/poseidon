@@ -7,30 +7,11 @@
 	</head>
 	<body>
 		
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Poseidon</a>
-		    </div>
-		    <div>
-		      <ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a th:href="@{/cadastroPaciente}">Cadastro Paciente</a></li>
-			<li><a th:href="@{/pesquisarPaciente}">Pesquisa</a></li>
-			<li><a th:href="@{/sobre}">Sobre</a></li>
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-
+		<div th:include="template/header :: header">...</div>
 		<div class = "textoDeAbertura">
 			<p> Welcome to Poseidon </p>
         </div>
-		<footer class ="footer">
-			<div class="contain">
-				<p class = "text-muted text-align"> Poseidon </p>
-			</div>
-		</footer>
+		<div th:include="template/footer :: footer">...</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>

@@ -10,22 +10,7 @@
     <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Poseidon</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/home}">Home</a></li>
-                <li class="active"><a th:href="@{/cadastroPaciente}">Cadastro Paciente</a></li>
-                <li><a th:href="@{/pesquisarPaciente}">Pesquisa</a></li>
-                <li><a th:href="@{/sobre}">Sobre</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<div th:include="template/header :: header">...</div>
     <div class="form-container" style="width:860px;margin:auto">
         <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
             <!-- Text input-->
@@ -76,11 +61,7 @@
     </div>
 
 
-<footer class ="footer">
-    <div class="contain">
-        <p class = "text-muted text-align"> Poseidon </p>
-    </div>
-</footer>
+<div th:include="template/footer :: footer"></div>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
