@@ -70,6 +70,7 @@ public class PacienteController {
 	
 	@RequestMapping("/deletarPaciente")
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente){
+		repositories.delete(paciente);
 		DeletePageModel deletePageModel = new DeletePageModel();
 		deletePageModel.setSuccess("Paciente deletado com sucesso!");
 		modelAndView.getModelMap().addAttribute("deletePageModel", deletePageModel);
