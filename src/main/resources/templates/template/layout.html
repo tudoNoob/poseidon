@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+  </head>
+  <body>
+    <div th:replace="template/header :: header">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-unit">
+        <h1>Test</h1>
+        <p>
+        </p>
+      </div>
+      <div th:replace="template/footer :: footer">&copy; 2013 The Static Templates</div>
+    </div>
+  </body>
+</html>

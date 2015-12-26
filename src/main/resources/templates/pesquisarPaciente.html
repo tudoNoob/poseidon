@@ -3,35 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <title>Title</title>
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
  <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 </head>
 <body>
 
+		<div th:include="template/header :: header">...</div>
 
 	<div class="container860 marginAuto">
 
 		<div title="Pacientes" class="container430 marginAuto">
 			<h1 style="">Pacientes</h1>
-			<table class="table table-bordered">
+			<table class="table">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Nome</th>
-						<th>email</th>
-						<th>cpf</th>
+						<th>Email</th>
+						<th>Telefone</th>
+						<th>Cpf</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="row: ${pacientes}">
 						<td th:text="${row.id}">Id</td>
-						<td th:text="${row.nome}">FirstName</td>
-						<td th:text="${row.email}">FirstName</td>
-						<td th:text="${row.cpf}">Last Name</td>
+						<td th:text="${row.nome}">Nome</td>
+						<td th:text="${row.email}">Email</td>
+						<td th:text="${row.telefone}">Telefone</td>
+						<td th:text="${row.cpf}">Cpf</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 
-
+<div th:include="template/footer :: footer">...</div>
 </body>
 </html>
