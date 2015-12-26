@@ -2,6 +2,9 @@ package com.poseidon.model;
 
 import org.joda.time.LocalDate;
 import org.junit.Test;
+
+import com.poseidon.entity.Paciente;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 

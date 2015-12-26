@@ -42,6 +42,17 @@
 					</p>
 				</div>
 				<div class="col-md-4"></div>
+				<div  th:if="${deletePageModel.error!=null}"
+							style="padding-top: 10px; text-align: right">
+							<label id="error.cadastro.label"
+								th:text="${cadastroPageModel.error}"></label>
+						</div>
+						<div 
+							th:if="${deletePageModel.success!=null}"
+							style="padding-top: 10px; text-align: right">
+							<label id="success.cadastro.label"
+								th:text="${cadastroPageModel.success}"></label>
+						</div>
 			</div>
 
 		</form>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dao.PacienteDao;
-import com.poseidon.model.Paciente;
+import com.poseidon.entity.Paciente;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
