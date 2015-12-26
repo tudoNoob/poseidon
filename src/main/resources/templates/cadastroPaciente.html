@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Paciente</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+</head>
+<body>
+
+    <div class="form-container" style="width:860px;margin:auto">
+        <form id="form-cadastro" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
+            <p>Nome: <input type="text" th:field="*{nome}" /></p>
+            <p>Email: <input type="text" th:field="*{email}" /></p>
+            <p>Telefone: <input type="text" th:field="*{telefone}" /></p>
+            <p>Cpf: <input type="text" th:field="*{cpf}" /></p>
+            <p><input type="submit"  value="cadastrar"  /></p>
+        </form>
+    </div>
+    <div class="dialogSucesso">
+
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+</body>
+</html>
