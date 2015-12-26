@@ -19,4 +19,20 @@ CREATE TABLE CONSULTA(
 );
 ALTER TABLE CONSULTA ADD FOREIGN KEY (id_medico) REFERENCES MEDICO(id);
 ALTER TABLE CONSULTA ADD FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id);
+
+CREATE TABLE USERS (
+ username varchar(256),
+ password varchar(256),
+ enabled boolean
+);
+
+CREATE TABLE AUTHORITIES (
+ username varchar(256),
+ authority varchar(256)
+);
+
+
+INSERT INTO USERS (username, password, enabled) values ('user', 'user', true);
+INSERT INTO AUTHORITIES (username, authority) values ('user', 'ROLE_ADMIN');
+
 INSERT INTO PACIENTE (id,nome,email,telefone,cpf) VALUES (4,'Rafael','rafael.ahrons@gmail.com','5185005657','99999999');
