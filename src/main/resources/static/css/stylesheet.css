@@ -19,6 +19,12 @@ background-color: #F5F5F5;
 
 .container860 {
 width:860px;
-margin:auto;
+}
 
+.container430 {
+width:430px;
+}
+
+.marginAuto {
+margin:auto;
 }
