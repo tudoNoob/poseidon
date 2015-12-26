@@ -7,21 +7,79 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 </head>
 <body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Poseidon</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a th:href="@{/cadastroPaciente}">Cadastro Paciente</a></li>
+                <li><a th:href="@{/pesquisarPaciente}">Pesquisa</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <div class="form-container" style="width:860px;margin:auto">
-        <form id="form-cadastro" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
-            <p>Nome: <input type="text" th:field="*{nome}" required="true" /></p>
-            <p>Email: <input type="text" th:field="*{email}" /></p>
-            <p>Telefone: <input type="text" th:field="*{telefone}" /></p>
-            <p>Cpf: <input type="text" th:field="*{cpf}" /></p>
-            <p><input type="submit"  value="cadastrar"  /></p>
+        <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome:</label>
+                <div class="col-md-4">
+                    <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" th:field="*{nome}" required="true"/>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cpf">CPF:</label>
+                <div class="col-md-4">
+                    <input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md" th:field="*{cpf}" required="true"/>
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="telefone">Telefone</label>
+                <div class="col-md-4">
+                    <input id="telefone" name="telefone" type="text" placeholder="" class="form-control input-md" th:field="*{telefone}"/>
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="" class="form-control input-md" th:field="*{email}"/>
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <p><input type="submit"  value="cadastrar"  /></p>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
         </form>
     </div>
-    <div class="dialogSucesso">
 
+
+<footer class ="footer">
+    <div class="contain">
+        <p class = "text-muted text-align"> Poseidon </p>
     </div>
+</footer>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
