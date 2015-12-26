@@ -4,5 +4,7 @@
 Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
 
 
+[Slack do time](https://tudonoob.slack.com)
+
 
 
