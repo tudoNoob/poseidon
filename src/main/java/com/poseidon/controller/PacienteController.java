@@ -22,12 +22,7 @@ public class PacienteController {
     private PacienteDao repositories;
 
     private static Logger logger = Logger.getLogger("PacienteController");
-
-    @RequestMapping("/home")
-    public ModelAndView home(ModelAndView  modelAndView){
-        modelAndView.setViewName("home");
-        return modelAndView;
-    }
+    
 
     @RequestMapping("/cadastroPaciente")
     public ModelAndView cadastroPaciente(ModelAndView modelAndView){
