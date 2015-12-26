@@ -15,7 +15,7 @@
 <body>
 	<div th:include="template/header :: header">...</div>
 	<div class="form-container" style="width: 860px; margin: auto">
-		<form id="form-cadastro" class="form-horizontal" action="#">
+		<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/deletarPaciente}" th:object="${paciente}" method="post">
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="nome">Id:</label>
@@ -45,13 +45,13 @@
 				<div  th:if="${deletePageModel.error!=null}"
 							style="padding-top: 10px; text-align: right">
 							<label id="error.cadastro.label"
-								th:text="${cadastroPageModel.error}"></label>
+								th:text="${deletePageModel.error}"></label>
 						</div>
 						<div 
 							th:if="${deletePageModel.success!=null}"
 							style="padding-top: 10px; text-align: right">
 							<label id="success.cadastro.label"
-								th:text="${cadastroPageModel.success}"></label>
+								th:text="${deletePageModel.success}"></label>
 						</div>
 			</div>
 
