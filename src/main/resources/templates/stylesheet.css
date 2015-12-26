@@ -1,0 +1,17 @@
+.textoDeAbertura{
+	text-align: center;
+	color: blue;
+	width:100%;
+	height: 60px;
+}
+
+.footer{
+	position: absolute;
+bottom: 0px;
+width: 100%;
+height: 60px;
+background-color: #F5F5F5;
+}
+.contain{
+	width:1170px;
+}
