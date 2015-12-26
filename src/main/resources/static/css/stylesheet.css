@@ -28,3 +28,19 @@ width:430px;
 .marginAuto {
 margin:auto;
 }
+
+.containerPaddingTop200 {
+	padding-top: 200px;
+}
+
+.backgroundColorCinza {
+	    background-color: #f8f8f8;
+}
+
+.fontSizeLarge {
+	font-size: xx-large;
+}
+
+.negrito {
+	font-weight: bold;
+}
