@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1"/>
+<meta charset="ISO-8859-1" />
 <title>Insert title here</title>
 </head>
 <body>
-<div th:fragment="header">
-<nav class="navbar navbar-default" >
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="@{/home}">Poseidon</a>
-		    </div>
-		    <div>
-		      <ul class="nav navbar-nav">
-			<li class="active"><a th:href="@{/home}">Home</a></li>
-			<li><a th:href="@{/cadastroPaciente}">Cadastro Paciente</a></li>
-			<li><a th:href="@{/cadastroMedico}">Cadastro Medico</a></li>
-			<li><a th:href="@{/pesquisarPaciente}">Pesquisa</a></li>
-			<li><a th:href="@{/sobre}">Sobre</a></li>
-		      </ul>
-		    </div>
-		  </div>
+	<div th:fragment="header">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="@{/home}">Poseidon</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/home}">Home</a></li>
+						<li><a th:href="@{/cadastroPaciente}">Cadastrar Paciente</a></li>
+						<li><a th:href="@{/pesquisarPaciente}">Pesquisar Paciente</a></li>
+						<li><a th:href="@{/deletePaciente}">Deletar Paciente</a></li>
+						<li><a th:href="@{/cadastroMedico}">Cadastrar Medico</a></li>
+						<li><a th:href="@{/sobre}">Sobre</a></li>
+					</ul>
+				</div>
+			</div>
 		</nav>
-		</div>
+	</div>
 </body>
 </html>

@@ -59,5 +59,11 @@ public class PacienteController {
 		modelAndView.setViewName("pesquisarPaciente");
 		return modelAndView;
 	}
+	
+	@RequestMapping("/deletePaciente")
+	public ModelAndView deletePaciente(ModelAndView modelAndView){
+		modelAndView.setViewName("deletePaciente");
+		return modelAndView;
+	}
 
 }
