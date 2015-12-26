@@ -5,3 +5,4 @@ CREATE TABLE PACIENTE (
     telefone varchar(255),
     cpf varchar(255)
 );
+INSERT INTO PACIENTE (id,nome,email,telefone,cpf) VALUES (4,'Rafael','rafael.ahrons@gmail.com','5185005657','99999999');
