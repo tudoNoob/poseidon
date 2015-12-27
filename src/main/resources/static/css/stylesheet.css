@@ -44,6 +44,14 @@ margin:auto;
 .negrito {
 	font-weight: bold;
 }
-.padding189 {
-	padding-left:189px;
+.padding182 {
+	padding-left:182px;
+}
+.navBarPoseidon {
+	    background-color: #31b0d5 !important;
+	    color: #fff !important;
+}
+
+.colorBranco {
+	color: #fff !important;
 }

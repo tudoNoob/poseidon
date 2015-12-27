@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 </head>
-<body>
-<div th:include="template/header :: header">...</div>
+<body class="backgroundColorCinza">
+<div th:include="template/header :: header"></div>
     <div class="form-container" style="width:860px;margin:auto">
         <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
             <!-- Text input-->
