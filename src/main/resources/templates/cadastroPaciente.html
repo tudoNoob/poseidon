@@ -11,54 +11,167 @@
 </head>
 <body class="backgroundColorCinza">
 <div th:include="template/header :: header"></div>
-    <div class="form-container" style="width:860px;margin:auto">
-        <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/salvarPaciente}" th:object="${paciente}" method="post">
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="nome">Nome:</label>
-                <div class="col-md-4">
-                    <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" th:field="*{nome}" required="true"/>
-                </div>
-            </div>
+   <div id="container" style="width: 860px; margin: auto">
+			<!-- Nome, Sobrenome, E-mail,Data de Nascimente, Data da última,Consulta, Telefone, Celular, Endereço, CEP, Forma de Pagamento. -->
+			<div id="contianer.form" style="padding-top: 20px">
+				<form th:action="@{/salvarPaciente}" method="post"
+					id="formCadastro">
+					<div id="left.container" style="float: left; width: 48%">
+						<div><label>Nome:</label></div> <label for="nomecadastro" style="display:none"></label>
+						<div class="input-group" id="nomediv">
+							<input type="text" class="form-control" placeholder="Nome"
+								aria-describedby="basic-addon1" name="nome" id="nomecadastro" maxlength="30" /><span
+								class="input-group-addon" id="addon-email">João</span>
+						</div>
+						<label for="sobrenomecadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Sobrenome:</label></div> 
+						<div class="input-group" id="sobrenomediv">
+							<input type="text" class="form-control" placeholder="Sobrenome"
+								aria-describedby="basic-addon1" name="sobrenome"
+								id="sobrenomecadastro" maxlength="30" /><span class="input-group-addon"
+								id="addon-email">Silva</span>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="cpf">CPF:</label>
-                <div class="col-md-4">
-                    <input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md" th:field="*{cpf}" required="true"/>
+						</div>
+						<label for="emailcadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">E-mail:</label></div>
+						<div class="input-group" id="emaildiv">
+							<input type="text" class="form-control" placeholder="E-mail"
+								aria-describedby="basic-addon1" name="email"
+								id="emailcadastro" maxlength="30"/> <span class="input-group-addon"
+								id="addon-email">@example.com</span>
+						</div>
+						<label for="telefonecadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Telefone:</label></div>
+						<div class="input-group" id="telefonediv">
+							<input type="text" class="form-control phone"
+								placeholder="Telefone" aria-describedby="basic-addon1"
+								name="telefone" id="telefonecadastro"  maxlength="9"/> <span
+								class="input-group-addon" id="addon-telefone">9999-9999</span>
+						</div>
+						<label for="celularcadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Celular:</label></div>
+						<div class="input-group" id="celulardiv">
+							<input type="text" class="form-control phone"
+								placeholder="Celular" aria-describedby="basic-addon1"
+								name="celular" id="celularcadastro" maxlength="9"/><span
+								class="input-group-addon" id="addon-celular">9999-9999</span>
+						</div>
+					</div>
+					<div id="rigth.container" style="float: right; width: 48%">
+					<label for="enderecocadastro" style="display:none"></label>
+						<div><label>Endereço:</label></div>
+						<div class="input-group" id="enderecodiv" >
+							<input type="text" class="form-control" placeholder="Endereço"
+								aria-describedby="basic-addon1" name="endereco"
+								id="enderecocadastro" maxlength="30" /> <span class="input-group-addon"
+								id="addon-telefone">Rua, Avenida</span>
+						</div>
+						<label for="cepcadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">CEP:</label></div>
+						<div class="input-group" id="cepdiv">
+							<input type="text" class="form-control cep" placeholder="CEP"
+								aria-describedby="basic-addon1" name="cep" id="cepcadastro" maxlength="9"/><span
+								class="input-group-addon" id="addon-cep">99999-999</span>
+						</div>
+						<label for="datanscimentocadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Data de Nascimento:</label></div>
+						<div class="input-group" id="data_de_nascimentodiv">
+							<input type="text" class="form-control  data"
+								placeholder="Data de Nascimento" aria-describedby="basic-addon1"
+								name="data_de_nascimento" id="datanscimentocadastro" maxlength="10" /><span
+								class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
+						</div>
+						<label for="dataultimaconsultacadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Data da última consulta:</label></div>
+						<div class="input-group" id="data_da_ultima_consultadiv">
+							<input type="text" class="form-control data"
+								placeholder="Data da última consulta"
+								aria-describedby="basic-addon1" name="data_da_ultima_consulta"
+								id="dataultimaconsultacadastro" maxlength="10"/><span
+								class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
+						</div>
+						<label for="formadepagamentocadastro" style="display:none"></label>
+						<div><label style="padding-top: 10px">Forma de Pagamento:</label></div>
+						<div class="input-group" id="forma_de_pagamentodiv">
+							<input type="text" class="form-control"
+								placeholder="Forma de Pagamento" aria-describedby="basic-addon1"
+								name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30" /><span
+								class="input-group-addon" id="addon-cep">R$,Cartão...</span>
+						</div>
+						<div style="padding-top: 10px; padding-left: 226px">
+							<input type="submit" value="Cadastrar Paciente"
+								class="btn btn-lg btn-success btn-submit"
+								id="submitcadastrarpaciente" />
+						</div>
+						<div title="All Persons" th:if="${cadastroPageModel.error!=null}"
+							style="padding-top: 10px; text-align: right">
+							<label id="error.cadastro.label"
+								th:text="${cadastroPageModel.error}"></label>
+						</div>
+						<div title="All Persons"
+							th:if="${cadastroPageModel.success!=null}"
+							style="padding-top: 10px; text-align: right">
+							<label id="success.cadastro.label"
+								th:text="${cadastroPageModel.success}"></label>
+						</div>
 
-                </div>
-            </div>
+					</div>
+				</form>
+			</div>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="telefone">Telefone</label>
-                <div class="col-md-4">
-                    <input id="telefone" name="telefone" type="text" placeholder="" class="form-control input-md" th:field="*{telefone}"/>
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="email">Email</label>
-                <div class="col-md-4">
-                    <input id="email" name="email" type="text" placeholder="" class="form-control input-md" th:field="*{email}"/>
-
-                </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <p><input type="submit"  value="cadastrar" class="btn btn-success" /></p>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-
-        </form>
-    </div>
+		</div>
+	<script src="/jquery/jquery-1.11.3.min.js"></script>
+	<script src="/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/jquery/jquery.mask.min.js"></script>
+	<script type="text/javascript" src="/jquery/jquery.validate.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.phone').mask('0000-0000');
+		$('.cep').mask('00000-000');
+		$('.data').mask('00/00/0000');
+		
+		$('#formCadastro').validate({
+			rules: {
+			nome: {required:true, minlength:2,maxlength:30},
+			sobrenome: {required:true, minlength:2,maxlength:30},			
+			email:		{required:true,email:true,minlength:4,maxlength:30},
+       		telefone:	{required:true,minlength:9,maxlength:9},
+        	celular:	{required:true,minlength:9,maxlength:9},
+        	endereco:	{required:true,minlength:5,maxlength:30},
+        	cep:		{required:true,minlength:9,maxlength:9},
+        	data_de_nascimento:{required:true,minlength:10,maxlength:10},
+        	data_da_ultima_consulta:{required:true,minlength:10,maxlength:10},
+        	forma_de_pagamento:{required:true,minlength:2,maxlength:30}
+        	},
+        // Specify the validation error messages
+        messages: {
+            nome: "Por favor digite um nome válido.",
+            sobrenome: "Por favor digite um sobrenome válido.",
+            email: "Por favor digite um e-mail válido.",
+            telefone: "Por favor digite um telefone válido.",
+            celular:"Por favor digite um celular válido.",
+            endereco:"Por favor digite um endereço válido.",
+            cep:"Por favor digite um cep válido.",
+            data_de_nascimento:"Por favor digite uma data válido.",
+            data_da_ultima_consulta:"Por favor digite uma data válido.",
+            forma_de_pagamento:"Por favor digite uma forma de pagamento válida."
+        },
+        errorPlacement: function(error, element) {
+        console.log(element.attr('name'));
+        error.insertAfter('#'+element.attr('name')+'div'); //So i putted it after the .form-group so it will not include to your append/prepend group.
+   	 }
+       
+		});
+		
+		$('#formCadastro').submit(function(){
+		var validator=	$('#formCadastro').validate();
+			validator.form();
+			});
+		
+		
+		
+	});
+	</script>
 
 
 <div th:include="template/footer :: footer"></div>

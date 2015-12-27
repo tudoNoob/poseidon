@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dao.PacienteDao;
-import com.poseidon.model.DeletePageModel;
+import com.poseidon.model.ViewMessage;
 import com.poseidon.model.Paciente;
 
 import jersey.repackaged.com.google.common.collect.Lists;
@@ -28,6 +28,8 @@ public class PacienteController {
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
 		modelAndView.setViewName("cadastroPaciente");
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
+		ViewMessage message = new ViewMessage();
+		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
 		return modelAndView;
 	}
 
@@ -64,14 +66,14 @@ public class PacienteController {
 	@RequestMapping("/deletePaciente")
 	public ModelAndView deletePaciente(ModelAndView modelAndView) {
 		modelAndView.setViewName("deletePaciente");
-		modelAndView.getModelMap().addAttribute("deletePageModel", new DeletePageModel());
+		modelAndView.getModelMap().addAttribute("deletePageModel", new ViewMessage());
 		return modelAndView;
 	}
 
 	@RequestMapping("/deletarPaciente")
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		repositories.delete(paciente);
-		DeletePageModel deletePageModel = new DeletePageModel();
+		ViewMessage deletePageModel = new ViewMessage();
 		deletePageModel.setSuccess("Paciente deletado com sucesso!");
 		modelAndView.getModelMap().addAttribute("deletePageModel", deletePageModel);
 		modelAndView.setViewName("deletePaciente");
