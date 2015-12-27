@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+     <link rel="stylesheet" href="/bootstrap/datepicker.css"/>
     <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
 </head>
 <body class="backgroundColorCinza">
@@ -127,6 +128,7 @@
 	<script src="/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/jquery/jquery.mask.min.js"></script>
 	<script type="text/javascript" src="/jquery/jquery.validate.js"></script>
+	<script type="text/javascript" src="/bootstrap/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.phone').mask('0000-0000');
@@ -171,8 +173,8 @@
 			validator.form();
 			});
 		
-		
-		
+		$('#dataultimaconsultacadastro').datepicker();
+		$('#datanscimentocadastro').datepicker();
 	});
 	</script>
 
