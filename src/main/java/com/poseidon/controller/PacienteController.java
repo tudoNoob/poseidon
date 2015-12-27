@@ -60,16 +60,16 @@ public class PacienteController {
 		modelAndView.setViewName("pesquisarPaciente");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping("/deletePaciente")
-	public ModelAndView deletePaciente(ModelAndView modelAndView){
+	public ModelAndView deletePaciente(ModelAndView modelAndView) {
 		modelAndView.setViewName("deletePaciente");
 		modelAndView.getModelMap().addAttribute("deletePageModel", new DeletePageModel());
 		return modelAndView;
 	}
-	
+
 	@RequestMapping("/deletarPaciente")
-	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente){
+	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		repositories.delete(paciente);
 		DeletePageModel deletePageModel = new DeletePageModel();
 		deletePageModel.setSuccess("Paciente deletado com sucesso!");
