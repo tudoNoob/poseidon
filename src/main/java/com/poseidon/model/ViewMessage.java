@@ -1,12 +1,12 @@
 package com.poseidon.model;
 
-public class DeletePageModel {
+public class ViewMessage {
 
 	public String error;
 
 	public String success;
 
-	public DeletePageModel() {
+	public ViewMessage() {
 		this.setError(null);
 		this.setSuccess(null);
 	}

@@ -9,6 +9,7 @@ public class GlobalAdvice {
 
 	@ExceptionHandler(RuntimeException.class)
 	public ModelAndView exceptionHandler(RuntimeException e) {
+		e.printStackTrace();
 		return buildModalError();
 	}
 
@@ -20,6 +21,7 @@ public class GlobalAdvice {
 
 	@ExceptionHandler(Exception.class)
 	public ModelAndView exceptionHandler(Exception e) {
+		e.printStackTrace();
 		return buildModalError();
 	}
 }
