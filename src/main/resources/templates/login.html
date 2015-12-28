@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<link rel="stylesheet" href="/jquery/jquery-ui.css" />
+<link rel="stylesheet" href="/bootstrap/bootstrap-theme.min.css" />
+<!-- 3.3.5 -->
+<link rel="stylesheet" href="/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
+</head>
+<body class="backgroundColorCinza">
+	<div th:include="template/headerLogin :: header">...</div>
+	<div class="container" style="width: 800px">
+		<div class="form-container"
+			style="padding-top: 260px; width: 600px; margin: auto">
+			<form th:action="@{/login}" method="post">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">@</span> <input
+						type="text" class="form-control" placeholder="Username"
+						aria-describedby="basic-addon1" name="username" id="user.login" />
+					<span class="input-group-addon" id="basic-addon2">@example.com</span>
+				</div>
+				<div class="input-group" style="padding-top: 5px">
+					<span class="input-group-addon" id="basic-addon1">X</span> <input
+						type="password" class="form-control" placeholder="Password"
+						aria-describedby="basic-addon1" name="password"
+						id="password.login" />
+				</div>
+				<div style="padding-top: 10px; padding-left: 365px">
+					<input value="Novo usuário" class=" btn btn-lg btn-primary"
+						style="width: 140px" id="btn-newuser" /> <input type="submit"
+						value="Entrar" class="btn btn-lg btn-success" id="submit.login" />
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<div id="dialog-newUser" style="display: none; width: 200px"
+		title="Criando novo usuário">
+		<form id="form-createUser" th:action="@{/createUser}"
+			th:object="${user}" method="post">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">@</span> <input
+					id="user.create" type="text" class="form-control"
+					placeholder="Username" aria-describedby="basic-addon1"
+					name="username" /> <span class="input-group-addon">@example.com</span>
+			</div>
+			<div class="input-group" style="padding-top: 5px">
+				<span class="input-group-addon" id="basic-addon1">X</span> <input
+					id="pass.create" type="password" class="form-control"
+					placeholder="Password" aria-describedby="basic-addon1"
+					name="password" />
+			</div>
+			<div style="padding-top: 10px">
+				<input type="submit" value="Create User"
+					class="btn btn-lg btn-success" id="createUser.submit" />
+			</div>
+
+		</form>
+	</div>
+
+	<script src="/jquery/jquery-1.11.3.min.js"></script>
+	<script src="/jquery/jquery-ui.min.js"></script>
+	<script src="/bootstrap/bootstrap.min.js"></script>
+	<!-- 3.3.5 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#btn-newuser').on('click', function() {
+				$('#dialog-newUser').dialog();
+			});
+		});
+	</script>
+</body>
+</html>
