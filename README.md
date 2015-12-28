@@ -17,6 +17,11 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 
 * Este comando é para executar o java via linha de comando, portanto no futuro a versão do projeto pode mudar tendo que acrescentar a nova versão mão.
 
+###Para entrar na aplicação para motivos de desenvolivimento
+
+* Login: `user`
+* senha: `user`
+
 ###links úteis:
 
 [Slack do time](https://tudonoob.slack.com)
