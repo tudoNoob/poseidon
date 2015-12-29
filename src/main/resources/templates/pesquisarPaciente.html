@@ -3,30 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <title>Pesquisar Paciente</title>
- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
- <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
 <body class="backgroundColorCinza">
 
-		<div th:include="template/header :: header">...</div>
+	<div th:include="template/header :: header">...</div>
 
 	<div class="container860 marginAuto">
-	
-	<div class="container-header">
- <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/procurarPaciente}" th:object="${paciente}" method="post">
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="nome">Nome:</label>
-                <div class="col-md-4">
-                    <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" th:field="*{nome}" required="true"/>
-                </div>
-                 <div class="col-md-4">
-                    <p><input type="submit"  value="pesquisar" class="btn btn-success" /></p>
-                </div>
-            </div>
 
-        </form>
-	</div>
+		<div class="container-header">
+			<form id="form-cadastro" class="form-horizontal" action="#"
+				th:action="@{/procurarPaciente}" th:object="${paciente}"
+				method="post">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nome">Nome:</label>
+					<div class="col-md-4">
+						<input id="nome" name="nome" type="text" placeholder=""
+							class="form-control input-md" th:field="*{nome}" required="true" />
+					</div>
+					<div class="col-md-4">
+						<p>
+							<input type="submit" value="pesquisar" class="btn btn-success" />
+						</p>
+					</div>
+				</div>
+
+			</form>
+		</div>
 
 		<div title="Pacientes" class="container430 marginAuto">
 			<h1 class="text-align">Pacientes</h1>
@@ -52,7 +58,10 @@
 			</table>
 		</div>
 	</div>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/menu.js"></script>
+	<div th:include="template/footer :: footer">...</div>
 
-<div th:include="template/footer :: footer">...</div>
 </body>
 </html>
