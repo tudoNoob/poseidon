@@ -59,6 +59,10 @@ CREATE TABLE PRONTUARIO(
 ALTER TABLE CONSULTA ADD FOREIGN KEY (id_preco) REFERENCES PRECOS(id);
 ALTER TABLE PRONTUARIO ADD FOREIGN KEY (id_medico) REFERENCES MEDICO(id);
 ALTER TABLE PRONTUARIO ADD FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id);
+
+INSERT INTO USERS (username, password, enabled) values ('admin', 'admin', true);
+INSERT INTO AUTHORITIES (username, authority) values ('admin', 'ROLE_ADMIN');
+
 INSERT INTO USERS (username, password, enabled) values ('user', 'user', true);
-INSERT INTO AUTHORITIES (username, authority) values ('user', 'ROLE_ADMIN');
+INSERT INTO AUTHORITIES (username, authority) values ('user', 'ROLE_USER');
 
