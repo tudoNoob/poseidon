@@ -23,8 +23,8 @@ public class Paciente {
 	private String celular;
 	private String endereco;
 	private String cep;
-	private String data_de_nascimento;
-	private String data_da_ultima_consulta;
+	private Date data_de_nascimento;
+	private Date data_da_ultima_consulta;
 	private String forma_de_pagamento;
 	private String cpf;
 
@@ -90,28 +90,40 @@ public class Paciente {
 		this.cep = cep;
 	}
 
-	public String getData_de_nascimento() {
-		return data_de_nascimento;
-	}
+
 
 	public Date getDataNasci_For_SQL() {
 		return PoseidonUtils.convertToDate(data_de_nascimento);
 	}
 
-	public void setData_de_nascimento(String data_de_nascimento) {
-		this.data_de_nascimento = data_de_nascimento;
-	}
+	
 
-	public String getData_da_ultima_consulta() {
+	public Date getData_da_ultima_consulta() {
 		return data_da_ultima_consulta;
 	}
 
-	public Date getDataConsulta_For_SQL() {
-		return PoseidonUtils.convertToDate(data_da_ultima_consulta);
+
+
+	public void setData_da_ultima_consulta(Date data_da_ultima_consulta) {
+		this.data_da_ultima_consulta = data_da_ultima_consulta;
 	}
 
-	public void setData_da_ultima_consulta(String data_da_ultima_consulta) {
-		this.data_da_ultima_consulta = data_da_ultima_consulta;
+
+
+	public void setData_de_nascimento(Date data_de_nascimento) {
+		this.data_de_nascimento = data_de_nascimento;
+	}
+
+
+
+	public Date getData_de_nascimento() {
+		return data_de_nascimento;
+	}
+
+
+
+	public Date getDataConsulta_For_SQL() {
+		return PoseidonUtils.convertToDate(data_da_ultima_consulta);
 	}
 
 	public String getForma_de_pagamento() {
