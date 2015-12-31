@@ -7,26 +7,25 @@ import javax.persistence.Id;
 @Entity
 public class Users {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-   
-    private String username;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    private String password;
+	private String username;
 
-    private boolean enabled;
-    
+	private String password;
 
-    public static Users createUser(UserView userView) {
-        Users user = new Users();
+	private boolean enabled;
 
-        user.username = userView.getUsername();
-        user.password = userView.getPassword();
-      
+	public static Users createUser(UserView userView) {
+		Users user = new Users();
 
-        return user;
-    }
+		user.username = userView.getUsername();
+		user.password = userView.getPassword();
+		user.enabled = true;
+
+		return user;
+	}
 
 	public Long getId() {
 		return id;
@@ -35,7 +34,6 @@ public class Users {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;
@@ -53,7 +51,6 @@ public class Users {
 		this.password = password;
 	}
 
-
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -65,7 +62,7 @@ public class Users {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "username:"+this.username+" pass:"+this.password;
+		return "username:" + this.username + " pass:" + this.password;
 	}
-    
+
 }
