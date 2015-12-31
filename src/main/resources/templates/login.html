@@ -18,14 +18,14 @@
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">@</span> <input
 						type="text" class="form-control" placeholder="Username"
-						aria-describedby="basic-addon1" name="username" id="user.login" />
+						aria-describedby="basic-addon1" name="username" id="user.login" required="true" />
 					<span class="input-group-addon" id="basic-addon2">@example.com</span>
 				</div>
 				<div class="input-group" style="padding-top: 5px">
 					<span class="input-group-addon" id="basic-addon1">X</span> <input
 						type="password" class="form-control" placeholder="Password"
 						aria-describedby="basic-addon1" name="password"
-						id="password.login" />
+						id="password.login" required="true" />
 				</div>
 				<div style="padding-top: 10px; padding-left: 365px">
 					<input value="Novo usuário" class=" btn btn-lg btn-primary"
@@ -44,13 +44,13 @@
 				<span class="input-group-addon" id="basic-addon1">@</span> <input
 					id="user.create" type="text" class="form-control"
 					placeholder="Username" aria-describedby="basic-addon1"
-					name="username" /> <span class="input-group-addon">@example.com</span>
+					name="username" required="true" /> <span class="input-group-addon">@example.com</span>
 			</div>
 			<div class="input-group" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">X</span> <input
 					id="pass.create" type="password" class="form-control"
 					placeholder="Password" aria-describedby="basic-addon1"
-					name="password" />
+					name="password" required="true" />
 			</div>
 			<div style="padding-top: 10px">
 				<input type="submit" value="Create User"
@@ -67,7 +67,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#btn-newuser').on('click', function() {
-				$('#dialog-newUser').dialog();
+				$('#dialog-newUser').dialog({
+					height: 200,
+				    width: 400
+				});
 			});
 		});
 	</script>
