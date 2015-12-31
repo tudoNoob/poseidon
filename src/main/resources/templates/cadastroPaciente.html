@@ -16,13 +16,13 @@
 			<!-- Nome, Sobrenome, E-mail,Data de Nascimente, Data da última,Consulta, Telefone, Celular, Endereço, CEP, Forma de Pagamento. -->
 			<div id="contianer.form" style="padding-top: 20px">
 				<form th:action="@{/salvarPaciente}" method="post"
-					id="formCadastro">
+					id="formCadastro" th:object="${paciente}">
 					<div id="left.container" style="float: left; width: 48%">
 						<div><label>Nome:</label></div> <label for="nomecadastro" style="display:none"></label>
 						<div class="input-group" id="nomediv">
 							<input type="text" class="form-control" placeholder="Nome"
-								aria-describedby="basic-addon1" name="nome" id="nomecadastro" maxlength="30" /><span
-								class="input-group-addon" id="addon-email">João</span>
+								aria-describedby="basic-addon1" name="nome" id="nomecadastro" maxlength="30" th:field="${paciente.nome}" /><span
+								class="input-group-addon" id="addon-email" >João</span>
 						</div>
 						<label for="sobrenomecadastro" style="display:none"></label>
 						<div><label style="padding-top: 10px">Sobrenome:</label></div> 

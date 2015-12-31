@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.dao.PacienteDao;
 import com.poseidon.model.ViewMessage;
@@ -25,9 +26,10 @@ public class PacienteController {
 	private static Logger logger = Logger.getLogger("PacienteController");
 
 	@RequestMapping("/cadastroPaciente")
-	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
+	public ModelAndView cadastroPaciente(ModelAndView modelAndView,@ModelAttribute Paciente paciente) {
 		modelAndView.setViewName("cadastroPaciente");
-		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
+		if(paciente== null) paciente= new Paciente();
+		modelAndView.getModelMap().addAttribute("paciente", paciente);
 		ViewMessage message = new ViewMessage();
 		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
 		return modelAndView;
@@ -80,4 +82,12 @@ public class PacienteController {
 		return modelAndView;
 	}
 
+	@RequestMapping("/editarPaciente")
+	public ModelAndView  editarPaciente(ModelAndView modelAndView,RedirectAttributes redirectAttributes, @ModelAttribute Paciente paciente){
+		Paciente newPaciente = repositories.findOne(paciente.getId());
+		 modelAndView.setViewName("redirect:/cadastroPaciente");
+		redirectAttributes.addFlashAttribute(newPaciente);
+		return modelAndView;
+	}
+	
 }

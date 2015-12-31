@@ -8,7 +8,7 @@ import com.poseidon.model.Paciente;
 
 @Repository
 @Qualifier()
-public interface PacienteDao extends CrudRepository<Paciente, Long> {
+public interface PacienteDao extends CrudRepository<Paciente, Integer> {
 
 	public Paciente findByNome(String nome);
 	

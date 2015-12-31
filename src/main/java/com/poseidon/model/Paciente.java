@@ -29,7 +29,7 @@ public class Paciente {
 	private String cpf;
 
 	public Paciente() {
-		// TODO Auto-generated constructor stub
+		this.nome="";
 	}
 
 	

@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <title>Pesquisar Paciente</title>
+<link rel="stylesheet" href="/jquery/jquery-ui.css" />
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
 <body class="backgroundColorCinza">
 
-	<div class="pageConainter" >
-	
+	<div class="pageConainter">
+
 		<div th:include="template/header :: header">...</div>
 
 		<div class="container860 marginAuto">
@@ -29,7 +30,8 @@
 						<div class="col-md-4 paddingLeft5">
 							<p>
 								<input type="submit" value="pesquisar" class="btn btn-success" />
-								<input type="button" value="Editar" class="btn btn-warning marginLeft5" />
+								<input type="button" value="Editar"
+									class="btn btn-warning marginLeft5" id="editarPaciente" />
 							</p>
 						</div>
 					</div>
@@ -62,10 +64,35 @@
 				</table>
 			</div>
 		</div>
+		<div id="dialog-newUser" style="display: none; width: 200px"
+			title="Editando Paciente">
+			<form id="form-createUser" th:action="@{/editarPaciente}"
+				method="post" th:object="${paciente}">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Id:</span><input
+						id="user.create" type="text" class="form-control" placeholder="id"
+						aria-describedby="basic-addon1" name="id" required="true" />
+				</div>
+				<div style="padding-top: 10px">
+					<input type="submit" value="Editar Paciente"
+						class="btn btn-lg btn-success" id="editarPaciente.submit" />
+				</div>
 
+			</form>
+		</div>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="/js/menu.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#editarPaciente').on('click', function() {
+					$('#dialog-newUser').dialog({
+						height : 180,
+						width : 400
+					});
+				});
+			});
+		</script>
 		<div th:include="template/footer :: footer">...</div>
 	</div>
 </body>
