@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.joda.time.LocalDate;
-
 import com.google.common.base.Objects;
 import com.poseidon.utils.PoseidonUtils;
 

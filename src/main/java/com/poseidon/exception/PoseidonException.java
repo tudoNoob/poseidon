@@ -2,6 +2,11 @@ package com.poseidon.exception;
 
 public class PoseidonException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PoseidonException() {
 		// TODO Auto-generated constructor stub
 	}
