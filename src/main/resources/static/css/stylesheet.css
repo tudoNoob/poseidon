@@ -71,3 +71,11 @@ margin:auto;
 .marginLeft5 {
 	maring-left: 5px !important;
 }
+
+.margin10 {
+	margin:10px;
+}
+
+.paddingTop40 {
+	padding-top:40px;
+}

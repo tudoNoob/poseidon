@@ -11,15 +11,50 @@
 
 	<div th:include="template/header :: header">...</div>
 	<ul class="nav nav-tabs nav-justified">
-		<li role="presentation"><a href="/cadastroMedico">Cadastro de Médico</a></li>
+		<li role="presentation"><a href="/cadastroMedico">Cadastro de
+				Médico</a></li>
 		<li role="presentation"><a href="#">Pesquisar Médico</a></li>
+		<li role="presentation"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown" role="button" aria-haspopup="true"
+			aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="#" id="btn-criarConta">Criar Conta</a></li>
+				<li><a href="#">Editar Conta</a></li>
+				<li><a href="#">Deletar Conta</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Exibir todas Contas</a></li>
+			</ul></li>
 		<li role="presentation"><a href="#">Messages</a></li>
 	</ul>
+	<div class="container860 marginAuto" id="containerDashboard"></div>
 	<div th:include="template/footer :: footer">...</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/menu.js"></script>
+	<script type="text/javascript" src="/js/menu.js"></script>
+	<script type="text/javascript" src="/js/dashboard.js"></script>
+
+	<div class="container430 marginAuto paddingTop40" id="criarContaContainer" style="display:none">
+		<form id="form-createUser" th:action="@{/createUser}"
+			th:object="${user}" method="post">
+			<div class="input-group margin10">
+				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+					id="user.create" type="text" class="form-control"
+					placeholder="Username" aria-describedby="basic-addon1"
+					name="username" required="true" />
+			</div>
+			<div class="input-group margin10" style="padding-top: 5px">
+				<span class="input-group-addon" id="basic-addon1">Senha</span> <input
+					id="pass.create" type="password" class="form-control"
+					placeholder="Password" aria-describedby="basic-addon1"
+					name="password" required="true" />
+			</div>
+			<div class="margin10" style="padding-top: 10px">
+				<input type="submit" value="Create User"
+					class="btn btn-lg btn-success" id="createUser.submit" />
+			</div>
+		</form>
+	</div>
 </body>
 </html>
