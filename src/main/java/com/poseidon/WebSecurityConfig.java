@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**").permitAll();
 		http.formLogin().loginPage("/login").defaultSuccessUrl("/home")
 		.permitAll().and().logout().permitAll();
-		
+		http.authorizeRequests().antMatchers("/cadastroMedico").hasRole("ADMIN").anyRequest().authenticated();
 		http.csrf().disable();
 	}
 
