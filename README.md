@@ -19,6 +19,11 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 
 ###Para entrar na aplicação para motivos de desenvolivimento
 
+* Usuário: `admin`
+* Senha: `admin`
+ 
+Ou se quiser acessar como usuário comum:
+
 * Usuário: `user`
 * Senha: `user`
 
