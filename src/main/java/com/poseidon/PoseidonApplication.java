@@ -6,11 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @EnableWebSecurity
 @SpringBootApplication
-//@EnableRedisHttpSession
 public class PoseidonApplication {
 
     public static void main(String[] args) {
