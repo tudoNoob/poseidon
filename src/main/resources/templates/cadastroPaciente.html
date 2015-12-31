@@ -29,7 +29,7 @@
 						<div class="input-group" id="sobrenomediv">
 							<input type="text" class="form-control" placeholder="Sobrenome"
 								aria-describedby="basic-addon1" name="sobrenome"
-								id="sobrenomecadastro" maxlength="30" /><span class="input-group-addon"
+								id="sobrenomecadastro" maxlength="30" th:field="${paciente.sobrenome}" /><span class="input-group-addon"
 								id="addon-email">Silva</span>
 
 						</div>
@@ -38,7 +38,7 @@
 						<div class="input-group" id="emaildiv">
 							<input type="text" class="form-control" placeholder="E-mail"
 								aria-describedby="basic-addon1" name="email"
-								id="emailcadastro" maxlength="30"/> <span class="input-group-addon"
+								id="emailcadastro" maxlength="30" th:field="${paciente.email}"/> <span class="input-group-addon"
 								id="addon-email">@example.com</span>
 						</div>
 						<label for="telefonecadastro" style="display:none"></label>
@@ -46,7 +46,7 @@
 						<div class="input-group" id="telefonediv">
 							<input type="text" class="form-control phone"
 								placeholder="Telefone" aria-describedby="basic-addon1"
-								name="telefone" id="telefonecadastro"  maxlength="9"/> <span
+								name="telefone" id="telefonecadastro"  maxlength="9" th:field="${paciente.telefone}"/> <span
 								class="input-group-addon" id="addon-telefone">9999-9999</span>
 						</div>
 						<label for="celularcadastro" style="display:none"></label>
@@ -54,7 +54,7 @@
 						<div class="input-group" id="celulardiv">
 							<input type="text" class="form-control phone"
 								placeholder="Celular" aria-describedby="basic-addon1"
-								name="celular" id="celularcadastro" maxlength="9"/><span
+								name="celular" id="celularcadastro" maxlength="9" th:field="${paciente.celular}"/><span
 								class="input-group-addon" id="addon-celular">9999-9999</span>
 						</div>
 					</div>
@@ -64,14 +64,14 @@
 						<div class="input-group" id="enderecodiv" >
 							<input type="text" class="form-control" placeholder="Endereço"
 								aria-describedby="basic-addon1" name="endereco"
-								id="enderecocadastro" maxlength="30" /> <span class="input-group-addon"
+								id="enderecocadastro" maxlength="30" th:field="${paciente.endereco}" /> <span class="input-group-addon"
 								id="addon-telefone">Rua, Avenida</span>
 						</div>
 						<label for="cepcadastro" style="display:none"></label>
 						<div><label style="padding-top: 10px">CEP:</label></div>
 						<div class="input-group" id="cepdiv">
 							<input type="text" class="form-control cep" placeholder="CEP"
-								aria-describedby="basic-addon1" name="cep" id="cepcadastro" maxlength="9"/><span
+								aria-describedby="basic-addon1" name="cep" id="cepcadastro" maxlength="9" th:field="${paciente.cep}"/><span
 								class="input-group-addon" id="addon-cep">99999-999</span>
 						</div>
 						<label for="datanscimentocadastro" style="display:none"></label>
@@ -79,7 +79,7 @@
 						<div class="input-group" id="data_de_nascimentodiv">
 							<input type="text" class="form-control  data"
 								placeholder="Data de Nascimento" aria-describedby="basic-addon1"
-								name="data_de_nascimento" id="datanscimentocadastro" maxlength="10" /><span
+								name="data_de_nascimento" id="datanscimentocadastro" maxlength="10"  th:field="${paciente.data_de_nascimento}"/><span
 								class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
 						</div>
 						<label for="dataultimaconsultacadastro" style="display:none"></label>
@@ -88,7 +88,7 @@
 							<input type="text" class="form-control data"
 								placeholder="Data da última consulta"
 								aria-describedby="basic-addon1" name="data_da_ultima_consulta"
-								id="dataultimaconsultacadastro" maxlength="10"/><span
+								id="dataultimaconsultacadastro" maxlength="10" th:field="${paciente.data_da_ultima_consulta}"/><span
 								class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
 						</div>
 						<label for="formadepagamentocadastro" style="display:none"></label>
@@ -96,7 +96,7 @@
 						<div class="input-group" id="forma_de_pagamentodiv">
 							<input type="text" class="form-control"
 								placeholder="Forma de Pagamento" aria-describedby="basic-addon1"
-								name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30" /><span
+								name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30" th:field="${paciente.forma_de_pagamento}"/><span
 								class="input-group-addon" id="addon-cep">R$,Cartão...</span>
 						</div>
 						<div style="padding-top: 10px; padding-left: 226px">

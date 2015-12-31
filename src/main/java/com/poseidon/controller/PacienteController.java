@@ -13,8 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.dao.PacienteDao;
-import com.poseidon.model.ViewMessage;
+import com.poseidon.model.DadoSessao;
 import com.poseidon.model.Paciente;
+import com.poseidon.model.ViewMessage;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
@@ -22,13 +23,16 @@ import jersey.repackaged.com.google.common.collect.Lists;
 public class PacienteController {
 	@Autowired
 	private PacienteDao repositories;
+	@Autowired
+	private DadoSessao dadoSessao;
 
 	private static Logger logger = Logger.getLogger("PacienteController");
 
 	@RequestMapping("/cadastroPaciente")
-	public ModelAndView cadastroPaciente(ModelAndView modelAndView,@ModelAttribute Paciente paciente) {
+	public ModelAndView cadastroPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		modelAndView.setViewName("cadastroPaciente");
-		if(paciente== null) paciente= new Paciente();
+		if (paciente == null)
+			paciente = new Paciente();
 		modelAndView.getModelMap().addAttribute("paciente", paciente);
 		ViewMessage message = new ViewMessage();
 		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
@@ -37,6 +41,7 @@ public class PacienteController {
 
 	@RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
 	public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
+		if(dadoSessao.getId()!= null)paciente.setId(dadoSessao.getId());
 		repositories.save(paciente);
 		logger.info("salvou paciente.");
 		modelAndView.setViewName("home");
@@ -83,11 +88,13 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/editarPaciente")
-	public ModelAndView  editarPaciente(ModelAndView modelAndView,RedirectAttributes redirectAttributes, @ModelAttribute Paciente paciente){
+	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
+			@ModelAttribute Paciente paciente) {
 		Paciente newPaciente = repositories.findOne(paciente.getId());
-		 modelAndView.setViewName("redirect:/cadastroPaciente");
+		dadoSessao.setId(newPaciente.getId());
+		modelAndView.setViewName("redirect:/cadastroPaciente");
 		redirectAttributes.addFlashAttribute(newPaciente);
 		return modelAndView;
 	}
-	
+
 }
