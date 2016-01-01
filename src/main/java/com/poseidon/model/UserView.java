@@ -7,6 +7,18 @@ public class UserView {
 	
 	private String role;
 
+	public UserView() {
+	}
+	
+	public static UserView buildUserView(Users user){
+		UserView view = new UserView();
+		view.setPassword(user.getPassword());
+		view.setUsername(user.getUsername());
+		return view;
+	}
+	
+	
+	
 	public String getUsername() {
 		return username;
 	}

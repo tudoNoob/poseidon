@@ -9,5 +9,10 @@ $(document).ready(function(){
 		$('#criarContaContainer').css('display','block');
 	});
 	
+	$('#btn-exibirTodasContas').click(function(){
+		$('#containerDashboard').html($('#exibrTodasContasContainer'));
+		$('#exibrTodasContasContainer').css('display','block');
+	});
+	
 	
 });

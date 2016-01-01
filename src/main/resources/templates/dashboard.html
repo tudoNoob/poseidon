@@ -22,7 +22,7 @@
 				<li><a href="#">Editar Conta</a></li>
 				<li><a href="#">Deletar Conta</a></li>
 				<li role="separator" class="divider"></li>
-				<li><a href="#">Exibir todas Contas</a></li>
+				<li><a href="#" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
 			</ul></li>
 		<li role="presentation"><a href="#">Messages</a></li>
 	</ul>
@@ -64,5 +64,27 @@
 			</div>
 		</form>
 	</div>
+	
+	<div title="Usuários" class="container430 marginAuto paddingTop40" id="exibrTodasContasContainer" style="display:none">
+
+				<h1 class="text-align">Usuários</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Senha</th>
+							<th>Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="row: ${usuarios}">
+							<td th:text="${row.username}">Username</td>
+							<td th:text="${row.password}">Password</td>
+							<td th:text="${row.role}">Role</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	
 </body>
 </html>
