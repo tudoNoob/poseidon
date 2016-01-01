@@ -38,8 +38,8 @@
 	</div>
 	<div id="dialog-newUser" style="display: none; width: 200px"
 		title="Criando novo usuário">
-		<form id="form-createUser" th:action="@{/createUser}"
-			th:object="${user}" method="post">
+		<form id="form-createUser" th:action="@{/createSimpleUser}"
+			 method="post">
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1">@</span> <input
 					id="user.create" type="text" class="form-control"
