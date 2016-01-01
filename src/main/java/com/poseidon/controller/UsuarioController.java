@@ -52,11 +52,12 @@ public class UsuarioController {
 	
 	@RequestMapping(value="/deleteUser")
 	public ModelAndView deleteUser(@ModelAttribute UserView userView, ModelAndView modelAndView){
-		Users user = Users.createUser(userView);
-		System.out.println("CREATE USER");
+		Users user = userRepository.findByUsername(userView.getUsername());
+		Authorities authorities = authoritiesRepository.findByUsername(userView.getUsername());
+		System.out.println("Delete USER");
 		System.out.println("user>"+user.toString());
 		userRepository.delete(user);
-		authoritiesRepository.delete(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(userView.getRole()).toString()));
+		authoritiesRepository.delete(authorities);
 		modelAndView.setViewName("redirect:/dashboard");
 		return modelAndView;
 	}

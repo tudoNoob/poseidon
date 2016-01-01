@@ -14,5 +14,10 @@ $(document).ready(function(){
 		$('#exibrTodasContasContainer').css('display','block');
 	});
 	
+	$('#btn-deletarConta').click(function(){
+		$('#containerDashboard').html($('#deletarUsuarioContainer'));
+		$('#deletarUsuarioContainer').css('display','block');
+	});
+	
 	
 });

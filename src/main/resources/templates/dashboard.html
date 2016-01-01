@@ -20,7 +20,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="#" id="btn-criarConta">Criar Conta</a></li>
 				<li><a href="#">Editar Conta</a></li>
-				<li><a href="#">Deletar Conta</a></li>
+				<li><a href="#" id="btn-deletarConta">Deletar Conta</a></li>
 				<li role="separator" class="divider"></li>
 				<li><a href="#" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
 			</ul></li>
@@ -59,7 +59,7 @@
 				</select>
 			</div>
 			<div class="margin10" style="padding-top: 10px">
-				<input type="submit" value="Create User"
+				<input type="submit" value="Criar Usuário"
 					class="btn btn-lg btn-success" id="createUser.submit" />
 			</div>
 		</form>
@@ -85,6 +85,24 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<div class="container430 marginAuto paddingTop40"
+		id="deletarUsuarioContainer" style="display: none">
+		<form id="form-createUser" th:action="@{/deleteUser}"
+			 method="post">
+			<div class="input-group margin10">
+				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+					id="user.create" type="text" class="form-control"
+					placeholder="Username" aria-describedby="basic-addon1"
+					name="username" required="true" />
+			</div>
+			<div class="margin10" style="padding-top: 10px">
+				<input type="submit" value="Deletar Usuário"
+					class="btn btn-lg btn-success" id="createUser.submit" />
+			</div>
+		</form>
+		
+		</div>
 	
 </body>
 </html>
