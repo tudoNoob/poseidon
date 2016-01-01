@@ -31,9 +31,14 @@ public class UsuarioController {
 		System.out.println("CREATE USER");
 		System.out.println("user>"+user.toString());
 		userRepository.save(user);
-		if(role!= null && !role.isEmpty())userView.setRole(role);
-		authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(userView.getRole()).toString()));
 		modelAndView.setViewName("redirect:/dashboard");
+		if(role!= null && !role.isEmpty()){
+			
+			userView.setRole(role);
+			modelAndView.setViewName("redirect:/home");
+		}
+		authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(userView.getRole()).toString()));
+		
 		return modelAndView;
 	}
 	
