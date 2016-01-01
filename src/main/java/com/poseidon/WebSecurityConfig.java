@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import com.poseidon.logout.CustomLogoutHandler;
+import com.poseidon.logout.LogoutRequestMatcher;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -21,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/*").authenticated();
 		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**").permitAll();
 		http.formLogin().loginPage("/login").defaultSuccessUrl("/home")
-		.permitAll().and().logout().permitAll();
+		.permitAll().and().logout().addLogoutHandler(new CustomLogoutHandler()).logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
 		http.authorizeRequests().antMatchers("/cadastroMedico").hasRole("ADMIN").anyRequest().authenticated();
 		http.csrf().disable();
 	}
