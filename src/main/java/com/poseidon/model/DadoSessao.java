@@ -10,6 +10,8 @@ public class DadoSessao {
 
 	private Integer id;
 
+	private Long idUsuario;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -17,4 +19,16 @@ public class DadoSessao {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	
+	
+	
 }

@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 import com.poseidon.dao.AuthoritiesRepository;
 import com.poseidon.dao.UserRepository;
 import com.poseidon.model.Authorities;
+import com.poseidon.model.DadoSessao;
 import com.poseidon.model.UserView;
 import com.poseidon.model.Users;
 
@@ -25,9 +26,13 @@ public class UsuarioController {
 	@Autowired
 	private UserRepository  userRepository;
 	
+	@Autowired
+	private DadoSessao dadoSessao;
+	
 	@RequestMapping(value="/createUser")
 	public ModelAndView createUser(@ModelAttribute UserView userView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(userView);
+		if(dadoSessao.getIdUsuario()!= null)user.setId(dadoSessao.getIdUsuario());
 		System.out.println("CREATE USER");
 		System.out.println("user>"+user.toString());
 		userRepository.save(user);
@@ -37,8 +42,8 @@ public class UsuarioController {
 			userView.setRole(role);
 			modelAndView.setViewName("redirect:/home");
 		}
-		authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(userView.getRole()).toString()));
-		
+		if(dadoSessao.getIdUsuario()== null)authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(userView.getRole()).toString()));
+		dadoSessao.setIdUsuario(null);
 		return modelAndView;
 	}
 	
@@ -74,6 +79,20 @@ public class UsuarioController {
 		}
 		
 		modelAndView.getModelMap().addAttribute("usuarios", userViews);
+	}
+	
+	@RequestMapping("/editarUser")
+	public ModelAndView editarUsuario(ModelAndView modelAndView, @ModelAttribute UserView userView, RedirectAttributes redirectAttributes){
+		Users user = userRepository.findByUsername(userView.getUsername());
+		dadoSessao.setIdUsuario(user.getId());
+		Authorities authorities = authoritiesRepository.findByUsername(userView.getUsername());
+		userView.setPassword(user.getPassword());
+		userView.setUsername(user.getUsername());
+		userView.setRole(authorities.getAuthority().replace("ROLE_", ""));
+		redirectAttributes.addFlashAttribute("isEditar", "isEditar");
+		redirectAttributes.addFlashAttribute("userView",userView);
+		modelAndView.setViewName("redirect:/dashboard");
+		return modelAndView;
 	}
 	
 }
