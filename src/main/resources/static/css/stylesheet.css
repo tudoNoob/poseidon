@@ -87,3 +87,24 @@
 .paddingTop40 {
 	padding-top: 40px;
 }
+
+.tooltip-inner {
+    background-color: #31b0d5;
+    color: #fff;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #31b0d5;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #31b0d5;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #31b0d5;
+}
+
+.tooltip.left .tooltip-arrow {
+    border-left-color: #00acd6;
+}
