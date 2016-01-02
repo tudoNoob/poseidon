@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.google.common.base.Objects;
 import com.poseidon.utils.PoseidonUtils;
@@ -24,7 +25,11 @@ public class Paciente {
 	private String endereco;
 	private String cep;
 	private Date data_de_nascimento;
+	@Transient
+	private String data_de_nascimentoString;
 	private Date data_da_ultima_consulta;
+	@Transient
+	private String data_da_ultima_consultaString;
 	private String forma_de_pagamento;
 	private String cpf;
 
@@ -149,6 +154,33 @@ public class Paciente {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	
+
+	public String getData_de_nascimentoString() {
+		return PoseidonUtils.convertDateToString(data_de_nascimento);
+	}
+
+
+
+	public void setData_de_nascimentoString(String data_de_nascimentoString) {
+		this.data_de_nascimentoString = data_de_nascimentoString;
+	}
+
+	
+
+
+	public String getData_da_ultima_consultaString() {
+		return PoseidonUtils.convertDateToString(data_da_ultima_consulta);
+	}
+
+
+
+	public void setData_da_ultima_consultaString(String data_da_ultima_consultaString) {
+		this.data_da_ultima_consultaString = data_da_ultima_consultaString;
+	}
+
+
 
 	@SuppressWarnings("deprecation")
 	@Override

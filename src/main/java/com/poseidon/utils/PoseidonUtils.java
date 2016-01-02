@@ -27,6 +27,13 @@ public class PoseidonUtils {
 
 		return sql;
 	}
+	public static String convertDateToString(Date date) {
+
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String 	parsed = format.format(date);
+
+		return parsed;
+	}
 
 	public static java.sql.Date convertToDate(Date toDate) {
 
@@ -36,7 +43,7 @@ public class PoseidonUtils {
 		return sql;
 	}
 
-	public static String Cadastro_SUCCESS = "Cadastro efetuado com sucesso.";
+	public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";
 
-	public static String Cadastro_ERROR = "Erro ao efetuar o cadastro.";
+	public static String CADASTRO_ERROR = "Erro ao efetuar o cadastro.";
 }
