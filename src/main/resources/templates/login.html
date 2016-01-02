@@ -14,6 +14,7 @@
 	<div class="container" style="width: 800px">
 		<div class="form-container"
 			style="padding-top: 260px; width: 600px; margin: auto">
+			<div class="alert alert-danger" role="alert" th:if="${error}" ><strong>Usuário ou Senha</strong> inválidos, por favor digite novamente.</div>
 			<form th:action="@{/login}" method="post">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">@</span> <input

@@ -16,4 +16,12 @@ public class LoginController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/login-Error")
+	public ModelAndView buildLogionErrorPage(ModelAndView modelAndView){
+		modelAndView.getModelMap().addAttribute("user", new UserView());
+		modelAndView.getModelMap().addAttribute("error", true);
+		modelAndView.setViewName("login");
+		return modelAndView;
+	}
+	
 }

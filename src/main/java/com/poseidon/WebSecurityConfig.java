@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/createSimpleUser","/createUser").permitAll();
 		http.authorizeRequests().antMatchers("/*").authenticated();
 		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**").permitAll();
-		http.formLogin().loginPage("/login").defaultSuccessUrl("/home")
+		http.formLogin().loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login-Error")
 		.permitAll().and().logout().addLogoutHandler(new CustomLogoutHandler()).logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
 		http.authorizeRequests().antMatchers("/cadastroMedico").hasRole("ADMIN").anyRequest().authenticated();
 		http.csrf().disable();
