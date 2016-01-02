@@ -14,7 +14,7 @@
 
 		<div th:include="template/header :: header">...</div>
 
-		<div class="container860 marginAuto">
+		<div class="container1200 marginAuto">
 
 			<div class="container-header">
 				<form id="form-cadastro" class="form-horizontal" action="#"
@@ -39,7 +39,7 @@
 				</form>
 			</div>
 
-			<div title="Pacientes" class="container430 marginAuto">
+			<div title="Pacientes" class="marginAuto">
 
 				<h1 class="text-align">Pacientes</h1>
 				<table class="table">
@@ -47,18 +47,28 @@
 						<tr>
 							<th>ID</th>
 							<th>Nome</th>
+							<th>Cpf</th>
 							<th>Email</th>
 							<th>Telefone</th>
-							<th>Cpf</th>
+							<th>Celular</th>
+							<th>Endereço</th>
+							<th>CEP</th>
+							<th>Data Nasc</th>
+							<th>Data Ultima Consulta</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="row: ${pacientes}">
 							<td th:text="${row.id}">Id</td>
 							<td th:text="${row.nome}">Nome</td>
+							<td th:text="${row.cpf}">Cpf</td>
 							<td th:text="${row.email}">Email</td>
 							<td th:text="${row.telefone}">Telefone</td>
-							<td th:text="${row.cpf}">Cpf</td>
+							<td th:text="${row.celular}">Celular</td>
+							<td th:text="${row.endereco}">Endereço</td>
+							<td th:text="${row.cep}">CEP</td>
+							<td th:text="${row.data_de_nascimento}">Data Nasc</td>
+							<td th:text="${row.data_da_ultima_consulta}">Data Ultima Consulta</td>
 						</tr>
 					</tbody>
 				</table>

@@ -108,3 +108,7 @@
 .tooltip.left .tooltip-arrow {
     border-left-color: #00acd6;
 }
+
+.container1200 {
+	width: 1200px;
+}
