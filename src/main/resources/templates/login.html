@@ -54,8 +54,8 @@
 					name="password" required="true" />
 			</div>
 			<div style="padding-top: 10px">
-				<input type="submit" value="Create User"
-					class="btn btn-lg btn-success" id="createUser.submit" />
+				<input type="submit" value="Criar Usuário"
+					class="btn btn-lg btn-success" id="createUser.submit" data-toggle="tooltip" data-placement="right" title="Só cria com ROLE_USER!" />
 			</div>
 
 		</form>
@@ -73,6 +73,9 @@
 				    width: 400
 				});
 			});
+			
+			 $('[data-toggle="tooltip"]').tooltip();  
+			
 		});
 	</script>
 </body>
