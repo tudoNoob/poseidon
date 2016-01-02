@@ -84,6 +84,12 @@ public class UsuarioController {
 	@RequestMapping("/editarUser")
 	public ModelAndView editarUsuario(ModelAndView modelAndView, @ModelAttribute UserView userView, RedirectAttributes redirectAttributes){
 		Users user = userRepository.findByUsername(userView.getUsername());
+		if(user == null){
+			redirectAttributes.addFlashAttribute("userView",userView);
+			redirectAttributes.addFlashAttribute("isEditarError", "true");
+			modelAndView.setViewName("redirect:/dashboard");
+			return modelAndView;
+		}
 		dadoSessao.setIdUsuario(user.getId());
 		Authorities authorities = authoritiesRepository.findByUsername(userView.getUsername());
 		userView.setPassword(user.getPassword());
@@ -94,5 +100,6 @@ public class UsuarioController {
 		modelAndView.setViewName("redirect:/dashboard");
 		return modelAndView;
 	}
+
 	
 }

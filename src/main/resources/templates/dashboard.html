@@ -19,10 +19,11 @@
 			aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="#" id="btn-criarConta">Criar Conta</a></li>
-				<li><a href="#" id="btn-editarConta" >Editar Conta</a></li>
-				<li><a href="#" id="btn-deletarConta" >Deletar Conta</a></li>
-				<li role="separator" class="divider" ></li>
-				<li><a href="#" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
+				<li><a href="#" id="btn-editarConta">Editar Conta</a></li>
+				<li><a href="#" id="btn-deletarConta">Deletar Conta</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#" id="btn-exibirTodasContas">Exibir todas
+						Contas</a></li>
 			</ul></li>
 		<li role="presentation"><a href="#">Messages</a></li>
 	</ul>
@@ -37,13 +38,13 @@
 
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" style="display: none">
-		<form id="form-createUser" th:action="@{/createUser}"
-			 method="post">
+		<form id="form-createUser" th:action="@{/createUser}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
 					id="user.create" type="text" class="form-control"
 					placeholder="Username" aria-describedby="basic-addon1"
-					name="username" required="true" data-toggle="tooltip" data-placement="right" title="Usuário tem que ser único." />
+					name="username" required="true" data-toggle="tooltip"
+					data-placement="right" title="Usuário tem que ser único." />
 			</div>
 			<div class="input-group margin10" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">Senha</span> <input
@@ -52,8 +53,9 @@
 					name="password" required="true" />
 			</div>
 			<div class="form-group margin10">
-				<label for="sel1">Selecione a role:</label> <select class="form-control"
-					id="sel1" name="role" data-toggle="tooltip" data-placement="right" title="Roles são as permissões do usuário.">
+				<label for="sel1">Selecione a role:</label> <select
+					class="form-control" id="sel1" name="role" data-toggle="tooltip"
+					data-placement="right" title="Roles são as permissões do usuário.">
 					<option>ADMIN</option>
 					<option>USER</option>
 				</select>
@@ -64,32 +66,32 @@
 			</div>
 		</form>
 	</div>
-	
-	<div title="Usuários" class="container430 marginAuto paddingTop40" id="exibrTodasContasContainer" style="display:none">
 
-				<h1 class="text-align">Usuários</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Username</th>
-							<th>Senha</th>
-							<th>Role</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="row: ${usuarios}">
-							<td th:text="${row.username}">Username</td>
-							<td th:text="${row.password}">Password</td>
-							<td th:text="${row.role}">Role</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			
-			<div class="container430 marginAuto paddingTop40"
+	<div title="Usuários" class="container430 marginAuto paddingTop40"
+		id="exibrTodasContasContainer" style="display: none">
+
+		<h1 class="text-align">Usuários</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Senha</th>
+					<th>Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="row: ${usuarios}">
+					<td th:text="${row.username}">Username</td>
+					<td th:text="${row.password}">Password</td>
+					<td th:text="${row.role}">Role</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container430 marginAuto paddingTop40"
 		id="deletarUsuarioContainer" style="display: none">
-		<form id="form-createUser" th:action="@{/deleteUser}"
-			 method="post">
+		<form id="form-createUser" th:action="@{/deleteUser}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
 					id="user.create" type="text" class="form-control"
@@ -101,13 +103,18 @@
 					class="btn btn-lg btn-success" id="deletarUser.submit" />
 			</div>
 		</form>
-		
-		</div>
-		
-			<div class="container430 marginAuto paddingTop40"
+
+	</div>
+
+	<div class="container430 marginAuto paddingTop40"
 		id="editarUsuarioContainer" style="display: none">
-		<form id="form-createUser" th:action="@{/editarUser}"
-			 method="post">
+		<form id="form-createUser" th:action="@{/editarUser}" method="post">
+			<input id="editarErro" type="hidden" th:value="${formEditarError}" />
+			<div id="editarAlertErro"
+				class="alert alert-danger marginleftRigth10" role="alert"
+				style="display: none">
+				<strong>Usuário</strong> não encontrado, tente novamente.
+			</div>
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
 					id="user.create" type="text" class="form-control"
@@ -119,30 +126,34 @@
 					class="btn btn-lg btn-warning" id="editarUser.submit" />
 			</div>
 		</form>
-		
-		</div>
-		
-		<div class="container430 marginAuto paddingTop40"
-		id="editarContaContainer" >
+
+	</div>
+
+	<div class="container430 marginAuto paddingTop40"
+		id="editarContaContainer">
 		<form id="form-editarUser" th:action="@{/createUser}"
-			th:object="${userView}" method="post" th:if="${isEditar!=null}">
+			th:object="${userView}" method="post" th:if="${isEditarString!=null}">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
 					id="user.editar" type="text" class="form-control"
 					placeholder="Username" aria-describedby="basic-addon1"
-					name="username" required="true" th:field="${userView.username}" data-toggle="tooltip" data-placement="right" title="Usuário tem que ser único." />
+					name="username" required="true" th:field="${userView.username}"
+					data-toggle="tooltip" data-placement="right"
+					title="Usuário tem que ser único." />
 			</div>
 			<div class="input-group margin10" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">Senha</span> <input
 					id="pass.editar" type="text" class="form-control"
 					placeholder="Password" aria-describedby="basic-addon1"
-					name="password" required="true" th:field="${userView.password}"/>
+					name="password" required="true" th:field="${userView.password}" />
 			</div>
 			<div class="form-group margin10">
-				<label for="sel1">Selecione a role:</label> <select class="form-control"
-					id="sel1" name="role" th:field="${userView.role}" data-toggle="tooltip" data-placement="right" title="Roles são as permissões do usuário." >
-					<option value="ADMIN" >ADMIN</option>
-					<option value="USER" >USER</option>
+				<label for="sel1">Selecione a role:</label> <select
+					class="form-control" id="sel1" name="role"
+					th:field="${userView.role}" data-toggle="tooltip"
+					data-placement="right" title="Roles são as permissões do usuário.">
+					<option value="ADMIN">ADMIN</option>
+					<option value="USER">USER</option>
 				</select>
 			</div>
 			<div class="margin10" style="padding-top: 10px">
@@ -151,6 +162,5 @@
 			</div>
 		</form>
 	</div>
-	
 </body>
 </html>

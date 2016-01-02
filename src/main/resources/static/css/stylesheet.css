@@ -112,3 +112,8 @@
 .container1200 {
 	width: 1200px;
 }
+
+.marginleftRigth10 {
+	margin-left: 10px;
+    margin-right: 10px;
+}

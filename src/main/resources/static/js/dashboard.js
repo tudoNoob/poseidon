@@ -37,4 +37,15 @@ $(document).ready(function(){
 	 function sumirEditarConta(){
 		 $('#editarContaContainer').css('display','none');
 	 }
+	 editarUsuarioErro($('#editarErro').val());
+	 function editarUsuarioErro(erro){
+		 if(erro=='true'){
+			 $('#editarAlertErro').css('display','block');
+			 $('#btn-editarConta').trigger('click');
+		 }else{
+			 
+		 }
+	}
+	
 });
+
