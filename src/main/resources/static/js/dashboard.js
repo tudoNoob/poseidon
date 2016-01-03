@@ -9,6 +9,13 @@ $(document).ready(function(){
 	var deletarUsuarioContainer=$('#deletarUsuarioContainer');
 	var editarUsuarioContainer=$('#editarUsuarioContainer');
 
+	$('#btn-criarMedico').click(function(){
+		$('#containerDashboard').html(criarContaContainer);
+		$('#criarMedicoContainer').css('display','block');
+		sumirEditarConta();
+	});
+	
+	
 	$('#btn-criarConta').click(function(){
 		$('#containerDashboard').html(criarContaContainer);
 		$('#criarContaContainer').css('display','block');

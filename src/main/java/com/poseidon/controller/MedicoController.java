@@ -3,6 +3,7 @@ package com.poseidon.controller;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.dao.MedicoDao;
+import com.poseidon.model.Authorities;
+import com.poseidon.model.DadoSessao;
 import com.poseidon.model.Medico;
+import com.poseidon.model.UserView;
+import com.poseidon.model.Users;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
 @Controller
 public class MedicoController {
-	
+	@Autowired
 	private MedicoDao repository;
 	private static Logger logger = Logger.getLogger("MedicoController");
+	private DadoSessao dadoSessao;
 	
 	@RequestMapping("/cadastroMedico")
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
@@ -28,6 +34,17 @@ public class MedicoController {
 		return modelAndView;
 	}
 	
+	
+	@RequestMapping(value="/createMedico")
+	public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView){
+		System.out.println("CREATE USER");
+		System.out.println("medico>"+medic.toString());
+		repository.save(medic);
+		logger.info("salvou medico.");
+		modelAndView.setViewName("redirect:/dashboard");
+		
+		return modelAndView;
+	}
 	@RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
 	public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
 		repository.save(medico);

@@ -11,9 +11,17 @@
 
 	<div th:include="template/header :: header">...</div>
 	<ul class="nav nav-tabs ">
-		<li role="presentation"><a href="/cadastroMedico">Cadastro de
-				Médico</a></li>
-		<li role="presentation"><a href="#">Pesquisar Médico</a></li>
+		<li role="presentation"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown" role="button" aria-haspopup="true"
+			aria-expanded="false">Gerenciar Médico<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="#" id="btn-criarMedico">Cadastrar Médico</a></li>
+				<li><a href="#" id="btn-pesquisarMedico">Pesquisar Médico</a></li>
+				<li><a href="#" id="btn-editarMedico">Editar Médico</a></li>
+				<li><a href="#" id="btn-deletarMedico">Deletar Conta</a></li>
+				<li role="separator" class="divider"></li>
+				
+			</ul></li>
 		<li role="presentation"><a href="#" class="dropdown-toggle"
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
@@ -35,6 +43,23 @@
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/menu.js"></script>
 	<script type="text/javascript" src="/js/dashboard.js"></script>
+	
+	<div class="container430 marginAuto paddingTop40"
+		id="criarMedicoContainer" style="display: none">
+		<form id="form-createUser" th:action="@{/createMedico}" method="post">
+			<div class="input-group margin10">
+				<span class="input-group-addon" id="basic-addon1">Nome:</span> <input
+					id="user.create" type="text" class="form-control"
+					placeholder="Nome do Médico" aria-describedby="basic-addon1"
+					name="nome" required="true" data-toggle="tooltip"
+					data-placement="right" title="Medico tem q ser único." />
+			</div>
+			<div class="margin10" style="padding-top: 10px">
+				<input type="submit" value="Criar Medico"
+					class="btn btn-lg btn-success" id="createMedico.submit" />
+			</div>
+		</form>
+	</div>
 
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" style="display: none">
