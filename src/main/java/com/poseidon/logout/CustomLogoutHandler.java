@@ -2,8 +2,7 @@ package com.poseidon.logout;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 import org.jboss.logging.Logger;
 import org.springframework.security.core.Authentication;

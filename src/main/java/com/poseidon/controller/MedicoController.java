@@ -1,23 +1,15 @@
 package com.poseidon.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.poseidon.dao.MedicoDao;
-import com.poseidon.model.Authorities;
-import com.poseidon.model.DadoSessao;
-import com.poseidon.model.Medico;
-import com.poseidon.model.UserView;
-import com.poseidon.model.Users;
+import com.poseidon.dao.*;
+import com.poseidon.model.*;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
