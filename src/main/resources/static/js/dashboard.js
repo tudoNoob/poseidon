@@ -5,12 +5,13 @@
 $(document).ready(function(){
 	
 	var criarContaContainer=$('#criarContaContainer');
+	var criarMedicoContainer=$('#criarMedicoContainer');
 	var exibirContaContainer=$('#exibrTodasContasContainer');
 	var deletarUsuarioContainer=$('#deletarUsuarioContainer');
 	var editarUsuarioContainer=$('#editarUsuarioContainer');
 
 	$('#btn-criarMedico').click(function(){
-		$('#containerDashboard').html(criarContaContainer);
+		$('#containerDashboard').html(criarMedicoContainer);
 		$('#criarMedicoContainer').css('display','block');
 		sumirEditarConta();
 	});
