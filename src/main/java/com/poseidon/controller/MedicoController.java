@@ -17,10 +17,12 @@ import jersey.repackaged.com.google.common.collect.Lists;
 public class MedicoController {
 	@Autowired
 	private MedicoDao medicoRepository;
+	
 	private static Logger logger = Logger.getLogger("MedicoController");
 	
 	@RequestMapping("/cadastroMedico")
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
+		logger.info("CADASTRA MEDICO.");
 		modelAndView.setViewName("cadastroMedico");
 		modelAndView.getModelMap().addAttribute("medico", new Medico());
 		return modelAndView;
@@ -29,8 +31,8 @@ public class MedicoController {
 	
 	@RequestMapping(value="/createMedico")
 	public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView){
-		System.out.println("CREATE USER");
-		System.out.println("medico>"+medic.toString());
+		logger.info("CREATE MEDICO");
+		logger.info("medico>"+medic.toString());
 		medicoRepository.save(medic);
 		logger.info("salvou medico.");
 		modelAndView.setViewName("redirect:/dashboard");
@@ -39,6 +41,7 @@ public class MedicoController {
 	}
 	@RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
 	public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
+		logger.info("SALVA MEDICO.");
 		medicoRepository.save(medico);
 		logger.info("salvou medico.");
 		modelAndView.setViewName("home");
@@ -47,6 +50,7 @@ public class MedicoController {
 	
 	@RequestMapping("/pesquisarMedico")
 	public ModelAndView pesquisarMedico(ModelAndView modelAndView) {
+		logger.info("PESQUISA MEDICO.");
 		modelAndView.setViewName("pesquisarMedico");
 		Iterable<Medico> medico = medicoRepository.findAll();
 		ArrayList<Medico> medicoList = Lists.newArrayList(medico);
@@ -58,6 +62,7 @@ public class MedicoController {
 
 	@RequestMapping("/procurarMedico")
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @RequestParam String nome) {
+		logger.info("PROCURANDO MEDICO.");
 		Medico medico = medicoRepository.findByNome(nome);
 		ArrayList<Medico> medicos = Lists.newArrayList();
 		medicos.add(medico);
