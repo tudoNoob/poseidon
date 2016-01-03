@@ -42,6 +42,13 @@ public class UserView {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	@Override
+	public String toString() {
+		return "UserView [username=" + username + ", password=" + password + ", role=" + role + "]";
+	}
+	
+	
 	
 	
 }

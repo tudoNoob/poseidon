@@ -27,6 +27,11 @@ public class DadoSessao {
 		this.idUsuario = idUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "DadoSessao [id=" + id + ", idUsuario=" + idUsuario + "]";
+	}
+
 	
 	
 	

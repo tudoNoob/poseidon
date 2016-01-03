@@ -59,8 +59,9 @@ public class Users {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "username:" + this.username + " pass:" + this.password;
+		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled + "]";
 	}
+
+	
 
 }

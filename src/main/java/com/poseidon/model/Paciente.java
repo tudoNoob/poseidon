@@ -178,13 +178,17 @@ public class Paciente {
 
 
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this).add("nome", nome).add("sobrenome", sobrenome).add("email", email)
-				.add("telefone", telefone).add("celular", celular).add("endereco", endereco).add("cep", cep)
-				.add("data_de_nascimento", data_de_nascimento).add("data_da_ultima_consulta", data_da_ultima_consulta)
-				.add("forma_de_pagamento", forma_de_pagamento).toString();
+		return "Paciente [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", telefone="
+				+ telefone + ", celular=" + celular + ", endereco=" + endereco + ", cep=" + cep
+				+ ", data_de_nascimento=" + data_de_nascimento + ", data_de_nascimentoString="
+				+ data_de_nascimentoString + ", data_da_ultima_consulta=" + data_da_ultima_consulta
+				+ ", data_da_ultima_consultaString=" + data_da_ultima_consultaString + ", forma_de_pagamento="
+				+ forma_de_pagamento + ", cpf=" + cpf + "]";
 	}
 
+
+
+	
 }

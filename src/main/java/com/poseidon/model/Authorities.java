@@ -45,5 +45,11 @@ public class Authorities {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Authorities [id=" + id + ", username=" + username + ", authority=" + authority + "]";
+	}
+	
 	
 }

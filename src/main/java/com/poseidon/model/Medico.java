@@ -34,4 +34,11 @@ public class Medico {
 	public Integer getId(){
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Medico [id=" + id + ", nome=" + nome + "]";
+	}
+	
+	
 }

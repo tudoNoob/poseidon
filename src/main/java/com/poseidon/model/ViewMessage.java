@@ -27,4 +27,11 @@ public class ViewMessage {
 		this.success = success;
 	}
 
+	@Override
+	public String toString() {
+		return "ViewMessage [error=" + error + ", success=" + success + "]";
+	}
+
+	
+	
 }
