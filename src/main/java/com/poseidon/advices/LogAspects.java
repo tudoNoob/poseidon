@@ -20,7 +20,12 @@ public class LogAspects {
     @Before("execution(* com.poseidon.*..*(..))")
     public void logServiceAccess(JoinPoint joinPoint) {
         Logger LOGGER = createLog(joinPoint);
-        LOGGER.info("Accessing {}", joinPoint.getSignature().toShortString());
+        AtributosClasse atributosClasse = criaAtributosClasse(joinPoint);
+        LOGGER.info("Accessing {} os argumentos passados foram: {}", joinPoint.getSignature().toShortString(),atributosClasse.getArgumentos());
+    }
+    
+    private AtributosClasse criaAtributosClasse(JoinPoint joinPoint){
+    	return AtributosClasse.builderAtributosClasse(joinPoint);
     }
 
 	private Logger createLog(JoinPoint joinPoint) {
@@ -31,12 +36,11 @@ public class LogAspects {
    @AfterThrowing(pointcut = "execution(* com.poseidon.*..*(..))", throwing = "e")
     public void afterThrowingAdvice(JoinPoint joinPoint, Throwable e) {
       Logger LOGGER = createLog(joinPoint);
-      Signature signature = joinPoint.getSignature();
-      String methodName = signature.getName();
-      String arguments = Arrays.toString(joinPoint.getArgs());
+      AtributosClasse atributosClasse = criaAtributosClasse(joinPoint);
+      
       LOGGER.info("Foi lancada uma excecao no metodo:"
-          + methodName + " com os seguintes argumentos: "
-          + arguments + "\nand  exception: "
+          + atributosClasse.getMetodoNome() + " com os seguintes argumentos: "
+          + atributosClasse.getArgumentos() + "\nand  exception: "
           + e.getMessage(), e);
     }
 
