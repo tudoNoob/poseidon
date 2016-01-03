@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.poseidon.model.Medico;
 import com.poseidon.model.UserView;
 
 @Controller
@@ -13,6 +14,10 @@ public class DashboardController {
 
 	@Autowired
 	private UsuarioController usuarioController;
+	
+	//Teste
+	@Autowired
+	private MedicoController medicoController;
 
 	@RequestMapping("/dashboard")
 	public ModelAndView home(ModelAndView modelAndView, @ModelAttribute UserView userView,
@@ -27,7 +32,9 @@ public class DashboardController {
 		}else{
 			modelAndView.getModelMap().addAttribute("formEditarError", false);
 		}
+		medicoController.achaTodosMedicos(modelAndView);
 		usuarioController.achaTodosUsuarios(modelAndView);
+		
 		return modelAndView;
 	}
 

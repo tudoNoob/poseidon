@@ -44,6 +44,7 @@
 	<script type="text/javascript" src="/js/menu.js"></script>
 	<script type="text/javascript" src="/js/dashboard.js"></script>
 	
+	<!--CRUD Medico-->
 	<div class="container430 marginAuto paddingTop40"
 		id="criarMedicoContainer" style="display: none">
 		<form id="form-createUser" th:action="@{/createMedico}" method="post">
@@ -60,7 +61,28 @@
 			</div>
 		</form>
 	</div>
+	<div title="Medicos" class="container430 marginAuto paddingTop40"
+		id="pesquisarMedicoContainer" style="display: none">
 
+		<h1 class="text-align">Médicos</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="row: ${medicos}">
+					<td th:text="${row.nome}">Nome</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+
+	<!--CRUD Conta-->
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" style="display: none">
 		<form id="form-createUser" th:action="@{/createUser}" method="post">

@@ -1,6 +1,7 @@
 package com.poseidon.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,16 @@ public class MedicoController {
 		modelAndView.getModelMap().addAttribute("medico", medico);
 		modelAndView.setViewName("pesquisarMedico");
 		return modelAndView;
+	}
+	
+	public void achaTodosMedicos(ModelAndView modelAndView) {
+		Iterable<Medico> medicoList = repository.findAll();
+		List<Medico> medicoView= Lists.newArrayList();
+		for(Medico medico : medicoList){
+			medicoView.add(medico);
+		}
+		
+		modelAndView.getModelMap().addAttribute("usuarios", medicoView);
 	}
 
 }

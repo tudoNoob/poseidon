@@ -6,17 +6,25 @@ $(document).ready(function(){
 	
 	var criarContaContainer=$('#criarContaContainer');
 	var criarMedicoContainer=$('#criarMedicoContainer');
+	var pesquisarMedicoContainer=$('#pesquisarMedicoContainer');
 	var exibirContaContainer=$('#exibrTodasContasContainer');
 	var deletarUsuarioContainer=$('#deletarUsuarioContainer');
 	var editarUsuarioContainer=$('#editarUsuarioContainer');
 
+	//CRUD Medico
 	$('#btn-criarMedico').click(function(){
 		$('#containerDashboard').html(criarMedicoContainer);
 		$('#criarMedicoContainer').css('display','block');
 		sumirEditarConta();
 	});
 	
+	$('#btn-pesquisarMedico').click(function(){
+		$('#containerDashboard').html(pesquisarMedicoContainer);
+		$('#pesquisarMedicoContainer').css('display','block');
+		sumirEditarConta();
+	});
 	
+	//CRUD conta
 	$('#btn-criarConta').click(function(){
 		$('#containerDashboard').html(criarContaContainer);
 		$('#criarContaContainer').css('display','block');
