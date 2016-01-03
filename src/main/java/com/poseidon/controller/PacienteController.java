@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.poseidon.advices.NotNullArgs;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 import com.poseidon.utils.PoseidonUtils;
@@ -25,6 +26,7 @@ public class PacienteController {
 	private static Logger logger = Logger.getLogger("PacienteController");
 
 	@RequestMapping("/cadastroPaciente")
+	@NotNullArgs
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		modelAndView.setViewName("cadastroPaciente");
 		if (paciente == null)
@@ -36,6 +38,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
+	@NotNullArgs
 	public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 		if(dadoSessao.getId()!= null)paciente.setId(dadoSessao.getId());
 		repositories.save(paciente);
@@ -56,6 +59,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/procurarPaciente")
+	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
 		List<Paciente> pacientes = repositories.findByNome(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
@@ -73,6 +77,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/deletarPaciente")
+	@NotNullArgs
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		repositories.delete(paciente);
 		ViewMessage deletePageModel = new ViewMessage();
@@ -83,6 +88,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/editarPaciente")
+	@NotNullArgs
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {
 		Paciente newPaciente = repositories.findOne(paciente.getId());

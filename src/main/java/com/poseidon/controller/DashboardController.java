@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
+import com.poseidon.advices.NotNullArgs;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -24,6 +25,7 @@ public class DashboardController {
 	private AuthoritiesRepository authoritiesRepository;
 	
 	@RequestMapping("/dashboard")
+	@NotNullArgs
 	public ModelAndView buildDashboardPage(ModelAndView modelAndView, @ModelAttribute UserView userView,
 			@ModelAttribute("isEditar") String isEditar, @ModelAttribute("isEditarError") String isEditarError) {
 		modelAndView.setViewName("dashboard");

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.poseidon.advices.NotNullArgs;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -22,6 +23,7 @@ public class UsuarioController {
 	private DadoSessao dadoSessao;
 	
 	@RequestMapping(value="/createUser")
+	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute UserView userView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(userView);
 		if(dadoSessao.getIdUsuario()!= null)user.setId(dadoSessao.getIdUsuario());
@@ -40,6 +42,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/createSimpleUser")
+	@NotNullArgs
 	public ModelAndView createSimpleUser(@ModelAttribute UserView userView, ModelAndView modelAndView, RedirectAttributes redirectAttributes){
 		redirectAttributes.addFlashAttribute(userView);
 		redirectAttributes.addFlashAttribute("USER");
@@ -48,6 +51,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/deleteUser")
+	@NotNullArgs
 	public ModelAndView deleteUser(@ModelAttribute UserView userView, ModelAndView modelAndView){
 		Users user = userRepository.findByUsername(userView.getUsername());
 		Authorities authorities = authoritiesRepository.findByUsername(userView.getUsername());
@@ -63,6 +67,7 @@ public class UsuarioController {
 
 	
 	@RequestMapping("/editarUser")
+	@NotNullArgs
 	public ModelAndView editarUsuario(ModelAndView modelAndView, @ModelAttribute UserView userView, RedirectAttributes redirectAttributes){
 		Users user = userRepository.findByUsername(userView.getUsername());
 		if(user == null){

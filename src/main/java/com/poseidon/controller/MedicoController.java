@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.poseidon.advices.NotNullArgs;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -30,6 +31,7 @@ public class MedicoController {
 	
 	
 	@RequestMapping(value="/createMedico")
+	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView){
 		logger.info("CREATE MEDICO");
 		logger.info("medico>"+medic.toString());
@@ -40,6 +42,7 @@ public class MedicoController {
 		return modelAndView;
 	}
 	@RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
+	@NotNullArgs
 	public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
 		logger.info("SALVA MEDICO.");
 		medicoRepository.save(medico);
@@ -61,6 +64,7 @@ public class MedicoController {
 	}
 
 	@RequestMapping("/procurarMedico")
+	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @RequestParam String nome) {
 		logger.info("PROCURANDO MEDICO.");
 		Medico medico = medicoRepository.findByNome(nome);
