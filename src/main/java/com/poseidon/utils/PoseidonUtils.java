@@ -7,6 +7,8 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poseidon.exception.DateSqlParseException;
 
 public class PoseidonUtils {
@@ -27,10 +29,11 @@ public class PoseidonUtils {
 
 		return sql;
 	}
+
 	public static String convertDateToString(Date date) {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		String 	parsed = format.format(date);
+		String parsed = format.format(date);
 
 		return parsed;
 	}
@@ -41,6 +44,17 @@ public class PoseidonUtils {
 		sql = new java.sql.Date(toDate.getTime());
 
 		return sql;
+	}
+
+	public static String convertStringtoJSON(Object input) {
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		try {
+			result = mapper.writeValueAsString(input);
+		} catch (JsonProcessingException e) {
+			LOGGER.info("Nâoc osneguiu executar o pare de objeto para json como strnig.",e);
+		}
+		return result;
 	}
 
 	public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";

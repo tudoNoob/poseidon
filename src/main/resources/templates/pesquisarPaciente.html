@@ -20,6 +20,7 @@
 				<form id="form-cadastro" class="form-horizontal" action="#"
 					th:action="@{/procurarPaciente}" th:object="${paciente}"
 					method="post">
+
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
@@ -57,23 +58,14 @@
 							<th>Data Ultima Consulta</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr th:each="row: ${pacientes}">
-							<td th:text="${row.id}">Id</td>
-							<td th:text="${row.nome}">Nome</td>
-							<td th:text="${row.cpf}">Cpf</td>
-							<td th:text="${row.email}">Email</td>
-							<td th:text="${row.telefone}">Telefone</td>
-							<td th:text="${row.celular}">Celular</td>
-							<td th:text="${row.endereco}">Endereço</td>
-							<td th:text="${row.cep}">CEP</td>
-							<td th:text="${row.data_de_nascimentoString}">Data Nasc</td>
-							<td th:text="${row.data_da_ultima_consultaString}">Data Ultima Consulta</td>
-						</tr>
+					<tbody id="tbodyDynamic">
+					<tr id="firstRow"  style="display:none"/>
 					</tbody>
 				</table>
+				<div id="page-selection" class="container430 marginAuto"></div>
 			</div>
 		</div>
+		 
 		<div id="dialog-newUser" style="display: none; width: 200px"
 			title="Editando Paciente">
 			<form id="form-createUser" th:action="@{/editarPaciente}"
@@ -90,18 +82,16 @@
 
 			</form>
 		</div>
+		<form>
+			<input type="hidden" id="pacientesJSON" th:value="${pacientesJSON}" />
+		</form>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="/js/menu.js"></script>
+		<script type="text/javascript" src="/js/pesquisarPaciente.js"></script>
+		<script type="text/javascript" src="/jquery/jquery.bootpag.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#editarPaciente').on('click', function() {
-					$('#dialog-newUser').dialog({
-						height : 180,
-						width : 400
-					});
-				});
-			});
+			
 		</script>
 		<div th:include="template/footer :: footer">...</div>
 	</div>
