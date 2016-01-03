@@ -1,24 +1,30 @@
 package com.poseidon.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.Lists;
+import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
 @Controller
 public class DashboardController {
 
 	@Autowired
-	private UsuarioController usuarioController;
+	private MedicoDao medicoRepository;
 	
-	//Teste
 	@Autowired
-	private MedicoController medicoController;
-
+	private UserRepository  userRepository;
+	
+	@Autowired
+	private AuthoritiesRepository authoritiesRepository;
+	
 	@RequestMapping("/dashboard")
-	public ModelAndView home(ModelAndView modelAndView, @ModelAttribute UserView userView,
+	public ModelAndView buildDashboardPage(ModelAndView modelAndView, @ModelAttribute UserView userView,
 			@ModelAttribute("isEditar") String isEditar, @ModelAttribute("isEditarError") String isEditarError) {
 		modelAndView.setViewName("dashboard");
 		modelAndView.getModelMap().addAttribute("userView", userView);
@@ -30,10 +36,33 @@ public class DashboardController {
 		}else{
 			modelAndView.getModelMap().addAttribute("formEditarError", false);
 		}
-		medicoController.achaTodosMedicos(modelAndView);
-		usuarioController.achaTodosUsuarios(modelAndView);
+		achaTodosMedicos(modelAndView);
+		achaTodosUsuarios(modelAndView);
 		
 		return modelAndView;
 	}
 
+	private void achaTodosUsuarios(ModelAndView modelAndView) {
+		Iterable<Users> usersList = userRepository.findAll();
+		List<UserView> userViews= Lists.newArrayList();
+		for(Users users : usersList){
+			Authorities authorities = authoritiesRepository.findByUsername(users.getUsername());
+			UserView userView = UserView.buildUserView(users);
+			userView.setRole(authorities.getAuthority());
+			userViews.add(userView);
+		}
+		
+		modelAndView.getModelMap().addAttribute("usuarios", userViews);
+	}
+	
+	private void achaTodosMedicos(ModelAndView modelAndView) {
+		Iterable<Medico> medicoList = medicoRepository.findAll();
+		List<Medico> medicoView= Lists.newArrayList();
+		for(Medico medico : medicoList){
+			medicoView.add(medico);
+		}
+		
+		modelAndView.getModelMap().addAttribute("medicos", medicoView);
+	}
+	
 }

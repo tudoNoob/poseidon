@@ -16,7 +16,7 @@ import jersey.repackaged.com.google.common.collect.Lists;
 @Controller
 public class MedicoController {
 	@Autowired
-	private MedicoDao repository;
+	private MedicoDao medicoRepository;
 	private static Logger logger = Logger.getLogger("MedicoController");
 	private DadoSessao dadoSessao;
 	
@@ -32,7 +32,7 @@ public class MedicoController {
 	public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView){
 		System.out.println("CREATE USER");
 		System.out.println("medico>"+medic.toString());
-		repository.save(medic);
+		medicoRepository.save(medic);
 		logger.info("salvou medico.");
 		modelAndView.setViewName("redirect:/dashboard");
 		
@@ -40,7 +40,7 @@ public class MedicoController {
 	}
 	@RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
 	public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
-		repository.save(medico);
+		medicoRepository.save(medico);
 		logger.info("salvou medico.");
 		modelAndView.setViewName("home");
 		return modelAndView;
@@ -49,7 +49,7 @@ public class MedicoController {
 	@RequestMapping("/pesquisarMedico")
 	public ModelAndView pesquisarMedico(ModelAndView modelAndView) {
 		modelAndView.setViewName("pesquisarMedico");
-		Iterable<Medico> medico = repository.findAll();
+		Iterable<Medico> medico = medicoRepository.findAll();
 		ArrayList<Medico> medicoList = Lists.newArrayList(medico);
 		logger.info("FindAll:" + medicoList.toString());
 		modelAndView.getModelMap().addAttribute("pacientes", medicoList);
@@ -59,7 +59,7 @@ public class MedicoController {
 
 	@RequestMapping("/procurarMedico")
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @RequestParam String nome) {
-		Medico medico = repository.findByNome(nome);
+		Medico medico = medicoRepository.findByNome(nome);
 		ArrayList<Medico> medicos = Lists.newArrayList();
 		medicos.add(medico);
 		modelAndView.getModelMap().addAttribute("medicos", medicos);
@@ -68,14 +68,6 @@ public class MedicoController {
 		return modelAndView;
 	}
 	
-	public void achaTodosMedicos(ModelAndView modelAndView) {
-		Iterable<Medico> medicoList = repository.findAll();
-		List<Medico> medicoView= Lists.newArrayList();
-		for(Medico medico : medicoList){
-			medicoView.add(medico);
-		}
-		
-		modelAndView.getModelMap().addAttribute("medicos", medicoView);
-	}
+	
 
 }
