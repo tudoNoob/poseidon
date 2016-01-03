@@ -18,7 +18,6 @@ public class MedicoController {
 	@Autowired
 	private MedicoDao medicoRepository;
 	private static Logger logger = Logger.getLogger("MedicoController");
-	private DadoSessao dadoSessao;
 	
 	@RequestMapping("/cadastroMedico")
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
