@@ -7,6 +7,7 @@ $(document).ready(function(){
 	var criarContaContainer=$('#criarContaContainer');
 	var criarMedicoContainer=$('#criarMedicoContainer');
 	var pesquisarMedicoContainer=$('#pesquisarMedicoContainer');
+	var exibirMedicoContainer=$('#exibirTodosMedicoContainer');
 	var exibirContaContainer=$('#exibrTodasContasContainer');
 	var deletarUsuarioContainer=$('#deletarUsuarioContainer');
 	var editarUsuarioContainer=$('#editarUsuarioContainer');
@@ -24,6 +25,11 @@ $(document).ready(function(){
 		sumirEditarConta();
 	});
 	
+	$('#btn-exibirTodosMedicos').click(function(){
+		$('#containerDashboard').html(exibirMedicoContainer);
+		$('#exibirTodosMedicoContainer').css('display','block');
+		sumirEditarConta();
+	});
 	//CRUD conta
 	$('#btn-criarConta').click(function(){
 		$('#containerDashboard').html(criarContaContainer);

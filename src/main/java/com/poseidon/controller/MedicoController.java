@@ -83,7 +83,7 @@ public class MedicoController {
 			medicoView.add(medico);
 		}
 		
-		modelAndView.getModelMap().addAttribute("usuarios", medicoView);
+		modelAndView.getModelMap().addAttribute("medicos", medicoView);
 	}
 
 }

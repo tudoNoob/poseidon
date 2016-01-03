@@ -20,6 +20,8 @@
 				<li><a href="#" id="btn-editarMedico">Editar Médico</a></li>
 				<li><a href="#" id="btn-deletarMedico">Deletar Conta</a></li>
 				<li role="separator" class="divider"></li>
+				<li><a href="#" id="btn-exibirTodosMedicos">Exibir todos
+						Médicos</a></li>
 				
 			</ul></li>
 		<li role="presentation"><a href="#" class="dropdown-toggle"
@@ -61,8 +63,29 @@
 			</div>
 		</form>
 	</div>
+	
 	<div title="Medicos" class="container430 marginAuto paddingTop40"
 		id="pesquisarMedicoContainer" style="display: none">
+
+		<h1 class="text-align">Médicos</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="row: ${medicos}">
+					<td th:text="${row.nome}">Nome</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div title="ExMedicos" class="container430 marginAuto paddingTop40"
+		id="exibirTodosMedicoContainer" style="display: none">
 
 		<h1 class="text-align">Médicos</h1>
 		<table class="table">
