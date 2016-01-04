@@ -1,4 +1,4 @@
-package com.poseidon.advices;
+package com.poseidon.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

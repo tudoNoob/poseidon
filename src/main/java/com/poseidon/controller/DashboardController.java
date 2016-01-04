@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
-import com.poseidon.advices.NotNullArgs;
+import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
