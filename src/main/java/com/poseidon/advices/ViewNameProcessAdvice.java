@@ -31,13 +31,24 @@ public class ViewNameProcessAdvice {
 		if(annotation == null){
 			return;
 		}
+		
+		String errorView = annotation.errorView();
+		if(errorView!= null && !errorView.isEmpty()){
+			buildModelAndView(result, errorView);
+			return;
+		}
+		
 		String name = annotation.name();
 		Class<?> returnType = method.getReturnType();
 		if(!returnType.isAssignableFrom(ModelAndView.class)){
 			throw new ViewNameException("Para usar a annotation @ViewName é preciso que o metodo retorne ModelAndView.");
 		}
+		buildModelAndView(result, name);
+		
+	}
+
+	private void buildModelAndView(Object result, String name) {
 		ModelAndView modelAndView= (ModelAndView) result;
 		modelAndView.setViewName(name);
-		
 	}
 }
