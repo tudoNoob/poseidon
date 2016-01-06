@@ -1,1 +1,0 @@
-###Esta pasta é para persistir os dados do banco dentro da aplicação.
