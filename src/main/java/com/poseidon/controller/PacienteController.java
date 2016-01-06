@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 import com.poseidon.utils.PoseidonUtils;
@@ -26,9 +27,9 @@ public class PacienteController {
 	private static Logger logger = Logger.getLogger("PacienteController");
 
 	@RequestMapping("/cadastroPaciente")
+	@ViewName(name = "cadastroPaciente")
 	@NotNullArgs
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
-		modelAndView.setViewName("cadastroPaciente");
 		if (paciente == null)
 			paciente = new Paciente();
 		modelAndView.getModelMap().addAttribute("paciente", paciente);
@@ -38,40 +39,40 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
+	@ViewName(name = "home")
 	@NotNullArgs
 	public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
-		if(dadoSessao.getId()!= null)paciente.setId(dadoSessao.getId());
+		if (dadoSessao.getId() != null)
+			paciente.setId(dadoSessao.getId());
 		repositories.save(paciente);
 		logger.info("salvou paciente.");
-		modelAndView.setViewName("home");
 		return modelAndView;
 	}
 
 	@RequestMapping("/pesquisarPaciente")
+	@ViewName(name = "pesquisarPaciente")
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
-		modelAndView.setViewName("pesquisarPaciente");
 		Iterable<Paciente> pacientes = repositories.findAll();
 		ArrayList<Paciente> pacientesList = Lists.newArrayList(pacientes);
 		logger.info("FindAll:" + pacientesList.toString());
-		//modelAndView.getModelMap().addAttribute("pacientes", pacientesList);
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;
 	}
 
 	@RequestMapping("/procurarPaciente")
+	@ViewName(name = "pesqusiarPaciente")
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
 		List<Paciente> pacientes = repositories.findByNome(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
-		modelAndView.setViewName("pesquisarPaciente");
 		return modelAndView;
 	}
 
 	@RequestMapping("/deletePaciente")
+	@ViewName(name = "deletePaciente")
 	public ModelAndView deletePaciente(ModelAndView modelAndView) {
-		modelAndView.setViewName("deletePaciente");
 		modelAndView.getModelMap().addAttribute("deletePageModel", new ViewMessage());
 		return modelAndView;
 	}

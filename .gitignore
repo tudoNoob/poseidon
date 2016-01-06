@@ -51,4 +51,5 @@ local.properties
 .texlipse
 
 # To remove db files
-.db
+*.db
+*.mv.db

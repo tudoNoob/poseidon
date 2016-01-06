@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
 import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -25,10 +26,10 @@ public class DashboardController {
 	private AuthoritiesRepository authoritiesRepository;
 	
 	@RequestMapping("/dashboard")
+	@ViewName(name = "dashboard")
 	@NotNullArgs
 	public ModelAndView buildDashboardPage(ModelAndView modelAndView, @ModelAttribute UserView userView,
 			@ModelAttribute("isEditar") String isEditar, @ModelAttribute("isEditarError") String isEditarError) {
-		modelAndView.setViewName("dashboard");
 		modelAndView.getModelMap().addAttribute("userView", userView);
 		if (isEditar != null && !isEditar.isEmpty()){
 			modelAndView.getModelMap().addAttribute("isEditarString", isEditar);

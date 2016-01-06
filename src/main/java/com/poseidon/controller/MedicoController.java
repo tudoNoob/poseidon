@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -22,32 +23,32 @@ public class MedicoController {
 	private static Logger logger = Logger.getLogger("MedicoController");
 	
 	@RequestMapping("/cadastroMedico")
+	@ViewName(name = "cadastroMedico")
 	public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
 		logger.info("CADASTRA MEDICO.");
-		modelAndView.setViewName("cadastroMedico");
 		modelAndView.getModelMap().addAttribute("medico", new Medico());
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping(value="/createMedico")
+	@ViewName(name = "redirect:/dashboard")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView){
 		logger.info("CREATE MEDICO");
 		logger.info("medico>"+medic.toString());
 		medicoRepository.save(medic);
 		logger.info("salvou medico.");
-		modelAndView.setViewName("redirect:/dashboard");
-		
 		return modelAndView;
 	}
+	
 	@RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
+	@ViewName(name = "home")
 	@NotNullArgs
 	public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
 		logger.info("SALVA MEDICO.");
 		medicoRepository.save(medico);
 		logger.info("salvou medico.");
-		modelAndView.setViewName("home");
 		return modelAndView;
 	}
 	
