@@ -7,12 +7,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.poseidon.annotation.ViewName;
 
 @Controller
-public class HomeController   {
+public class HomeController {
+
 
 	@RequestMapping("/home")
-	@ViewName(name="home")
+	@ViewName(name = "home")
 	public ModelAndView home(ModelAndView modelAndView) {
 		return modelAndView;
+		
 	}
 
 }

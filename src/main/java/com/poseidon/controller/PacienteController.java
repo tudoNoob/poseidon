@@ -78,23 +78,23 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/deletarPaciente")
+	@ViewName(name = "deletePaciente")
 	@NotNullArgs
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		repositories.delete(paciente);
 		ViewMessage deletePageModel = new ViewMessage();
 		deletePageModel.setSuccess("Paciente deletado com sucesso!");
 		modelAndView.getModelMap().addAttribute("deletePageModel", deletePageModel);
-		modelAndView.setViewName("deletePaciente");
 		return modelAndView;
 	}
 
 	@RequestMapping("/editarPaciente")
+	@ViewName(name = "redirect:/cadastroPaciente")
 	@NotNullArgs
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {
 		Paciente newPaciente = repositories.findOne(paciente.getId());
 		dadoSessao.setId(newPaciente.getId());
-		modelAndView.setViewName("redirect:/cadastroPaciente");
 		redirectAttributes.addFlashAttribute(newPaciente);
 		return modelAndView;
 	}
