@@ -49,3 +49,6 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+# To remove db files
+.db
