@@ -1,4 +1,4 @@
-/**
+    /**
  * Este arquivo destinasse para ser o principal arquivo que contém os scripts da tela dashboard.
  */
 
@@ -6,6 +6,7 @@ $(document).ready(function(){
 	
 	var criarContaContainer=$('#criarContaContainer');
 	var criarMedicoContainer=$('#criarMedicoContainer');
+        var deletarMedicoContainer=$('#deletarMedicoContainer');
 	var pesquisarMedicoContainer=$('#pesquisarMedicoContainer');
 	var exibirMedicoContainer=$('#exibirTodosMedicoContainer');
 	var exibirContaContainer=$('#exibrTodasContasContainer');
@@ -24,7 +25,13 @@ $(document).ready(function(){
 		$('#pesquisarMedicoContainer').css('display','block');
 		sumirEditarConta();
 	});
-	
+        
+	$('#btn-deletarMedico').click(function(){
+		$('#containerDashboard').html(deletarMedicoContainer);
+		$('#deletarMedicoContainer').css('display','block');
+		sumirEditarConta();
+	});
+        
 	$('#btn-exibirTodosMedicos').click(function(){
 		$('#containerDashboard').html(exibirMedicoContainer);
 		$('#exibirTodosMedicoContainer').css('display','block');
