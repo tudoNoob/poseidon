@@ -92,14 +92,14 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Nome</th>
-					
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="row: ${medicos}">
+					<td th:text="${row.id}">Id</td>
 					<td th:text="${row.nome}">Nome</td>
-					
 				</tr>
 			</tbody>
 		</table>
@@ -109,11 +109,11 @@
 		id="deletarMedicoContainer" style="display: none">
 		<form id="form-createUser" th:action="@{/deleteMedico}" method="post">
 			<div class="input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Nome:</span> <input
-					id="user.create" type="text" class="form-control"
+				<span class="input-group-addon" id="basic-addon1">Id:</span> <input
+					id="id.medico" type="text" class="form-control"
 					placeholder="Nome do Médico" aria-describedby="basic-addon1"
-					name="nome" required="true" data-toggle="tooltip"
-					data-placement="right" title="Nome completo do médico." />
+					name="id" required="true" data-toggle="tooltip"
+					data-placement="right" title="Digite o Id do médico." />
 			</div>
 			<div class="margin10" style="padding-top: 10px">
 				<input type="submit" value="Deletar Medico"

@@ -60,7 +60,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/procurarPaciente")
-	@ViewName(name = "pesqusiarPaciente")
+	@ViewName(name = "pesquisarPaciente")
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
 		List<Paciente> pacientes = repositories.findByNome(pacienteRequest.getNome());
