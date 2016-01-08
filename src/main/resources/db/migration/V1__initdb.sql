@@ -10,7 +10,7 @@ CREATE TABLE PACIENTE (
     endereco varchar(100),
     cep varchar(10),
     forma_de_pagamento varchar(20),
-    cpf varchar(11)
+    cpf varchar(14)
     
 );
 

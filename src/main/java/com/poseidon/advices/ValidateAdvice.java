@@ -47,7 +47,7 @@ public class ValidateAdvice {
 					}
 					fields[j].setAccessible(true);
 					Object object = fields[j].get(args[i]);
-					if (object.toString().length() < validateString.length()) {
+					if (object.toString().length() < validateString.minLength()) {
 						throw new ValidateStringException();
 					}
 				}

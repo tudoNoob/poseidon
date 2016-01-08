@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface ValidateString {
 
-	public int length() default 2;
+	public int minLength() default 2;
 	
 }

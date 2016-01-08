@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.google.common.base.Objects;
+import com.poseidon.annotation.ValidateString;
 import com.poseidon.utils.PoseidonUtils;
 
 @Entity
@@ -13,12 +14,19 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@ValidateString
 	private String nome;
+	@ValidateString
 	private String sobrenome;
+	@ValidateString
 	private String email;
+	@ValidateString
 	private String telefone;
+	@ValidateString
 	private String celular;
+	@ValidateString
 	private String endereco;
+	@ValidateString
 	private String cep;
 	private Date data_de_nascimento;
 	@Transient
@@ -26,7 +34,9 @@ public class Paciente {
 	private Date data_da_ultima_consulta;
 	@Transient
 	private String data_da_ultima_consultaString;
+	@ValidateString
 	private String forma_de_pagamento;
+	@ValidateString
 	private String cpf;
 
 	public Paciente() {

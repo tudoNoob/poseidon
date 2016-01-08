@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ValidateArgs;
 import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
@@ -41,6 +42,7 @@ public class PacienteController {
 	@RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
 	@ViewName(name = "home")
 	@NotNullArgs
+	@ValidateArgs
 	public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 		if (dadoSessao.getId() != null)
 			paciente.setId(dadoSessao.getId());
