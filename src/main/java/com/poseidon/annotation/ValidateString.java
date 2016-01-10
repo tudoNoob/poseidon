@@ -13,6 +13,15 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface ValidateString {
 
+	/**
+	 * Este atributo eh o minimo de tamnho da string que o atributo podera ter.
+	 * @return
+	 */
 	public int minLength() default 2;
-	
+
+	/**
+	 * Este atributo eh o maximo de tama ho que a string podera ter.
+	 * @return
+	 */
+	public int maxLength() default 100;
 }

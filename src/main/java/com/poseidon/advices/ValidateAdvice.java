@@ -47,8 +47,8 @@ public class ValidateAdvice {
 					}
 					fields[j].setAccessible(true);
 					Object object = fields[j].get(args[i]);
-					if (object.toString().length() < validateString.minLength()) {
-						throw new ValidateStringException();
+					if (object.toString().length() < validateString.minLength() || object.toString().length() > validateString.maxLength() ) {
+						throw new ValidateStringException("Erro na validacao da string, do atributo:"+fields[j].getName());
 					}
 				}
 			}
@@ -56,3 +56,4 @@ public class ValidateAdvice {
 	}
 
 }
+
