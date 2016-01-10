@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Cadastrar Consulta</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/bootstrap/datepicker.css"/>
+        <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
+    </head>
+    <body class="backgroundColorCinza">
+        <div th:include="template/header :: header"></div>
+        <div id="container" style="width: 860px; margin: auto">
+<!--             ID Médico, ID Paciente, Data da Consulta. -->
+            <div id="contianer.form" style="padding-top: 20px">
+                <form th:action="@{/createConsulta}" method="post"
+                      id="formCadastro" th:object="${consulta}">
+                    <div id="left.container" style="float: left; width: 48%">
+                        <label for="idmedicocadastro" style="display:none"></label>
+                        <div><label>ID do Médico:</label></div> 
+                        <div class="input-group" id="id_medicodiv">
+                            <input type="text" class="form-control" placeholder="ID Médico"
+                                   aria-describedby="basic-addon1" name="id_medico"
+                                   id="idmedicocadastro" maxlength="30" th:field="${consulta.id_medico}" /><span
+                                   class="input-group-addon" id="addon-id_medico">0</span>
+                        </div>
+                        <label for="idpacientecadastro" style="display:none"></label>
+                        <div><label style="padding-top: 10px">ID do Paciente:</label></div> 
+                        <div class="input-group" id="id_pacientediv">
+                            <input type="text" class="form-control" placeholder="ID Paciente"
+                                   aria-describedby="basic-addon1" name="id_paciente"
+                                   id="idpacientecadastro" maxlength="30" th:field="${consulta.id_paciente}" /><span
+                                   class="input-group-addon" id="addon-id_paciente">0</span>
+                        </div>
+                    </div>
+                    <div id="rigth.container" style="float: right; width: 48%">
+                        <label for="dataconsultacadastro" style="display:none"></label>
+                        <div><label>Data da Consulta</label></div>
+                        <div class="input-group" id="data_consultadiv">
+                            <input type="text" class="form-control  data" placeholder="Data de Nascimento"
+                                   aria-describedby="basic-addon1" name="data_consulta"
+                                   id="dataconsultacadastro" maxlength="10"  th:field="${consulta.data_consulta}"/><span
+                                   class="input-group-addon" id="addon-data_consulta">dd/mm/yyyy</span>
+                        </div>
+                        <label for="valorcadastro" style="display:none"></label>
+                        <div><label style="padding-top: 10px">Valor da Consulta:</label></div> 
+                        <div class="input-group" id="valordiv">
+                            <input type="text" class="form-control" placeholder="Valor da Consulta"
+                                   aria-describedby="basic-addon1" name="valor"
+                                   id="valorcadastro" maxlength="8" th:field="${consulta.valor}" /><span
+                                   class="input-group-addon" id="addon-preco">00,00</span>
+                        </div>
+                        <div style="padding-top: 10px; padding-left: 226px">
+                            <input type="submit" value="Cadastrar Consulta"
+                                   class="btn btn-lg btn-success btn-submit"
+                                   id="submitcadastrarconsulta" />
+                        </div>
+<!--                        <div title="All Persons" th:if="${cadastroPageModel.error!=null}"
+                             style="padding-top: 10px; text-align: right">
+                            <label id="error.cadastro.label"
+                                   th:text="${cadastroPageModel.error}"></label>
+                        </div>
+                        <div title="All Persons"
+                             th:if="${cadastroPageModel.success!=null}"
+                             style="padding-top: 10px; text-align: right">
+                            <label id="success.cadastro.label"
+                                   th:text="${cadastroPageModel.success}"></label>
+                        </div>-->
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div th:include="template/footer :: footer"></div>
+        <script src="/jquery/jquery-1.11.3.min.js"></script>
+        <script src="/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/jquery/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="/jquery/jquery.validate.js"></script>
+        <script type="text/javascript" src="/bootstrap/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="/js/menu.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.data').mask('00/00/0000');
+                $('.valor').mask('00,00');
+
+                $('#formCadastro').validate({
+                    rules: {
+                        id_medico: {required: true, minlength: 1, maxlength: 30},
+                        id_paciente: {required: true, minlength: 1, maxlength: 30},
+                        data_consulta: {required: true, minlength: 14, maxlength: 14},
+                        valor: {required: true, minlength: 5, maxlength: 8}
+                    },
+                    // Specify the validation error messages
+                    messages: {
+                        id_medico: "Por favor digite um ID válido.",
+                        id_paciente: "Por favor digite um ID válido.",
+                        data_consulta: "Por favor digite uma data válida.",
+                        valor: "Por favor digite um valor válido."
+                    },
+                    errorPlacement: function (error, element) {
+                        console.log(element.attr('name'));
+                        error.insertAfter('#' + element.attr('name') + 'div'); //So i putted it after the .form-group so it will not include to your append/prepend group.
+                    }
+
+                });
+
+                $('#formCadastro').submit(function () {
+                    var validator = $('#formCadastro').validate();
+                    validator.form();
+                });
+
+                $('#dataconsultacadastro').datepicker();
+            });
+        </script>
+    </body>
+</html>

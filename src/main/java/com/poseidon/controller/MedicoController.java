@@ -25,7 +25,7 @@ public class MedicoController {
 
     @RequestMapping("/cadastroMedico")
     @ViewName(name = "cadastroMedico")
-    public ModelAndView cadastroPaciente(ModelAndView modelAndView) {
+    public ModelAndView cadastroMedico(ModelAndView modelAndView) {
         logger.info("CADASTRA MEDICO.");
         modelAndView.getModelMap().addAttribute("medico", new Medico());
         return modelAndView;
