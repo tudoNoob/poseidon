@@ -48,7 +48,20 @@ public class UserView {
 		return "UserView [username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 	
+	public UserView comPassword(String password){
+		this.password=password;
+		return this;
+	}
 	
+	public UserView comUsername(String username){
+		this.username=username;
+		return this;
+	}
+	
+	public UserView comRoles(String role){
+		this.role=role;
+		return this;
+	}
 	
 	
 }

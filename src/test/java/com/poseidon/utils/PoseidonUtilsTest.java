@@ -1,12 +1,15 @@
 package com.poseidon.utils;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import com.poseidon.model.UserView;
+import com.poseidon.model.Users;
 
 
 public class PoseidonUtilsTest {
@@ -42,6 +45,8 @@ public class PoseidonUtilsTest {
 
     @Test
     public void testConvertStringtoJSON() throws Exception {
-
+    	UserView user= new UserView().comUsername("user").comPassword("pass").comRoles("ADMIN");
+    	
+    	assertEquals(PoseidonUtils.convertStringtoJSON(user),"{\"username\":\"user\",\"password\":\"pass\",\"role\":\"ADMIN\"}");
     }
 }
