@@ -17,11 +17,8 @@ public class Consulta {
     private Integer id_medico;
     private Integer id_paciente;
     private Double valor;
-    
-    @ValidateString
+    private Date horario_consulta;
     private Date data_consulta;
-    @Transient
-    private String data_consultaString;
 
     public Consulta() {
     }
@@ -58,32 +55,28 @@ public class Consulta {
         this.valor = valor;
     }
 
+    public Date getHorario_consulta() {
+        return horario_consulta;
+    }
+
     public Date getData_consulta() {
         return data_consulta;
+    }
+
+    public void setHorario_consulta(Date horario_consulta) {
+        this.horario_consulta = horario_consulta;
     }
 
     public void setData_consulta(Date data_consulta) {
         this.data_consulta = data_consulta;
     }
 
-    public String getData_consultaString() {
-        return PoseidonUtils.convertDateToString(data_consulta);
-    }
-
-    public void setData_consultaString(String data_consultaString) {
-        this.data_consultaString = data_consultaString;
-    }
-
     public Date getDataConsulta_For_SQL() {
         return PoseidonUtils.convertToDate(data_consulta);
     }
 
-    @Override
-    public String toString() {
-        return "Consulta{" + "id=" + id + ", id_medico=" + id_medico + ", id_paciente=" + id_paciente + 
-                ", valor=" + valor + ", data_consulta=" + data_consulta + ", data_consultaString=" + data_consultaString + '}';
+    public Date getHorarioConsulta_For_SQL() {
+        return PoseidonUtils.convertToTime(horario_consulta);
     }
-
-
 
 }

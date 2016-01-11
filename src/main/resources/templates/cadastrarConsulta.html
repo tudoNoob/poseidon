@@ -13,7 +13,7 @@
     <body class="backgroundColorCinza">
         <div th:include="template/header :: header"></div>
         <div id="container" style="width: 860px; margin: auto">
-<!--             ID Médico, ID Paciente, Data da Consulta. -->
+            <!--             ID Médico, ID Paciente, Data da Consulta. -->
             <div id="contianer.form" style="padding-top: 20px">
                 <form th:action="@{/createConsulta}" method="post"
                       id="formCadastro" th:object="${consulta}">
@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" placeholder="ID Médico"
                                    aria-describedby="basic-addon1" name="id_medico"
                                    id="idmedicocadastro" maxlength="30" th:field="${consulta.id_medico}" /><span
-                                   class="input-group-addon" id="addon-id_medico">0</span>
+                                   class="input-group-addon" id="addon-id_medico">9...</span>
                         </div>
                         <label for="idpacientecadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">ID do Paciente:</label></div> 
@@ -32,42 +32,50 @@
                             <input type="text" class="form-control" placeholder="ID Paciente"
                                    aria-describedby="basic-addon1" name="id_paciente"
                                    id="idpacientecadastro" maxlength="30" th:field="${consulta.id_paciente}" /><span
-                                   class="input-group-addon" id="addon-id_paciente">0</span>
+                                   class="input-group-addon" id="addon-id_paciente">9...</span>
+                        </div>
+                        <label for="valorcadastro" style="display:none"></label>
+                        <div><label style="padding-top: 10px">Valor da Consulta:</label></div> 
+                        <div class="input-group" id="valordiv">
+                            <input type="text" class="form-control valor" placeholder="Valor da Consulta"
+                                   aria-describedby="basic-addon1" name="valor"
+                                   id="valorcadastro" maxlength="10" th:field="${consulta.valor}" /><span
+                                   class="input-group-addon" id="addon-preco">R$ 9999.99</span>
                         </div>
                     </div>
                     <div id="rigth.container" style="float: right; width: 48%">
                         <label for="dataconsultacadastro" style="display:none"></label>
                         <div><label>Data da Consulta</label></div>
                         <div class="input-group" id="data_consultadiv">
-                            <input type="text" class="form-control  data" placeholder="Data de Nascimento"
+                            <input type="text" class="form-control data" placeholder="Data da Consulta"
                                    aria-describedby="basic-addon1" name="data_consulta"
                                    id="dataconsultacadastro" maxlength="10"  th:field="${consulta.data_consulta}"/><span
                                    class="input-group-addon" id="addon-data_consulta">dd/mm/yyyy</span>
                         </div>
-                        <label for="valorcadastro" style="display:none"></label>
-                        <div><label style="padding-top: 10px">Valor da Consulta:</label></div> 
-                        <div class="input-group" id="valordiv">
-                            <input type="text" class="form-control" placeholder="Valor da Consulta"
-                                   aria-describedby="basic-addon1" name="valor"
-                                   id="valorcadastro" maxlength="8" th:field="${consulta.valor}" /><span
-                                   class="input-group-addon" id="addon-preco">00,00</span>
+                        <label for="horarioconsultacadastro" style="display:none"></label>
+                        <div><label style="padding-top: 10px">Horário da Consulta:</label></div> 
+                        <div class="input-group" id="horario_consultadiv">
+                            <input type="text" class="form-control horario" placeholder="Horário da Consulta"
+                                   aria-describedby="basic-addon1" name="horario_consulta"
+                                   id="horarioconsultacadastro" maxlength="8" th:field="${consulta.horario_consulta}" /><span
+                                   class="input-group-addon" id="addon-horario_consulta">hh:mm:ss</span>
                         </div>
                         <div style="padding-top: 10px; padding-left: 226px">
                             <input type="submit" value="Cadastrar Consulta"
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submitcadastrarconsulta" />
                         </div>
-<!--                        <div title="All Persons" th:if="${cadastroPageModel.error!=null}"
-                             style="padding-top: 10px; text-align: right">
-                            <label id="error.cadastro.label"
-                                   th:text="${cadastroPageModel.error}"></label>
-                        </div>
-                        <div title="All Persons"
-                             th:if="${cadastroPageModel.success!=null}"
-                             style="padding-top: 10px; text-align: right">
-                            <label id="success.cadastro.label"
-                                   th:text="${cadastroPageModel.success}"></label>
-                        </div>-->
+                        <!--                        <div title="All Persons" th:if="${cadastroPageModel.error!=null}"
+                                                     style="padding-top: 10px; text-align: right">
+                                                    <label id="error.cadastro.label"
+                                                           th:text="${cadastroPageModel.error}"></label>
+                                                </div>
+                                                <div title="All Persons"
+                                                     th:if="${cadastroPageModel.success!=null}"
+                                                     style="padding-top: 10px; text-align: right">
+                                                    <label id="success.cadastro.label"
+                                                           th:text="${cadastroPageModel.success}"></label>
+                                                </div>-->
 
                     </div>
                 </form>
@@ -86,20 +94,23 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.data').mask('00/00/0000');
-                $('.valor').mask('00,00');
+                $('.horario').mask('00:00:00');
+                $('.valor').mask('0000.00');
 
                 $('#formCadastro').validate({
                     rules: {
                         id_medico: {required: true, minlength: 1, maxlength: 30},
                         id_paciente: {required: true, minlength: 1, maxlength: 30},
-                        data_consulta: {required: true, minlength: 14, maxlength: 14},
-                        valor: {required: true, minlength: 5, maxlength: 8}
+                        data_consulta: {required: true, minlength: 10, maxlength: 10},
+                        horario_consulta: {required: true, minlength: 8, maxlength: 8},
+                        valor: {required: true, minlength: 7, maxlength: 7}
                     },
                     // Specify the validation error messages
                     messages: {
                         id_medico: "Por favor digite um ID válido.",
                         id_paciente: "Por favor digite um ID válido.",
                         data_consulta: "Por favor digite uma data válida.",
+                        horario_consulta: "Por favor digite um horário válido.",
                         valor: "Por favor digite um valor válido."
                     },
                     errorPlacement: function (error, element) {

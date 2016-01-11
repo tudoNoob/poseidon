@@ -8,54 +8,61 @@ import org.slf4j.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poseidon.exception.DateSqlParseException;
+import java.util.logging.Level;
 
 public class PoseidonUtils {
-	private static final Logger LOGGER = LoggerFactory.getLogger(PoseidonUtils.class);
 
-	public static java.sql.Date convertToDate(String toDate) {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PoseidonUtils.class);
 
-		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		Date parsed;
-		java.sql.Date sql = null;
-		try {
-			parsed = format.parse(toDate);
-			sql = new java.sql.Date(parsed.getTime());
-		} catch (ParseException e) {
-			LOGGER.error("Error parsing the date.", e);
-			throw new DateSqlParseException(e);
-		}
+    public static java.sql.Date convertToDate(String toDate) {
 
-		return sql;
-	}
+        SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        Date parsed;
+        java.sql.Date sql = null;
+        try {
+            parsed = format.parse(toDate);
+            sql = new java.sql.Date(parsed.getTime());
+        } catch (ParseException e) {
+            LOGGER.error("Error parsing the date.", e);
+            throw new DateSqlParseException(e);
+        }
 
-	public static String convertDateToString(Date date) {
+        return sql;
+    }
 
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		String parsed = format.format(date);
+    public static String convertDateToString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String parsed = format.format(date);
 
-		return parsed;
-	}
+        return parsed;
+    }
 
-	public static java.sql.Date convertToDate(Date toDate) {
+    public static java.sql.Date convertToDate(Date toDate) {
+        java.sql.Date sql = null;
+        sql = new java.sql.Date(toDate.getTime());
 
-		java.sql.Date sql = null;
-		sql = new java.sql.Date(toDate.getTime());
+        return sql;
+    }
 
-		return sql;
-	}
+    public static java.sql.Time convertToTime(Date toDate) {
+        java.sql.Time sql = null;
+        sql = new java.sql.Time(toDate.getTime());
 
-	public static String convertStringtoJSON(Object input) {
-		ObjectMapper mapper = new ObjectMapper();
-		String result = "";
-		try {
-			result = mapper.writeValueAsString(input);
-		} catch (JsonProcessingException e) {
-			LOGGER.info("Nâoc osneguiu executar o pare de objeto para json como strnig.",e);
-		}
-		return result;
-	}
+        return sql;
+    }
 
-	public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";
+    public static String convertStringtoJSON(Object input) {
+        ObjectMapper mapper = new ObjectMapper();
+        String result = "";
+        try {
+            result = mapper.writeValueAsString(input);
+        } catch (JsonProcessingException e) {
+            LOGGER.info("Nâoc osneguiu executar o pare de objeto para json como strnig.", e);
+        }
+        return result;
+    }
 
-	public static String CADASTRO_ERROR = "Erro ao efetuar o cadastro.";
+    public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";
+
+    public static String CADASTRO_ERROR = "Erro ao efetuar o cadastro.";
 }

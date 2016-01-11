@@ -23,7 +23,8 @@ CREATE TABLE CONSULTA(
 	id_medico int,
 	id_paciente int,
 	valor double,
-	data_consulta timestamp
+	data_consulta timestamp,
+        horario_consulta time
 );
 
 ALTER TABLE CONSULTA ADD FOREIGN KEY (id_medico) REFERENCES MEDICO(id);
