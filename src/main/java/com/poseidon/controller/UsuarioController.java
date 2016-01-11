@@ -1,4 +1,4 @@
-package controller;
+package com.poseidon.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

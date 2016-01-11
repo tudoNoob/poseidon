@@ -1,4 +1,4 @@
-package controller;
+package com.poseidon.controller;
 
 import java.util.*;
 import java.util.logging.Logger;

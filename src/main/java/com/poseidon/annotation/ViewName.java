@@ -23,7 +23,7 @@ public @interface ViewName {
 	public String name() default "";
 
 	/**
-	 * Esteatributo eh para caso de erro no controller, seja possivel renderizar
+	 * Este atributo eh para caso de erro no com.poseidon.controller, seja possivel renderizar
 	 * outra pagina. Para que a annotation pegue este valor devera ser settado
 	 * no ModelAndView o valor error.
 	 * 
