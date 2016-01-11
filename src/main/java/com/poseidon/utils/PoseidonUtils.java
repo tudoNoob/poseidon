@@ -23,7 +23,7 @@ public class PoseidonUtils {
             parsed = format.parse(toDate);
             sql = new java.sql.Date(parsed.getTime());
         } catch (ParseException e) {
-            LOGGER.error("Error parsing the date.", e);
+            LOGGER.error("Falha na conversão da data.", e);
             throw new DateSqlParseException(e);
         }
 
@@ -31,10 +31,10 @@ public class PoseidonUtils {
     }
 
     public static String convertDateToString(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String parsed = format.format(date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String stringFormatted = simpleDateFormat.format(date);
 
-        return parsed;
+        return stringFormatted;
     }
 
     public static java.sql.Date convertToDate(Date toDate) {
@@ -57,7 +57,7 @@ public class PoseidonUtils {
         try {
             result = mapper.writeValueAsString(input);
         } catch (JsonProcessingException e) {
-            LOGGER.info("Nâoc osneguiu executar o pare de objeto para json como strnig.", e);
+            LOGGER.info("Falha na conversão", e);
         }
         return result;
     }
