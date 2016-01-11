@@ -3,6 +3,12 @@
 
 [![Build Status](https://snap-ci.com/tudoNoob/poseidon/branch/master/build_image)](https://snap-ci.com/tudoNoob/poseidon/branch/master)
 
+[![Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/badges/gpa.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
+
+[![Test Coverage](https://codeclimate.com/github/tudoNoob/poseidon/badges/coverage.svg)](https://codeclimate.com/github/tudoNoob/poseidon/coverage)
+
+[![Issue Count](https://codeclimate.com/github/tudoNoob/poseidon/badges/issue_count.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
+
 # POSEIDON
 
 Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
