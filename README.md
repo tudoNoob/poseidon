@@ -41,5 +41,6 @@ Ou se quiser acessar como usuário comum:
 
 [Snap-ci do projeto](https://snap-ci.com/tudoNoob/poseidon/branch/master)
 
+[Code Climate do projeto](https://codeclimate.com/github/tudoNoob/poseidon/)
 
 
