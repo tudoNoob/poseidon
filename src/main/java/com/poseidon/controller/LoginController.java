@@ -12,7 +12,7 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	@ViewName(name="login")
-	public ModelAndView buildLogionPage(ModelAndView modelAndView){
+	public ModelAndView buildLoginPage(ModelAndView modelAndView){
 		modelAndView.getModelMap().addAttribute("user", new UserView());
 		modelAndView.setViewName("login");
 		return modelAndView;
@@ -20,7 +20,7 @@ public class LoginController {
 	
 	@RequestMapping("/login-Error")
 	@ViewName(name="login")
-	public ModelAndView buildLogionErrorPage(ModelAndView modelAndView){
+	public ModelAndView buildLoginErrorPage(ModelAndView modelAndView){
 		modelAndView.getModelMap().addAttribute("user", new UserView());
 		modelAndView.getModelMap().addAttribute("error", true);
 		return modelAndView;
