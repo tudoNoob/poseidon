@@ -49,17 +49,17 @@ public class UserView {
 	}
 	
 	public UserView comPassword(String password){
-		this.password=password;
+		setPassword(password);
 		return this;
 	}
 	
 	public UserView comUsername(String username){
-		this.username=username;
+		setUsername(username);
 		return this;
 	}
 	
 	public UserView comRoles(String role){
-		this.role=role;
+		setRole(role);
 		return this;
 	}
 	
