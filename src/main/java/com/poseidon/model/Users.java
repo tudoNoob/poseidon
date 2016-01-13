@@ -62,6 +62,13 @@ public class Users {
 		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled + "]";
 	}
 
-	
+	public Users comPassword(String password){
+		setPassword(password);
+		return this;
+	}
 
+	public Users comUsername(String username){
+		setUsername(username);
+		return this;
+	}
 }
