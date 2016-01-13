@@ -41,6 +41,11 @@ public class NotNullArgsProcessAdvice {
 
 		Object[] args = joinPoint.getArgs();
 
+		checkForNullArgs(nullArgs, args);
+
+	}
+
+	private void checkForNullArgs(String[] nullArgs, Object[] args) {
 		for (int i = 0; i < args.length; i++) {
 			if (!validatePositionArgs(i, nullArgs)) {
 				if (args[i] == null) {
@@ -48,7 +53,6 @@ public class NotNullArgsProcessAdvice {
 				}
 			}
 		}
-
 	}
 
 	private Boolean validatePositionArgs(int i, String[] nullArgs) {
