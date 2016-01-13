@@ -51,7 +51,7 @@ public class LogAspects {
 	public void afterReturningLogAdvice(JoinPoint joinPoint, Object result) {
 		Logger LOGGER = createLog(joinPoint);
 		AtributosClasse atributosClasse = criaAtributosClasse(joinPoint);
-		LOGGER.info(atributosClasse.toString() +" return args: "+result.toString());
+		LOGGER.info("Return args: "+atributosClasse.toString() +" return args: "+result.toString());
 	}
 
 }
