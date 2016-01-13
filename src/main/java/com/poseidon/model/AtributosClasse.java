@@ -1,4 +1,4 @@
-package com.poseidon.advices;
+package com.poseidon.model;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

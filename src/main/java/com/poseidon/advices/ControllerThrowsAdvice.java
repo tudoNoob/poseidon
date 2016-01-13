@@ -1,6 +1,5 @@
 package com.poseidon.advices;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.JoinPoint;

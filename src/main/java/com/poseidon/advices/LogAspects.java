@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.poseidon.model.AtributosClasse;
+
 @Aspect
 @Component
 public class LogAspects {
@@ -30,7 +32,7 @@ public class LogAspects {
 		return AtributosClasse.builderAtributosClasse(joinPoint);
 	}
 
-	private Logger createLog(JoinPoint joinPoint) {
+	public Logger createLog(JoinPoint joinPoint) {
 		Logger LOGGER = LoggerFactory.getLogger(joinPoint.getSignature().getName());
 		return LOGGER;
 	}
