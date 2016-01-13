@@ -39,19 +39,29 @@ public class ValidateAdvice {
 		for (int i = 0; i < args.length; i++) {
 			Field[] fields = args[i].getClass().getDeclaredFields();
 			for (int j = 0; j < fields.length; j++) {
-				if (fields[j].isAnnotationPresent(ValidateString.class)) {
-					ValidateString validateString = fields[j].getAnnotation(ValidateString.class);
-					if (!fields[j].getType().equals(String.class)) {
-						throw new IllegalAnnotationPosition(
-								"a annotation ValidateString esta em um atributo que nao eh String.");
-					}
-					fields[j].setAccessible(true);
-					Object object = fields[j].get(args[i]);
-					if (object.toString().length() < validateString.minLength() || object.toString().length() > validateString.maxLength() ) {
-						throw new ValidateStringException("Erro na validacao da string, do atributo:"+fields[j].getName());
-					}
-				}
+				validateString(args, i, fields, j);
 			}
+		}
+	}
+
+	private void validateString(Object[] args, int i, Field[] fields, int j) {
+		if (fields[j].isAnnotationPresent(ValidateString.class)) {
+			ValidateString validateString = fields[j].getAnnotation(ValidateString.class);
+			if (!fields[j].getType().equals(String.class)) {
+				throw new IllegalAnnotationPosition(
+						"a annotation ValidateString esta em um atributo que nao eh String.");
+			}
+			fields[j].setAccessible(true);
+			Object object;
+			try {
+				object = fields[j].get(args[i]);
+				if (object.toString().length() < validateString.minLength() || object.toString().length() > validateString.maxLength() ) {
+					throw new ValidateStringException("Erro na validacao da string, do atributo:"+fields[j].getName());
+				}
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				throw new ValidateStringException("Erro inesperado ao tentar pegar os argumentos do atributo:"+fields[j].getName());
+			}
+			
 		}
 	}
 
