@@ -1,15 +1,19 @@
 package com.poseidon.advices;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.reflect.MethodSignature;
 
 public class AtributosClasse {
 
 	private String metodoNome;
 	
 	private String argumentos;
+	
+	private String returnType;
 
 	public static AtributosClasse  builderAtributosClasse(JoinPoint joinPoint ){
 		AtributosClasse atributosClasse = new AtributosClasse();
@@ -18,6 +22,12 @@ public class AtributosClasse {
         String arguments = Arrays.toString(joinPoint.getArgs());
         atributosClasse.setMetodoNome(methodName);
         atributosClasse.setArgumentos(arguments);
+        
+        final MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+		Method method = methodSignature.getMethod();
+		atributosClasse.setReturnType(method.getReturnType().getName());
+		
+        
 		return atributosClasse;
 	};
 	
@@ -37,9 +47,18 @@ public class AtributosClasse {
 		this.argumentos = argumentos;
 	}
 
+	public String getReturnType() {
+		return returnType;
+	}
+
+	public void setReturnType(String returnType) {
+		this.returnType = returnType;
+	}
+
 	@Override
 	public String toString() {
-		return "AtributosDeClasse [metodoNome=" + metodoNome + ", argumentos=" + argumentos + "]";
+		return "AtributosClasse [metodoNome=" + metodoNome + ", argumentos=" + argumentos + ", returnType=" + returnType
+				+ "]";
 	}
-	
+
 }
