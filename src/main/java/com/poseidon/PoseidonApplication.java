@@ -3,10 +3,15 @@ package com.poseidon;
 import org.flywaydb.core.Flyway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @EnableWebSecurity
@@ -42,4 +47,5 @@ protected static class ThymeleafSecurityDialectConfiguration {
       return new SpringSecurityDialect();
   }
 }
+
 }
