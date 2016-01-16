@@ -86,12 +86,12 @@
 			<input type="hidden" id="pacientesJSON" th:value="${pacientesJSON}" />
 		</form>
 		<script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+		<script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
 		<script type="text/javascript" src="/js/menu.js"></script>
 		<script type="text/javascript" src="/js/pesquisarPaciente.js"></script>
-		<script type="text/javascript" src="/jquery/jquery.bootpag.min.js"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootpag/1.0.7/lib/bootpag.min.js}"></script>
 		<script type="text/javascript">
-			
+
 		</script>
 		<div th:include="template/footer :: footer">...</div>
 	</div>
