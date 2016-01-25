@@ -26,7 +26,7 @@
 										</ul></li>
 						<li class="menu"><a class="colorBranco" url="/cadastrarConsulta" th:href="@{/cadastrarConsulta}">Cadastrar Consulta</a></li>
 						<li class="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" ><a class="colorBranco" url="/dashboard" th:href="@{/dashboard}">Dashboard</a></li>
-						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
+						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Médico<span class="caret"></span></a>
 							<ul class="dropdown-menu">
