@@ -14,7 +14,7 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 
 ###Como buildar o projeto
 
-* Execute o comando  `mvn clean package` na pasta raiz do projeto.
+* Execute o comando  `mvn clean package` na pasta raiz do projeto. E para executar o projeto `mvn spring-boot-run`.
 
 ###Para executar o projeto
 
