@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Login</title>
-<link rel="stylesheet" href="/jquery/jquery-ui.css" />
+<link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.css}" />
 <link rel="stylesheet" href="/bootstrap/bootstrap-theme.min.css" />
 <!-- 3.3.5 -->
 <link rel="stylesheet" href="/bootstrap/bootstrap.min.css" />
@@ -61,8 +61,8 @@
 		</form>
 	</div>
 <div th:include="template/footer :: footer">...</div>
-	<script src="/jquery/jquery-1.11.3.min.js"></script>
-	<script src="/jquery/jquery-ui.min.js"></script>
+	<script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
 	<script src="/bootstrap/bootstrap.min.js"></script>
 	<!-- 3.3.5 -->
 	<script type="text/javascript">
