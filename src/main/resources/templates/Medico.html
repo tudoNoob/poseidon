@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Médico</title>
+
+    <link rel="stylesheet"
+    href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+</head>
+<body class="backgroundColorCinza">
+
+<div th:include="template/header :: header">...</div>
+
+<!--CRUD Medico-->
+<div class="container430 marginAuto paddingTop40"
+     id="criarMedicoContainer"  th:if="${isCadastroMedico}">
+    <form id="form-createMedico" th:action="@{/createMedico}" method="post">
+        <div class="input-group margin10">
+            <span class="input-group-addon" id="basic-addon1">Nome:</span> <input
+                id="user.create" type="text" class="form-control"
+                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                name="nome" required="true" data-toggle="tooltip"
+                data-placement="right" title="Medico tem q ser único." />
+        </div>
+        <div class="margin10" style="padding-top: 10px">
+            <input type="submit" value="Criar Medico"
+                   class="btn btn-lg btn-success" id="createMedico.submit" />
+        </div>
+    </form>
+</div>
+
+<div title="Medicos" class="container430 marginAuto paddingTop40"
+     id="pesquisarMedicoContainer" th:if="${isPesquisaMedico}">
+
+    <h1 class="text-align">Médicos</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row: ${medicos}">
+            <td th:text="${row.nome}">Nome</td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div title="ExMedicos" class="container430 marginAuto paddingTop40"
+     id="exibirTodosMedicoContainer" style="display: none">
+
+    <h1 class="text-align">Médicos</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row: ${medicos}">
+            <td th:text="${row.id}">Id</td>
+            <td th:text="${row.nome}">Nome</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container430 marginAuto paddingTop40"
+     id="deletarMedicoContainer" th:if="${isDeleteMedico}">
+    <form id="form-deleteMedico" th:action="@{/deleteMedico}" method="post">
+        <div class="input-group margin10">
+            <span class="input-group-addon" id="basic-addon1">Id:</span> <input
+                id="id.medico" type="text" class="form-control"
+                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                name="id" required="true" data-toggle="tooltip"
+                data-placement="right" title="Digite o Id do médico." />
+        </div>
+        <div class="margin10" style="padding-top: 10px">
+            <input type="submit" value="Deletar Medico"
+                   class="btn btn-lg btn-success" id="deleteMedico.submit" />
+        </div>
+    </form>
+</div>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+        src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+</body>
+</html>

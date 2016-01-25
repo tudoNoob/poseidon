@@ -23,6 +23,26 @@ public class MedicoController {
 
     private static Logger logger = Logger.getLogger("MedicoController");
 
+    @RequestMapping("/medico")
+    @ViewName(name = "Medico")
+    public ModelAndView buildMedicoPAge(ModelAndView modelAndView,@RequestParam("isCadastroMedico") String isCadastroMedico,@RequestParam("isPesquisaMedico") String isPesquisaMedico,@RequestParam("isDeleteMedico") String isDeleteMedico){
+        modelAndView.getModelMap().addAttribute("isCadastroMedico", isCadastroMedico);
+        modelAndView.getModelMap().addAttribute("isPesquisaMedico", isPesquisaMedico);
+        modelAndView.getModelMap().addAttribute("isDeleteMedico", isDeleteMedico);
+        achaTodosMedicos(modelAndView);
+        return  modelAndView;
+
+    }
+
+    private void achaTodosMedicos(ModelAndView modelAndView) {
+        Iterable<Medico> medicoList = medicoRepository.findAll();
+        List<Medico> medicoView= com.google.common.collect.Lists.newArrayList();
+        for(Medico medico : medicoList){
+            medicoView.add(medico);
+        }
+
+        modelAndView.getModelMap().addAttribute("medicos", medicoView);
+    }
     @RequestMapping("/cadastroMedico")
     @ViewName(name = "cadastroMedico")
     public ModelAndView cadastroMedico(ModelAndView modelAndView) {
