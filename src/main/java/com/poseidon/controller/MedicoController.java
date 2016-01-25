@@ -43,16 +43,9 @@ public class MedicoController {
 
         modelAndView.getModelMap().addAttribute("medicos", medicoView);
     }
-    @RequestMapping("/cadastroMedico")
-    @ViewName(name = "cadastroMedico")
-    public ModelAndView cadastroMedico(ModelAndView modelAndView) {
-        logger.info("CADASTRA MEDICO.");
-        modelAndView.getModelMap().addAttribute("medico", new Medico());
-        return modelAndView;
-    }
 
     @RequestMapping(value = "/deleteMedico")
-    @ViewName(name = "redirect:/dashboard")
+    @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true")
     @NotNullArgs
     public ModelAndView deleteMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("DELETE MEDICO");
@@ -63,7 +56,7 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/createMedico")
-    @ViewName(name = "redirect:/dashboard")
+    @ViewName(name = "redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false")
     @NotNullArgs
     public ModelAndView createUser(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("CREATE MEDICO");
@@ -73,39 +66,5 @@ public class MedicoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/salvarMedico", method = RequestMethod.POST)
-    @ViewName(name = "home")
-    @NotNullArgs
-    public ModelAndView salvarPaciente(@ModelAttribute Medico medico, ModelAndView modelAndView) {
-        logger.info("SALVA MEDICO.");
-        medicoRepository.save(medico);
-        logger.info("salvou medico.");
-        return modelAndView;
-    }
-
-    @RequestMapping("/pesquisarMedico")
-    public ModelAndView pesquisarMedico(ModelAndView modelAndView) {
-        logger.info("PESQUISA MEDICO.");
-        modelAndView.setViewName("pesquisarMedico");
-        Iterable<Medico> medico = medicoRepository.findAll();
-        ArrayList<Medico> medicoList = Lists.newArrayList(medico);
-        logger.info("FindAll:" + medicoList.toString());
-        modelAndView.getModelMap().addAttribute("pacientes", medicoList);
-        modelAndView.getModelMap().addAttribute("paciente", new Medico());
-        return modelAndView;
-    }
-
-    @RequestMapping("/procurarMedico")
-    @NotNullArgs
-    public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @RequestParam String nome) {
-        logger.info("PROCURANDO MEDICO.");
-        Medico medico = medicoRepository.findByNome(nome);
-        ArrayList<Medico> medicos = Lists.newArrayList();
-        medicos.add(medico);
-        modelAndView.getModelMap().addAttribute("medicos", medicos);
-        modelAndView.getModelMap().addAttribute("medico", medico);
-        modelAndView.setViewName("pesquisarMedico");
-        return modelAndView;
-    }
 
 }
