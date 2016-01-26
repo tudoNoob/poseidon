@@ -25,7 +25,6 @@
 
 										</ul></li>
 						<li class="menu"><a class="colorBranco" url="/cadastrarConsulta" th:href="@{/cadastrarConsulta}">Cadastrar Consulta</a></li>
-						<li class="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" ><a class="colorBranco" url="/dashboard" th:href="@{/dashboard}">Dashboard</a></li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Médico<span class="caret"></span></a>
@@ -39,13 +38,13 @@
 									Médicos</a></li>
 
 							</ul></li>
-						<li role="menu "><a href="#" class="colorBranco dropdown-toggle"
+						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#" id="btn-criarConta">Criar Conta</a></li>
-								<li><a href="#" id="btn-editarConta">Editar Conta</a></li>
-								<li><a href="#" id="btn-deletarConta">Deletar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false)}" id="btn-criarConta">Criar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false)}" id="btn-editarConta">Editar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true)}" id="btn-deletarConta">Deletar Conta</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#" id="btn-exibirTodasContas">Exibir todas
 									Contas</a></li>

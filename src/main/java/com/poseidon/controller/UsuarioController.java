@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.*;
 import com.poseidon.model.*;
 
@@ -22,6 +23,17 @@ public class UsuarioController {
 	@Autowired
 	private DadoSessao dadoSessao;
 	
+    @RequestMapping("/conta")
+    @ViewName(name = "Conta")
+    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroConta") String isCadastroConta,@RequestParam("isEditarConta") String isEditarConta,@RequestParam("isDeleteConta") String isDeleteConta){
+        modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
+        modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
+        modelAndView.getModelMap().addAttribute("isDeleteConta", isDeleteConta);
+        //achaTodosMedicos(modelAndView);
+        return  modelAndView;
+
+    }
+    
 	@RequestMapping(value="/createUser")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute UserView userView,@ModelAttribute String role, ModelAndView modelAndView){
