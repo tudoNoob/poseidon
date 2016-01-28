@@ -10,7 +10,7 @@ public class ContaView {
 	public ContaView() {
 	}
 	
-	public static ContaView buildUserView(Users user){
+	public static ContaView buildContaView(Users user){
 		ContaView view = new ContaView();
 		view.setPassword(user.getPassword());
 		view.setUsername(user.getUsername());

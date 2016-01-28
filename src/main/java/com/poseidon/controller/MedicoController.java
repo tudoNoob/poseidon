@@ -25,28 +25,31 @@ public class MedicoController {
 
     @RequestMapping("/medico")
     @ViewName(name = "Medico")
-    public ModelAndView criarPaginaMedico(ModelAndView modelAndView,@RequestParam("isCadastroMedico") String isCadastroMedico,@RequestParam("isPesquisaMedico") String isPesquisaMedico,@RequestParam("isDeleteMedico") String isDeleteMedico, @RequestParam("isEditarMedico") String isEditarMedico){
+    public ModelAndView criarPaginaMedico(ModelAndView modelAndView,@RequestParam("isCadastroMedico") String isCadastroMedico,@RequestParam("isPesquisaMedico") String isPesquisaMedico,@RequestParam("isDeleteMedico") String isDeleteMedico, @RequestParam("isEditarMedico") String isEditarMedico, @RequestParam("isExibirMedico") String isExibirMedico){
         modelAndView.getModelMap().addAttribute("isCadastroMedico", isCadastroMedico);
         modelAndView.getModelMap().addAttribute("isPesquisaMedico", isPesquisaMedico);
         modelAndView.getModelMap().addAttribute("isDeleteMedico", isDeleteMedico);
         modelAndView.getModelMap().addAttribute("isEditarMedico", isEditarMedico);
+        modelAndView.getModelMap().addAttribute("isExibirMedico", isExibirMedico);
         achaTodosMedicos(modelAndView);
         return  modelAndView;
 
     }
-
+    
+    @RequestMapping(value = "/exibirMedico")
+    @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=true")
+    @NotNullArgs
     private void achaTodosMedicos(ModelAndView modelAndView) {
         Iterable<Medico> medicoList = medicoRepository.findAll();
         List<Medico> medicoView= com.google.common.collect.Lists.newArrayList();
         for(Medico medico : medicoList){
             medicoView.add(medico);
         }
-
         modelAndView.getModelMap().addAttribute("medicos", medicoView);
     }
 
     @RequestMapping(value = "/deletarMedico")
-    @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true&isEditarMedico=false")
+    @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true&isEditarMedico=false&isExibirMedico=false")
     @NotNullArgs
     public ModelAndView deletarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("DELETE MEDICO");
@@ -57,7 +60,7 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/cadastrarMedico")
-    @ViewName(name = "redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false")
+    @ViewName(name = "redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=false")
     @NotNullArgs
     public ModelAndView cadastrarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("CREATE MEDICO");
@@ -68,7 +71,7 @@ public class MedicoController {
     }
     
     @RequestMapping(value = "/editarMedico")
-    @ViewName(name = "redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true")
+    @ViewName(name = "redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true&isExibirMedico=false")
     @NotNullArgs
     public ModelAndView editarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("EDIT MEDICO");

@@ -22,33 +22,32 @@
 								<li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a th:href="@{/deletarPaciente}" id="btn-deletarPaciente">Deletar Paciente</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a th:href="@{/pesquisarPaciente}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
-
-										</ul></li>
+							</ul>
+						</li>
 						<li class="menu"><a class="colorBranco" url="/cadastrarConsulta" th:href="@{/cadastrarConsulta}">Cadastrar Consulta</a></li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Médico<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/medico(isCadastroMedico=true,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=false)}" id="btn-criarMedico">Cadastrar Médico</a></li>
-								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=true,isDeleteMedico=false,isEditarMedico=false)}" id="btn-pesquisarMedico">Pesquisar Médico</a></li>
-								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=true,isEditarMedico=false)}" id="btn-deletarMedico">Deletar Médico</a></li>
-								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=true)}" id="btn-editarMedico">Editar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=true,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=false,isExibirMedico=false)}" id="btn-criarMedico">Cadastrar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=true,isDeleteMedico=false,isEditarMedico=false,isExibirMedico=false)}" id="btn-pesquisarMedico">Pesquisar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=true,isEditarMedico=false,isExibirMedico=false)}" id="btn-deletarMedico">Deletar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=true,isExibirMedico=false)}" id="btn-editarMedico">Editar Médico</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#" id="btn-exibirTodosMedicos">Exibir todos
-									Médicos</a></li>
-
-							</ul></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=false,isExibirMedico=true)}" id="btn-exibirTodosMedicos">Exibir todos Médicos</a></li>
+							</ul>
+						</li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false)}" id="btn-criarConta">Criar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false)}" id="btn-editarConta">Editar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true)}" id="btn-deletarConta">Deletar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
+								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true,isExibirConta=false)}" id="btn-deletarConta">Deletar Conta</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#" id="btn-exibirTodasContas">Exibir todas
-									Contas</a></li>
-							</ul></li>
+								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=false,isExibirConta=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
+							</ul>
+						</li>
 						<li class="menu"><a class="colorBranco" url="/sobre" th:href="@{/sobre}">Sobre</a></li>
 						<li class="menu"><p class="logout"><span class="glyphicon glyphicon-log-out"></span><a class="colorBranco marginLeft5" url="/logout" th:href="@{/logout}">Logout</a></p></li>
 					</ul>

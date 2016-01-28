@@ -1,5 +1,7 @@
 package com.poseidon.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,16 +27,18 @@ public class ContaController {
 	
     @RequestMapping("/conta")
     @ViewName(name = "Conta")
-    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroConta") String isCadastroConta,@RequestParam("isEditarConta") String isEditarConta,@RequestParam("isDeleteConta") String isDeleteConta){
+    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroConta") String isCadastroConta,@RequestParam("isEditarConta") String isEditarConta,@RequestParam("isDeleteConta") String isDeleteConta,@RequestParam("isExibirConta") String isExibirConta){
         modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
-        modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
+        modelAndView.getModelMap().addAttribute("isEditarConta", isEditarConta);
         modelAndView.getModelMap().addAttribute("isDeleteConta", isDeleteConta);
+        modelAndView.getModelMap().addAttribute("isExibirConta", isExibirConta);
         //achaTodosMedicos(modelAndView);
         return  modelAndView;
 
     }
     
 	@RequestMapping(value="/cadastrarConta")
+	@ViewName(name = "redirect://conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(contaView);
@@ -62,9 +66,22 @@ public class ContaController {
 		return modelAndView;
 	}*/
 	
-	@RequestMapping(value="/deletarConta")
+	@RequestMapping(value="/exibirConta")
+	@ViewName(name = "redirect://conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=false&isExibirConta=true")
 	@NotNullArgs
-	public ModelAndView deleteUser(@ModelAttribute ContaView contaView, ModelAndView modelAndView){
+    private void exibirConta(ModelAndView modelAndView) {
+        Iterable<Users> contaList = userRepository.findAll();
+        List<Users> contaView = com.google.common.collect.Lists.newArrayList();
+        for(Users user : contaList){
+        	contaView.add(user);
+        }
+        modelAndView.getModelMap().addAttribute("contas", contaList);
+    }
+    
+	@RequestMapping(value="/deletarConta")
+	@ViewName(name = "redirect://conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
+	@NotNullArgs
+	public ModelAndView deletarConta(@ModelAttribute ContaView contaView, ModelAndView modelAndView){
 		Users user = userRepository.findByUsername(contaView.getUsername());
 		Authorities authorities = authoritiesRepository.findByUsername(contaView.getUsername());
 		System.out.println("Delete USER");
@@ -76,13 +93,14 @@ public class ContaController {
 	}
 	
 	@RequestMapping("/editarConta")
+	@ViewName(name = "redirect://conta?isCadastroConta=true&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
-	public ModelAndView editarUsuario(ModelAndView modelAndView, @ModelAttribute ContaView contaView, RedirectAttributes redirectAttributes){
+	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView, RedirectAttributes redirectAttributes){
 		Users user = userRepository.findByUsername(contaView.getUsername());
 		if(user == null){
 			redirectAttributes.addFlashAttribute("contaView",contaView);
 			redirectAttributes.addFlashAttribute("isEditarError", "true");
-			modelAndView.setViewName("redirect:/dashboard");
+			modelAndView.setViewName("redirect:/home");
 			return modelAndView;
 		}
 		dadoSessao.setIdUsuario(user.getId());

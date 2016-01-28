@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class UserViewTest {
 
-    UserView userView;
+    ContaView contaView;
     Users user;
 
     @Before
@@ -16,9 +16,9 @@ public class UserViewTest {
     }
 
     @Test
-    public void testBuildUserView() throws Exception {
-        userView = userView.buildUserView(user);
-        assertEquals(userView.getUsername(), "name");
-        assertEquals(userView.getPassword(), "123");
+    public void testBuildContaView() throws Exception {
+    	contaView = contaView.buildContaView(user);
+        assertEquals(contaView.getUsername(), "name");
+        assertEquals(contaView.getPassword(), "123");
     }
 }

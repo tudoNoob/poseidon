@@ -43,8 +43,8 @@
 	</div>
 
 	<div title="Usuários" class="container430 marginAuto paddingTop40"
-		id="exibrTodasContasContainer" style="display: none">
-
+		id="exibirTodasContasContainer" th:if="${isExibirConta}">
+		<form id="form-createUser" th:action="@{/exibirConta}" method="post">
 		<h1 class="text-align">Usuários</h1>
 		<table class="table">
 			<thead>
@@ -62,6 +62,7 @@
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 
 	<div class="container430 marginAuto paddingTop40"

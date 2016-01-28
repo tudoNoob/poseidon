@@ -50,23 +50,24 @@
 </div>
 
 <div title="ExMedicos" class="container430 marginAuto paddingTop40"
-     id="exibirTodosMedicoContainer" style="display: none">
-
-    <h1 class="text-align">Médicos</h1>
-    <table class="table">
+     id="exibirTodosMedicoContainer" th:if="${isExibirMedico}">
+	<form id="form-exibirMedico" th:action="@{/exibirMedico}" method="post">
+    	<h1 class="text-align">Médicos</h1>
+    	<table class="table">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-        </tr>
+        	<tr>
+           	 <th>Id</th>
+             <th>Nome</th>
+        	</tr>
         </thead>
         <tbody>
-        <tr th:each="row: ${medicos}">
-            <td th:text="${row.id}">Id</td>
-            <td th:text="${row.nome}">Nome</td>
-        </tr>
+        	<tr th:each="row: ${medicos}">
+            	<td th:text="${row.id}">Id</td>
+           		<td th:text="${row.nome}">Nome</td>
+        	</tr>
         </tbody>
-    </table>
+    	</table>
+    </form>
 </div>
 
 <div class="container430 marginAuto paddingTop40"

@@ -8,8 +8,7 @@ import java.text.SimpleDateFormat;
 
 import org.junit.Test;
 
-import com.poseidon.model.UserView;
-import com.poseidon.model.Users;
+import com.poseidon.model.ContaView;
 
 
 public class PoseidonUtilsTest {
@@ -45,7 +44,7 @@ public class PoseidonUtilsTest {
 
     @Test
     public void testConvertStringtoJSON() throws Exception {
-    	UserView user= new UserView().comUsername("user").comPassword("pass").comRoles("ADMIN");
+    	ContaView user= new ContaView().comUsername("user").comPassword("pass").comRoles("ADMIN");
     	
     	assertEquals(PoseidonUtils.convertStringtoJSON(user),"{\"username\":\"user\",\"password\":\"pass\",\"role\":\"ADMIN\"}");
     }
