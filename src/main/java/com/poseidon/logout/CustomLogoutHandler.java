@@ -21,5 +21,4 @@ public class CustomLogoutHandler implements LogoutHandler {
 			logger.info("Erro ao tentar redirecionar para a pagina de login",e);
 		}
 	}
-
 }

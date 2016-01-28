@@ -1,14 +1,15 @@
 package com.poseidon.utils;
 
-import java.text.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.slf4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poseidon.exception.DateSqlParseException;
-import java.util.logging.Level;
 
 public class PoseidonUtils {
 
@@ -62,7 +63,7 @@ public class PoseidonUtils {
         return result;
     }
 
-    public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";
+	public static String CADASTRO_SUCCESS = "Cadastro efetuado com sucesso.";
 
-    public static String CADASTRO_ERROR = "Erro ao efetuar o cadastro.";
+	public static String CADASTRO_ERROR = "Erro ao efetuar o cadastro.";
 }

@@ -4,34 +4,34 @@ import javax.persistence.*;
 
 @Entity
 public class Medico {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-	
-	public Medico(){
-		
+
+	public Medico() {
+
 	}
-	
-	public Medico(Integer id, String nome){
+
+	public Medico(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
-	
-	public void setNome(String nome){
+
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public String getNome(){
+
+	public String getNome() {
 		return nome;
 	}
-	
-	public void setId(Integer id){
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	public Integer getId(){
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -39,6 +39,4 @@ public class Medico {
 	public String toString() {
 		return "Medico [id=" + id + ", nome=" + nome + "]";
 	}
-	
-	
 }

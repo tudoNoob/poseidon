@@ -10,27 +10,26 @@ import org.aspectj.lang.reflect.MethodSignature;
 public class AtributosClasse {
 
 	private String metodoNome;
-	
+
 	private String argumentos;
-	
+
 	private String returnType;
 
-	public static AtributosClasse  builderAtributosClasse(JoinPoint joinPoint ){
+	public static AtributosClasse builderAtributosClasse(JoinPoint joinPoint) {
 		AtributosClasse atributosClasse = new AtributosClasse();
 		Signature signature = joinPoint.getSignature();
-	    String methodName = signature.getName();
-        String arguments = Arrays.toString(joinPoint.getArgs());
-        atributosClasse.setMetodoNome(methodName);
-        atributosClasse.setArgumentos(arguments);
-        
-        final MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+		String methodName = signature.getName();
+		String arguments = Arrays.toString(joinPoint.getArgs());
+		atributosClasse.setMetodoNome(methodName);
+		atributosClasse.setArgumentos(arguments);
+
+		final MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
 		Method method = methodSignature.getMethod();
 		atributosClasse.setReturnType(method.getReturnType().getName());
-		
-        
+
 		return atributosClasse;
 	};
-	
+
 	public String getMetodoNome() {
 		return metodoNome;
 	}
@@ -60,5 +59,4 @@ public class AtributosClasse {
 		return "AtributosClasse [metodoNome=" + metodoNome + ", argumentos=" + argumentos + ", returnType=" + returnType
 				+ "]";
 	}
-
 }

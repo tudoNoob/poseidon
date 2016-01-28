@@ -15,7 +15,7 @@ public class Users {
 
 	private boolean enabled;
 
-	public static Users createUser(UserView userView) {
+	public static Users createUser(ContaView userView) {
 		Users user = new Users();
 
 		user.username = userView.getUsername();

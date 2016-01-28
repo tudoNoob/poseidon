@@ -14,5 +14,4 @@ public class LogoutRequestMatcher implements RequestMatcher {
 		}
 		return false;
 	}
-
 }

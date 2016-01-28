@@ -31,7 +31,4 @@ public class ViewMessage {
 	public String toString() {
 		return "ViewMessage [error=" + error + ", success=" + success + "]";
 	}
-
-	
-	
 }

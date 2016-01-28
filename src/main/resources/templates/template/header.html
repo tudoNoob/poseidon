@@ -19,7 +19,7 @@
 										   aria-expanded="false">Paciente<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/cadastroPaciente}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
-								<li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a th:href="@{/deletePaciente}" id="btn-deletarPaciente">Deletar Paciente</a></li>
+								<li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a th:href="@{/deletarPaciente}" id="btn-deletarPaciente">Deletar Paciente</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a th:href="@{/pesquisarPaciente}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
 
@@ -29,10 +29,10 @@
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Médico<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/medico(isCadastroMedico=true,isPesquisaMedico=false,isDeleteMedico=false)}" id="btn-criarMedico">Cadastrar Médico</a></li>
-								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=true,isDeleteMedico=false)}" id="btn-pesquisarMedico">Pesquisar Médico</a></li>
-								<li><a href="#" id="btn-editarMedico">Editar Médico</a></li>
-								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=true)}" id="btn-deletarMedico">Deletar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=true,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=false)}" id="btn-criarMedico">Cadastrar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=true,isDeleteMedico=false,isEditarMedico=false)}" id="btn-pesquisarMedico">Pesquisar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=true,isEditarMedico=false)}" id="btn-deletarMedico">Deletar Médico</a></li>
+								<li><a th:href="@{/medico(isCadastroMedico=false,isPesquisaMedico=false,isDeleteMedico=false,isEditarMedico=true)}" id="btn-editarMedico">Editar Médico</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#" id="btn-exibirTodosMedicos">Exibir todos
 									Médicos</a></li>
