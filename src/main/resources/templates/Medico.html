@@ -15,7 +15,7 @@
 <!--CRUD Medico-->
 <div class="container430 marginAuto paddingTop40"
      id="criarMedicoContainer"  th:if="${isCadastroMedico}">
-    <form id="form-createMedico" th:action="@{/createMedico}" method="post">
+    <form id="form-createMedico" th:action="@{/cadastrarMedico}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Nome:</span> <input
                 id="user.create" type="text" class="form-control"
@@ -24,8 +24,8 @@
                 data-placement="right" title="Medico tem q ser único." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input type="submit" value="Criar Medico"
-                   class="btn btn-lg btn-success" id="createMedico.submit" />
+            <input type="submit" value="Cadastrar Médico"
+                   class="btn btn-lg btn-success" id="cadastrarMedico.submit" />
         </div>
     </form>
 </div>
@@ -72,7 +72,7 @@
 
 <div class="container430 marginAuto paddingTop40"
      id="deletarMedicoContainer" th:if="${isDeleteMedico}">
-    <form id="form-deleteMedico" th:action="@{/deleteMedico}" method="post">
+    <form id="form-deleteMedico" th:action="@{/deletarMedico}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Id:</span> <input
                 id="id.medico" type="text" class="form-control"
@@ -83,6 +83,23 @@
         <div class="margin10" style="padding-top: 10px">
             <input type="submit" value="Deletar Medico"
                    class="btn btn-lg btn-success" id="deleteMedico.submit" />
+        </div>
+    </form>
+</div>
+
+<div class="container430 marginAuto paddingTop40"
+     id="editarMedicoContainer" th:if="${isEditarMedico}">
+    <form id="form-editarMedico" th:action="@{/editarMedico}" method="post">
+        <div class="input-group margin10">
+            <span class="input-group-addon" id="basic-addon1">Id:</span> <input
+                id="id.medico" type="text" class="form-control"
+                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                name="id" required="true" data-toggle="tooltip"
+                data-placement="right" title="Digite o Id do médico." />
+        </div>
+        <div class="margin10" style="padding-top: 10px">
+            <input type="submit" value="Deletar Medico"
+                   class="btn btn-lg btn-success" id="editarMedico.submit" />
         </div>
     </form>
 </div>

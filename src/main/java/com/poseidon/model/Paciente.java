@@ -2,9 +2,12 @@ package com.poseidon.model;
 
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-import com.google.common.base.Objects;
 import com.poseidon.annotation.ValidateString;
 import com.poseidon.utils.PoseidonUtils;
 
@@ -40,10 +43,8 @@ public class Paciente {
 	private String cpf;
 
 	public Paciente() {
-		this.nome="";
+		this.nome = "";
 	}
-
-	
 
 	public String getNome() {
 		return nome;
@@ -101,37 +102,25 @@ public class Paciente {
 		this.cep = cep;
 	}
 
-
-
 	public Date getDataNasci_For_SQL() {
 		return PoseidonUtils.convertToDate(data_de_nascimento);
 	}
-
-	
 
 	public Date getData_da_ultima_consulta() {
 		return data_da_ultima_consulta;
 	}
 
-
-
 	public void setData_da_ultima_consulta(Date data_da_ultima_consulta) {
 		this.data_da_ultima_consulta = data_da_ultima_consulta;
 	}
-
-
 
 	public void setData_de_nascimento(Date data_de_nascimento) {
 		this.data_de_nascimento = data_de_nascimento;
 	}
 
-
-
 	public Date getData_de_nascimento() {
 		return data_de_nascimento;
 	}
-
-
 
 	public Date getDataConsulta_For_SQL() {
 		return PoseidonUtils.convertToDate(data_da_ultima_consulta);
@@ -160,33 +149,22 @@ public class Paciente {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
 
 	public String getData_de_nascimentoString() {
 		return PoseidonUtils.convertDateToString(data_de_nascimento);
 	}
 
-
-
 	public void setData_de_nascimentoString(String data_de_nascimentoString) {
 		this.data_de_nascimentoString = data_de_nascimentoString;
 	}
-
-	
-
 
 	public String getData_da_ultima_consultaString() {
 		return PoseidonUtils.convertDateToString(data_da_ultima_consulta);
 	}
 
-
-
 	public void setData_da_ultima_consultaString(String data_da_ultima_consultaString) {
 		this.data_da_ultima_consultaString = data_da_ultima_consultaString;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -197,8 +175,4 @@ public class Paciente {
 				+ ", data_da_ultima_consultaString=" + data_da_ultima_consultaString + ", forma_de_pagamento="
 				+ forma_de_pagamento + ", cpf=" + cpf + "]";
 	}
-
-
-
-	
 }

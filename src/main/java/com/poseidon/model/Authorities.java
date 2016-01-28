@@ -6,11 +6,11 @@ import javax.persistence.*;
 public class Authorities {
 
 	@Id
-    @GeneratedValue
-    private Long id;
-	
-	private  String username;
-	
+	@GeneratedValue
+	private Long id;
+
+	private String username;
+
 	private String authority;
 
 	public String getUsername() {
@@ -25,7 +25,6 @@ public class Authorities {
 		this.setUsername(username);
 	}
 
-	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -50,6 +49,4 @@ public class Authorities {
 	public String toString() {
 		return "Authorities [id=" + id + ", username=" + username + ", authority=" + authority + "]";
 	}
-	
-	
 }

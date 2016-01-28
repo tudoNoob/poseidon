@@ -4,13 +4,13 @@ import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class DadoSessao {
 
 	private Integer id;
 
 	private Long idUsuario;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -31,8 +31,4 @@ public class DadoSessao {
 	public String toString() {
 		return "DadoSessao [id=" + id + ", idUsuario=" + idUsuario + "]";
 	}
-
-	
-	
-	
 }

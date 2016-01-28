@@ -14,22 +14,22 @@
 	<!--CRUD Conta-->
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" th:if="${isCadastroConta}">
-		<form id="form-createUser" th:action="@{/createUser}" method="post">
+		<form id="form-createUser" th:action="@{/cadastrarConta}" method="post">
 			<div class="input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					id="user.create" type="text" class="form-control"
-					placeholder="Username" aria-describedby="basic-addon1"
+					placeholder="Username do usuário" aria-describedby="basic-addon1"
 					name="username" required="true" data-toggle="tooltip"
 					data-placement="right" title="Usuário tem que ser único." />
 			</div>
 			<div class="input-group margin10" style="padding-top: 5px">
-				<span class="input-group-addon" id="basic-addon1">Senha</span> <input
+				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
 					id="pass.create" type="password" class="form-control"
-					placeholder="Password" aria-describedby="basic-addon1"
+					placeholder="Senha do usuário" aria-describedby="basic-addon1"
 					name="password" required="true" />
 			</div>
 			<div class="form-group margin10">
-				<label for="sel1">Selecione a role:</label> <select
+				<label for="sel1">Selecione a role(permissão):</label> <select
 					class="form-control" id="sel1" name="role" data-toggle="tooltip"
 					data-placement="right" title="Roles são as permissões do usuário.">
 					<option>ADMIN</option>
@@ -37,8 +37,8 @@
 				</select>
 			</div>
 			<div class="margin10" style="padding-top: 10px">
-				<input type="submit" value="Criar Usuário"
-					class="btn btn-lg btn-success" id="createUser.submit" />
+				<input type="submit" value="Cadastrar Conta"
+					class="btn btn-lg btn-success" id="cadastrarConta.submit" />
 			</div>
 		</form>
 	</div>
@@ -67,24 +67,24 @@
 
 	<div class="container430 marginAuto paddingTop40"
 		id="deletarUsuarioContainer" th:if="${isDeleteConta}">
-		<form id="form-createUser" th:action="@{/deleteUser}" method="post">
+		<form id="form-createUser" th:action="@{/deletarConta}" method="post">
 			<div class="input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					id="user.create" type="text" class="form-control"
-					placeholder="Username" aria-describedby="basic-addon1"
+					placeholder="Username do usuário" aria-describedby="basic-addon1"
 					name="username" required="true" />
 			</div>
 			<div class="margin10" style="padding-top: 10px">
-				<input type="submit" value="Deletar Usuário"
-					class="btn btn-lg btn-success" id="deletarUser.submit" />
+				<input type="submit" value="Deletar Conta"
+					class="btn btn-lg btn-success" id="deletarConta.submit" />
 			</div>
 		</form>
 
 	</div>
 
-	<div class="container430 marginAuto paddingTop40"
+<!-- 	<div class="container430 marginAuto paddingTop40"
 		id="editarUsuarioContainer" th:if="${isEditarConta}">
-		<form id="form-createUser" th:action="@{/editarUser}" method="post">
+		<form id="form-createUser" th:action="@{/editarConta}" method="post">
 			<input id="editarErro" type="hidden" th:value="${formEditarError}" />
 			<div id="editarAlertErro"
 				class="alert alert-danger marginleftRigth10" role="alert"
@@ -92,27 +92,27 @@
 				<strong>Usuário</strong> não encontrado, tente novamente.
 			</div>
 			<div class="input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					id="user.create" type="text" class="form-control"
-					placeholder="Username" aria-describedby="basic-addon1"
+					placeholder="Username do usuário" aria-describedby="basic-addon1"
 					name="username" required="true" />
 			</div>
 			<div class="margin10" style="padding-top: 10px">
-				<input type="submit" value="Editar Usuário"
-					class="btn btn-lg btn-warning" id="editarUser.submit" />
+				<input type="submit" value="Editar Conta"
+					class="btn btn-lg btn-warning" id="editarConta.submit" />
 			</div>
 		</form>
-	</div>
+	</div> -->
 
 	<div class="container430 marginAuto paddingTop40"
 		id="editarContaContainer" th:if="${isEditarConta}">
-		<form id="form-editarUser" th:action="@{/createUser}"
-			th:object="${userView}" method="post" th:if="${isEditarString!=null}">
+		<form id="form-editarUser" th:action="@{/editarConta}"
+			th:object="${contaView}" method="post" th:if="${isEditarString!=null}">
 			<div class="input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuario:</span> <input
+				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					id="user.editar" type="text" class="form-control"
-					placeholder="Username" aria-describedby="basic-addon1"
-					name="username" required="true" th:field="${userView.username}"
+					placeholder="Username do usuário" aria-describedby="basic-addon1"
+					name="username" required="true" th:field="${contaView.username}"
 					data-toggle="tooltip" data-placement="right"
 					title="Usuário tem que ser único." />
 			</div>
@@ -123,17 +123,17 @@
 					name="password" required="true" th:field="${userView.password}" />
 			</div>
 			<div class="form-group margin10">
-				<label for="sel1">Selecione a role:</label> <select
+				<label for="sel1">Selecione a role(permissão):</label> <select
 					class="form-control" id="sel1" name="role"
-					th:field="${userView.role}" data-toggle="tooltip"
+					th:field="${contaView.role}" data-toggle="tooltip"
 					data-placement="right" title="Roles são as permissões do usuário.">
 					<option value="ADMIN">ADMIN</option>
 					<option value="USER">USER</option>
 				</select>
 			</div>
 			<div class="margin10" style="padding-top: 10px">
-				<input type="submit" value="Editar Usuário"
-					class="btn btn-lg btn-warning" id="editarUser.submit" />
+				<input type="submit" value="Editar Conta"
+					class="btn btn-lg btn-warning" id="editarConta.submit" />
 			</div>
 		</form>
 	</div>
