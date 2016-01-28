@@ -1,19 +1,23 @@
 package com.poseidon.controller;
 
-import java.util.*;
-import java.util.logging.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poseidon.annotation.NotNullArgs;
-import com.poseidon.annotation.ValidateArgs;
 import com.poseidon.annotation.ViewName;
-import com.poseidon.dao.*;
-import com.poseidon.model.*;
+import com.poseidon.dao.PacienteDao;
+import com.poseidon.model.DadoSessao;
+import com.poseidon.model.Paciente;
+import com.poseidon.model.ViewMessage;
 import com.poseidon.utils.PoseidonUtils;
 
 import jersey.repackaged.com.google.common.collect.Lists;
@@ -21,12 +25,21 @@ import jersey.repackaged.com.google.common.collect.Lists;
 @Controller
 public class PacienteController {
 	@Autowired
-	private PacienteDao repositories;
+	private PacienteDao pacienteRepository;
 	@Autowired
 	private DadoSessao dadoSessao;
 
 	private static Logger logger = Logger.getLogger("PacienteController");
 
+    @RequestMapping("/paciente")
+    @ViewName(name = "Paciente")
+    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroPaciente") String isCadastroPaciente,@RequestParam("isDeletePaciente") String isDeletePaciente,@RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
+        modelAndView.getModelMap().addAttribute("isCadastroPaciente", isCadastroPaciente);
+        modelAndView.getModelMap().addAttribute("isDeletePaciente", isDeletePaciente);
+        modelAndView.getModelMap().addAttribute("isPesquisaPaciente", isPesquisaPaciente);
+        return  modelAndView;
+    }
+	
 	@RequestMapping("/cadastroPaciente")
 	@ViewName(name = "cadastroPaciente")
 	@NotNullArgs
@@ -39,14 +52,13 @@ public class PacienteController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/salvarPaciente", method = RequestMethod.POST)
-	@ViewName(name = "home")
+	@RequestMapping(value = "/cadastrarPaciente")
+	@ViewName(name = "redirect://paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
-	@ValidateArgs
-	public ModelAndView salvarPaciente(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
+	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 		if (dadoSessao.getId() != null)
 			paciente.setId(dadoSessao.getId());
-		repositories.save(paciente);
+		pacienteRepository.save(paciente);
 		logger.info("salvou paciente.");
 		return modelAndView;
 	}
@@ -54,7 +66,7 @@ public class PacienteController {
 	@RequestMapping("/pesquisarPaciente")
 	@ViewName(name = "pesquisarPaciente")
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
-		Iterable<Paciente> pacientes = repositories.findAll();
+		Iterable<Paciente> pacientes = pacienteRepository.findAll();
 		ArrayList<Paciente> pacientesList = Lists.newArrayList(pacientes);
 		logger.info("FindAll:" + pacientesList.toString());
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
@@ -65,7 +77,7 @@ public class PacienteController {
 	@ViewName(name = "pesquisarPaciente")
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
-		List<Paciente> pacientes = repositories.findByNome(pacienteRequest.getNome());
+		List<Paciente> pacientes = pacienteRepository.findByNome(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
@@ -83,7 +95,7 @@ public class PacienteController {
 	@ViewName(name = "deletePaciente")
 	@NotNullArgs
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
-		repositories.delete(paciente);
+		pacienteRepository.delete(paciente);
 		ViewMessage deletePageModel = new ViewMessage();
 		deletePageModel.setSuccess("Paciente deletado com sucesso!");
 		modelAndView.getModelMap().addAttribute("deletePageModel", deletePageModel);
@@ -95,7 +107,7 @@ public class PacienteController {
 	@NotNullArgs
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {
-		Paciente newPaciente = repositories.findOne(paciente.getId());
+		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
 		dadoSessao.setId(newPaciente.getId());
 		redirectAttributes.addFlashAttribute(newPaciente);
 		return modelAndView;

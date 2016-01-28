@@ -106,26 +106,24 @@
 
 	<div class="container430 marginAuto paddingTop40"
 		id="editarContaContainer" th:if="${isEditarConta}">
-		<form id="form-editarUser" th:action="@{/editarConta}"
-			th:object="${contaView}" method="post" th:if="${isEditarString!=null}">
+		<form id="form-editarUser" th:action="@{/editarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					id="user.editar" type="text" class="form-control"
 					placeholder="Username do usuário" aria-describedby="basic-addon1"
-					name="username" required="true" th:field="${contaView.username}"
+					name="username" required="true"
 					data-toggle="tooltip" data-placement="right"
 					title="Usuário tem que ser único." />
 			</div>
 			<div class="input-group margin10" style="padding-top: 5px">
-				<span class="input-group-addon" id="basic-addon1">Senha</span> <input
+				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
 					id="pass.editar" type="text" class="form-control"
-					placeholder="Password" aria-describedby="basic-addon1"
-					name="password" required="true" th:field="${userView.password}" />
+					placeholder="Senha do usuário" aria-describedby="basic-addon1"
+					name="password" required="true"/>
 			</div>
 			<div class="form-group margin10">
 				<label for="sel1">Selecione a role(permissão):</label> <select
-					class="form-control" id="sel1" name="role"
-					th:field="${contaView.role}" data-toggle="tooltip"
+					class="form-control" id="sel1" name="role" data-toggle="tooltip"
 					data-placement="right" title="Roles são as permissões do usuário.">
 					<option value="ADMIN">ADMIN</option>
 					<option value="USER">USER</option>

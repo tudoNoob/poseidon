@@ -74,11 +74,11 @@
      id="deletarMedicoContainer" th:if="${isDeleteMedico}">
     <form id="form-deleteMedico" th:action="@{/deletarMedico}" method="post">
         <div class="input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">Id:</span> <input
+            <span class="input-group-addon" id="basic-addon1">ID:</span> <input
                 id="id.medico" type="text" class="form-control"
-                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                placeholder="ID do Médico" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
-                data-placement="right" title="Digite o Id do médico." />
+                data-placement="right" title="Digite o ID do médico." />
         </div>
         <div class="margin10" style="padding-top: 10px">
             <input type="submit" value="Deletar Medico"
@@ -87,7 +87,7 @@
     </form>
 </div>
 
-<!-- <div class="container430 marginAuto paddingTop40"
+<div class="container430 marginAuto paddingTop40"
      id="editarMedicoContainer" th:if="${isEditarMedico}">
     <form id="form-editarMedico" th:action="@{/editarMedico}" method="post">
         <div class="input-group margin10">
@@ -102,7 +102,7 @@
                    class="btn btn-lg btn-success" id="editarMedico.submit" />
         </div>
     </form>
-</div> -->
+</div>
 
 <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>

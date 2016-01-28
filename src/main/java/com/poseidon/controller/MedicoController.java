@@ -49,7 +49,7 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/deletarMedico")
-    @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true&isEditarMedico=false&isExibirMedico=false")
+    @ViewName(name = "redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true&isEditarMedico=false&isExibirMedico=false")
     @NotNullArgs
     public ModelAndView deletarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("DELETE MEDICO");
@@ -66,7 +66,7 @@ public class MedicoController {
         logger.info("CREATE MEDICO");
         logger.info("medico>" + medic.toString());
         medicoRepository.save(medic);
-        logger.info("salvou medico.");
+        logger.info("cadastrou medico.");
         return modelAndView;
     }
     

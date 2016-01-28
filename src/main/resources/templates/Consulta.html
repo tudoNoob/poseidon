@@ -15,14 +15,14 @@
         <div th:include="template/header :: header"></div>
         <div id="container" style="width: 860px; margin: auto">
             <div id="container.form" style="padding-top: 20px" th:if="${isCadastroConsulta}">
-                <form th:action="@{/cadastrarConsulta}" method="post" id="formCadastro" th:object="${consulta}">
+                <form th:action="@{/cadastrarConsulta}" method="post" id="formCadastro">
                     <div id="left.container" style="float: left; width: 48%">
                         <label for="idmedicocadastro" style="display:none"></label>
                         <div><label>ID do Médico:</label></div> 
                         <div class="input-group" id="id_medicodiv">
                             <input type="text" class="form-control" placeholder="ID Médico"
                                    aria-describedby="basic-addon1" name="id_medico"
-                                   id="idmedicocadastro" maxlength="30" th:field="${consulta.id_medico}" /><span
+                                   id="idmedicocadastro" maxlength="30"/><span
                                    class="input-group-addon" id="addon-id_medico">9...</span>
                         </div>
                         <label for="idpacientecadastro" style="display:none"></label>
@@ -30,7 +30,7 @@
                         <div class="input-group" id="id_pacientediv">
                             <input type="text" class="form-control" placeholder="ID Paciente"
                                    aria-describedby="basic-addon1" name="id_paciente"
-                                   id="idpacientecadastro" maxlength="30" th:field="${consulta.id_paciente}" /><span
+                                   id="idpacientecadastro" maxlength="30"/><span
                                    class="input-group-addon" id="addon-id_paciente">9...</span>
                         </div>
                         <label for="valorcadastro" style="display:none"></label>
@@ -38,7 +38,7 @@
                         <div class="input-group" id="valordiv">
                             <input type="text" class="form-control valor" placeholder="Valor da Consulta"
                                    aria-describedby="basic-addon1" name="valor"
-                                   id="valorcadastro" maxlength="10" th:field="${consulta.valor}" /><span
+                                   id="valorcadastro" maxlength="10"/><span
                                    class="input-group-addon" id="addon-preco">R$ 9999.99</span>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="input-group" id="data_consultadiv">
                             <input type="text" class="form-control data" placeholder="Data da Consulta"
                                    aria-describedby="basic-addon1" name="data_consulta"
-                                   id="dataconsultacadastro" maxlength="10"  th:field="${consulta.data_consulta}"/><span
+                                   id="dataconsultacadastro" maxlength="10"/><span
                                    class="input-group-addon" id="addon-data_consulta">dd/mm/yyyy</span>
                         </div>
                         <label for="horarioconsultacadastro" style="display:none"></label>
@@ -56,7 +56,7 @@
                         <div class="input-group" id="horario_consultadiv">
                             <input type="text" class="form-control horario" placeholder="Horário da Consulta"
                                    aria-describedby="basic-addon1" name="horario_consulta"
-                                   id="horarioconsultacadastro" maxlength="8" th:field="${consulta.horario_consulta}" /><span
+                                   id="horarioconsultacadastro" maxlength="8"/><span
                                    class="input-group-addon" id="addon-horario_consulta">hh:mm:ss</span>
                         </div>
                         <div style="padding-top: 10px; padding-left: 226px">
