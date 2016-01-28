@@ -34,7 +34,6 @@ public class ContaController {
         modelAndView.getModelMap().addAttribute("isExibirConta", isExibirConta);
         //achaTodosMedicos(modelAndView);
         return  modelAndView;
-
     }
     
 	@RequestMapping(value="/cadastrarConta")
