@@ -10,7 +10,7 @@ $( ".menu" ).each(function( index ) {
 			var link=$(this).children();
 			  var url= $(link).attr('url');
 			  var pathname=window.location.pathname;
-			  if(url==pathname){
+			  if(url==+pathname){
 				  $(this).addClass('active');
 				  link.removeClass('colorBranco');
 				  link.addClass("focusedMenu");

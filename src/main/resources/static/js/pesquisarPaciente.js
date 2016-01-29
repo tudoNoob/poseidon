@@ -15,7 +15,7 @@ $(document)
 
 					criandoPaginacao();
 					function criandoPaginacao() {
-						if ($('#pacientesJSON').val() == "") {
+						if ($('#pacientesJSON').val() === "") {
 							return;
 						}
 
@@ -44,7 +44,7 @@ $(document)
 											
 											var iterador = num * 10;
 											if(iterador>pesquisaDados.length){
-												if(num==1){
+												if(num===1){
 													iterador=pesquisaDados.length;
 												}else{
 												return;

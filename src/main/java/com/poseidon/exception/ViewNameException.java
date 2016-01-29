@@ -23,7 +23,7 @@ public class ViewNameException extends PoseidonException {
 
 	public ViewNameException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
-	
+
 	}
 
 }
