@@ -20,7 +20,7 @@
                         <label for="idmedicocadastro" style="display:none"></label>
                         <div><label>ID do Médico:</label></div> 
                         <div class="input-group" id="id_medicodiv">
-                            <input type="text" class="form-control" placeholder="ID Médico"
+                            <input type="text" class="form-control" placeholder="ID do Médico"
                                    aria-describedby="basic-addon1" name="id_medico"
                                    id="idmedicocadastro" maxlength="30"/><span
                                    class="input-group-addon" id="addon-id_medico">9...</span>
@@ -28,7 +28,7 @@
                         <label for="idpacientecadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">ID do Paciente:</label></div> 
                         <div class="input-group" id="id_pacientediv">
-                            <input type="text" class="form-control" placeholder="ID Paciente"
+                            <input type="text" class="form-control" placeholder="ID do Paciente"
                                    aria-describedby="basic-addon1" name="id_paciente"
                                    id="idpacientecadastro" maxlength="30"/><span
                                    class="input-group-addon" id="addon-id_paciente">9...</span>
@@ -44,7 +44,7 @@
                     </div>
                     <div id="rigth.container" style="float: right; width: 48%">
                         <label for="dataconsultacadastro" style="display:none"></label>
-                        <div><label>Data da Consulta</label></div>
+                        <div><label>Data da Consulta:</label></div>
                         <div class="input-group" id="data_consultadiv">
                             <input type="text" class="form-control data" placeholder="Data da Consulta"
                                    aria-describedby="basic-addon1" name="data_consulta"
@@ -59,7 +59,7 @@
                                    id="horarioconsultacadastro" maxlength="8"/><span
                                    class="input-group-addon" id="addon-horario_consulta">hh:mm:ss</span>
                         </div>
-                        <div style="padding-top: 10px; padding-left: 226px">
+                        <div style="padding-top: 25px; padding-left: 226px">
                             <input type="submit" value="Cadastrar Consulta"
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submitcadastrarconsulta" />
@@ -87,7 +87,7 @@
         <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
         <script type="text/javascript"  th:src="@{/webjars/jquery-mask-plugin/1.13.4/dist/jquery.mask.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/jquery-validation/1.14.0/jquery.validate.js}"></script>
-        <script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}">
+        <script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}"></script>
         <script type="text/javascript" src="/js/menu.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {

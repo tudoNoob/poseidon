@@ -53,7 +53,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/cadastrarPaciente")
-	@ViewName(name = "redirect://paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
+	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 		if (dadoSessao.getId() != null)
@@ -81,13 +81,6 @@ public class PacienteController {
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
-		return modelAndView;
-	}
-
-	@RequestMapping("/deletePaciente")
-	@ViewName(name = "deletePaciente")
-	public ModelAndView deletePaciente(ModelAndView modelAndView) {
-		modelAndView.getModelMap().addAttribute("deletePageModel", new ViewMessage());
 		return modelAndView;
 	}
 
