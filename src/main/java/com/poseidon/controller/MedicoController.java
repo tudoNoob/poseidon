@@ -41,7 +41,7 @@ public class MedicoController {
     @NotNullArgs
     private void achaTodosMedicos(ModelAndView modelAndView) {
         Iterable<Medico> medicoList = medicoRepository.findAll();
-        List<Medico> medicoView= com.google.common.collect.Lists.newArrayList();
+        List<Medico> medicoView = com.google.common.collect.Lists.newArrayList();
         for(Medico medico : medicoList){
             medicoView.add(medico);
         }

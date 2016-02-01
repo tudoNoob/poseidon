@@ -29,25 +29,24 @@
     </form>
 </div>
 
-<div title="Medicos" class="container430 marginAuto paddingTop40"
+<!-- <div title="Medicos" class="container430 marginAuto paddingTop40"
      id="pesquisarMedicoContainer" th:if="${isPesquisaMedico}">
-
-    <h1 class="text-align">Médicos</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Nome</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="row: ${medicos}">
-            <td th:text="${row.nome}">Nome</td>
-
+    <form id="form-createMedico" th:action="@{/pesquisarMedico}" method="post">
+    	<h1 class="text-align">Médicos</h1>
+    	<table class="table">
+        	<thead>
+        	<tr>
+            	<th>Nome</th>
+        	</tr>
+        	</thead>
+        	<tbody>
+        	<tr th:each="row: ${medicos}">
+            	<td th:text="${row.nome}">Nome</td>
         </tr>
         </tbody>
     </table>
-</div>
+    </form>
+</div> -->
 
 <div title="ExMedicos" class="container430 marginAuto paddingTop40"
      id="exibirTodosMedicoContainer" th:if="${isExibirMedico}">

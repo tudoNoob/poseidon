@@ -106,7 +106,7 @@
                                    name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30"/><span
                                    class="input-group-addon" id="addon-cep">R$,Cartão...</span>
                         </div>
-                        <div style="padding-top: 10px; padding-left: 226px">
+                        <div style="padding-top: 25px; padding-left: 226px">
                             <input type="submit" value="Cadastrar Paciente"
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submitcadastrarpaciente" />
@@ -132,9 +132,9 @@
 			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/deletarPaciente}" method="post">
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="nome">Id:</label>
+					<label class="col-md-4 control-label" for="nome">ID:</label>
 					<div class="col-md-4">
-						<input id="nome" name="id" type="text" placeholder="Digite o id..."
+						<input id="nome" name="id" type="text" placeholder="ID do Paciente"
 							class="form-control input-md" required="true" />
 					</div>
 				</div>
@@ -143,7 +143,7 @@
 					<label class="col-md-4 control-label" for="nome">Nome:</label>
 					<div class="col-md-4">
 						<input id="nome" name="nome" type="text"
-							placeholder="Digite o nome..." class="form-control input-md"
+							placeholder="Nome do Paciente" class="form-control input-md"
 							required="true" />
 					</div>
 				</div>
@@ -151,7 +151,7 @@
 				<div class="form-group">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
-						<p><input type="submit" value="deletar" class="btn btn-success" /></p>
+						<p><input type="submit" value="Deletar" class="btn btn-success" /></p>
 					</div>
 <!-- 					<div class="col-md-4"></div>
 					<div th:if="${deletePageModel.error!=null}"
@@ -180,7 +180,7 @@
 						</div>
 						<div class="col-md-4 paddingLeft5">
 							<p>
-								<input type="submit" value="pesquisar" class="btn btn-success" />
+								<input type="submit" value="Pesquisar" class="btn btn-success" />
 								<input type="button" value="Editar"
 									class="btn btn-warning marginLeft5" id="editarPaciente" />
 							</p>
@@ -191,7 +191,6 @@
 			</div>
 
 			<div title="Pacientes" class="marginAuto">
-
 				<h1 class="text-align">Pacientes</h1>
 				<table class="table">
 					<thead>
@@ -215,12 +214,13 @@
 				<div id="page-selection" class="container430 marginAuto"></div>
 			</div>
 		</div>
+		
 		<div id="dialog-newUser" style="display: none; width: 200px"
 			title="Editando Paciente">
 			<form id="form-createUser" th:action="@{/editarPaciente}"
-				method="post" th:object="${paciente}">
+				method="post">
 				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1">Id:</span><input
+					<span class="input-group-addon" id="basic-addon1">ID:</span><input
 						id="user.create" type="text" class="form-control" placeholder="id"
 						aria-describedby="basic-addon1" name="id" required="true" />
 				</div>

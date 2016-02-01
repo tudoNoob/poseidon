@@ -37,48 +37,40 @@ public class ContaController {
     }
     
 	@RequestMapping(value="/cadastrarConta")
-	@ViewName(name = "redirect://conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
+	@ViewName(name = "redirect:/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
-	public ModelAndView createUser(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
+	public ModelAndView cadastrarConta(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(contaView);
-		if(dadoSessao.getIdUsuario()!= null)user.setId(dadoSessao.getIdUsuario());
+		//if(dadoSessao.getIdUsuario()!= null)user.setId(dadoSessao.getIdUsuario());
 		System.out.println("CREATE CONTA");
 		System.out.println("user>"+user.toString());
 		userRepository.save(user);
-		modelAndView.setViewName("redirect:/dashboard");
+/*		modelAndView.setViewName("redirect:/home");
 		if(role!= null && !role.isEmpty()){
 			
 			contaView.setRole(role);
 			modelAndView.setViewName("redirect:/home");
 		}
 		if(dadoSessao.getIdUsuario()== null)authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(contaView.getRole()).toString()));
-		dadoSessao.setIdUsuario(null);
+		dadoSessao.setIdUsuario(null);*/
+		System.out.println("cadastrou conta.");
 		return modelAndView;
 	}
 	
-/*	@RequestMapping(value="/createSimpleUser")
-	@NotNullArgs
-	public ModelAndView createSimpleUser(@ModelAttribute ContaView contaView, ModelAndView modelAndView, RedirectAttributes redirectAttributes){
-		redirectAttributes.addFlashAttribute(contaView);
-		redirectAttributes.addFlashAttribute("USER");
-		modelAndView.setViewName("redirect:/createUser");
-		return modelAndView;
-	}*/
-	
 	@RequestMapping(value="/exibirConta")
-	@ViewName(name = "redirect://conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=false&isExibirConta=true")
+	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=false&isExibirConta=true")
 	@NotNullArgs
     private void exibirConta(ModelAndView modelAndView) {
         Iterable<Users> contaList = userRepository.findAll();
-        List<Users> contaView = com.google.common.collect.Lists.newArrayList();
+        List<Users> contasView = com.google.common.collect.Lists.newArrayList();
         for(Users user : contaList){
-        	contaView.add(user);
+        	contasView.add(user);
         }
         modelAndView.getModelMap().addAttribute("contas", contaList);
     }
     
 	@RequestMapping(value="/deletarConta")
-	@ViewName(name = "redirect://conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
+	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView deletarConta(@ModelAttribute ContaView contaView, ModelAndView modelAndView){
 		Users user = userRepository.findByUsername(contaView.getUsername());
@@ -87,12 +79,11 @@ public class ContaController {
 		System.out.println("user>"+user.toString());
 		userRepository.delete(user);
 		authoritiesRepository.delete(authorities);
-		modelAndView.setViewName("redirect:/dashboard");
 		return modelAndView;
 	}
 	
 	@RequestMapping("/editarConta")
-	@ViewName(name = "redirect://conta?isCadastroConta=true&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
+	@ViewName(name = "redirect:/conta?isCadastroConta=true&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView, RedirectAttributes redirectAttributes){
 		Users user = userRepository.findByUsername(contaView.getUsername());
@@ -109,7 +100,7 @@ public class ContaController {
 		contaView.setRole(authorities.getAuthority().replace("ROLE_", ""));
 		redirectAttributes.addFlashAttribute("isEditar", "isEditar");
 		redirectAttributes.addFlashAttribute("contaView",contaView);
-		modelAndView.setViewName("redirect:/dashboard");
+		modelAndView.setViewName("redirect:/home");
 		return modelAndView;
 	}
 }
