@@ -14,7 +14,6 @@ public class LoginController {
 	@ViewName(name="login")
 	public ModelAndView buildLoginPage(ModelAndView modelAndView){
 		modelAndView.getModelMap().addAttribute("user", new ContaView());
-		modelAndView.setViewName("login");
 		return modelAndView;
 	}
 	

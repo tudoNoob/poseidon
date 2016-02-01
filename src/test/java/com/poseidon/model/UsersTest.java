@@ -22,8 +22,6 @@ public class UsersTest {
         assertEquals(user.getUsername(), "name");
         assertEquals(user.getPassword(), "123");
         assertTrue(user.isEnabled());
-
-
     }
 
 }

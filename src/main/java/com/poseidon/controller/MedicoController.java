@@ -19,7 +19,7 @@ import com.poseidon.model.Medico;
 public class MedicoController {
 
     @Autowired
-    private MedicoDao medicoRepository;
+     MedicoDao medicoRepository;
 
     private static Logger logger = Logger.getLogger("MedicoController");
 
