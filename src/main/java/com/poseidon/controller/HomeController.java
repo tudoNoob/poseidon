@@ -9,7 +9,7 @@ import com.poseidon.annotation.ViewName;
 @Controller
 public class HomeController {
 
-	@RequestMapping("/home")
+	@RequestMapping("/homePage")
 	@ViewName(name = "home")
 	public ModelAndView home(ModelAndView modelAndView) {
 		return modelAndView;
