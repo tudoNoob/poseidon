@@ -39,7 +39,7 @@ public class MedicoController {
     @RequestMapping(value = "/exibirMedico")
     @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=true")
     @NotNullArgs
-    private void achaTodosMedicos(ModelAndView modelAndView) {
+    public void achaTodosMedicos(ModelAndView modelAndView) {
         Iterable<Medico> medicoList = medicoRepository.findAll();
         List<Medico> medicoView = com.google.common.collect.Lists.newArrayList();
         for(Medico medico : medicoList){

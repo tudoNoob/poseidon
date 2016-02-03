@@ -33,7 +33,7 @@ public class PacienteController {
 
     @RequestMapping("/paciente")
     @ViewName(name = "Paciente")
-    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroPaciente") String isCadastroPaciente,@RequestParam("isDeletePaciente") String isDeletePaciente,@RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
+    public ModelAndView buildPacientePage(ModelAndView modelAndView,@RequestParam("isCadastroPaciente") String isCadastroPaciente,@RequestParam("isDeletePaciente") String isDeletePaciente,@RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
         modelAndView.getModelMap().addAttribute("isCadastroPaciente", isCadastroPaciente);
         modelAndView.getModelMap().addAttribute("isDeletePaciente", isDeletePaciente);
         modelAndView.getModelMap().addAttribute("isPesquisaPaciente", isPesquisaPaciente);
@@ -64,23 +64,21 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/pesquisarPaciente")
-	@ViewName(name = "pesquisarPaciente")
+	@ViewName(name = "redirect:/paciente?isCadastroPaciente=false&isDeletePaciente=false&isPesquisaPaciente=true")
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
-		Iterable<Paciente> pacientes = pacienteRepository.findAll();
-		ArrayList<Paciente> pacientesList = Lists.newArrayList(pacientes);
-		logger.info("FindAll:" + pacientesList.toString());
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;
 	}
 
 	@RequestMapping("/procurarPaciente")
-	@ViewName(name = "pesquisarPaciente")
+	@ViewName(name = "Paciente")
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
 		List<Paciente> pacientes = pacienteRepository.findByNome(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
+		modelAndView = this.buildPacientePage(modelAndView, "false", "false", "true");
 		return modelAndView;
 	}
 
