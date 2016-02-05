@@ -55,10 +55,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="row: ${usuarios}">
+				<tr th:each="row: ${contas}">
 					<td th:text="${row.username}">Username</td>
 					<td th:text="${row.password}">Password</td>
-					<td th:text="${row.role}">Role</td>
+					<td th:text="${row.enabled}">Enabled</td>
 				</tr>
 			</tbody>
 		</table>
