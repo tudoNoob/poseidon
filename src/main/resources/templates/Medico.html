@@ -55,19 +55,55 @@
     	<table class="table">
         <thead>
         	<tr>
-           	 <th>Id</th>
+           	 <th>ID</th>
              <th>Nome</th>
         	</tr>
         </thead>
         <tbody>
         	<tr th:each="row: ${medicos}">
-            	<td th:text="${row.id}">Id</td>
+            	<td th:text="${row.id}">ID</td>
            		<td th:text="${row.nome}">Nome</td>
         	</tr>
         </tbody>
     	</table>
     </form>
 </div>
+
+		<div class="container1200 marginAuto" th:if="${isPesquisaMedico}">
+			<div class="container-header">
+				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/pesquisarMedico}" method="post">
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="nome">Nome:</label>
+						<div class="col-md-2 paddingRight5">
+							<input id="nome" name="nome" type="text" placeholder=""
+								class="form-control input-md"  required="true" /> <!-- th:field="*{nome}"  -->
+						</div>
+						<div class="col-md-4 paddingLeft5">
+							<p>
+								<input type="submit" value="Pesquisar" class="btn btn-success" />
+							</p>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div title="Medicos" class="container430 marginAuto paddingTop40">
+				<h1 class="text-align">Médico</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyDynamic">
+					<tr id="firstRow"  style="display:none"/>
+					</tbody>
+				</table>
+				<div id="page-selection" class="container430 marginAuto"></div>
+			</div>
+		</div>
 
 <div class="container430 marginAuto paddingTop40"
      id="deletarMedicoContainer" th:if="${isDeleteMedico}">
@@ -90,11 +126,18 @@
      id="editarMedicoContainer" th:if="${isEditarMedico}">
     <form id="form-editarMedico" th:action="@{/editarMedico}" method="post">
         <div class="input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">Id:</span> <input
+            <span class="input-group-addon" id="basic-addon1">ID:</span> <input
                 id="id.medico" type="text" class="form-control"
                 placeholder="Nome do Médico" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
                 data-placement="right" title="Digite o Id do médico." />
+        </div>
+        <div class="input-group margin10">
+            <span class="input-group-addon" id="basic-addon1">Novo nome:</span> <input
+                id="nome.medico" type="text" class="form-control"
+                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                name="nome" required="true" data-toggle="tooltip"
+                data-placement="left" title="Digite o novo nome do médico." />
         </div>
         <div class="margin10" style="padding-top: 10px">
             <input type="submit" value="Editar Medico"

@@ -56,11 +56,15 @@ public class PacienteController {
 	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
-		if (dadoSessao.getId() != null)
+/*		System.out.println(dadoSessao.toString());
+		if (dadoSessao.getId() != null){
 			paciente.setId(dadoSessao.getId());
-		pacienteRepository.save(paciente);
-		logger.info("salvou paciente.");
-		return modelAndView;
+		}*/
+        logger.info("CREATE PACIENTE");
+        logger.info("paciente>" + paciente.toString());
+        pacienteRepository.save(paciente);
+        logger.info("cadastrou paciente.");
+        return modelAndView;
 	}
 
 	@RequestMapping("/pesquisarPaciente")
@@ -94,7 +98,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/editarPaciente")
-	@ViewName(name = "redirect:/cadastroPaciente")
+	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {

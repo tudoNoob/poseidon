@@ -32,7 +32,7 @@ public class ContaController {
         modelAndView.getModelMap().addAttribute("isEditarConta", isEditarConta);
         modelAndView.getModelMap().addAttribute("isDeleteConta", isDeleteConta);
         modelAndView.getModelMap().addAttribute("isExibirConta", isExibirConta);
-        //achaTodosMedicos(modelAndView);
+        exibirConta(modelAndView);
         return  modelAndView;
     }
     
@@ -66,7 +66,7 @@ public class ContaController {
         for(Users user : contaList){
         	contasView.add(user);
         }
-        modelAndView.getModelMap().addAttribute("contas", contaList);
+        modelAndView.getModelMap().addAttribute("contas", contasView);
     }
     
 	@RequestMapping(value="/deletarConta")
