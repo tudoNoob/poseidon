@@ -15,4 +15,10 @@ public class HomeController {
 		return modelAndView;
 	}
 
+	@RequestMapping("/")
+	@ViewName(name = "redirect:homePage")
+	public ModelAndView defaultUrl(ModelAndView modelAndView) {
+		return modelAndView;
+	}
+
 }
