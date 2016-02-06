@@ -16,14 +16,14 @@
      id="criarMedicoContainer"  th:if="${isCadastroMedico}">
     <form id="form-createMedico" th:action="@{/cadastrarMedico}" method="post">
         <div class="input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">Nome:</span> <input
+            <span class="input-group-addon" id="basic-addon1">Nome:</span> <input tabindex="1"
                 id="user.create" type="text" class="form-control"
                 placeholder="Nome do Médico" aria-describedby="basic-addon1"
                 name="nome" required="true" data-toggle="tooltip"
                 data-placement="right" title="Medico tem q ser único." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input type="submit" value="Cadastrar Médico"
+            <input tabindex="2" type="submit" value="Cadastrar Médico"
                    class="btn btn-lg btn-success" id="cadastrarMedico.submit" />
         </div>
     </form>
@@ -76,12 +76,12 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
 						<div class="col-md-2 paddingRight5">
-							<input id="nome" name="nome" type="text" placeholder=""
+							<input tabindex="1" id="nome" name="nome" type="text" placeholder=""
 								class="form-control input-md"  required="true" /> <!-- th:field="*{nome}"  -->
 						</div>
 						<div class="col-md-4 paddingLeft5">
 							<p>
-								<input type="submit" value="Pesquisar" class="btn btn-success" />
+								<input tabindex="2" type="submit" value="Pesquisar" class="btn btn-success" />
 							</p>
 						</div>
 					</div>
@@ -110,13 +110,13 @@
     <form id="form-deleteMedico" th:action="@{/deletarMedico}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
-                id="id.medico" type="text" class="form-control"
+                tabindex="1" id="id.medico" type="text" class="form-control"
                 placeholder="ID do Médico" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
                 data-placement="right" title="Digite o ID do médico." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input type="submit" value="Deletar Medico"
+            <input tabindex="2" type="submit" value="Deletar Medico"
                    class="btn btn-lg btn-success" id="deleteMedico.submit" />
         </div>
     </form>
@@ -127,20 +127,20 @@
     <form id="form-editarMedico" th:action="@{/editarMedico}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
-                id="id.medico" type="text" class="form-control"
+                tabindex="1" id="id.medico" type="text" class="form-control"
                 placeholder="Nome do Médico" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
                 data-placement="right" title="Digite o Id do médico." />
         </div>
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Novo nome:</span> <input
-                id="nome.medico" type="text" class="form-control"
+                tabindex="2" id="nome.medico" type="text" class="form-control"
                 placeholder="Nome do Médico" aria-describedby="basic-addon1"
                 name="nome" required="true" data-toggle="tooltip"
                 data-placement="left" title="Digite o novo nome do médico." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input type="submit" value="Editar Medico"
+            <input tabindex="3" type="submit" value="Editar Medico"
                    class="btn btn-lg btn-success" id="editarMedico.submit" />
         </div>
     </form>
