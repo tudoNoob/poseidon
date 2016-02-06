@@ -2,6 +2,8 @@ package com.poseidon.controller;
 
 import java.util.List;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -62,9 +64,10 @@ public class ContaController {
 	@NotNullArgs
     private void exibirConta(ModelAndView modelAndView) {
         Iterable<Users> contaList = userRepository.findAll();
-        List<Users> contasView = com.google.common.collect.Lists.newArrayList();
-        for(Users user : contaList){
-        	contasView.add(user);
+        List<ContaView> contasView = Lists.newArrayList();
+		for(Users user : contaList){
+			Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
+			contasView.add(new ContaViewBuilder().convertUsersThroughContaView(user).withAuthority(authority.getAuthority()).build());
         }
         modelAndView.getModelMap().addAttribute("contas", contasView);
     }
