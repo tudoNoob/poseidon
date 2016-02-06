@@ -1,6 +1,7 @@
 package com.poseidon.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -26,7 +27,9 @@ public class ContaController {
 	
 	@Autowired
 	private DadoSessao dadoSessao;
-	
+
+	private Logger logger = Logger.getLogger("ContaController");
+
     @RequestMapping("/conta")
     @ViewName(name = "Conta")
     public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroConta") String isCadastroConta,@RequestParam("isEditarConta") String isEditarConta,@RequestParam("isDeleteConta") String isDeleteConta,@RequestParam("isExibirConta") String isExibirConta){
@@ -47,14 +50,9 @@ public class ContaController {
 		System.out.println("CREATE CONTA");
 		System.out.println("user>"+user.toString());
 		userRepository.save(user);
-/*		modelAndView.setViewName("redirect:/home");
-		if(role!= null && !role.isEmpty()){
-			
-			contaView.setRole(role);
-			modelAndView.setViewName("redirect:/home");
-		}
-		if(dadoSessao.getIdUsuario()== null)authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(contaView.getRole()).toString()));
-		dadoSessao.setIdUsuario(null);*/
+		//if(dadoSessao.getIdUsuario()== null)
+			authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(contaView.getRole()).toString()));
+		//dadoSessao.setIdUsuario(null);
 		System.out.println("cadastrou conta.");
 		return modelAndView;
 	}
@@ -66,9 +64,12 @@ public class ContaController {
         Iterable<Users> contaList = userRepository.findAll();
         List<ContaView> contasView = Lists.newArrayList();
 		for(Users user : contaList){
-			Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
-			contasView.add(new ContaViewBuilder().convertUsersThroughContaView(user).withAuthority(authority.getAuthority()).build());
-        }
+			if(user!= null && user.getUsername() != null && !user.getUsername().isEmpty()) {
+				logger.info(user.toString());
+				Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
+				contasView.add(new ContaViewBuilder().convertUsersThroughContaView(user).withAuthority(authority.getAuthority()).build());
+			}
+		}
         modelAndView.getModelMap().addAttribute("contas", contasView);
     }
     
