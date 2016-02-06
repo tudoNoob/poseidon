@@ -26,7 +26,7 @@
 						</li>
 						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
-												   aria-expanded="false">Gerenciar Consultas<span class="caret"></span></a>
+												   aria-expanded="false">Consultas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/consulta(isCadastroConsulta=true,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-cadastrarConsulta">Cadastrar Consulta</a></li>
 								<li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=true,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-deletarConsulta">Deletar Consulta</a></li>
@@ -49,7 +49,7 @@
 						</li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
-												   aria-expanded="false">Gerenciar Contas<span class="caret"></span></a>
+												   aria-expanded="false">Contas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
 								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
