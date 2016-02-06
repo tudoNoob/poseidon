@@ -2,6 +2,7 @@ package com.poseidon.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,17 @@ import com.poseidon.utils.PoseidonUtils;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class PacienteController {
 	@Autowired
 	private PacienteDao pacienteRepository;
+
+	static ConcurrentHashMap<String,Integer> session=new ConcurrentHashMap<>();
+
 	@Autowired
-	private DadoSessao dadoSessao;
+	private HttpSession httpSession;
 
 	private static Logger logger = Logger.getLogger("PacienteController");
 
@@ -37,6 +43,9 @@ public class PacienteController {
         modelAndView.getModelMap().addAttribute("isCadastroPaciente", isCadastroPaciente);
         modelAndView.getModelMap().addAttribute("isDeletePaciente", isDeletePaciente);
         modelAndView.getModelMap().addAttribute("isPesquisaPaciente", isPesquisaPaciente);
+		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
+		ViewMessage message = new ViewMessage();
+		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
         return  modelAndView;
     }
 	
@@ -56,10 +65,10 @@ public class PacienteController {
 	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
-/*		System.out.println(dadoSessao.toString());
-		if (dadoSessao.getId() != null){
-			paciente.setId(dadoSessao.getId());
-		}*/
+
+		if (session.get(httpSession.getId())!=null){
+			paciente.setId(session.get(httpSession.getId()));
+		}
         logger.info("CREATE PACIENTE");
         logger.info("paciente>" + paciente.toString());
         pacienteRepository.save(paciente);
@@ -98,13 +107,17 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/editarPaciente")
-	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
+	@ViewName(name = "/paciente")
 	@NotNullArgs
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {
 		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
-		dadoSessao.setId(newPaciente.getId());
-		redirectAttributes.addFlashAttribute(newPaciente);
+		logger.info("session id:"+httpSession.getId());
+		session.put(httpSession.getId(),newPaciente.getId());
+		buildPacientePage(modelAndView,"true","false","false");
+		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
+		ViewMessage message = new ViewMessage();
+		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
 		return modelAndView;
 	}
 

@@ -87,24 +87,19 @@ public class ContaController {
 	}
 	
 	@RequestMapping("/editarConta")
-	@ViewName(name = "redirect:/conta?isCadastroConta=true&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
+	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
-	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView, RedirectAttributes redirectAttributes){
+	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView){
 		Users user = userRepository.findByUsername(contaView.getUsername());
 		if(user == null){
-			redirectAttributes.addFlashAttribute("contaView",contaView);
-			redirectAttributes.addFlashAttribute("isEditarError", "true");
-			modelAndView.setViewName("redirect:/home");
 			return modelAndView;
 		}
-		dadoSessao.setIdUsuario(user.getId());
-		Authorities authorities = authoritiesRepository.findByUsername(contaView.getUsername());
-		contaView.setPassword(user.getPassword());
-		contaView.setUsername(user.getUsername());
-		contaView.setRole(authorities.getAuthority().replace("ROLE_", ""));
-		redirectAttributes.addFlashAttribute("isEditar", "isEditar");
-		redirectAttributes.addFlashAttribute("contaView",contaView);
-		modelAndView.setViewName("redirect:/home");
+		user.setUsername(contaView.getUsername());
+		user.setPassword(contaView.getPassword());
+		userRepository.save(user);
+		Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
+		authority.setUsername(user.getUsername());
+		authority.setAuthority(contaView.getRole());
 		return modelAndView;
 	}
 }
