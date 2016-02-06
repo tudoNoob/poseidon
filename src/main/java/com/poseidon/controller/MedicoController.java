@@ -54,7 +54,12 @@ public class MedicoController {
     public ModelAndView deletarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
         logger.info("DELETE MEDICO");
         logger.info("medico>" + medic.toString());
-        medicoRepository.delete(medic);
+        Medico medico = medicoRepository.findById(medic.getId());
+        try {
+            medicoRepository.delete(medico);
+        }catch (RuntimeException exception){
+            logger.info("deletando o medico.");
+        }
         logger.info("deletou medico.");
         return modelAndView;
     }

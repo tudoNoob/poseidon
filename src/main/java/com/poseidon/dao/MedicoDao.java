@@ -8,6 +8,7 @@ import com.poseidon.model.Medico;
 
 @Repository
 @Qualifier()
-public interface MedicoDao extends CrudRepository<Medico, Long>{
+public interface MedicoDao extends CrudRepository<Medico, Integer>{
 	public Medico findByNome(String nome);
+	public Medico findById(Integer id);
 }
