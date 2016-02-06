@@ -63,14 +63,15 @@ public class MedicoControlerITest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void medicoCadastro_cadastrarMedicoTest() throws Exception {
+    public void medicoCadastroTest() throws Exception {
             this.mockMvc.perform(get("/cadastrarMedico").param("nome","Legolas")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=false"));
 
     }
 
     @Test
-    public void medicoCadastro_editarMedicoTest() throws Exception {
+    public void medicoEditarMedicoTest() throws Exception {
         this.mockMvc.perform(get("/editarMedico").param("id","1")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true&isExibirMedico=false"));
     }
+    
 
 }
