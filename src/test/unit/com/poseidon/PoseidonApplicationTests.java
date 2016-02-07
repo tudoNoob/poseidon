@@ -20,7 +20,7 @@ import javax.servlet.Filter;
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {PoseidonApplication.class, WebSecurityConfig.class})
-@IntegrationTest({"server.port=8080"})
+@IntegrationTest({"server.port=8081"})
 @WebAppConfiguration
 public class PoseidonApplicationTests {
 
