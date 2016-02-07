@@ -1,6 +1,8 @@
-package com.poseidon;
+package com.poseidon.controller;
 
 
+import com.poseidon.PoseidonApplication;
+import com.poseidon.WebSecurityConfig;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;

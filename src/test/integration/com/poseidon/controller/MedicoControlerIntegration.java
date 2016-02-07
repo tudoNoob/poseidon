@@ -2,7 +2,6 @@ package com.poseidon.controller;
 
 
 
-import com.poseidon.PoseidonApplicationTests;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
