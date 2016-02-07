@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by wahrons on 2/6/16.
  */
-public class MedicoControlerITest extends PoseidonApplicationTests {
+public class MedicoControlerIIntegration extends PoseidonApplicationTests {
 
     private MockMvc mockMvc;
 
@@ -72,6 +72,5 @@ public class MedicoControlerITest extends PoseidonApplicationTests {
     public void medicoEditarMedicoTest() throws Exception {
         this.mockMvc.perform(get("/editarMedico").param("id","1")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true&isExibirMedico=false"));
     }
-    
 
 }

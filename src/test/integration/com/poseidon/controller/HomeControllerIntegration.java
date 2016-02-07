@@ -4,9 +4,7 @@ import com.poseidon.PoseidonApplicationTests;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
@@ -18,12 +16,12 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by william on 01/02/16.
  */
-public class HomeControllerITest extends PoseidonApplicationTests  {
+public class HomeControllerIntegration extends PoseidonApplicationTests  {
 
     private MockMvc mockMvc;
 
     @Autowired
-    private HomeController homeController;
+    private HomeControllerIntegration homeController;
 
     @Before
     public void setUp(){
