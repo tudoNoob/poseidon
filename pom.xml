@@ -220,7 +220,7 @@
 				<configuration>
 					<excludes>
 						<exclude>**/FunctionalTest.java</exclude>
-						<exclude>**/*Integration.java</exclude>
+						<!--<exclude>**/*Integration.java</exclude>-->
 					</excludes>
 				</configuration>
 			</plugin>
@@ -274,6 +274,44 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<executions>
+					<execution>
+						<id>add-integration-test-sources</id>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<!-- Configures the source directory of our integration tests -->
+							<sources>
+								<source>src/test/integration/com/poseidon/controller</source>
+
+							</sources>
+						</configuration>
+					</execution>
+					<!-- Add a new resource directory to our build -->
+					<execution>
+						<id>add-integration-test-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>add-test-resource</goal>
+						</goals>
+						<configuration>
+							<!-- Configures the resource directory of our integration tests -->
+							<resources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>src/test/integration/com/poseidon</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
