@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by wahrons on 2/6/16.
  */
-public class MedicoControlerIIntegration extends PoseidonApplicationTests {
+public class MedicoControlerIntegration extends PoseidonApplicationTests {
 
     private MockMvc mockMvc;
 
