@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SobreController {
 	
-	@RequestMapping("/sobre")
+	@RequestMapping("/sobrePage")
 	@ViewName(name = "sobre")
 	 public ModelAndView sobre(ModelAndView modelAndView){
 		 return modelAndView;
