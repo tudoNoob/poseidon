@@ -1,8 +1,9 @@
 package com.poseidon;
 
 import com.poseidon.controller.PoseidonApplicationTests;
-import com.poseidon.model.Consulta;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,7 +12,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.w3c.dom.Text;
+import java.util.List;
+
+import static org.junit.Assert.fail;
+
 
 public class FunctionalTest extends PoseidonApplicationTests {
 
@@ -93,7 +97,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void aboutAccess() {
+    public void aboutAccessAsUser() {
         driver.get("http://localhost:8081/");
         String user = "user";
         String password = "user";
@@ -105,6 +109,33 @@ public class FunctionalTest extends PoseidonApplicationTests {
         String str = txt.getText();
         String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
         Assert.assertEquals(merge,str);
+    }
+
+    @Test
+    public void addDoctorAsUser() {
+        driver.get("http://localhost:8081/");
+        String user = "admin";
+        String password = "admin";
+        String newDoctor = "Michael Jackson";
+        driver.findElement(By.id("user.login")).sendKeys(user);
+        driver.findElement(By.id("password.login")).sendKeys(password);
+        driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Médico")).click();
+        driver.findElement(By.linkText("Cadastrar Médico")).click();
+        driver.findElement(By.id("user.create")).sendKeys(newDoctor);
+        driver.findElement(By.id("cadastrarMedico.submit")).click();
+        driver.findElement(By.linkText("Médico")).click();
+        driver.findElement(By.linkText("Exibir todos Médicos")).click();
+        List<WebElement> TRs = driver.findElements(By.tagName("tr"));
+        for(int i=1; i < TRs.size(); i++){
+            List<WebElement> td = TRs.get(i).findElements(By.tagName("td"));
+            for(int j=0; j < td.size(); j++){
+                if(td.get(j).getText().equals(newDoctor)){
+                    return;
+                }
+            }
+        }
+        fail("Não encontrado o médico Michael Jackson!");
     }
 
     @After
