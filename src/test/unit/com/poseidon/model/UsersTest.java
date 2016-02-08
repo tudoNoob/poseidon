@@ -20,9 +20,15 @@ public class UsersTest {
     @Test
     public void testCreateUser() throws Exception {
         user = Users.createUser(contaView);
+        user.setId(1L);
+        user.setEnabled(true);
+        String toStringReturn = "Users [id=1, username=name, password=123, enabled=true]";
+
+        assertEquals(1L, user.getId().longValue());
         assertEquals(user.getUsername(), "name");
         assertEquals(user.getPassword(), "123");
         assertTrue(user.isEnabled());
+        assertEquals(toStringReturn,user.toString());
     }
 
 }
