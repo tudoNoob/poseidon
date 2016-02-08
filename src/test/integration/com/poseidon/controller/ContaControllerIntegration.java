@@ -60,7 +60,12 @@ public class ContaControllerIntegration extends PoseidonApplicationTests {
             this.mockMvc.perform(get("/editarConta").param("username","user")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false"));
         }
 
-        
+    @Test
+    public void deleteContaTest() throws Exception {
+        this.mockMvc.perform(get("/deletarConta").param("username","user")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false"));
+    }
+
+
 }
 
 

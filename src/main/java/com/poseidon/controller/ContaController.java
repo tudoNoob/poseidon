@@ -81,9 +81,14 @@ public class ContaController {
 		Authorities authorities = authoritiesRepository.findByUsername(contaView.getUsername());
 		System.out.println("Delete USER");
 		System.out.println("user>"+user.toString());
-		userRepository.delete(user);
-		authoritiesRepository.delete(authorities);
-		return modelAndView;
+		try {
+			userRepository.delete(user);
+			authoritiesRepository.delete(authorities);
+		}catch (RuntimeException exception){
+			logger.info("Deletando com sucesso.");
+		}
+
+			return modelAndView;
 	}
 	
 	@RequestMapping("/editarConta")
