@@ -69,4 +69,37 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
                 .andExpect(model().attributeExists("paciente"));
     }
 
+    @Test
+    public void pesquisarPaciente() throws Exception {
+        this.mockMvc.perform(get("/pesquisarPaciente"))
+                .andExpect(view().name("redirect:/paciente?isCadastroPaciente=false&isDeletePaciente=false&isPesquisaPaciente=true"));
+    }
+
+    @Test
+    public void cadastrarPaciente() throws Exception {
+        this.mockMvc.perform(get("/cadastrarPaciente").param("nome","Frodo"))
+                .andExpect(view().name("redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false"));
+    }
+
+   
+
+    @Test
+    public void editarPaciente() throws Exception {
+        this.mockMvc.perform(get("/cadastrarPaciente").param("nome","Sam"))
+                .andExpect(view().name("redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false"));
+
+        this.mockMvc.perform(get("/editarPaciente").param("id","76").param("nome","Mordor"))
+                .andExpect(view().name("/paciente"));
+    }
+
+    @Test
+    public void procurarPaciente() throws Exception {
+        this.mockMvc.perform(get("/cadastrarPaciente").param("nome","Saruman"))
+                .andExpect(view().name("redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false"));
+
+
+        this.mockMvc.perform(get("/procurarPaciente").param("nome","Saruman"))
+                .andExpect(view().name("Paciente"));
+    }
+
 }

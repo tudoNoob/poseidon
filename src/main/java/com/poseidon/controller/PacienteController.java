@@ -42,18 +42,7 @@ public class PacienteController {
 		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
         return  modelAndView;
     }
-	
-	@RequestMapping("/cadastroPaciente")
-	@ViewName(name = "cadastroPaciente")
-	@NotNullArgs
-	public ModelAndView cadastroPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
-		if (paciente == null)
-			paciente = new Paciente();
-		modelAndView.getModelMap().addAttribute("paciente", paciente);
-		ViewMessage message = new ViewMessage();
-		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
-		return modelAndView;
-	}
+
 
 	@RequestMapping(value = "/cadastrarPaciente")
 	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
