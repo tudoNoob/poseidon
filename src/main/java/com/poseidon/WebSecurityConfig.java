@@ -1,14 +1,15 @@
 package com.poseidon;
 
-import javax.sql.DataSource;
-
+import com.poseidon.logout.CustomLogoutHandler;
+import com.poseidon.logout.LogoutRequestMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.*;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import com.poseidon.logout.*;
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity

@@ -2,9 +2,9 @@ package com.poseidon;
 
 import com.poseidon.controller.PoseidonApplicationTests;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

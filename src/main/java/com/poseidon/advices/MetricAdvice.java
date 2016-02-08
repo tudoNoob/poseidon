@@ -1,6 +1,7 @@
 
 package com.poseidon.advices;
 
+import com.poseidon.model.AtributosClasse;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,8 +10,6 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.poseidon.model.AtributosClasse;
 
 @Component
 @Aspect

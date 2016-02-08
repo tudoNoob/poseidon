@@ -1,10 +1,11 @@
 package com.poseidon.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
-
+import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.annotation.ViewName;
+import com.poseidon.dao.PacienteDao;
+import com.poseidon.model.Paciente;
+import com.poseidon.model.ViewMessage;
+import com.poseidon.utils.PoseidonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,17 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.poseidon.annotation.NotNullArgs;
-import com.poseidon.annotation.ViewName;
-import com.poseidon.dao.PacienteDao;
-import com.poseidon.model.DadoSessao;
-import com.poseidon.model.Paciente;
-import com.poseidon.model.ViewMessage;
-import com.poseidon.utils.PoseidonUtils;
-
-import jersey.repackaged.com.google.common.collect.Lists;
-
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 @Controller
 public class PacienteController {

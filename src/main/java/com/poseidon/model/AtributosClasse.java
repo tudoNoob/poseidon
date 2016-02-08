@@ -1,11 +1,11 @@
 package com.poseidon.model;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class AtributosClasse {
 

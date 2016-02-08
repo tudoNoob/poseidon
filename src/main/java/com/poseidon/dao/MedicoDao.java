@@ -1,10 +1,9 @@
 package com.poseidon.dao;
 
+import com.poseidon.model.Medico;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.poseidon.model.Medico;
 
 @Repository
 @Qualifier()

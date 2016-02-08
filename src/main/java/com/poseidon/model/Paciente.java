@@ -1,15 +1,10 @@
 package com.poseidon.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
 import com.poseidon.annotation.ValidateString;
 import com.poseidon.utils.PoseidonUtils;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Paciente {

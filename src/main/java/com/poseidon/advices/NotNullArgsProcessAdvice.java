@@ -1,15 +1,14 @@
 package com.poseidon.advices;
 
-import java.lang.reflect.Method;
-
+import com.poseidon.annotation.NotNullArgs;
+import com.poseidon.exception.NotNullException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import com.poseidon.annotation.NotNullArgs;
-import com.poseidon.exception.NotNullException;
+import java.lang.reflect.Method;
 
 /**
  * Esta classe ira processar a annotation @NotNull em toda a aplicacao.
