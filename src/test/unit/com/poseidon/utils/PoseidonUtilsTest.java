@@ -1,14 +1,11 @@
 package com.poseidon.utils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
+import com.poseidon.model.ContaView;
 import org.junit.Test;
 
-import com.poseidon.model.ContaView;
+import java.text.SimpleDateFormat;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class PoseidonUtilsTest {

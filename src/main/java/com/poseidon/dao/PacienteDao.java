@@ -1,12 +1,11 @@
 package com.poseidon.dao;
 
-import java.util.List;
-
+import com.poseidon.model.Paciente;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.poseidon.model.Paciente;
+import java.util.List;
 
 @Repository
 @Qualifier()

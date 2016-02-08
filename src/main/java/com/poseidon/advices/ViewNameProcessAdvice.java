@@ -1,7 +1,7 @@
 package com.poseidon.advices;
 
-import java.lang.reflect.Method;
-
+import com.poseidon.annotation.ViewName;
+import com.poseidon.exception.ViewNameException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,8 +9,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.poseidon.annotation.ViewName;
-import com.poseidon.exception.ViewNameException;
+import java.lang.reflect.Method;
 /**
  * Esta classe ira processar a annotation ViewName.
  * @author ahrons

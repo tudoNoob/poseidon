@@ -1,8 +1,8 @@
 package com.poseidon.logout;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.security.web.util.matcher.RequestMatcher;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class LogoutRequestMatcher implements RequestMatcher {
 

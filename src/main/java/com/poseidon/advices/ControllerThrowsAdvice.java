@@ -1,7 +1,6 @@
 package com.poseidon.advices;
 
-import java.lang.reflect.Method;
-
+import com.poseidon.exception.MethodDeclarationException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -9,7 +8,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
-import com.poseidon.exception.MethodDeclarationException;
+import java.lang.reflect.Method;
 
 @Component
 @Aspect

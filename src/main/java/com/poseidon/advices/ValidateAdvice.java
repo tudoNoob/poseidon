@@ -1,18 +1,17 @@
 package com.poseidon.advices;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
+import com.poseidon.annotation.ValidateArgs;
+import com.poseidon.annotation.ValidateString;
+import com.poseidon.exception.IllegalAnnotationPosition;
+import com.poseidon.exception.ValidateStringException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import com.poseidon.annotation.ValidateArgs;
-import com.poseidon.annotation.ValidateString;
-import com.poseidon.exception.IllegalAnnotationPosition;
-import com.poseidon.exception.ValidateStringException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Esta classe ira processar as annotations ValidateArgs e ValidateString.

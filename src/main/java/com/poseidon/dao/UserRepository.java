@@ -1,8 +1,7 @@
 package com.poseidon.dao;
 
-import org.springframework.data.repository.CrudRepository;
-
 import com.poseidon.model.Users;
+import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository  extends CrudRepository<Users, Long> {
 	
