@@ -1,6 +1,6 @@
 package com.poseidon.controller;
 
-import com.poseidon.PoseidonApplicationTests;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by william on 01/02/16.
  */
-public class HomeControllerIntegration extends PoseidonApplicationTests  {
+public class HomeControllerIntegration extends PoseidonApplicationTests {
 
     private MockMvc mockMvc;
 
     @Autowired
-    private HomeControllerIntegration homeController;
+    private HomeController homeController;
 
     @Before
     public void setUp(){

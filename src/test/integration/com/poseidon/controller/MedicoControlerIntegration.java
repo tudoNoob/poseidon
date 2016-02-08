@@ -1,6 +1,7 @@
 package com.poseidon.controller;
 
-import com.poseidon.PoseidonApplicationTests;
+
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by wahrons on 2/6/16.
  */
-public class MedicoControlerIIntegration extends PoseidonApplicationTests {
+public class MedicoControlerIntegration extends PoseidonApplicationTests {
 
     private MockMvc mockMvc;
 
