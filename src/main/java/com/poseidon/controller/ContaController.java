@@ -56,10 +56,7 @@ public class ContaController {
 		System.out.println("cadastrou conta.");
 		return modelAndView;
 	}
-	
-	@RequestMapping(value="/exibirConta")
-	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=false&isExibirConta=true")
-	@NotNullArgs
+
     private void exibirConta(ModelAndView modelAndView) {
         Iterable<Users> contaList = userRepository.findAll();
         List<ContaView> contasView = Lists.newArrayList();
