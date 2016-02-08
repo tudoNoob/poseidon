@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	@RequestMapping("/login")
+	@RequestMapping("/loginPage")
 	@ViewName(name="login")
 	public ModelAndView buildLoginPage(ModelAndView modelAndView){
 		modelAndView.getModelMap().addAttribute("user", new ContaView());
