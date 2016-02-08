@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by wahrons on 2/7/16.
  */
-public class ContaControllerIntegration extends PoseidonApplicationTests {
+public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         private MockMvc mockMvc;
 
