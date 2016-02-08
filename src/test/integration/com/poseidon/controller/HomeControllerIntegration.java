@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -23,16 +24,14 @@ public class HomeControllerIntegration extends PoseidonApplicationTests {
     private HomeController homeController;
 
     @Before
-    public void setUp(){
-        mockMvc= standaloneSetup(homeController).build();
+    public void setUp() {
+        mockMvc = standaloneSetup(homeController).build();
     }
 
     @Test
     public void homeTest() throws Exception {
 
-       this.mockMvc.perform(get("/homePage")).andExpect(status().isOk()).andExpect(view().name("home"));
+        this.mockMvc.perform(get("/homePage")).andExpect(status().isOk()).andExpect(view().name("home"));
     }
-
-
 
 }
