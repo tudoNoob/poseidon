@@ -9,17 +9,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.w3c.dom.Text;
 
 public class FunctionalTest extends PoseidonApplicationTests {
 
-     public WebDriver driver;
+    public WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver() ;
-
     }
 
     @Test
@@ -90,6 +90,21 @@ public class FunctionalTest extends PoseidonApplicationTests {
         Assert.assertEquals(aboutTitle,driver.getTitle());
         driver.findElement(By.linkText("Logout")).click();
         Assert.assertEquals(loginTitle,driver.getTitle());
+    }
+
+    @Test
+    public void aboutAccess() {
+        driver.get("http://localhost:8081/");
+        String user = "user";
+        String password = "user";
+        driver.findElement(By.id("user.login")).sendKeys(user);
+        driver.findElement(By.id("password.login")).sendKeys(password);
+        driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Sobre")).click();
+        WebElement txt = driver.findElement(By.id("about"));
+        String str = txt.getText();
+        String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
+        Assert.assertEquals(merge,str);
     }
 
     @After
