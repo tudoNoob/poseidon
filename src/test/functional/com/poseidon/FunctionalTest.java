@@ -20,7 +20,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void shouldReturnTitleOfPage() {
+    public void adminAccess() {
         driver.get("http://localhost:8081/");
         String title = "Home";
         String user = "admin";
@@ -28,6 +28,10 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.id("user.login")).sendKeys(user);
         driver.findElement(By.id("password.login")).sendKeys(password);
         driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Consultas")).click();
+        driver.findElement(By.linkText("Médico")).click();
+        driver.findElement(By.linkText("Contas")).click();
         Assert.assertEquals(title,driver.getTitle());
     }
 
