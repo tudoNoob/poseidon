@@ -3,15 +3,16 @@ package com.poseidon.controller;
 import com.poseidon.dao.MedicoDao;
 import com.poseidon.model.Medico;
 import com.poseidon.model.MedicoBuilder;
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -47,17 +48,17 @@ public class MedicoControllerTest {
     }
 
     @Test
-    public void shouldBuildMedicoPageForCadastro(){
+    public void shouldBuildMedicoPageForCadastro() {
 
         List<Medico> medicos = new MedicoBuilder().withId(1).withName("Mordor").add().withId(2).withName("Saruman").add().buildAsList();
 
         when(medicoDao.findAll()).thenReturn(medicos);
 
-        String isCadastroMedico="true";
-        String isPesquisaMedico="false";
-        String isDeleteMedico="false";
-        String isEditarMedico="false";
-        String isExibirMedico="false";
+        String isCadastroMedico = "true";
+        String isPesquisaMedico = "false";
+        String isDeleteMedico = "false";
+        String isEditarMedico = "false";
+        String isExibirMedico = "false";
 
         ModelAndView response = medicoController.criarPaginaMedico(new ModelAndView(),
                 isCadastroMedico,
@@ -66,12 +67,12 @@ public class MedicoControllerTest {
                 isEditarMedico,
                 isExibirMedico);
 
-        assertEquals(isCadastroMedico,response.getModelMap().get("isCadastroMedico"));
-        assertEquals(isPesquisaMedico,response.getModelMap().get("isPesquisaMedico"));
-        assertEquals(isDeleteMedico,response.getModelMap().get("isDeleteMedico"));
-        assertEquals(isEditarMedico,response.getModelMap().get("isEditarMedico"));
-        assertEquals(isExibirMedico,response.getModelMap().get("isExibirMedico"));
-
+        assertEquals(isCadastroMedico, response.getModelMap().get("isCadastroMedico"));
+        assertEquals(isPesquisaMedico, response.getModelMap().get("isPesquisaMedico"));
+        assertEquals(isDeleteMedico, response.getModelMap().get("isDeleteMedico"));
+        assertEquals(isEditarMedico, response.getModelMap().get("isEditarMedico"));
+        assertEquals(isExibirMedico, response.getModelMap().get("isExibirMedico"));
+        assertEquals(medicos,response.getModelMap().get("medicos"));
     }
 
     @Test
@@ -99,7 +100,7 @@ public class MedicoControllerTest {
         assertEquals(isDeleteMedico,response.getModelMap().get("isDeleteMedico"));
         assertEquals(isEditarMedico,response.getModelMap().get("isEditarMedico"));
         assertEquals(isExibirMedico,response.getModelMap().get("isExibirMedico"));
-
+        assertEquals(medicos,response.getModelMap().get("medicos"));
     }
 
 
@@ -128,7 +129,7 @@ public class MedicoControllerTest {
         assertEquals(isDeleteMedico,response.getModelMap().get("isDeleteMedico"));
         assertEquals(isEditarMedico,response.getModelMap().get("isEditarMedico"));
         assertEquals(isExibirMedico,response.getModelMap().get("isExibirMedico"));
-
+        assertEquals(medicos,response.getModelMap().get("medicos"));
     }
 
 
@@ -157,7 +158,7 @@ public class MedicoControllerTest {
         assertEquals(isDeleteMedico,response.getModelMap().get("isDeleteMedico"));
         assertEquals(isEditarMedico,response.getModelMap().get("isEditarMedico"));
         assertEquals(isExibirMedico,response.getModelMap().get("isExibirMedico"));
-
+        assertEquals(medicos,response.getModelMap().get("medicos"));
     }
 
     @Test
@@ -185,7 +186,7 @@ public class MedicoControllerTest {
         assertEquals(isDeleteMedico,response.getModelMap().get("isDeleteMedico"));
         assertEquals(isEditarMedico,response.getModelMap().get("isEditarMedico"));
         assertEquals(isExibirMedico,response.getModelMap().get("isExibirMedico"));
-
+        assertEquals(medicos,response.getModelMap().get("medicos"));
     }
 
 
