@@ -3,15 +3,13 @@ package com.poseidon.controller;
 import com.poseidon.dao.MedicoDao;
 import com.poseidon.model.Medico;
 import com.poseidon.model.MedicoBuilder;
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
