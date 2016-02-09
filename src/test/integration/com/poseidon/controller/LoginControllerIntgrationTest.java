@@ -29,7 +29,8 @@ public class LoginControllerIntgrationTest extends PoseidonApplicationTests {
     @Test
     public void loginTest() throws Exception {
 
-        this.mockMvc.perform(get("/loginPage")).andExpect(model().attributeExists("user"));
+        this.mockMvc.perform(get("/loginPage"))
+                .andExpect(model().attributeExists("user"));
 
     }
 

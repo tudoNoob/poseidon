@@ -27,7 +27,8 @@ public class SobreControllerIntegrationTest extends PoseidonApplicationTests {
 
     @Test
     public void sobreController() throws Exception {
-        this.mockMvc.perform(get("/sobrePage")).andExpect(view().name("sobre"));
+        this.mockMvc.perform(get("/sobrePage"))
+                .andExpect(view().name("sobre"));
     }
 
 

@@ -11,7 +11,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -23,7 +26,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver() ;
+        driver = new FirefoxDriver();
     }
 
     @Test
@@ -127,15 +130,20 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Exibir todos Médicos")).click();
         List<WebElement> TRs = driver.findElements(By.tagName("tr"));
-        for(int i=1; i < TRs.size(); i++){
-            List<WebElement> td = TRs.get(i).findElements(By.tagName("td"));
+        if (verifyIFaTextInTdIsEqual(newDoctor, TRs)) return;
+        fail("Não encontrado o médico Michael Jackson!");
+    }
+
+    private boolean verifyIFaTextInTdIsEqual(String toEqual, List<WebElement> trList) {
+        for(int i = 1; i < trList.size(); i++){
+            List<WebElement> td = trList.get(i).findElements(By.tagName("td"));
             for(int j=0; j < td.size(); j++){
-                if(td.get(j).getText().equals(newDoctor)){
-                    return;
+                if(td.get(j).getText().equals(toEqual)){
+                    return true;
                 }
             }
         }
-        fail("Não encontrado o médico Michael Jackson!");
+        return false;
     }
 
     @After
