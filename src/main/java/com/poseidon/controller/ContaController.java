@@ -20,13 +20,10 @@ import java.util.logging.Logger;
 public class ContaController {
 
 	@Autowired
-	private AuthoritiesRepository authoritiesRepository;
+	AuthoritiesRepository authoritiesRepository;
 	
 	@Autowired
-	private UserRepository  userRepository;
-	
-	@Autowired
-	private DadoSessao dadoSessao;
+	UserRepository  userRepository;
 
 	private Logger logger = Logger.getLogger("ContaController");
 
@@ -46,13 +43,13 @@ public class ContaController {
 	@NotNullArgs
 	public ModelAndView cadastrarConta(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(contaView);
-		//if(dadoSessao.getIdUsuario()!= null)user.setId(dadoSessao.getIdUsuario());
+
 		System.out.println("CREATE CONTA");
 		System.out.println("user>"+user.toString());
 		userRepository.save(user);
-		//if(dadoSessao.getIdUsuario()== null)
+
 			authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(contaView.getRole()).toString()));
-		//dadoSessao.setIdUsuario(null);
+
 		System.out.println("cadastrou conta.");
 		return modelAndView;
 	}

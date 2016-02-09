@@ -28,47 +28,117 @@ public class MedicoControlerIntegrationTest extends PoseidonApplicationTests {
     @Test
     public void medicoCadastro_cadastroTest() throws Exception {
 
-        this.mockMvc.perform(get("/medico").param("isCadastroMedico","true").param("isPesquisaMedico","false").param("isDeleteMedico","false").param("isEditarMedico","false").param("isExibirMedico","false")).andExpect(status().isOk())
-                .andExpect(view().name("Medico")).andExpect(model().attribute("isCadastroMedico","true")).andExpect(model().attribute("isPesquisaMedico","false")).andExpect(model().attribute("isDeleteMedico","false")).andExpect(model().attribute("isEditarMedico","false")).andExpect(model().attribute("isExibirMedico","false"));
+        this.mockMvc.perform(get("/medico")
+                .param("isCadastroMedico","true")
+                .param("isPesquisaMedico","false")
+                .param("isDeleteMedico","false")
+                .param("isEditarMedico","false")
+                .param("isExibirMedico","false"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Medico"))
+                .andExpect(model().attribute("isCadastroMedico","true"))
+                .andExpect(model().attribute("isPesquisaMedico","false"))
+                .andExpect(model().attribute("isDeleteMedico","false"))
+                .andExpect(model().attribute("isEditarMedico","false"))
+                .andExpect(model().attribute("isExibirMedico","false"));
     }
 
     @Test
     public void medicoCadastro_pesquisaTest() throws Exception {
 
-        this.mockMvc.perform(get("/medico").param("isCadastroMedico","false").param("isPesquisaMedico","true").param("isDeleteMedico","false").param("isEditarMedico","false").param("isExibirMedico","false")).andExpect(status().isOk())
-                .andExpect(view().name("Medico")).andExpect(model().attribute("isCadastroMedico","false")).andExpect(model().attribute("isPesquisaMedico","true")).andExpect(model().attribute("isDeleteMedico","false")).andExpect(model().attribute("isEditarMedico","false")).andExpect(model().attribute("isExibirMedico","false"));
+        this.mockMvc.perform(get("/medico")
+                .param("isCadastroMedico","false")
+                .param("isPesquisaMedico","true")
+                .param("isDeleteMedico","false")
+                .param("isEditarMedico","false")
+                .param("isExibirMedico","false"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Medico"))
+                .andExpect(model().attribute("isCadastroMedico","false"))
+                .andExpect(model().attribute("isPesquisaMedico","true"))
+                .andExpect(model().attribute("isDeleteMedico","false"))
+                .andExpect(model().attribute("isEditarMedico","false"))
+                .andExpect(model().attribute("isExibirMedico","false"));
     }
 
     @Test
     public void medicoCadastro_deleteTest() throws Exception {
 
-        this.mockMvc.perform(get("/medico").param("isCadastroMedico","false").param("isPesquisaMedico","false").param("isDeleteMedico","true").param("isEditarMedico","false").param("isExibirMedico","false")).andExpect(status().isOk())
-                .andExpect(view().name("Medico")).andExpect(model().attribute("isCadastroMedico","false")).andExpect(model().attribute("isPesquisaMedico","false")).andExpect(model().attribute("isDeleteMedico","true")).andExpect(model().attribute("isEditarMedico","false")).andExpect(model().attribute("isExibirMedico","false"));
+        this.mockMvc.perform(get("/medico")
+                .param("isCadastroMedico","false")
+                .param("isPesquisaMedico","false")
+                .param("isDeleteMedico","true")
+                .param("isEditarMedico","false")
+                .param("isExibirMedico","false"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Medico"))
+                .andExpect(model().attribute("isCadastroMedico","false"))
+                .andExpect(model().attribute("isPesquisaMedico","false"))
+                .andExpect(model().attribute("isDeleteMedico","true"))
+                .andExpect(model().attribute("isEditarMedico","false"))
+                .andExpect(model().attribute("isExibirMedico","false"));
     }
 
     @Test
     public void medicoCadastro_editarTest() throws Exception {
 
-        this.mockMvc.perform(get("/medico").param("isCadastroMedico","false").param("isPesquisaMedico","false").param("isDeleteMedico","false").param("isEditarMedico","true").param("isExibirMedico","false")).andExpect(status().isOk())
-                .andExpect(view().name("Medico")).andExpect(model().attribute("isCadastroMedico","false")).andExpect(model().attribute("isPesquisaMedico","false")).andExpect(model().attribute("isDeleteMedico","false")).andExpect(model().attribute("isEditarMedico","true")).andExpect(model().attribute("isExibirMedico","false"));
+        this.mockMvc.perform(get("/medico")
+                .param("isCadastroMedico","false")
+                .param("isPesquisaMedico","false")
+                .param("isDeleteMedico","false")
+                .param("isEditarMedico","true")
+                .param("isExibirMedico","false"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Medico"))
+                .andExpect(model().attribute("isCadastroMedico","false"))
+                .andExpect(model().attribute("isPesquisaMedico","false"))
+                .andExpect(model().attribute("isDeleteMedico","false"))
+                .andExpect(model().attribute("isEditarMedico","true"))
+                .andExpect(model().attribute("isExibirMedico","false"));
     }
 
     @Test
     public void medicoCadastro_exibirTest() throws Exception {
 
-        this.mockMvc.perform(get("/medico").param("isCadastroMedico","false").param("isPesquisaMedico","false").param("isDeleteMedico","false").param("isEditarMedico","false").param("isExibirMedico","true")).andExpect(status().isOk())
-                .andExpect(view().name("Medico")).andExpect(model().attribute("isCadastroMedico","false")).andExpect(model().attribute("isPesquisaMedico","false")).andExpect(model().attribute("isDeleteMedico","false")).andExpect(model().attribute("isEditarMedico","false")).andExpect(model().attribute("isExibirMedico","true"));
+        this.mockMvc.perform(get("/medico")
+                .param("isCadastroMedico","false")
+                .param("isPesquisaMedico","false")
+                .param("isDeleteMedico","false")
+                .param("isEditarMedico","false")
+                .param("isExibirMedico","true"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Medico"))
+                .andExpect(model().attribute("isCadastroMedico","false"))
+                .andExpect(model().attribute("isPesquisaMedico","false"))
+                .andExpect(model().attribute("isDeleteMedico","false"))
+                .andExpect(model().attribute("isEditarMedico","false"))
+                .andExpect(model().attribute("isExibirMedico","true"));
     }
 
     @Test
     public void medicoCadastroTest() throws Exception {
-            this.mockMvc.perform(get("/cadastrarMedico").param("nome","Legolas")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=false"));
+            this.mockMvc.perform(get("/cadastrarMedico")
+                    .param("nome","Legolas"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/medico?" +
+                            "isCadastroMedico=true" +
+                            "&isPesquisaMedico=false" +
+                            "&isDeleteMedico=false" +
+                            "&isEditarMedico=false" +
+                            "&isExibirMedico=false"));
 
     }
 
     @Test
     public void medicoEditarMedicoTest() throws Exception {
-        this.mockMvc.perform(get("/editarMedico").param("id","1")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true&isExibirMedico=false"));
+        this.mockMvc.perform(get("/editarMedico")
+                .param("id","1")).andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/medico?" +
+                        "isCadastroMedico=false" +
+                        "&isPesquisaMedico=false" +
+                        "&isDeleteMedico=false" +
+                        "&isEditarMedico=true" +
+                        "&isExibirMedico=false"));
     }
 
 }

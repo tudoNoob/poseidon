@@ -29,41 +29,104 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void contaCadastro_cadastroTest() throws Exception {
-            this.mockMvc.perform(get("/conta").param("isCadastroConta","true").param("isEditarConta","false").param("isDeleteConta","false").param("isExibirConta","false")).andExpect(status().isOk())
-                    .andExpect(view().name("Conta")).andExpect(model().attributeExists("contas")).andExpect(model().attribute("isCadastroConta","true")).andExpect(model().attribute("isEditarConta","false")).andExpect(model().attribute("isDeleteConta","false")).andExpect(model().attribute("isExibirConta","false"));
+            this.mockMvc.perform(get("/conta")
+                    .param("isCadastroConta","true")
+                    .param("isEditarConta","false")
+                    .param("isDeleteConta","false")
+                    .param("isExibirConta","false"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("Conta"))
+                    .andExpect(model().attributeExists("contas"))
+                    .andExpect(model().attribute("isCadastroConta","true"))
+                    .andExpect(model().attribute("isEditarConta","false"))
+                    .andExpect(model().attribute("isDeleteConta","false"))
+                    .andExpect(model().attribute("isExibirConta","false"));
         }
 
         @Test
         public void contaCadastro_editarTest() throws Exception {
-            this.mockMvc.perform(get("/conta").param("isCadastroConta","false").param("isEditarConta","true").param("isDeleteConta","false").param("isExibirConta","false")).andExpect(status().isOk())
-                    .andExpect(view().name("Conta")).andExpect(model().attributeExists("contas")).andExpect(model().attribute("isCadastroConta","false")).andExpect(model().attribute("isEditarConta","true")).andExpect(model().attribute("isDeleteConta","false")).andExpect(model().attribute("isExibirConta","false"));
+            this.mockMvc.perform(get("/conta")
+                    .param("isCadastroConta","false")
+                    .param("isEditarConta","true")
+                    .param("isDeleteConta","false")
+                    .param("isExibirConta","false"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("Conta"))
+                    .andExpect(model().attributeExists("contas"))
+                    .andExpect(model().attribute("isCadastroConta","false"))
+                    .andExpect(model().attribute("isEditarConta","true"))
+                    .andExpect(model().attribute("isDeleteConta","false"))
+                    .andExpect(model().attribute("isExibirConta","false"));
         }
 
         @Test
         public void contaCadastro_deleteTest() throws Exception {
-            this.mockMvc.perform(get("/conta").param("isCadastroConta","false").param("isEditarConta","false").param("isDeleteConta","true").param("isExibirConta","false")).andExpect(status().isOk())
-                    .andExpect(view().name("Conta")).andExpect(model().attributeExists("contas")).andExpect(model().attribute("isCadastroConta","false")).andExpect(model().attribute("isEditarConta","false")).andExpect(model().attribute("isDeleteConta","true")).andExpect(model().attribute("isExibirConta","false"));
+            this.mockMvc.perform(get("/conta")
+                    .param("isCadastroConta","false")
+                    .param("isEditarConta","false")
+                    .param("isDeleteConta","true")
+                    .param("isExibirConta","false"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("Conta"))
+                    .andExpect(model().attributeExists("contas"))
+                    .andExpect(model().attribute("isCadastroConta","false"))
+                    .andExpect(model().attribute("isEditarConta","false"))
+                    .andExpect(model().attribute("isDeleteConta","true"))
+                    .andExpect(model().attribute("isExibirConta","false"));
         }
 
         @Test
         public void contaCadastro_exibirTest() throws Exception {
-            this.mockMvc.perform(get("/conta").param("isCadastroConta","false").param("isEditarConta","false").param("isDeleteConta","false").param("isExibirConta","true")).andExpect(status().isOk())
-                    .andExpect(view().name("Conta")).andExpect(model().attributeExists("contas")).andExpect(model().attribute("isCadastroConta","false")).andExpect(model().attribute("isEditarConta","false")).andExpect(model().attribute("isDeleteConta","false")).andExpect(model().attribute("isExibirConta","true"));
+            this.mockMvc.perform(get("/conta")
+                    .param("isCadastroConta","false")
+                    .param("isEditarConta","false")
+                    .param("isDeleteConta","false")
+                    .param("isExibirConta","true"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("Conta"))
+                    .andExpect(model().attributeExists("contas"))
+                    .andExpect(model().attribute("isCadastroConta","false"))
+                    .andExpect(model().attribute("isEditarConta","false"))
+                    .andExpect(model().attribute("isDeleteConta","false"))
+                    .andExpect(model().attribute("isExibirConta","true"));
         }
 
         @Test
         public void cadastrarContaTest() throws Exception {
-            this.mockMvc.perform(get("/cadastrarConta").param("username","Legolas").param("password","1234").param("role","ROLE_ADMIN")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false"));
+            this.mockMvc.perform(get("/cadastrarConta")
+                    .param("username","Legolas")
+                    .param("password","1234")
+                    .param("role","ROLE_ADMIN"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/conta?" +
+                            "isCadastroConta=true" +
+                            "&isEditarConta=false" +
+                            "&isDeleteConta=false" +
+                            "&isExibirConta=false"));
         }
 
         @Test
         public void editarContaTest() throws Exception {
-            this.mockMvc.perform(get("/editarConta").param("username","user")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false"));
+            this.mockMvc.perform(get("/editarConta")
+                    .param("username","user"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/conta?" +
+                            "isCadastroConta=false" +
+                            "&isEditarConta=true" +
+                            "&isDeleteConta=false" +
+                            "&isExibirConta=false"));
         }
 
         @Test
         public void deleteContaTest() throws Exception {
-            this.mockMvc.perform(get("/deletarConta").param("username","user")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false"));
+            this.mockMvc.perform(get("/deletarConta")
+                    .param("username","user"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/conta?" +
+                            "isCadastroConta=false" +
+                            "&isEditarConta=false" +
+                            "&isDeleteConta=true" +
+                            "&isExibirConta=false"));
         }
 
 

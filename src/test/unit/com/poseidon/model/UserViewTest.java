@@ -12,7 +12,7 @@ public class UserViewTest {
 
     @Before
     public void setUp() throws Exception {
-        user = new Users().comUsername("name").comPassword("123");
+        user = new UsersBuilder().withUsername("name").withPassword("123").build();
     }
 
     @Test
