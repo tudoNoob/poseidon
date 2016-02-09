@@ -12,6 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import javax.persistence.Temporal;
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -20,6 +22,17 @@ import static org.junit.Assert.fail;
 public class FunctionalTest extends PoseidonApplicationTests {
 
     public WebDriver driver;
+    String userAdmin = "admin";
+    String passwordAdmin = "admin";
+    String user = "user";
+    String passwordUser = "user";
+    String homeTitle = "Home";
+    String patientTitle = "Paciente";
+    String consultTitle = "Consulta";
+    String doctorTitle = "Médico";
+    String accountTitle = "Conta";
+    String aboutTitle = "Sobre";
+    String loginTitle = "Login";
 
     @Before
     public void setUp() throws Exception {
@@ -29,17 +42,8 @@ public class FunctionalTest extends PoseidonApplicationTests {
     @Test
     public void adminAccess() {
         driver.get("http://localhost:8081/");
-        String homeTitle = "Home";
-        String patientTitle = "Paciente";
-        String consultTitle = "Consulta";
-        String doctorTitle = "Médico";
-        String accountTitle = "Conta";
-        String aboutTitle = "Sobre";
-        String loginTitle = "Login";
-        String user = "admin";
-        String password = "admin";
-        driver.findElement(By.id("user.login")).sendKeys(user);
-        driver.findElement(By.id("password.login")).sendKeys(password);
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
         driver.findElement(By.id("submit.login")).click();
         Assert.assertEquals(homeTitle,driver.getTitle());
         driver.findElement(By.linkText("Paciente")).click();
@@ -99,10 +103,8 @@ public class FunctionalTest extends PoseidonApplicationTests {
     @Test
     public void aboutAccessAsUser() {
         driver.get("http://localhost:8081/");
-        String user = "user";
-        String password = "user";
         driver.findElement(By.id("user.login")).sendKeys(user);
-        driver.findElement(By.id("password.login")).sendKeys(password);
+        driver.findElement(By.id("password.login")).sendKeys(passwordUser);
         driver.findElement(By.id("submit.login")).click();
         driver.findElement(By.linkText("Sobre")).click();
         WebElement txt = driver.findElement(By.id("about"));
@@ -112,13 +114,11 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void addDoctorAsUser() {
+    public void addDoctorAsAdmin() {
         driver.get("http://localhost:8081/");
-        String user = "admin";
-        String password = "admin";
         String newDoctor = "Michael Jackson";
-        driver.findElement(By.id("user.login")).sendKeys(user);
-        driver.findElement(By.id("password.login")).sendKeys(password);
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
         driver.findElement(By.id("submit.login")).click();
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Cadastrar Médico")).click();
@@ -135,7 +135,34 @@ public class FunctionalTest extends PoseidonApplicationTests {
                 }
             }
         }
-        fail("Não encontrado o médico Michael Jackson!");
+        fail("Não foi encontrado o médico " + newDoctor + " !");
+    }
+
+    @Test
+    public void deleteDoctorAsAdmin(){
+        driver.get("http://localhost:8081/");
+        String newDoctor = "Gregory House";
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
+        driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Médico")).click();
+        driver.findElement(By.linkText("Cadastrar Médico")).click();
+        driver.findElement(By.id("user.create")).sendKeys(newDoctor);
+        driver.findElement(By.id("cadastrarMedico.submit")).click();
+        driver.findElement(By.linkText("Médico")).click();
+        driver.findElement(By.linkText("Exibir todos Médicos")).click();
+        List<WebElement> TR = driver.findElements(By.tagName("tr"));
+        for(int i=1; i < TR.size(); i++){
+            List<WebElement> td = TR.get(i).findElements(By.tagName("td"));
+            for(int j=0; j < td.size(); j++)
+                if (td.get(j).getText().equals(newDoctor)) {
+                    driver.findElement(By.linkText("Médico")).click();
+                    driver.findElement(By.linkText("Deletar Médico")).click();
+                    driver.findElement(By.id("id.medico")).sendKeys(td.get(j).toString());
+                    return;
+                }
+        }
+        fail("Não foi encontrado o médico " + newDoctor + " !");
     }
 
     @After
