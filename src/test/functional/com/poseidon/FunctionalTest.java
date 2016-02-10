@@ -1,9 +1,6 @@
 package com.poseidon;
 
 import com.poseidon.controller.PoseidonApplicationTests;
-
-
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,12 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-
-
-
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -131,7 +123,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Exibir todos Médicos")).click();
         List<WebElement> TRs = driver.findElements(By.tagName("tr"));
         if (verifyIFaTextInTdIsEqual(newDoctor, TRs)) return;
-        fail("Não encontrado o médico Michael Jackson!");
+        fail("Não encontrado o médico " + newDoctor + "!");
     }
 
     private boolean verifyIFaTextInTdIsEqual(String toEqual, List<WebElement> trList) {
@@ -149,7 +141,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
 
     @Test
-    public void deleteDoctorAsAdmin(){
+    public void deleteDoctorAsAdmin() {
         driver.get("http://localhost:8081/");
         String newDoctor = "Gregory House";
         driver.findElement(By.id("user.login")).sendKeys(userAdmin);
@@ -162,7 +154,13 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Exibir todos Médicos")).click();
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
-        for(int i=1; i < TR.size(); i++){
+        if (verifyIFaTextIsEqual(newDoctor, TR) == true){
+            driver.findElement(By.linkText("Médico")).click();
+            driver.findElement(By.linkText("Deletar Médico")).click();
+            driver.findElement(By.id("id.medico")).sendKeys(TR.toString());
+            return;
+        }
+        /*for(int i=1; i < TR.size(); i++){
             List<WebElement> td = TR.get(i).findElements(By.tagName("td"));
             for(int j=0; j < td.size(); j++)
                 if (td.get(j).getText().equals(newDoctor)) {
@@ -171,10 +169,19 @@ public class FunctionalTest extends PoseidonApplicationTests {
                     driver.findElement(By.id("id.medico")).sendKeys(td.get(j).toString());
                     return;
                 }
-        }
+        }*/
         fail("Não foi encontrado o médico " + newDoctor + " !");
+    }
 
-
+    private Boolean verifyIFaTextIsEqual(String txtEqual, List<WebElement> trsList){
+        for(int i=1; i < trsList.size(); i++) {
+            List<WebElement> td = trsList.get(i).findElements(By.tagName("td"));
+            for (int j = 0; j < td.size(); j++) {
+                if (td.get(j).getText().equals(txtEqual))
+                    return true;
+            }
+        }
+        return false;
     }
 
     @After
