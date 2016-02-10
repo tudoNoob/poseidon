@@ -2,7 +2,7 @@ package com.poseidon.controller;
 
 import com.poseidon.dao.MedicoDao;
 import com.poseidon.model.Medico;
-import com.poseidon.model.MedicoBuilder;
+import com.poseidon.builder.MedicoBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;

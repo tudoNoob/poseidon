@@ -1,4 +1,7 @@
-package com.poseidon.model;
+package com.poseidon.builder;
+
+import com.poseidon.model.ContaView;
+import com.poseidon.model.Users;
 
 /**
  * Created by wahrons on 2/5/16.

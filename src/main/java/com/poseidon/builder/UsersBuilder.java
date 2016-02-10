@@ -1,4 +1,6 @@
-package com.poseidon.model;
+package com.poseidon.builder;
+
+import com.poseidon.model.Users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
  */
 public class UsersBuilder {
 
-    private Users  myObject;
+    private Users myObject;
     private List<Users> usersList;
 
     public UsersBuilder(){
