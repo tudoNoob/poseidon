@@ -139,7 +139,6 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
 
-
     @Test
     public void deleteDoctorAsAdmin() {
         driver.get("http://localhost:8081/");
@@ -160,16 +159,6 @@ public class FunctionalTest extends PoseidonApplicationTests {
             driver.findElement(By.id("id.medico")).sendKeys(TR.toString());
             return;
         }
-        /*for(int i=1; i < TR.size(); i++){
-            List<WebElement> td = TR.get(i).findElements(By.tagName("td"));
-            for(int j=0; j < td.size(); j++)
-                if (td.get(j).getText().equals(newDoctor)) {
-                    driver.findElement(By.linkText("Médico")).click();
-                    driver.findElement(By.linkText("Deletar Médico")).click();
-                    driver.findElement(By.id("id.medico")).sendKeys(td.get(j).toString());
-                    return;
-                }
-        }*/
         fail("Não foi encontrado o médico " + newDoctor + " !");
     }
 
@@ -184,6 +173,16 @@ public class FunctionalTest extends PoseidonApplicationTests {
         return false;
     }
 
+    @Test
+    public void addConsultAsAdmin() {
+        driver.get("http://localhost:8081/");
+        String newConsult = "Gregory House";
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
+        driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Consultas")).click();
+        driver.findElement(By.linkText("Cadastrar Consulta")).click();
+    }
     @After
     public void tearDown() throws Exception {
         driver.quit();
