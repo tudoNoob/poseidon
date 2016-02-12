@@ -1,5 +1,5 @@
 
-[![poseidon](/src/main/resources/poseidon.jpg)]
+[![poseidon](/src/main/resources/poseidon.jpg)](https://github.com/tudoNoob/poseidon)
 
 [![Stories in Ready](https://badge.waffle.io/tudoNoob/poseidon.svg?label=ready&title=Ready)](http://waffle.io/tudoNoob/poseidon)
 
