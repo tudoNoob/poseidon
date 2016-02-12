@@ -183,6 +183,19 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Consultas")).click();
         driver.findElement(By.linkText("Cadastrar Consulta")).click();
     }
+
+    @Test
+    public void addPacientAsAdmin() {
+        driver.get("http://localhost:8081/");
+        String newPacient = "Maria do Socorro";
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
+        driver.findElement(By.id("submit.login")).click();
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Cadastrar Paciente")).click();
+        driver.findElement(By.id("nomecadastro")).sendKeys(newPacient);
+    }
+
     @After
     public void tearDown() throws Exception {
         driver.quit();
