@@ -1,11 +1,13 @@
-package com.poseidon.model;
+package com.poseidon.builder;
+
+import com.poseidon.model.Authorities;
 
 /**
  * Created by wahrons on 2/9/16.
  */
 public class AuthoritiesBuilder {
 
-    private Authorities  myObject;
+    private Authorities myObject;
 
 
     public AuthoritiesBuilder(){

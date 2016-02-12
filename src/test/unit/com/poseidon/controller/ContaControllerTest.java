@@ -1,5 +1,8 @@
 package com.poseidon.controller;
 
+import com.poseidon.builder.AuthoritiesBuilder;
+import com.poseidon.builder.ContaViewBuilder;
+import com.poseidon.builder.UsersBuilder;
 import com.poseidon.dao.AuthoritiesRepository;
 import com.poseidon.dao.MedicoDao;
 import com.poseidon.dao.UserRepository;

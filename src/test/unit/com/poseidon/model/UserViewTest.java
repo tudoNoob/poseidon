@@ -1,5 +1,6 @@
 package com.poseidon.model;
 
+import com.poseidon.builder.UsersBuilder;
 import org.junit.Before;
 import org.junit.Test;
 

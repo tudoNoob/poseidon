@@ -1,4 +1,6 @@
-package com.poseidon.model;
+package com.poseidon.builder;
+
+import com.poseidon.model.Medico;
 
 import java.util.ArrayList;
 import java.util.List;
