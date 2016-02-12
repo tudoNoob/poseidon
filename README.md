@@ -1,4 +1,6 @@
 
+[![poseidon](/src/main/resources/poseidon.jpg)]
+
 [![Stories in Ready](https://badge.waffle.io/tudoNoob/poseidon.svg?label=ready&title=Ready)](http://waffle.io/tudoNoob/poseidon)
 
 [![Build Status](https://snap-ci.com/tudoNoob/poseidon/branch/master/build_image)](https://snap-ci.com/tudoNoob/poseidon/branch/master)
