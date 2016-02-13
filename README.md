@@ -1,10 +1,5 @@
-
-[![Stories in Ready](https://badge.waffle.io/tudoNoob/poseidon.svg?label=ready&title=Ready)](http://waffle.io/tudoNoob/poseidon)
-
 [![Build Status](https://snap-ci.com/tudoNoob/poseidon/branch/master/build_image)](https://snap-ci.com/tudoNoob/poseidon/branch/master)
-
 [![Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/badges/gpa.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
-
 [![Issue Count](https://codeclimate.com/github/tudoNoob/poseidon/badges/issue_count.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 <a href="http://promisesaplus.com/">
     <img src="/src/main/resources/poseidon.jpg" alt="Poseidon Logo"
