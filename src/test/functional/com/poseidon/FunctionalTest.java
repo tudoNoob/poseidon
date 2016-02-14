@@ -224,6 +224,23 @@ public class FunctionalTest extends PoseidonApplicationTests {
         fail("Não foi encontrado o paciente " + newPacient + " !");
     }
 
+    @Test
+    public void deletePacientAsAdmin() {
+        String newPacient = "Maria";
+        String idPacient = "76";
+        addPacientAsAdmin();
+        List<WebElement> TR = driver.findElements(By.tagName("tr"));
+        if (verifyIFaTextIsEqual(newPacient, TR) == true){
+            driver.findElement(By.linkText("Paciente")).click();
+            driver.findElement(By.linkText("Deletar Paciente")).click();
+            driver.findElement(By.id("id.paciente")).sendKeys(idPacient);
+            driver.findElement(By.id("id.nome")).sendKeys(newPacient);
+            driver.findElement(By.id("submitdeletar")).click();
+            return;
+        }
+        fail("Não foi encontrado o paciente " + newPacient + " !");
+    }
+
     @After
     public void tearDown() throws Exception {
         driver.quit();
