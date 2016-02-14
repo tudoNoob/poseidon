@@ -21,6 +21,8 @@ public class FunctionalTest extends PoseidonApplicationTests {
     private String passwordAdmin = "admin";
     private String user = "user";
     private String passwordUser = "user";
+    private String newDoctor = "Gregory House";
+    private String newPacient = "Maria";
     private String homeTitle = "Home";
     private String patientTitle = "Paciente";
     private String consultTitle = "Consulta";
@@ -36,10 +38,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
     @Test
     public void adminAccess() {
-        driver.get("http://localhost:8081/");
-        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
-        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsAdmin();
         Assert.assertEquals(homeTitle, driver.getTitle());
         driver.findElement(By.linkText("Paciente")).click();
         driver.findElement(By.linkText("Cadastrar Paciente")).click();
@@ -97,10 +96,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
     @Test
     public void aboutAccessAsUser() {
-        driver.get("http://localhost:8081/");
-        driver.findElement(By.id("user.login")).sendKeys(user);
-        driver.findElement(By.id("password.login")).sendKeys(passwordUser);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsUser();
         driver.findElement(By.linkText("Sobre")).click();
         WebElement txt = driver.findElement(By.id("about"));
         String str = txt.getText();
@@ -110,11 +106,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
     @Test
     public void addDoctorAsAdmin() {
-        driver.get("http://localhost:8081/");
-        String newDoctor = "Michael Jackson";
-        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
-        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsUser();
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Cadastrar Médico")).click();
         driver.findElement(By.id("user.create")).sendKeys(newDoctor);
@@ -126,26 +118,9 @@ public class FunctionalTest extends PoseidonApplicationTests {
         fail("Não encontrado o médico " + newDoctor + "!");
     }
 
-    private boolean verifyIFaTextInTdIsEqual(String toEqual, List<WebElement> trList) {
-        for (int i = 1; i < trList.size(); i++) {
-            List<WebElement> td = trList.get(i).findElements(By.tagName("td"));
-            for (int j = 0; j < td.size(); j++) {
-                if (td.get(j).getText().equals(toEqual)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
     @Test
     public void deleteDoctorAsAdmin() {
-        driver.get("http://localhost:8081/");
-        String newDoctor = "Gregory House";
-        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
-        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsAdmin();
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Cadastrar Médico")).click();
         driver.findElement(By.id("user.create")).sendKeys(newDoctor);
@@ -153,7 +128,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Exibir todos Médicos")).click();
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
-        if (verifyIFaTextIsEqual(newDoctor, TR) == true){
+        if (verifyIFaTextInTdIsEqual(newDoctor, TR) == true){
             driver.findElement(By.linkText("Médico")).click();
             driver.findElement(By.linkText("Deletar Médico")).click();
             driver.findElement(By.id("id.medico")).sendKeys(TR.toString());
@@ -162,32 +137,15 @@ public class FunctionalTest extends PoseidonApplicationTests {
         fail("Não foi encontrado o médico " + newDoctor + " !");
     }
 
-    private Boolean verifyIFaTextIsEqual(String txtEqual, List<WebElement> trsList){
-        for(int i=1; i < trsList.size(); i++) {
-            List<WebElement> td = trsList.get(i).findElements(By.tagName("td"));
-            for (int j = 0; j < td.size(); j++) {
-                if (td.get(j).getText().equals(txtEqual))
-                    return true;
-            }
-        }
-        return false;
-    }
-
     @Test
     public void addConsultAsAdmin() {
-        driver.get("http://localhost:8081/");
-        String newConsult = "Gregory House";
-        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
-        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsAdmin();
         driver.findElement(By.linkText("Consultas")).click();
         driver.findElement(By.linkText("Cadastrar Consulta")).click();
     }
 
     @Test
     public void addPacientAsAdmin() {
-        driver.get("http://localhost:8081/");
-        String newPacient = "Maria";
         String address = "Padre Chagas, 6969, Moinhos de Vento";
         String surmane = "Silva";
         String meansOfPayment = "250,00";
@@ -220,17 +178,16 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.id("nome")).sendKeys(newPacient);
         driver.findElement(By.id("idpesquisar")).click();
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
-        if (verifyIFaTextIsEqual(newPacient, TR) == true){ return; }
+        if (verifyIFaTextInTdIsEqual(newPacient, TR) == true){ return; }
         fail("Não foi encontrado o paciente " + newPacient + " !");
     }
 
     @Test
     public void deletePacientAsAdmin() {
-        String newPacient = "Maria";
         String idPacient = "76";
         addPacientAsAdmin();
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
-        if (verifyIFaTextIsEqual(newPacient, TR) == true){
+        if (verifyIFaTextInTdIsEqual(newPacient, TR) == true){
             driver.findElement(By.linkText("Paciente")).click();
             driver.findElement(By.linkText("Deletar Paciente")).click();
             driver.findElement(By.id("id.paciente")).sendKeys(idPacient);
@@ -239,6 +196,32 @@ public class FunctionalTest extends PoseidonApplicationTests {
             return;
         }
         fail("Não foi encontrado o paciente " + newPacient + " !");
+    }
+
+    public void accessAsAdmin(){
+        driver.get("http://localhost:8081/");
+        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
+        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
+        driver.findElement(By.id("submit.login")).click();
+    }
+
+    public void accessAsUser(){
+        driver.get("http://localhost:8081/");
+        driver.findElement(By.id("user.login")).sendKeys(user);
+        driver.findElement(By.id("password.login")).sendKeys(passwordUser);
+        driver.findElement(By.id("submit.login")).click();
+    }
+
+    private boolean verifyIFaTextInTdIsEqual(String toEqual, List<WebElement> trList) {
+        for (int i = 1; i < trList.size(); i++) {
+            List<WebElement> td = trList.get(i).findElements(By.tagName("td"));
+            for (int j = 0; j < td.size(); j++) {
+                if (td.get(j).getText().equals(toEqual)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @After
