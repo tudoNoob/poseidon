@@ -1,10 +1,11 @@
+<a href="http://promisesaplus.com/">
+    <img src="/src/main/resources/poseidon_readme.jpg" alt="Poseidon Logo"
+         title="Poseidon" align="right" />
+</a>
 [![Build Status](https://snap-ci.com/tudoNoob/poseidon/branch/master/build_image)](https://snap-ci.com/tudoNoob/poseidon/branch/master)
 [![Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/badges/gpa.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 [![Issue Count](https://codeclimate.com/github/tudoNoob/poseidon/badges/issue_count.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
-<a href="http://promisesaplus.com/">
-    <img src="/src/main/resources/poseidon.jpg" alt="Poseidon Logo"
-         title="Poseidon" align="right" />
-</a>
+
 
 
 # POSEIDON
