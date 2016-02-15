@@ -56,6 +56,17 @@ ___
 * [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
 ___
+###Working Team:
+
+     Role     |      Nickname - Name     |
+:------------:|:-------------:|
+Developer    |[JaderTS - Jader C.](https://github.com/JaderTS)|
+Developer    |[luturol - Rafael A.](https://github.com/luturol)|
+Developer    |[matuella - Guilherme M.](https://github.com/matuella)|
+Developer    |[pedrro - Pedro H.](https://github.com/pedrro)|
+Developer    |[willmenn - William A.](https://github.com/willmenn)|
+
+___
 
 ###Readme in other languages:
 
