@@ -23,6 +23,8 @@ public class FunctionalTest extends PoseidonApplicationTests {
     private String passwordUser = "user";
     private String newDoctor = "Gregory House";
     private String newPacient = "Maria";
+    private String newBorn = "test";
+    private String newBornPassword = "test";
     private String homeTitle = "Home";
     private String patientTitle = "Paciente";
     private String consultTitle = "Consulta";
@@ -275,6 +277,15 @@ public class FunctionalTest extends PoseidonApplicationTests {
         String str = txt.getText();
         String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
         Assert.assertEquals(merge, str);
+    }
+
+    @Test
+    public void createAnUser() {
+        driver.findElement(By.id("btn-newuser")).click();
+        driver.findElement(By.id("user.create")).sendKeys(newBorn);
+        driver.findElement(By.id("pass.create")).sendKeys(newBornPassword);
+        driver.findElement(By.id("createUser.submit")).click();
+        fail("Não foi possível criar o usuário " + newBorn + " !");
     }
 
     public void accessAsAdmin(){
