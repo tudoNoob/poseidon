@@ -73,4 +73,4 @@ insert into paciente (nome,sobrenome,email,data_de_nascimento,data_da_ultima_con
 insert into paciente (nome,sobrenome,email,data_de_nascimento,data_da_ultima_consulta,telefone,celular,endereco,cep,forma_de_pagamento,cpf) values ('Gandalf','Cinzento','gandalf_cinzento@mordor.com','1200-01-12','2004-02-11','88888888','88888888','Rua Central','99876789','Cartão','02759832123');
 insert into paciente (nome,sobrenome,email,data_de_nascimento,data_da_ultima_consulta,telefone,celular,endereco,cep,forma_de_pagamento,cpf) values ('Gandalf','Cinzento','gandalf_cinzento@mordor.com','1200-01-12','2004-02-11','88888888','88888888','Rua Central','99876789','Cartão','02759832123');
 
-insert into medico (nome) values ('Jonatan');
+insert into quiropraxista (nome) values ('Jonatan');

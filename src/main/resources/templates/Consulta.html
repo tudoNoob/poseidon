@@ -17,13 +17,13 @@
             <div id="container.form" style="padding-top: 20px" th:if="${isCadastroConsulta}">
                 <form th:action="@{/cadastrarConsulta}" method="post" id="formCadastro">
                     <div id="left.container" style="float: left; width: 48%">
-                        <label for="idmedicocadastro" style="display:none"></label>
+                        <label for="idquiropraxistacadastro" style="display:none"></label>
                         <div><label>ID do Médico:</label></div> 
-                        <div class="input-group" id="id_medicodiv">
-                            <input type="text" id="id.medico" class="form-control" placeholder="ID do Médico"
-                                   aria-describedby="basic-addon1" name="id_medico"
-                                   id="idmedicocadastro" maxlength="30"/><span
-                                   class="input-group-addon" id="addon-id_medico">9...</span>
+                        <div class="input-group" id="id_quiropraxistadiv">
+                            <input type="text" id="id.quiropraxista" class="form-control" placeholder="ID do Quiropraxista"
+                                   aria-describedby="basic-addon1" name="id_quiropraxista"
+                                   id="idquiropraxistacadastro" maxlength="30"/><span
+                                   class="input-group-addon" id="addon-id_quiropraxista">9...</span>
                         </div>
                         <label for="idpacientecadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">ID do Paciente:</label></div> 
@@ -97,7 +97,7 @@
 
                 $('#formCadastro').validate({
                     rules: {
-                        id_medico: {required: true, minlength: 1, maxlength: 30},
+                        id_quiropraxista: {required: true, minlength: 1, maxlength: 30},
                         id_paciente: {required: true, minlength: 1, maxlength: 30},
                         data_consulta: {required: true, minlength: 10, maxlength: 10},
                         horario_consulta: {required: true, minlength: 8, maxlength: 8},
@@ -105,7 +105,7 @@
                     },
                     // Specify the validation error messages
                     messages: {
-                        id_medico: "Por favor digite um ID válido.",
+                        id_quiropraxista: "Por favor digite um ID válido.",
                         id_paciente: "Por favor digite um ID válido.",
                         data_consulta: "Por favor digite uma data válida.",
                         horario_consulta: "Por favor digite um horário válido.",

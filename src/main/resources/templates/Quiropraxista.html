@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Médico</title>
+    <title>Quiropraxista</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
@@ -13,18 +13,18 @@
 
 <!--CRUD Medico-->
 <div class="container430 marginAuto paddingTop40"
-     id="criarMedicoContainer"  th:if="${isCadastroMedico}">
-    <form id="form-createMedico" th:action="@{/cadastrarMedico}" method="post">
+     id="criarQuiropraxistaContainer"  th:if="${isCadastroQuiropraxista}">
+    <form id="form-createQuiropraxista" th:action="@{/cadastrarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Nome:</span> <input tabindex="1"
                 id="user.create" type="text" class="form-control"
-                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
                 name="nome" required="true" data-toggle="tooltip"
-                data-placement="right" title="Medico tem q ser único." />
+                data-placement="right" title="Quiropraxista tem que ser único." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input tabindex="2" type="submit" value="Cadastrar Médico"
-                   class="btn btn-lg btn-success" id="cadastrarMedico.submit" />
+            <input tabindex="2" type="submit" value="Cadastrar Quiropraxista"
+                   class="btn btn-lg btn-success" id="cadastrarQuiropraxista.submit" />
         </div>
     </form>
 </div>
@@ -49,9 +49,9 @@
 </div> -->
 
 <div title="ExMedicos" class="container430 marginAuto paddingTop40"
-     id="exibirTodosMedicoContainer" th:if="${isExibirMedico}">
-	<form id="form-exibirMedico" th:action="@{/exibirMedico}" method="post">
-    	<h1 class="text-align">Médicos</h1>
+     id="exibirTodosQuiropraxistasContainer" th:if="${isExibirQuiropraxista}">
+	<form id="form-exibirQuiropraxista" th:action="@{/exibirQuiropraxista}" method="post">
+    	<h1 class="text-align">Quiropraxista</h1>
     	<table class="table">
         <thead>
         	<tr>
@@ -60,7 +60,7 @@
         	</tr>
         </thead>
         <tbody>
-        	<tr th:each="row: ${medicos}">
+        	<tr th:each="row: ${quiropraxistas}">
             	<td th:text="${row.id}">ID</td>
            		<td th:text="${row.nome}">Nome</td>
         	</tr>
@@ -69,9 +69,9 @@
     </form>
 </div>
 
-		<div class="container1200 marginAuto" th:if="${isPesquisaMedico}">
+		<div class="container1200 marginAuto" th:if="${isPesquisaQuiropraxista}">
 			<div class="container-header">
-				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/pesquisarMedico}" method="post">
+				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/pesquisarQuiropraxista}" method="post">
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
@@ -88,8 +88,8 @@
 
 				</form>
 			</div>
-			<div title="Medicos" class="container430 marginAuto paddingTop40">
-				<h1 class="text-align">Médico</h1>
+			<div title="Quiropraxistas" class="container430 marginAuto paddingTop40">
+				<h1 class="text-align">Quiropraxista</h1>
 				<table class="table">
 					<thead>
 						<tr>
@@ -106,42 +106,42 @@
 		</div>
 
 <div class="container430 marginAuto paddingTop40"
-     id="deletarMedicoContainer" th:if="${isDeleteMedico}">
-    <form id="form-deleteMedico" th:action="@{/deletarMedico}" method="post">
+     id="deletarQuiropraxistaContainer" th:if="${isDeleteQuiropraxista}">
+    <form id="form-deleteQuiropraxista" th:action="@{/deletarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
-                tabindex="1" id="id.medico" type="text" class="form-control"
-                placeholder="ID do Médico" aria-describedby="basic-addon1"
+                tabindex="1" id="id.quiropraxista" type="text" class="form-control"
+                placeholder="ID do Quiropraxista" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
-                data-placement="right" title="Digite o ID do médico." />
+                data-placement="right" title="Digite o ID do Quiropraxista." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input tabindex="2" type="submit" value="Deletar Medico"
-                   class="btn btn-lg btn-success" id="deleteMedico.submit" />
+            <input tabindex="2" type="submit" value="Deletar Quiropraxista"
+                   class="btn btn-lg btn-success" id="deleteQuiropraxista.submit" />
         </div>
     </form>
 </div>
 
 <div class="container430 marginAuto paddingTop40"
-     id="editarMedicoContainer" th:if="${isEditarMedico}">
-    <form id="form-editarMedico" th:action="@{/editarMedico}" method="post">
+     id="editarQuiropraxistaContainer" th:if="${isEditarQuiropraxista}">
+    <form id="form-editarQuiropraxista" th:action="@{/editarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
-                tabindex="1" id="id.medico" type="text" class="form-control"
-                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                tabindex="1" id="id.quiropraxista" type="text" class="form-control"
+                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
                 name="id" required="true" data-toggle="tooltip"
-                data-placement="right" title="Digite o Id do médico." />
+                data-placement="right" title="Digite o Id do Quiropraxista." />
         </div>
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Novo nome:</span> <input
-                tabindex="2" id="nome.medico" type="text" class="form-control"
-                placeholder="Nome do Médico" aria-describedby="basic-addon1"
+                tabindex="2" id="nome.quiropraxista" type="text" class="form-control"
+                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
                 name="nome" required="true" data-toggle="tooltip"
-                data-placement="left" title="Digite o novo nome do médico." />
+                data-placement="left" title="Digite o novo nome do Quiropraxista." />
         </div>
         <div class="margin10" style="padding-top: 10px">
-            <input tabindex="3" type="submit" value="Editar Medico"
-                   class="btn btn-lg btn-success" id="editarMedico.submit" />
+            <input tabindex="3" type="submit" value="Editar Quiropraxista"
+                   class="btn btn-lg btn-success" id="editarQuiropraxista.submit" />
         </div>
     </form>
 </div>

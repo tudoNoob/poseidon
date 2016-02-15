@@ -6,18 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Medico {
+public class Quiropraxista {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
 
-	public Medico() {
+	public Quiropraxista() {
 
 	}
 
-	public Medico(Integer id, String nome) {
+	public Quiropraxista(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
@@ -40,6 +40,6 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "Medico [id=" + id + ", nome=" + nome + "]";
+		return "Quiropraxista [id=" + id + ", nome=" + nome + "]";
 	}
 }

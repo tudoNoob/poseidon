@@ -15,7 +15,7 @@ public class Consulta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	private Integer id_medico;
+	private Integer id_quiropraxista;
 	private Integer id_paciente;
 	private Double valor;
 	private Date horario_consulta;
@@ -32,12 +32,12 @@ public class Consulta {
 		this.id = id;
 	}
 
-	public Integer getId_medico() {
-		return id_medico;
+	public Integer getId_quiropraxista() {
+		return id_quiropraxista;
 	}
 
-	public void setId_medico(Integer id_medico) {
-		this.id_medico = id_medico;
+	public void setId_quiropraxista(Integer id_quiropraxista) {
+		this.id_quiropraxista = id_quiropraxista;
 	}
 
 	public Integer getId_paciente() {
