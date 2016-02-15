@@ -12,11 +12,11 @@
 
 Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
 
-###Como buildar o projeto
+###Como buildar o projeto:
 
 * Execute o comando  `mvn clean package` na pasta raiz do projeto.
 
-###Para executar o projeto
+###Para executar o projeto:
 
 * Vá na pasta target, que será gerada após o build do projeto e execute o seguinte comando `java -jar poseidon-0.0.1-SNAPSHOT.jar`
 
@@ -24,7 +24,7 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 
 * E para executar o projeto via Maven `mvn spring-boot-run`.
 
-###Para entrar na aplicação para motivos de desenvolivimento
+###Para entrar na aplicação para motivos de desenvolivimento:
 
 * Usuário: `admin`
 * Senha: `admin`
