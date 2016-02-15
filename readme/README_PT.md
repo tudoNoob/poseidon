@@ -10,7 +10,7 @@
 
 # POSEIDON
 
-Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
+Poseidon é um projeto open-source, onde seu principal objetivo é criar uma plataforma para clinicas de quiropraxia.
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 * Vá na pasta **target**, que será gerada após o build do projeto e execute o seguinte comando `java -jar poseidon-0.0.1-SNAPSHOT.jar`
 
-* Este comando é para executar o java via linha de comando, portanto no futuro a versão do projeto pode mudar tendo que acrescentar a nova versão mão.
+* Este comando é para executar o java via linha de comando, portanto no futuro a versão do projeto pode mudar tendo que acrescentar a nova versão manualmente.
 
 * E para executar o projeto via Maven `mvn spring-boot-run`.
 
@@ -60,4 +60,4 @@ ___
 
 ___
 
-[Readme in English]()
+[Readme in English](https://github.com/tudoNoob)
