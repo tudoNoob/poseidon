@@ -2,7 +2,7 @@ package com.poseidon.controller;
 
 import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.annotation.ViewName;
-import com.poseidon.dao.MedicoDao;
+import com.poseidon.dao.QuiropraxistaDao;
 import com.poseidon.model.Quiropraxista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class MedicoController {
 
     @Autowired
-     MedicoDao medicoRepository;
+     QuiropraxistaDao medicoRepository;
 
     private static Logger logger = Logger.getLogger("MedicoController");
 
