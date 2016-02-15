@@ -3,7 +3,7 @@ package com.poseidon.controller;
 import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.MedicoDao;
-import com.poseidon.model.Medico;
+import com.poseidon.model.Quiropraxista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,9 +39,9 @@ public class MedicoController {
     @ViewName(name = "redirect://medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=true")
     @NotNullArgs
     public void achaTodosMedicos(ModelAndView modelAndView) {
-        Iterable<Medico> medicoList = medicoRepository.findAll();
-        List<Medico> medicoView = com.google.common.collect.Lists.newArrayList();
-        for(Medico medico : medicoList){
+        Iterable<Quiropraxista> medicoList = medicoRepository.findAll();
+        List<Quiropraxista> medicoView = com.google.common.collect.Lists.newArrayList();
+        for(Quiropraxista medico : medicoList){
             medicoView.add(medico);
         }
         modelAndView.getModelMap().addAttribute("medicos", medicoView);
@@ -50,10 +50,10 @@ public class MedicoController {
     @RequestMapping(value = "/deletarMedico")
     @ViewName(name = "redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=true&isEditarMedico=false&isExibirMedico=false")
     @NotNullArgs
-    public ModelAndView deletarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
+    public ModelAndView deletarMedico(@ModelAttribute Quiropraxista medic, ModelAndView modelAndView) {
         logger.info("DELETE MEDICO");
         logger.info("medico>" + medic.toString());
-        Medico medico = medicoRepository.findById(medic.getId());
+        Quiropraxista medico = medicoRepository.findById(medic.getId());
         try {
             medicoRepository.delete(medico);
         }catch (RuntimeException exception){
@@ -66,7 +66,7 @@ public class MedicoController {
     @RequestMapping(value = "/cadastrarMedico")
     @ViewName(name = "redirect:/medico?isCadastroMedico=true&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=false&isExibirMedico=false")
     @NotNullArgs
-    public ModelAndView cadastrarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
+    public ModelAndView cadastrarMedico(@ModelAttribute Quiropraxista medic, ModelAndView modelAndView) {
         logger.info("CREATE MEDICO");
         logger.info("medico>" + medic.toString());
         medicoRepository.save(medic);
@@ -77,7 +77,7 @@ public class MedicoController {
     @RequestMapping(value = "/editarMedico")
     @ViewName(name = "redirect:/medico?isCadastroMedico=false&isPesquisaMedico=false&isDeleteMedico=false&isEditarMedico=true&isExibirMedico=false")
     @NotNullArgs
-    public ModelAndView editarMedico(@ModelAttribute Medico medic, ModelAndView modelAndView) {
+    public ModelAndView editarMedico(@ModelAttribute Quiropraxista medic, ModelAndView modelAndView) {
         logger.info("EDIT MEDICO");
         logger.info("medico>" + medic.toString());
         medicoRepository.save(medic);
