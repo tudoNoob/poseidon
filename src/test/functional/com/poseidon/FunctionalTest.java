@@ -21,12 +21,12 @@ public class FunctionalTest extends PoseidonApplicationTests {
     private String passwordAdmin = "admin";
     private String user = "user";
     private String passwordUser = "user";
-    private String newDoctor = "Gregory House";
+    private String newQuiropraxist = "Gregory House";
     private String newPacient = "Maria";
     private String homeTitle = "Home";
     private String patientTitle = "Paciente";
     private String consultTitle = "Consulta";
-    private String doctorTitle = "Médico";
+    private String quiropraxistTitle = "Quiropraxista";
     private String accountTitle = "Conta";
     private String aboutTitle = "Sobre";
     private String loginTitle = "Login";
@@ -61,20 +61,20 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Consultas")).click();
         driver.findElement(By.linkText("Exibir calendário de Consultas")).click();
         Assert.assertEquals(consultTitle, driver.getTitle());
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Cadastrar Médico")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Cadastrar Quiropraxista")).click();
         Assert.assertEquals(doctorTitle, driver.getTitle());
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Pesquisar Médico")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Pesquisar Quiropraxista")).click();
         Assert.assertEquals(doctorTitle, driver.getTitle());
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Deletar Médico")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Deletar Quiropraxista")).click();
         Assert.assertEquals(doctorTitle, driver.getTitle());
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Editar Médico")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Editar Quiropraxista")).click();
         Assert.assertEquals(doctorTitle, driver.getTitle());
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Exibir todos Médicos")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Exibir todos Quiropraxistas")).click();
         Assert.assertEquals(doctorTitle, driver.getTitle());
         driver.findElement(By.linkText("Contas")).click();
         driver.findElement(By.linkText("Criar Conta")).click();
@@ -95,36 +95,36 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void addDoctorAsAdmin() {
+    public void addQuiropraxistAsAdmin() {
         accessAsAdmin();
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Cadastrar Médico")).click();
-        driver.findElement(By.id("user.create")).sendKeys(newDoctor);
-        driver.findElement(By.id("cadastrarMedico.submit")).click();
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Exibir todos Médicos")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Cadastrar Quiropraxista")).click();
+        driver.findElement(By.id("user.create")).sendKeys(newQuiropraxist);
+        driver.findElement(By.id("cadastrarQuiropraxista.submit")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Exibir todos Quiropraxista")).click();
         List<WebElement> TRs = driver.findElements(By.tagName("tr"));
         if (verifyIFaTextInTdIsEqual(newDoctor, TRs) == true) { return; }
-        fail("Não encontrado o médico " + newDoctor + "!");
+        fail("Não encontrado o Quiropraxista " + newQuiropraxist + "!");
     }
 
     @Test
     public void deleteDoctorAsAdmin() {
         accessAsAdmin();
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Cadastrar Médico")).click();
-        driver.findElement(By.id("user.create")).sendKeys(newDoctor);
-        driver.findElement(By.id("cadastrarMedico.submit")).click();
-        driver.findElement(By.linkText("Médico")).click();
-        driver.findElement(By.linkText("Exibir todos Médicos")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Cadastrar Quiropraxista")).click();
+        driver.findElement(By.id("user.create")).sendKeys(newQuiropraxist);
+        driver.findElement(By.id("cadastrarQuiropraxista.submit")).click();
+        driver.findElement(By.linkText("Quiropraxista")).click();
+        driver.findElement(By.linkText("Exibir todos Quiropraxistas")).click();
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
         if (verifyIFaTextInTdIsEqual(newDoctor, TR) == true){
-            driver.findElement(By.linkText("Médico")).click();
-            driver.findElement(By.linkText("Deletar Médico")).click();
-            driver.findElement(By.id("id.medico")).sendKeys(TR.toString());
+            driver.findElement(By.linkText("Quiropraxista")).click();
+            driver.findElement(By.linkText("Deletar Quiropraxista")).click();
+            driver.findElement(By.id("id.quiropraxista")).sendKeys(TR.toString());
             return;
         }
-        fail("Não foi encontrado o médico " + newDoctor + " !");
+        fail("Não foi encontrado o Quiropraxista " + newQuiropraxist + " !");
     }
 
     @Test
