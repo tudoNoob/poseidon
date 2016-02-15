@@ -60,7 +60,7 @@ ___
 
 ___
 
-###Working Team:
+###Time de Desenvolvimento:
 
      Posição     |      Nickname - Nome     |
 :------------:|:-------------:|
