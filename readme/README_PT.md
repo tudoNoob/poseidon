@@ -60,6 +60,18 @@ ___
 
 ___
 
+###Working Team:
+
+     Posição     |      Nickname - Nome     |
+:------------:|:-------------:|
+Desenvolvedor    |[JaderTS - Jader C.](https://github.com/JaderTS)|
+Desenvolvedor    |[luturol - Rafael A.](https://github.com/luturol)|
+Desenvolvedor    |[matuella - Guilherme M.](https://github.com/matuella)|
+Desenvolvedor    |[pedrro - Pedro H.](https://github.com/pedrro)|
+Desenvolvedor    |[willmenn - William A.](https://github.com/willmenn)|
+
+___
+
 ###Readme em outras línguas:
 
 * [Readme in English](https://github.com/tudoNoob/poseidon)
