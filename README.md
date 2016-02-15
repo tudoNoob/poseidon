@@ -39,7 +39,7 @@ Ou se quiser acessar como usuário comum:
 
 * [Heroku Poseidon link](poseidon-dev1.herokuapp.com)
 
-###links úteis:
+###Links úteis:
 
 * [Slack do time](https://tudonoob.slack.com)
 
