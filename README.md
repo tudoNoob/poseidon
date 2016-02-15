@@ -29,7 +29,7 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 * Usuário: `admin`
 * Senha: `admin`
  
-Ou se quiser acessar como usuário comum:
+#####Ou se quiser acessar como usuário comum:
 
 * Usuário: `user`
 * Senha: `user`
@@ -37,7 +37,7 @@ Ou se quiser acessar como usuário comum:
 
 ###Ambiente de Desenvolvimento do Poseidon:
 
-* [Heroku Poseidon link](poseidon-dev1.herokuapp.com)
+* [Heroku Poseidon](poseidon-dev1.herokuapp.com)
 
 ###Links úteis:
 
