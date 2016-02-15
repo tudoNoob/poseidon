@@ -106,7 +106,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
 
     @Test
     public void addDoctorAsAdmin() {
-        accessAsUser();
+        accessAsAdmin();
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Cadastrar Médico")).click();
         driver.findElement(By.id("user.create")).sendKeys(newDoctor);
@@ -156,9 +156,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
         String lastConsult = "12122012";
         String telephone = "32125415";
         String phone = "84541212";
-        driver.findElement(By.id("user.login")).sendKeys(userAdmin);
-        driver.findElement(By.id("password.login")).sendKeys(passwordAdmin);
-        driver.findElement(By.id("submit.login")).click();
+        accessAsAdmin();
         driver.findElement(By.linkText("Paciente")).click();
         driver.findElement(By.linkText("Cadastrar Paciente")).click();
         driver.findElement(By.id("nomecadastro")).sendKeys(newPacient);
@@ -195,6 +193,42 @@ public class FunctionalTest extends PoseidonApplicationTests {
             driver.findElement(By.id("submitdeletar")).click();
             return;
         }
+        fail("Não foi encontrado o paciente " + newPacient + " !");
+    }
+
+    @Test
+    public void addPacientAsUser() {
+        String address = "Lucas de Oliveira, 6969, Rio Branco";
+        String surmane = "Carvalho";
+        String meansOfPayment = "350,00";
+        String cep = "98764321";
+        String cpf = "0166236969";
+        String birthDate = "26922000";
+        String email = "maria@gmail.com";
+        String lastConsult = "12122012";
+        String telephone = "32125415";
+        String phone = "84541212";
+        accessAsUser();
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Cadastrar Paciente")).click();
+        driver.findElement(By.id("nomecadastro")).sendKeys(newPacient);
+        driver.findElement(By.id("enderecocadastro")).sendKeys(address);
+        driver.findElement(By.id("sobrenomecadastro")).sendKeys(surmane);
+        driver.findElement(By.id("cepcadastro")).sendKeys(cep);
+        driver.findElement(By.id("cpfcadastro")).sendKeys(cpf);
+        driver.findElement(By.id("datanscimentocadastro")).sendKeys(birthDate);
+        driver.findElement(By.id("emailcadastro")).sendKeys(email);
+        driver.findElement(By.id("dataultimaconsultacadastro")).sendKeys(lastConsult);
+        driver.findElement(By.id("telefonecadastro")).sendKeys(telephone);
+        driver.findElement(By.id("formadepagamentocadastro")).sendKeys(meansOfPayment);
+        driver.findElement(By.id("celularcadastro")).sendKeys(phone);
+        driver.findElement(By.id("submitcadastrarpaciente")).click();
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Pesquisar Paciente")).click();
+        driver.findElement(By.id("nome")).sendKeys(newPacient);
+        driver.findElement(By.id("idpesquisar")).click();
+        List<WebElement> TR = driver.findElements(By.tagName("tr"));
+        if (verifyIFaTextInTdIsEqual(newPacient, TR) == true){ return; }
         fail("Não foi encontrado o paciente " + newPacient + " !");
     }
 
