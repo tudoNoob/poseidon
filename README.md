@@ -6,7 +6,7 @@
 [![Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/badges/gpa.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 [![Issue Count](https://codeclimate.com/github/tudoNoob/poseidon/badges/issue_count.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 
-# POSEIDON
+#POSEIDON
 
 Poseidon is an open-source project, where its main objective is to create a platform for chiropractic clinics.
 
@@ -29,13 +29,13 @@ ___
 
 ###Accessing the application with development purposes:
 
-* Usuário: `admin`
-* Senha: `admin`
+* Username: `admin`
+* Password: `admin`
  
 ####Or acessing as a common application user:
 
-* Usuário: `user`
-* Senha: `user`
+* Username: `user`
+* Password: `user`
 
 ___ 
 
@@ -57,4 +57,4 @@ ___
 
 ___
 
-[Readme em Português]()
+[Readme em Português](https://github.com/tudoNoob/poseidon/blob/master/readme/README_PT.md)
