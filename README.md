@@ -6,47 +6,55 @@
 [![Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/badges/gpa.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 [![Issue Count](https://codeclimate.com/github/tudoNoob/poseidon/badges/issue_count.svg)](https://codeclimate.com/github/tudoNoob/poseidon)
 
-
-
 # POSEIDON
 
-Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma para clinicas de quiropraxia.
+Poseidon is an open-source project, where its main objective is to create a platform for chiropractic clinics.
 
-###Como buildar o projeto:
+___
 
-* Execute o comando  `mvn clean package` na pasta raiz do projeto.
+###Building the project:
 
-###Para executar o projeto:
+* Execute the command `mvn clean package` inside the project root folder.
 
-* Vá na pasta target, que será gerada após o build do projeto e execute o seguinte comando `java -jar poseidon-0.0.1-SNAPSHOT.jar`
+___
 
-* Este comando é para executar o java via linha de comando, portanto no futuro a versão do projeto pode mudar tendo que acrescentar a nova versão mão.
+###Executing the project:
 
-* E para executar o projeto via Maven `mvn spring-boot-run`.
+* Go to the folder **target**, this folder will be created after the project's build executes the following command: `java -jar poseidon-0.0.1-SNAPSHOT.jar`
+  * **OBS**: This command is designated to execute the java via command line, therefore in the future the project version might change, thus change the jar version manually is necessary.
 
-###Para entrar na aplicação para motivos de desenvolvimento:
+* Executing the project via Maven `mvn spring-boot-run`.
+
+___
+
+###Accessing the application with development purposes:
 
 * Usuário: `admin`
 * Senha: `admin`
  
-#####Ou se quiser acessar como usuário comum:
+####Or acessing as a common application user:
 
 * Usuário: `user`
 * Senha: `user`
- 
 
-###Ambiente de Desenvolvimento do Poseidon:
+___ 
+
+###Poseidon's Development Environment:
 
 * [Heroku Poseidon](poseidon-dev1.herokuapp.com)
 
-###Links úteis:
+___
 
-* [Slack do time](https://tudonoob.slack.com)
+###Helpful links:
 
-* [Waffle do projeto](https://waffle.io/tudoNoob/poseidon)
+* [Team's Slack](https://tudonoob.slack.com)
 
-* [Snap-ci do projeto](https://snap-ci.com/tudoNoob/poseidon/branch/master)
+* [Project's Waffle](https://waffle.io/tudoNoob/poseidon)
 
-* [Code Climate do projeto](https://codeclimate.com/github/tudoNoob/poseidon/)
+* [Project's Snap-ci](https://snap-ci.com/tudoNoob/poseidon/branch/master)
 
+* [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
+___
+
+[Readme em Português]()
