@@ -197,6 +197,25 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
+    public void UserAccess() {
+        accessAsUser();
+        Assert.assertEquals(homeTitle, driver.getTitle());
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Cadastrar Paciente")).click();
+        Assert.assertEquals(patientTitle, driver.getTitle());
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Deletar Paciente")).click();
+        Assert.assertEquals(patientTitle, driver.getTitle());
+        driver.findElement(By.linkText("Paciente")).click();
+        driver.findElement(By.linkText("Pesquisar Paciente")).click();
+        Assert.assertEquals(patientTitle, driver.getTitle());
+        driver.findElement(By.linkText("Sobre")).click();
+        Assert.assertEquals(aboutTitle, driver.getTitle());
+        driver.findElement(By.linkText("Logout")).click();
+        Assert.assertEquals(loginTitle, driver.getTitle());
+    }
+
+    @Test
     public void addPacientAsUser() {
         String address = "Lucas de Oliveira, 6969, Rio Branco";
         String surmane = "Carvalho";
