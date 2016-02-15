@@ -24,7 +24,7 @@ Poseidon é um projeto open-source, aonde o objetivo é criar uma plataforma par
 
 * E para executar o projeto via Maven `mvn spring-boot-run`.
 
-###Para entrar na aplicação para motivos de desenvolivimento:
+###Para entrar na aplicação para motivos de desenvolvimento:
 
 * Usuário: `admin`
 * Senha: `admin`
