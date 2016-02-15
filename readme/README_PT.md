@@ -60,4 +60,6 @@ ___
 
 ___
 
-[Readme in English](https://github.com/tudoNoob/poseidon)
+###Readme em outras línguas:
+
+* [Readme in English](https://github.com/tudoNoob/poseidon)
