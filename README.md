@@ -33,15 +33,20 @@ Ou se quiser acessar como usuário comum:
 
 * Usuário: `user`
 * Senha: `user`
+ 
+
+###Ambiente de Desenvolvimento do Poseidon:
+
+* [Heroku Poseidon link](poseidon-dev1.herokuapp.com)
 
 ###links úteis:
 
-[Slack do time](https://tudonoob.slack.com)
+* [Slack do time](https://tudonoob.slack.com)
 
-[Waffle do projeto](https://waffle.io/tudoNoob/poseidon)
+* [Waffle do projeto](https://waffle.io/tudoNoob/poseidon)
 
-[Snap-ci do projeto](https://snap-ci.com/tudoNoob/poseidon/branch/master)
+* [Snap-ci do projeto](https://snap-ci.com/tudoNoob/poseidon/branch/master)
 
-[Code Climate do projeto](https://codeclimate.com/github/tudoNoob/poseidon/)
+* [Code Climate do projeto](https://codeclimate.com/github/tudoNoob/poseidon/)
 
 
