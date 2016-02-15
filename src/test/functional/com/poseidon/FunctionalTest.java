@@ -187,6 +187,16 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
+    public void aboutAccessAsAdmin() {
+        accessAsAdmin();
+        driver.findElement(By.linkText("Sobre")).click();
+        WebElement txt = driver.findElement(By.id("about"));
+        String str = txt.getText();
+        String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
+        Assert.assertEquals(merge, str);
+    }
+
+    @Test
     public void addPacientAsUser() {
         String address = "Lucas de Oliveira, 6969, Rio Branco";
         String surmane = "Carvalho";
