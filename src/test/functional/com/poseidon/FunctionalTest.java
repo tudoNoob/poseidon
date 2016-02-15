@@ -95,16 +95,6 @@ public class FunctionalTest extends PoseidonApplicationTests {
     }
 
     @Test
-    public void aboutAccessAsUser() {
-        accessAsUser();
-        driver.findElement(By.linkText("Sobre")).click();
-        WebElement txt = driver.findElement(By.id("about"));
-        String str = txt.getText();
-        String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
-        Assert.assertEquals(merge, str);
-    }
-
-    @Test
     public void addDoctorAsAdmin() {
         accessAsAdmin();
         driver.findElement(By.linkText("Médico")).click();
@@ -114,7 +104,7 @@ public class FunctionalTest extends PoseidonApplicationTests {
         driver.findElement(By.linkText("Médico")).click();
         driver.findElement(By.linkText("Exibir todos Médicos")).click();
         List<WebElement> TRs = driver.findElements(By.tagName("tr"));
-        if (verifyIFaTextInTdIsEqual(newDoctor, TRs) == true) { return; };
+        if (verifyIFaTextInTdIsEqual(newDoctor, TRs) == true) { return; }
         fail("Não encontrado o médico " + newDoctor + "!");
     }
 
@@ -230,6 +220,32 @@ public class FunctionalTest extends PoseidonApplicationTests {
         List<WebElement> TR = driver.findElements(By.tagName("tr"));
         if (verifyIFaTextInTdIsEqual(newPacient, TR) == true){ return; }
         fail("Não foi encontrado o paciente " + newPacient + " !");
+    }
+
+    @Test
+    public void deletePacientAsUser() {
+        String idPacient = "76";
+        addPacientAsUser();
+        List<WebElement> TR = driver.findElements(By.tagName("tr"));
+        if (verifyIFaTextInTdIsEqual(newPacient, TR) == true){
+            driver.findElement(By.linkText("Paciente")).click();
+            driver.findElement(By.linkText("Deletar Paciente")).click();
+            driver.findElement(By.id("id.paciente")).sendKeys(idPacient);
+            driver.findElement(By.id("id.nome")).sendKeys(newPacient);
+            driver.findElement(By.id("submitdeletar")).click();
+            return;
+        }
+        fail("Não foi encontrado o paciente " + newPacient + " !");
+    }
+
+    @Test
+    public void aboutAccessAsUser() {
+        accessAsUser();
+        driver.findElement(By.linkText("Sobre")).click();
+        WebElement txt = driver.findElement(By.id("about"));
+        String str = txt.getText();
+        String merge = "Criamos está aplicação com o Objetivo de suprir as necessidades do mercado de clinicas de quiropaxia. Criado por Guilherme Matuella, Jader Cunha, Pedro Henrique, Rafael Ahrons e William Ahrons";
+        Assert.assertEquals(merge, str);
     }
 
     public void accessAsAdmin(){
