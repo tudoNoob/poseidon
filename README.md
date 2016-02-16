@@ -70,4 +70,4 @@ ___
 
 ###Readme in other languages:
 
-* [Readme em Português](https://github.com/tudoNoob/poseidon/blob/master/readme/README_PT.md)
+* [Readme em Português](docs/readme.pt_br.md)
