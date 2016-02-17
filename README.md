@@ -51,7 +51,7 @@ ___
 
 * [Project's Waffle](https://waffle.io/tudoNoob/poseidon)
 
-* [Project's Snap-ci](https://snap-ci.com/tudoNoob/poseidon/branch/master)
+* [Project's Travis-CI](https://travis-ci.org/tudoNoob/poseidon)
 
 * [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
