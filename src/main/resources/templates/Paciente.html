@@ -53,16 +53,16 @@
                         <div class="input-group" id="telefonediv">
                             <input tabindex="5" type="text" class="form-control phone"
                                    placeholder="Telefone" aria-describedby="basic-addon1"
-                                   name="telefone" id="telefonecadastro"  maxlength="9"  th:field="${paciente.telefone}" /> <span
-                                   class="input-group-addon" id="addon-telefone">9999-9999</span>
+                                   name="telefone" id="telefonecadastro"  maxlength="15"  th:field="${paciente.telefone}" /> <span
+                                   class="input-group-addon" id="addon-telefone">(000) 9999-9999</span>
                         </div>
                         <label for="celularcadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Celular:</label></div>
                         <div class="input-group" id="celulardiv">
                             <input tabindex="6" type="text" class="form-control phone"
                                    placeholder="Celular" aria-describedby="basic-addon1"
-                                   name="celular" id="celularcadastro" maxlength="9"  th:field="${paciente.celular}" /><span
-                                   class="input-group-addon" id="addon-celular">9999-9999</span>
+                                   name="celular" id="celularcadastro" maxlength="15"  th:field="${paciente.celular}" /><span
+                                   class="input-group-addon" id="addon-telefone">(000) 9999-9999</span>
                         </div>
                     </div>
                     <div id="rigth.container" style="float: right; width: 48%">
@@ -248,7 +248,7 @@
         <script type="text/javascript" src="/jquery/jquery.bootpag.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('.phone').mask('0000-0000');
+                $('.phone').mask('(000) 0000-0000');
                 $('.cep').mask('00000-000');
                 $('.cpf').mask('000.000.000-00');
                 $('.data').mask('00/00/0000');
@@ -259,8 +259,8 @@
                         sobrenome: {required: true, minlength: 2, maxlength: 30},
                         cpf: {required: true, minlength: 14, maxlength: 14},
                         email: {required: true, email: true, minlength: 4, maxlength: 30},
-                        telefone: {required: true, minlength: 9, maxlength: 9},
-                        celular: {required: true, minlength: 9, maxlength: 9},
+                        telefone: {required: true, minlength: 15, maxlength: 15},
+                        celular: {required: true, minlength: 15, maxlength: 15},
                         endereco: {required: true, minlength: 5, maxlength: 30},
                         cep: {required: true, minlength: 9, maxlength: 9},
                         data_de_nascimento: {required: true, minlength: 10, maxlength: 10},
