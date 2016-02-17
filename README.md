@@ -54,6 +54,8 @@ ___
 
 * [Project's Travis-CI](https://travis-ci.org/tudoNoob/poseidon)
 
+* [Project's Coveralls](https://coveralls.io/github/tudoNoob/poseidon)
+
 * [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
 ___
