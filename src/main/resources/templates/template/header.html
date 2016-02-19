@@ -13,10 +13,10 @@
 				</div>
 				<div>
 					<ul class="nav navbar-nav">
-						<li class="menu active "><a class="colorBranco" url="/home" th:href="@{/homePage}">Home</a></li>
-						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
-										   data-toggle="dropdown" role="button" aria-haspopup="true"
-										   aria-expanded="false">Paciente<span class="caret"></span></a>
+						<li class="menu active"><a class="colorBranco" url="/home" th:href="@{/homePage}">Home</a></li>
+						<li class="dropdown"><a href="#" class="colorBranco dropdown-toggle"
+											   data-toggle="dropdown" role="button" aria-haspopup="true"
+											   aria-expanded="false">Paciente<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
 								<li><a th:href="@{/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
