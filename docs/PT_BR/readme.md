@@ -61,6 +61,8 @@ ___
 
 * [Code Climate do projeto](https://codeclimate.com/github/tudoNoob/poseidon/)
 
+* [Como contribuir](https://github.com/tudoNoob/poseidon/blob/master/docs/PT_BR/contribute.md)
+
 ___
 
 ###Time de Desenvolvimento:

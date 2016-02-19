@@ -58,6 +58,8 @@ ___
 
 * [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
+* [How to contribute](https://github.com/tudoNoob/poseidon/blob/master/docs/EN_US/contribute.md)
+
 ___
 ###Working Team:
 
