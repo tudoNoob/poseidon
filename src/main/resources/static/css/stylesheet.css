@@ -60,8 +60,8 @@
 }
 
 .colorBranco:hover {
-    background-color: #fff !important;
-    color: black !important;
+    background-color: #e7e7e7 !important;
+    color: #fff !important;
 }
 
 .focusedMenu {
