@@ -51,11 +51,11 @@
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Contas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true,isExibirConta=false)}" id="btn-deletarConta">Deletar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true,isExibirConta=false)}" id="btn-deletarConta">Deletar Conta</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=false,isExibirConta=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=false,isExibirConta=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
 							</ul>
 						</li>
 						<li class="menu"><a class="colorBranco" url="/sobre" th:href="@{/sobrePage}">Sobre</a></li>

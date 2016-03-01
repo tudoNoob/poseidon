@@ -5,7 +5,7 @@
 <title>Conta</title>
 
 	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
 </head>
 <body class="backgroundColorCinza">
 	<div th:include="template/header :: header">...</div>
@@ -13,7 +13,7 @@
 	<!--CRUD Conta-->
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" th:if="${isCadastroConta}">
-		<form id="form-createUser" th:action="@{/cadastrarConta}" method="post">
+		<form id="form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.create" type="text" class="form-control"
@@ -44,7 +44,7 @@
 
 	<div title="Usuários" class="container430 marginAuto paddingTop40"
 		id="exibirTodasContasContainer" th:if="${isExibirConta}">
-		<form id="form-createUser" th:action="@{/exibirConta}" method="post">
+		<form id="form-createUser" th:action="@{/admin/exibirConta}" method="post">
 		<h1 class="text-align">Usuários</h1>
 		<table class="table">
 			<thead>
@@ -67,7 +67,7 @@
 
 	<div class="container430 marginAuto paddingTop40"
 		id="deletarUsuarioContainer" th:if="${isDeleteConta}">
-		<form id="form-createUser" th:action="@{/deletarConta}" method="post">
+		<form id="form-createUser" th:action="@{/admin/deletarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.create" type="text" class="form-control"
@@ -84,7 +84,7 @@
 
 	<div class="container430 marginAuto paddingTop40"
 		id="editarContaContainer" th:if="${isEditarConta}">
-		<form id="form-editarUser" th:action="@{/editarConta}" method="post">
+		<form id="form-editarUser" th:action="@{/admin/editarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.editar" type="text" class="form-control"

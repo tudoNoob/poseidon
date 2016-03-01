@@ -29,7 +29,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void contaCadastro_cadastroTest() throws Exception {
-            this.mockMvc.perform(get("/conta")
+            this.mockMvc.perform(get("/admin/conta")
                     .param("isCadastroConta","true")
                     .param("isEditarConta","false")
                     .param("isDeleteConta","false")
@@ -45,7 +45,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void contaCadastro_editarTest() throws Exception {
-            this.mockMvc.perform(get("/conta")
+            this.mockMvc.perform(get("/admin/conta")
                     .param("isCadastroConta","false")
                     .param("isEditarConta","true")
                     .param("isDeleteConta","false")
@@ -61,7 +61,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void contaCadastro_deleteTest() throws Exception {
-            this.mockMvc.perform(get("/conta")
+            this.mockMvc.perform(get("/admin/conta")
                     .param("isCadastroConta","false")
                     .param("isEditarConta","false")
                     .param("isDeleteConta","true")
@@ -77,7 +77,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void contaCadastro_exibirTest() throws Exception {
-            this.mockMvc.perform(get("/conta")
+            this.mockMvc.perform(get("/admin/conta")
                     .param("isCadastroConta","false")
                     .param("isEditarConta","false")
                     .param("isDeleteConta","false")
@@ -93,12 +93,12 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void cadastrarContaTest() throws Exception {
-            this.mockMvc.perform(get("/cadastrarConta")
+            this.mockMvc.perform(get("/admin/cadastrarConta")
                     .param("username","Legolas")
                     .param("password","1234")
                     .param("role","ROLE_ADMIN"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/conta?" +
+                    .andExpect(view().name("redirect:/admin/conta?" +
                             "isCadastroConta=true" +
                             "&isEditarConta=false" +
                             "&isDeleteConta=false" +
@@ -107,10 +107,10 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void editarContaTest() throws Exception {
-            this.mockMvc.perform(get("/editarConta")
+            this.mockMvc.perform(get("/admin/editarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/conta?" +
+                    .andExpect(view().name("redirect:/admin/conta?" +
                             "isCadastroConta=false" +
                             "&isEditarConta=true" +
                             "&isDeleteConta=false" +
@@ -119,10 +119,10 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         @Test
         public void deleteContaTest() throws Exception {
-            this.mockMvc.perform(get("/deletarConta")
+            this.mockMvc.perform(get("/admin/deletarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/conta?" +
+                    .andExpect(view().name("redirect:/admin/conta?" +
                             "isCadastroConta=false" +
                             "&isEditarConta=false" +
                             "&isDeleteConta=true" +
