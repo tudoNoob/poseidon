@@ -13,7 +13,7 @@
     </test>
     <test name="Unit">
         <classes>
-            <class name="com.poseidon.controller.ContaControllerTest"/>
+            <!--class name="com.poseidon.controller.ContaControllerTest"/-->
             <class name="com.poseidon.controller.HomeControllerTest" />
             <class name="com.poseidon.controller.LoginControllerTest" />
             <class name="com.poseidon.controller.QuiropraxistaControllerTest"/>
