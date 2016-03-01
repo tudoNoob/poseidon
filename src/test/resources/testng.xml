@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite">
-    <test name="Conta">
+    <test name="Integration">
         <classes>
             <class name="com.poseidon.controller.ContaControllerIntegrationTest" />
+            <class name="com.poseidon.controller.HomeControllerIntegrationTest" />
+            <class name="com.poseidon.controller.LoginControllerIntgrationTest" />
+            <class name="com.poseidon.controller.PacienteControllerIntegrationTest" />
+            <class name="com.poseidon.controller.QuiropraxistaControlerIntegrationTest"/>
+            <class name="com.poseidon.controller.SobreControllerIntegrationTest" />
         </classes>
     </test>
-    <test name="Home">
+    <test name="Unit">
         <classes>
-            <class name="com.poseidon.controller.HomeControllerIntegrationTest" />
+            <class name="com.poseidon.controller.ContaControllerTest"/>
+            <class name="com.poseidon.controller.HomeControllerTest" />
+            <class name="com.poseidon.controller.LoginControllerTest" />
+            <class name="com.poseidon.controller.QuiropraxistaControllerTest"/>
+            <class name="com.poseidon.controller.SobreControllerTest" />
+            <class name="com.poseidon.model.AuthoritiesTest" />
+            <class name="com.poseidon.model.ConsultaTest" />
+            <class name="com.poseidon.model.DadoSessaoTest"/>
+            <class name="com.poseidon.model.PacienteTest" />
+            <class name="com.poseidon.model.QuiropraxistaTest" />
+            <class name="com.poseidon.model.UsersTest" />
+            <class name="com.poseidon.model.UserViewTest" />
+            <class name="com.poseidon.model.ViewMessageTest"/>
+            <class name="com.poseidon.utils.PoseidonUtilsTest"/>
         </classes>
     </test>
 </suite>
