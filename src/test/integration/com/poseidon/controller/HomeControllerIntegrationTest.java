@@ -28,7 +28,7 @@ public class HomeControllerIntegrationTest extends PoseidonApplicationTests {
     @Test
     public void homeTest() throws Exception {
 
-        this.mockMvc.perform(get("/homePage"))
+        this.mockMvc.perform(get("/user/homePage"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"));
     }
