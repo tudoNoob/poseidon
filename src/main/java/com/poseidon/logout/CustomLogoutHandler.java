@@ -16,7 +16,7 @@ public class CustomLogoutHandler implements LogoutHandler {
 	public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		authentication= null;
 		try {
-			response.sendRedirect("/login");
+			response.sendRedirect("/loginPage");
 		} catch (IOException e) {
 			logger.info("Erro ao tentar redirecionar para a pagina de login",e);
 		}

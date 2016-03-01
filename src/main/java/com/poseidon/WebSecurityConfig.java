@@ -20,9 +20,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/createSimpleUser","/createUser").permitAll();
-		http.authorizeRequests().antMatchers("/*").authenticated();
+		http.authorizeRequests().antMatchers("/user/*").hasAnyRole("USER","ADMIN");
+		http.authorizeRequests().antMatchers("/admin/*").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**","/webjars/**").permitAll();
-		http.formLogin().loginPage("/loginPage").defaultSuccessUrl("/homePage").failureUrl("/login-Error")
+		http.formLogin().loginPage("/loginPage").defaultSuccessUrl("/user/homePage").failureUrl("/login-Error")
 		.permitAll().and().logout().addLogoutHandler(new CustomLogoutHandler()).logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
 
 	}
