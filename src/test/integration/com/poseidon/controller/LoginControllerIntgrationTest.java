@@ -1,19 +1,18 @@
 package com.poseidon.controller;
 
 import org.hamcrest.Matchers;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-/**
- * Created by wahrons on 2/7/16.
- */
+
 public class LoginControllerIntgrationTest extends PoseidonApplicationTests {
 
 
@@ -22,7 +21,7 @@ public class LoginControllerIntgrationTest extends PoseidonApplicationTests {
     @Autowired
     LoginController loginController;
 
-    @Before
+    @BeforeMethod
     public void setUp(){
         mockMvc= standaloneSetup(loginController).build();
     }

@@ -1,20 +1,25 @@
 package com.poseidon.controller;
 
-import org.junit.Before;
-import org.junit.Test;
+import com.poseidon.PoseidonApplication;
+import com.poseidon.WebSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-/**
- * Created by wahrons on 2/7/16.
- */
+
 public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
 
         private MockMvc mockMvc;
@@ -22,13 +27,15 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
         @Autowired
         ContaController contaController;
 
-        @Before
+        @BeforeMethod
         public void setUp(){
-            mockMvc= standaloneSetup(contaController).build();
+            mockMvc= standaloneSetup(
+                    contaController).build();
         }
 
         @Test
         public void contaCadastro_cadastroTest() throws Exception {
+
             this.mockMvc.perform(get("/admin/conta")
                     .param("isCadastroConta","true")
                     .param("isEditarConta","false")

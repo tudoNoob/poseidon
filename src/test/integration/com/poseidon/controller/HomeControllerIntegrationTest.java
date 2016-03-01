@@ -1,10 +1,10 @@
 package com.poseidon.controller;
 
 
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -20,7 +20,7 @@ public class HomeControllerIntegrationTest extends PoseidonApplicationTests {
     @Autowired
     private HomeController homeController;
 
-    @Before
+    @BeforeMethod
     public void setUp() {
         mockMvc = standaloneSetup(homeController).build();
     }

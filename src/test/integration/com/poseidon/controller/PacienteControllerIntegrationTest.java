@@ -1,9 +1,10 @@
 package com.poseidon.controller;
 
-import org.junit.Before;
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -11,9 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-/**
- * Created by wahrons on 2/8/16.
- */
+
 public class PacienteControllerIntegrationTest extends PoseidonApplicationTests {
 
     private MockMvc mockMvc;
@@ -21,7 +20,7 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
     @Autowired
     private PacienteController pacienteController;
 
-    @Before
+    @BeforeMethod
     public void setUp(){
         mockMvc= standaloneSetup(pacienteController).build();
     }
