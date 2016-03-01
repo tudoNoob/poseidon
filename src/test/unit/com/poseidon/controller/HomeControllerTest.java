@@ -1,21 +1,21 @@
 package com.poseidon.controller;
 
-import org.junit.Before;
-import org.junit.Test;
+
 import org.springframework.web.servlet.ModelAndView;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
 
-/**
- * Created by william on 29/01/16.
- */
+
+@Test()
 public class HomeControllerTest {
 
 
     private HomeController homeController;
 
-    @Before
+    @BeforeTest
     public void setUp(){
         homeController = new HomeController();
     }

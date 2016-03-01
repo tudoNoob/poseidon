@@ -4,36 +4,34 @@ import com.poseidon.builder.AuthoritiesBuilder;
 import com.poseidon.builder.ContaViewBuilder;
 import com.poseidon.builder.UsersBuilder;
 import com.poseidon.dao.AuthoritiesRepository;
-import com.poseidon.dao.MedicoDao;
+
 import com.poseidon.dao.UserRepository;
 import com.poseidon.model.*;
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
 
-/**
- * Created by wahrons on 2/9/16.
- */
+
+@Test
 public class ContaControllerTest {
 
 
     private ContaController contaController;
 
-    private MedicoDao medicoDao;
-
     private UserRepository userRepository;
 
     private AuthoritiesRepository authoritiesRepository;
 
-    @Before
+    @BeforeTest
     public void setUp(){
 
         contaController= new ContaController();

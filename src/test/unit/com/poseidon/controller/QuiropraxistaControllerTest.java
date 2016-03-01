@@ -1,14 +1,15 @@
 package com.poseidon.controller;
 
-import com.poseidon.dao.MedicoDao;
-import com.poseidon.model.Medico;
-import com.poseidon.builder.MedicoBuilder;
+
+import com.poseidon.builder.QuiropraxistaBuilder;
+import com.poseidon.dao.QuiropraxistaDao;
+import com.poseidon.model.Quiropraxista;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -27,7 +28,6 @@ public class QuiropraxistaControllerTest {
     @Before
     public void setUp(){
 
-    	quiropraxistaController= new MedicoController();
     	quiropraxistaDao= mock(QuiropraxistaDao.class);
         quiropraxistaController.quiropraxistaRepository=quiropraxistaDao;//injecting dependency into controller.
     }
