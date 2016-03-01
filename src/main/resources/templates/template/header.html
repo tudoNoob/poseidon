@@ -39,12 +39,12 @@
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Quiropraxista<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=true,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=true,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=true,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=true,isExibirQuiropraxista=false)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=true,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=true,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=true,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=true,isExibirQuiropraxista=false)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
 							</ul>
 						</li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
