@@ -4,20 +4,21 @@ package com.poseidon.controller;
 import com.poseidon.builder.QuiropraxistaBuilder;
 import com.poseidon.dao.QuiropraxistaDao;
 import com.poseidon.model.Quiropraxista;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.springframework.web.servlet.ModelAndView;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
 
-/**
- * Created by wahrons on 2/8/16.
- */
+@Test()
 public class QuiropraxistaControllerTest {
 
     private QuiropraxistaController quiropraxistaController;
@@ -25,9 +26,9 @@ public class QuiropraxistaControllerTest {
     private QuiropraxistaDao quiropraxistaDao;
 
 
-    @Before
+    @BeforeTest
     public void setUp(){
-
+        quiropraxistaController = new QuiropraxistaController();
     	quiropraxistaDao= mock(QuiropraxistaDao.class);
         quiropraxistaController.quiropraxistaRepository=quiropraxistaDao;//injecting dependency into controller.
     }
