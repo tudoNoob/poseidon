@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.header.writers.*;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 import javax.sql.DataSource;
 
@@ -20,11 +22,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/createSimpleUser","/createUser").permitAll();
-		http.authorizeRequests().antMatchers("/*").authenticated();
+		http.authorizeRequests().antMatchers("/user/*").hasAnyRole("USER","ADMIN");
+		http.authorizeRequests().antMatchers("/admin/*").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**","/webjars/**").permitAll();
-		http.formLogin().loginPage("/loginPage").defaultSuccessUrl("/homePage").failureUrl("/login-Error")
+		http.formLogin().loginPage("/loginPage").defaultSuccessUrl("/user/homePage").failureUrl("/login-Error")
 		.permitAll().and().logout().addLogoutHandler(new CustomLogoutHandler()).logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
-		http.csrf().disable();
+
+		http.headers()
+				.contentTypeOptions()
+				.and().xssProtection()
+				.and().cacheControl()
+				.and().httpStrictTransportSecurity()
+				.and().frameOptions()
+				.and().addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self'"))
+				.addHeaderWriter(new XXssProtectionHeaderWriter())
+				.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+				.addHeaderWriter(new XContentTypeOptionsHeaderWriter())
+				.addHeaderWriter(new CacheControlHeadersWriter())
+				.addHeaderWriter(new HstsHeaderWriter());
+
 	}
 
 	@Override

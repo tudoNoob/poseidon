@@ -10,7 +10,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
 </head>
 <body class="backgroundColorCinza">
 	<div class="container860 marginAuto">
@@ -18,7 +18,7 @@
 			<h1 class="text-align negrito">500 Internal Error</h1>
 			<h3 class="textoDeAbertura fontSizeLarge">Poseidon</h3>
 			<div class="container430 marginAuto padding182">
-				<a th:href="@{/homePage}" class="btn btn-warning">Home</a>
+				<a th:href="@{/user/homePage}" class="btn btn-warning">Home</a>
 			</div>
 		</div>
 

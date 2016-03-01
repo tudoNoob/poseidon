@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
+@RequestMapping("/admin")
 public class ContaController {
 
 	@Autowired
@@ -40,7 +41,7 @@ public class ContaController {
     }
     
 	@RequestMapping(value="/cadastrarConta")
-	@ViewName(name = "redirect:/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
+	@ViewName(name = "redirect:/admin/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView cadastrarConta(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
 		Users user = Users.createUser(contaView);
@@ -69,7 +70,7 @@ public class ContaController {
     }
     
 	@RequestMapping(value="/deletarConta")
-	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
+	@ViewName(name = "redirect:/admin/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView deletarConta(@ModelAttribute ContaView contaView, ModelAndView modelAndView){
 		Users user = userRepository.findByUsername(contaView.getUsername());
@@ -87,7 +88,7 @@ public class ContaController {
 	}
 	
 	@RequestMapping("/editarConta")
-	@ViewName(name = "redirect:/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
+	@ViewName(name = "redirect:/admin/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
 	@NotNullArgs
 	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView){
 		Users user = userRepository.findByUsername(contaView.getUsername());

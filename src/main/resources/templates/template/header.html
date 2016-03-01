@@ -9,19 +9,19 @@
 		<nav class="navBarPoseidon navbar navbar-default">
 			<div class="navBarPoseidon container-fluid">
 				<div class="navbar-header">
-					<a class="colorBranco navbar-brand" th:href="@{/homePage}">Poseidon</a>
+					<a class="colorBranco navbar-brand" th:href="@{/user/homePage}">Poseidon</a>
 				</div>
 				<div>
 					<ul class="nav navbar-nav">
-						<li class="menu active"><a class="colorBranco" url="/home" th:href="@{/homePage}">Home</a></li>
+						<li class="menu active"><a class="colorBranco" url="/home" th:href="@{/user/homePage}">Home</a></li>
 						<li class="dropdown"><a href="#" class="colorBranco dropdown-toggle"
 											   data-toggle="dropdown" role="button" aria-haspopup="true"
 											   aria-expanded="false">Paciente<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
-								<li><a th:href="@{/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/paciente(isCadastroPaciente=false,isDeletePaciente=false,isPesquisaPaciente=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=false,isPesquisaPaciente=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
 							</ul>
 						</li>
 						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
@@ -39,23 +39,23 @@
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Quiropraxista<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=true,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=true,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=true,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=true,isExibirQuiropraxista=false)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=true,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=true,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=true,isEditarQuiropraxista=false,isExibirQuiropraxista=false)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=true,isExibirQuiropraxista=false)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
+								<li><a th:href="@{/admin/quiropraxista(isCadastroQuiropraxista=false,isPesquisaQuiropraxista=false,isDeleteQuiropraxista=false,isEditarQuiropraxista=false,isExibirQuiropraxista=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
 							</ul>
 						</li>
 						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
 												   data-toggle="dropdown" role="button" aria-haspopup="true"
 												   aria-expanded="false">Contas<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true,isExibirConta=false)}" id="btn-deletarConta">Deletar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=true,isEditarConta=false,isDeleteConta=false,isExibirConta=false)}" id="btn-criarConta">Criar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=true,isDeleteConta=false,isExibirConta=false)}" id="btn-editarConta">Editar Conta</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=true,isExibirConta=false)}" id="btn-deletarConta">Deletar Conta</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=false,isExibirConta=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
+								<li><a th:href="@{/admin/conta(isCadastroConta=false,isEditarConta=false,isDeleteConta=false,isExibirConta=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
 							</ul>
 						</li>
 						<li class="menu"><a class="colorBranco" url="/sobre" th:href="@{/sobrePage}">Sobre</a></li>

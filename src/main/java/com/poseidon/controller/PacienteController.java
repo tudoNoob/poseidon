@@ -20,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 @Controller
+@RequestMapping("/user")
 public class PacienteController {
 	@Autowired
 	private PacienteDao pacienteRepository;
@@ -45,7 +46,7 @@ public class PacienteController {
 
 
 	@RequestMapping(value = "/cadastrarPaciente")
-	@ViewName(name = "redirect:/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
+	@ViewName(name = "redirect:/user/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 
@@ -60,7 +61,7 @@ public class PacienteController {
 	}
 
 	@RequestMapping("/pesquisarPaciente")
-	@ViewName(name = "redirect:/paciente?isCadastroPaciente=false&isDeletePaciente=false&isPesquisaPaciente=true")
+	@ViewName(name = "redirect:/user/paciente?isCadastroPaciente=false&isDeletePaciente=false&isPesquisaPaciente=true")
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;

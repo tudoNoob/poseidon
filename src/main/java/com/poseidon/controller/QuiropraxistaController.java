@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
+@RequestMapping("/admin")
 public class QuiropraxistaController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class QuiropraxistaController {
     }
     
     @RequestMapping(value = "/exibirQuiropraxista")
-    @ViewName(name = "redirect:/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=false&isExibirQuiropraxista=true")
+    @ViewName(name = "redirect:/admin/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=false&isExibirQuiropraxista=true")
     @NotNullArgs
     public void achaTodosQuiropraxistas(ModelAndView modelAndView) {
         Iterable<Quiropraxista> listaTodosQuiropraxistas = quiropraxistaRepository.findAll();
@@ -49,7 +50,7 @@ public class QuiropraxistaController {
     }
 
     @RequestMapping(value = "/deletarQuiropraxista")
-    @ViewName(name = "redirect:/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=true&isEditarQuiropraxista=false&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=true&isEditarQuiropraxista=false&isExibirQuiropraxista=false")
     @NotNullArgs
     public ModelAndView deletarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
         logger.info("Deletar Quiropraxista:");
@@ -65,7 +66,7 @@ public class QuiropraxistaController {
     }
 
     @RequestMapping(value = "/cadastrarQuiropraxista")
-    @ViewName(name = "redirect:/quiropraxista?isCadastroQuiropraxista=true&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=false&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista?isCadastroQuiropraxista=true&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=false&isExibirQuiropraxista=false")
     @NotNullArgs
     public ModelAndView cadastrarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
         logger.info("Criar Quiropraxista:");
@@ -76,7 +77,7 @@ public class QuiropraxistaController {
     }
     
     @RequestMapping(value = "/editarQuiropraxista")
-    @ViewName(name = "redirect:/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=true&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista?isCadastroQuiropraxista=false&isPesquisaQuiropraxista=false&isDeleteQuiropraxista=false&isEditarQuiropraxista=true&isExibirQuiropraxista=false")
     @NotNullArgs
     public ModelAndView editarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
         logger.info("Editar Quiropraxista:");

@@ -5,7 +5,7 @@
     <title>Quiropraxista</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
 </head>
 <body class="backgroundColorCinza">
 
@@ -14,7 +14,7 @@
 <!--CRUD Medico-->
 <div class="container430 marginAuto paddingTop40"
      id="criarQuiropraxistaContainer"  th:if="${isCadastroQuiropraxista}">
-    <form id="form-createQuiropraxista" th:action="@{/cadastrarQuiropraxista}" method="post">
+    <form id="form-createQuiropraxista" th:action="@{/admin/cadastrarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Nome:</span> <input tabindex="1"
                 id="user.create" type="text" class="form-control"
@@ -50,7 +50,7 @@
 
 <div title="ExMedicos" class="container430 marginAuto paddingTop40"
      id="exibirTodosQuiropraxistasContainer" th:if="${isExibirQuiropraxista}">
-	<form id="form-exibirQuiropraxista" th:action="@{/exibirQuiropraxista}" method="post">
+	<form id="form-exibirQuiropraxista" th:action="@{/admin/exibirQuiropraxista}" method="post">
     	<h1 class="text-align">Quiropraxista</h1>
     	<table class="table">
         <thead>
@@ -71,7 +71,7 @@
 
 		<div class="container1200 marginAuto" th:if="${isPesquisaQuiropraxista}">
 			<div class="container-header">
-				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/pesquisarQuiropraxista}" method="post">
+				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/admin/pesquisarQuiropraxista}" method="post">
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
@@ -107,7 +107,7 @@
 
 <div class="container430 marginAuto paddingTop40"
      id="deletarQuiropraxistaContainer" th:if="${isDeleteQuiropraxista}">
-    <form id="form-deleteQuiropraxista" th:action="@{/deletarQuiropraxista}" method="post">
+    <form id="form-deleteQuiropraxista" th:action="@{/admin/deletarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
                 tabindex="1" id="id.quiropraxista" type="text" class="form-control"
@@ -124,7 +124,7 @@
 
 <div class="container430 marginAuto paddingTop40"
      id="editarQuiropraxistaContainer" th:if="${isEditarQuiropraxista}">
-    <form id="form-editarQuiropraxista" th:action="@{/editarQuiropraxista}" method="post">
+    <form id="form-editarQuiropraxista" th:action="@{/admin/editarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
                 tabindex="1" id="id.quiropraxista" type="text" class="form-control"
@@ -149,6 +149,6 @@
 <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" th:src="@{/js/menu.js}"></script>
 </body>
 </html>

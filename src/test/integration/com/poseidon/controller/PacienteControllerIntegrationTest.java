@@ -28,7 +28,7 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void paciente_cadastro() throws Exception {
-        this.mockMvc.perform(get("/paciente")
+        this.mockMvc.perform(get("/user/paciente")
                 .param("isCadastroPaciente","true")
                 .param("isDeletePaciente","false")
                 .param("isPesquisaPaciente","false"))
@@ -43,7 +43,7 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void paciente_delete() throws Exception {
-        this.mockMvc.perform(get("/paciente")
+        this.mockMvc.perform(get("/user/paciente")
                 .param("isCadastroPaciente","false")
                 .param("isDeletePaciente","true")
                 .param("isPesquisaPaciente","false"))
@@ -57,7 +57,7 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void paciente_pesquisa() throws Exception {
-        this.mockMvc.perform(get("/paciente")
+        this.mockMvc.perform(get("/user/paciente")
                 .param("isCadastroPaciente","false")
                 .param("isDeletePaciente","false")
                 .param("isPesquisaPaciente","true"))
@@ -71,8 +71,8 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void pesquisarPaciente() throws Exception {
-        this.mockMvc.perform(get("/pesquisarPaciente"))
-                .andExpect(view().name("redirect:/paciente?" +
+        this.mockMvc.perform(get("/user/pesquisarPaciente"))
+                .andExpect(view().name("redirect:/user/paciente?" +
                         "isCadastroPaciente=false" +
                         "&isDeletePaciente=false" +
                         "&isPesquisaPaciente=true"));
@@ -80,9 +80,9 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void cadastrarPaciente() throws Exception {
-        this.mockMvc.perform(get("/cadastrarPaciente")
+        this.mockMvc.perform(get("/user/cadastrarPaciente")
                 .param("nome","Frodo"))
-                .andExpect(view().name("redirect:/paciente?" +
+                .andExpect(view().name("redirect:/user/paciente?" +
                         "isCadastroPaciente=true" +
                         "&isDeletePaciente=false" +
                         "&isPesquisaPaciente=false"));
@@ -92,14 +92,14 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void editarPaciente() throws Exception {
-        this.mockMvc.perform(get("/cadastrarPaciente")
+        this.mockMvc.perform(get("/user/cadastrarPaciente")
                 .param("nome","Sam"))
-                .andExpect(view().name("redirect:/paciente?" +
+                .andExpect(view().name("redirect:/user/paciente?" +
                         "isCadastroPaciente=true" +
                         "&isDeletePaciente=false&" +
                         "isPesquisaPaciente=false"));
 
-        this.mockMvc.perform(get("/editarPaciente")
+        this.mockMvc.perform(get("/user/editarPaciente")
                 .param("id","76")
                 .param("nome","Mordor"))
                 .andExpect(view().name("/paciente"));
@@ -107,15 +107,15 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
 
     @Test
     public void procurarPaciente() throws Exception {
-        this.mockMvc.perform(get("/cadastrarPaciente")
+        this.mockMvc.perform(get("/user/cadastrarPaciente")
                 .param("nome","Saruman"))
-                .andExpect(view().name("redirect:/paciente?" +
+                .andExpect(view().name("redirect:/user/paciente?" +
                         "isCadastroPaciente=true" +
                         "&isDeletePaciente=false" +
                         "&isPesquisaPaciente=false"));
 
 
-        this.mockMvc.perform(get("/procurarPaciente")
+        this.mockMvc.perform(get("/user/procurarPaciente")
                 .param("nome","Saruman"))
                 .andExpect(view().name("Paciente"));
     }
