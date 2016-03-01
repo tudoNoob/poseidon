@@ -8,14 +8,14 @@
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}"/>
-        <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
+        <link rel="stylesheet" type = "text/css" th:href="@{/css/stylesheet.css}" />
     </head>
     <body class="backgroundColorCinza">
         <div th:include="template/header :: header"></div>
         <div id="container" style="width: 860px; margin: auto" th:if="${isCadastroPaciente}">
             <!-- Nome, Sobrenome, CPF, E-mail,Data de Nascimente, Data da última,Consulta, Telefone, Celular, Endereço, CEP, Forma de Pagamento. -->
             <div id="container.form" style="padding-top: 20px">
-                <form th:action="@{/cadastrarPaciente}" method="post" th:object="${paciente}">
+                <form th:action="@{/user/cadastrarPaciente}" method="post" th:object="${paciente}">
                     <div id="left.container" style="float: left; width: 48%">
                         <div><label>Nome:</label></div> <label for="nomecadastro" style="display:none"></label>
                         <div class="input-group" id="nomediv">
@@ -129,7 +129,7 @@
         </div>
         
 		<div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
-			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/deletarPaciente}" method="post">
+			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="nome">ID:</label>
@@ -170,7 +170,7 @@
 		
 		<div class="container1200 marginAuto" th:if="${isPesquisaPaciente}">
 			<div class="container-header">
-				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/procurarPaciente}" method="post">
+				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/user/procurarPaciente}" method="post">
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
@@ -217,7 +217,7 @@
 		
 		<div id="dialog-newUser" style="display: none; width: 200px"
 			title="Editando Paciente">
-			<form id="form-createUser" th:action="@{/editarPaciente}"
+			<form id="form-createUser" th:action="@{/user/editarPaciente}"
 				method="post">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">ID:</span><input
@@ -243,9 +243,9 @@
         <script type="text/javascript" th:src="@{/webjars/jquery-validation/1.14.0/jquery.validate.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}"></script>
         <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-        <script type="text/javascript" src="/js/menu.js"></script>
-        <script type="text/javascript" src="/js/pesquisarPaciente.js"></script>
-        <script type="text/javascript" src="/jquery/jquery.bootpag.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+        <script type="text/javascript" th:src="@{/js/pesquisarPaciente.js}"></script>
+        <script type="text/javascript" th:src="@{/jquery/jquery.bootpag.min.js}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.phone').mask('(000) 0000-00000');
