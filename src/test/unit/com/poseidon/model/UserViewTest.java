@@ -1,17 +1,18 @@
 package com.poseidon.model;
 
 import com.poseidon.builder.UsersBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
+@Test
 public class UserViewTest {
 
     ContaView contaView;
     Users user;
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         user = new UsersBuilder().withUsername("name").withPassword("123").build();
     }

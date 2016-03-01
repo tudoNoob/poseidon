@@ -1,14 +1,16 @@
 package com.poseidon.model;
 
-import org.junit.Before;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
+@Test
 public class PacienteTest {
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
 
     }

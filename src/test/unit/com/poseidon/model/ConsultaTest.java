@@ -1,12 +1,11 @@
 package com.poseidon.model;
 
-import org.junit.Test;
 
-import java.util.Date;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
+import static org.testng.AssertJUnit.assertEquals;
 
-
+@Test
 public class ConsultaTest {
 
     @Test

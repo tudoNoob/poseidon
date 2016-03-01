@@ -1,10 +1,12 @@
 package com.poseidon.model;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.testng.annotations.Test;
 
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNull;
 
+@Test
 public class ViewMessageTest {
 
     @Test

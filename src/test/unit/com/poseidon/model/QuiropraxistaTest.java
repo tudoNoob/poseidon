@@ -1,10 +1,11 @@
 package com.poseidon.model;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.testng.annotations.Test;
 
+import static org.testng.AssertJUnit.assertEquals;
 
+@Test
 public class QuiropraxistaTest {
 
     @Test

@@ -209,12 +209,12 @@
                 <version>6.9.10</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
+            <!--dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng-spring</artifactId>
                 <version>4.7</version>
                 <scope>test</scope>
-            </dependency>
+            </dependency-->
     </dependencies>
 
 

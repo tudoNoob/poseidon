@@ -1,18 +1,20 @@
 package com.poseidon.model;
 
-import org.junit.Before;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
+
+@Test
 public class UsersTest {
 
     ContaView contaView;
     Users user;
 
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
     	contaView = new ContaView().comUsername("name").comPassword("123").comRoles("ADMIN");
     }

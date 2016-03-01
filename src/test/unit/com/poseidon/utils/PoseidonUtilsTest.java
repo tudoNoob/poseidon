@@ -1,13 +1,14 @@
 package com.poseidon.utils;
 
 import com.poseidon.model.ContaView;
-import org.junit.Test;
+import org.testng.annotations.Test;
+
 
 import java.text.SimpleDateFormat;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
-
+@Test
 public class PoseidonUtilsTest {
 
     @Test
