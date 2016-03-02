@@ -21,86 +21,95 @@ import java.util.logging.Logger;
 @RequestMapping("/admin")
 public class ContaController {
 
-	@Autowired
-	AuthoritiesRepository authoritiesRepository;
-	
-	@Autowired
-	UserRepository  userRepository;
+    @Autowired
+    AuthoritiesRepository authoritiesRepository;
 
-	private Logger logger = Logger.getLogger("ContaController");
+    @Autowired
+    UserRepository userRepository;
+
+    private Logger logger = Logger.getLogger("ContaController");
 
     @RequestMapping("/conta")
     @ViewName(name = "Conta")
-    public ModelAndView buildContaPage(ModelAndView modelAndView,@RequestParam("isCadastroConta") String isCadastroConta,@RequestParam("isEditarConta") String isEditarConta,@RequestParam("isDeleteConta") String isDeleteConta,@RequestParam("isExibirConta") String isExibirConta){
+    public ModelAndView buildContaPage(ModelAndView modelAndView, @RequestParam("isCadastroConta") String isCadastroConta, @RequestParam("isEditarConta") String isEditarConta, @RequestParam("isDeleteConta") String isDeleteConta, @RequestParam("isExibirConta") String isExibirConta) {
         modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
         modelAndView.getModelMap().addAttribute("isEditarConta", isEditarConta);
         modelAndView.getModelMap().addAttribute("isDeleteConta", isDeleteConta);
         modelAndView.getModelMap().addAttribute("isExibirConta", isExibirConta);
         exibirConta(modelAndView);
-        return  modelAndView;
+        return modelAndView;
     }
-    
-	@RequestMapping(value="/cadastrarConta")
-	@ViewName(name = "redirect:/admin/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
-	@NotNullArgs
-	public ModelAndView cadastrarConta(@ModelAttribute ContaView contaView,@ModelAttribute String role, ModelAndView modelAndView){
-		Users user = Users.createUser(contaView);
 
-		System.out.println("CREATE CONTA");
-		System.out.println("user>"+user.toString());
-		userRepository.save(user);
+    @RequestMapping(value = "/cadastrarConta")
+    @ViewName(name = "redirect:/admin/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
+    @NotNullArgs
+    public ModelAndView cadastrarConta(@ModelAttribute ContaView contaView, @ModelAttribute String role, ModelAndView modelAndView) {
+        Users user = Users.createUser(contaView);
 
-			authoritiesRepository.save(new Authorities(user.getUsername(),new StringBuilder().append("ROLE_").append(contaView.getRole()).toString()));
+        userRepository.save(user);
 
-		System.out.println("cadastrou conta.");
-		return modelAndView;
-	}
+        authoritiesRepository.save(new Authorities(user.getUsername(),
+                new StringBuilder()
+                        .append("ROLE_")
+                        .append(contaView.getRole())
+                        .toString()));
+
+        return modelAndView;
+    }
 
     private void exibirConta(ModelAndView modelAndView) {
         Iterable<Users> contaList = userRepository.findAll();
         List<ContaView> contasView = Lists.newArrayList();
-		for(Users user : contaList){
-			if(user!= null && user.getUsername() != null && !user.getUsername().isEmpty()) {
-				logger.info(user.toString());
-				Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
-				contasView.add(new ContaViewBuilder().convertUsersThroughContaView(user).withAuthority(authority.getAuthority()).build());
-			}
-		}
+        for (Users user : contaList) {
+            if ((user != null) && (user.getUsername() != null) && (!user.getUsername().isEmpty())) {
+                logger.info(user.toString());
+                Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
+                contasView.add(new ContaViewBuilder()
+                        .convertUsersThroughContaView(user)
+                        .withAuthority(authority.getAuthority()).build());
+            }
+        }
         modelAndView.getModelMap().addAttribute("contas", contasView);
     }
-    
-	@RequestMapping(value="/deletarConta")
-	@ViewName(name = "redirect:/admin/conta?isCadastroConta=false&isEditarConta=false&isDeleteConta=true&isExibirConta=false")
-	@NotNullArgs
-	public ModelAndView deletarConta(@ModelAttribute ContaView contaView, ModelAndView modelAndView){
-		Users user = userRepository.findByUsername(contaView.getUsername());
-		Authorities authorities = authoritiesRepository.findByUsername(contaView.getUsername());
-		System.out.println("Delete USER");
-		System.out.println("user>"+user.toString());
-		try {
-			userRepository.delete(user);
-			authoritiesRepository.delete(authorities);
-		}catch (RuntimeException exception){
-			logger.info("Deletando com sucesso.");
-		}
 
-			return modelAndView;
-	}
-	
-	@RequestMapping("/editarConta")
-	@ViewName(name = "redirect:/admin/conta?isCadastroConta=false&isEditarConta=true&isDeleteConta=false&isExibirConta=false")
-	@NotNullArgs
-	public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView){
-		Users user = userRepository.findByUsername(contaView.getUsername());
-		if(user == null){
-			return modelAndView;
-		}
-		user.setUsername(contaView.getUsername());
-		user.setPassword(contaView.getPassword());
-		userRepository.save(user);
-		Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
-		authority.setUsername(user.getUsername());
-		authority.setAuthority(contaView.getRole());
-		return modelAndView;
-	}
+    @RequestMapping(value = "/deletarConta")
+    @ViewName(name = "redirect:/admin/conta?" +
+            "isCadastroConta=false" +
+            "&isEditarConta=false" +
+            "&isDeleteConta=true" +
+            "&isExibirConta=false")
+    @NotNullArgs
+    public ModelAndView deletarConta(@ModelAttribute ContaView contaView, ModelAndView modelAndView) {
+        Users user = userRepository.findByUsername(contaView.getUsername());
+        Authorities authorities = authoritiesRepository.findByUsername(contaView.getUsername());
+        try {
+            userRepository.delete(user);
+            authoritiesRepository.delete(authorities);
+        } catch (RuntimeException exception) {
+            logger.info("Deletando com sucesso.");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("/editarConta")
+    @ViewName(name = "redirect:/admin/conta?" +
+            "isCadastroConta=false" +
+            "&isEditarConta=true" +
+            "&isDeleteConta=false" +
+            "&isExibirConta=false")
+    @NotNullArgs
+    public ModelAndView editarConta(ModelAndView modelAndView, @ModelAttribute ContaView contaView) {
+        Users user = userRepository.findByUsername(contaView.getUsername());
+        if (user == null) {
+            return modelAndView;
+        }
+        user.setUsername(contaView.getUsername());
+        user.setPassword(contaView.getPassword());
+        userRepository.save(user);
+        Authorities authority = authoritiesRepository.findByUsername(user.getUsername());
+        authority.setUsername(user.getUsername());
+        authority.setAuthority(contaView.getRole());
+
+        return modelAndView;
+    }
 }

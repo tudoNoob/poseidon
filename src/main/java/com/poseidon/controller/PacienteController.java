@@ -34,7 +34,10 @@ public class PacienteController {
 
     @RequestMapping("/paciente")
     @ViewName(name = "Paciente")
-    public ModelAndView buildPacientePage(ModelAndView modelAndView,@RequestParam("isCadastroPaciente") String isCadastroPaciente,@RequestParam("isDeletePaciente") String isDeletePaciente,@RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
+    public ModelAndView buildPacientePage(ModelAndView modelAndView,
+										  @RequestParam("isCadastroPaciente") String isCadastroPaciente,
+										  @RequestParam("isDeletePaciente") String isDeletePaciente,
+										  @RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
         modelAndView.getModelMap().addAttribute("isCadastroPaciente", isCadastroPaciente);
         modelAndView.getModelMap().addAttribute("isDeletePaciente", isDeletePaciente);
         modelAndView.getModelMap().addAttribute("isPesquisaPaciente", isPesquisaPaciente);
@@ -46,22 +49,25 @@ public class PacienteController {
 
 
 	@RequestMapping(value = "/cadastrarPaciente")
-	@ViewName(name = "redirect:/user/paciente?isCadastroPaciente=true&isDeletePaciente=false&isPesquisaPaciente=false")
+	@ViewName(name = "redirect:/user/paciente?" +
+			"isCadastroPaciente=true" +
+			"&isDeletePaciente=false" +
+			"&isPesquisaPaciente=false")
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
 
 		if (session.get(httpSession.getId())!=null){
 			paciente.setId(session.get(httpSession.getId()));
 		}
-        logger.info("CREATE PACIENTE");
-        logger.info("paciente>" + paciente.toString());
         pacienteRepository.save(paciente);
-        logger.info("cadastrou paciente.");
         return modelAndView;
 	}
 
 	@RequestMapping("/pesquisarPaciente")
-	@ViewName(name = "redirect:/user/paciente?isCadastroPaciente=false&isDeletePaciente=false&isPesquisaPaciente=true")
+	@ViewName(name = "redirect:/user/paciente?" +
+			"isCadastroPaciente=false" +
+			"&isDeletePaciente=false" +
+			"&isPesquisaPaciente=true")
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;
@@ -96,7 +102,6 @@ public class PacienteController {
 	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
 			@ModelAttribute Paciente paciente) {
 		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
-		logger.info("session id:"+httpSession.getId());
 		session.put(httpSession.getId(),newPaciente.getId());
 		buildPacientePage(modelAndView,"true","false","false");
 		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
