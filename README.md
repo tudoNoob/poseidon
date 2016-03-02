@@ -24,7 +24,7 @@ ___
 * Go to the folder **target**, this folder will be created after the project's build executes the following command: `java -jar poseidon-0.0.1-SNAPSHOT.jar`
   * **OBS**: This command is designated to execute the java via command line, therefore in the future the project version might change, thus change the jar version manually is necessary.
 
-* Executing the project via Maven `mvn spring-boot-run`.
+* Executing the project via Maven `mvn spring-boot:run`.
 
 ___
 
