@@ -27,6 +27,7 @@
             <class name="com.poseidon.model.UserViewTest" />
             <class name="com.poseidon.model.ViewMessageTest"/>
             <class name="com.poseidon.utils.PoseidonUtilsTest"/>
+            <class name="com.poseidon.controller.ControllerBaseTest" />
         </classes>
     </test>
 </suite>
