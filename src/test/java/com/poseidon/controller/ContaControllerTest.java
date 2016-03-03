@@ -8,6 +8,7 @@ import com.poseidon.dao.AuthoritiesRepository;
 import com.poseidon.dao.UserRepository;
 import com.poseidon.model.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import static org.testng.AssertJUnit.assertNull;
@@ -64,14 +66,11 @@ public class ContaControllerTest {
         String isDeleteConta = "false";
         String isExibirConta = "false";
 
-        ModelAndView response = contaController.buildContaPage(new ModelAndView(), isCadastroConta, isEditarConta, isDeleteConta, isExibirConta);
+       ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
         assertNotNull(response);
         assertNotNull(response.getModelMap().get("contas"));
-        assertEquals(isCadastroConta,response.getModelMap().get("isCadastroConta"));
-        assertEquals(isEditarConta,response.getModelMap().get("isEditarConta"));
-        assertEquals(isDeleteConta,response.getModelMap().get("isDeleteConta"));
-        assertEquals(isExibirConta,response.getModelMap().get("isExibirConta"));
+        Assert.assertNotNull(response.getModelMap().get("crudview"));
     }
 
     @Test
@@ -95,14 +94,11 @@ public class ContaControllerTest {
         String isDeleteConta = "false";
         String isExibirConta = "false";
 
-        ModelAndView response = contaController.buildContaPage(new ModelAndView(), isCadastroConta, isEditarConta, isDeleteConta, isExibirConta);
+        ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
         assertNotNull(response);
         assertNotNull(response.getModelMap().get("contas"));
-        assertEquals(isCadastroConta,response.getModelMap().get("isCadastroConta"));
-        assertEquals(isEditarConta,response.getModelMap().get("isEditarConta"));
-        assertEquals(isDeleteConta,response.getModelMap().get("isDeleteConta"));
-        assertEquals(isExibirConta,response.getModelMap().get("isExibirConta"));
+        assertNotNull(response.getModelMap().get("crudview"));
     }
 
     @Test
@@ -126,14 +122,11 @@ public class ContaControllerTest {
         String isDeleteConta = "true";
         String isExibirConta = "false";
 
-        ModelAndView response = contaController.buildContaPage(new ModelAndView(), isCadastroConta, isEditarConta, isDeleteConta, isExibirConta);
+        ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
         assertNotNull(response);
         assertNotNull(response.getModelMap().get("contas"));
-        assertEquals(isCadastroConta,response.getModelMap().get("isCadastroConta"));
-        assertEquals(isEditarConta,response.getModelMap().get("isEditarConta"));
-        assertEquals(isDeleteConta,response.getModelMap().get("isDeleteConta"));
-        assertEquals(isExibirConta,response.getModelMap().get("isExibirConta"));
+        assertNotNull(response.getModelMap().get("crudview"));
     }
 
     @Test
@@ -157,14 +150,11 @@ public class ContaControllerTest {
         String isDeleteConta = "false";
         String isExibirConta = "true";
 
-        ModelAndView response = contaController.buildContaPage(new ModelAndView(), isCadastroConta, isEditarConta, isDeleteConta, isExibirConta);
+        ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
         assertNotNull(response);
         assertNotNull(response.getModelMap().get("contas"));
-        assertEquals(isCadastroConta,response.getModelMap().get("isCadastroConta"));
-        assertEquals(isEditarConta,response.getModelMap().get("isEditarConta"));
-        assertEquals(isDeleteConta,response.getModelMap().get("isDeleteConta"));
-        assertEquals(isExibirConta,response.getModelMap().get("isExibirConta"));
+        assertNotNull(response.getModelMap().get("crudview"));
     }
 
     @Test

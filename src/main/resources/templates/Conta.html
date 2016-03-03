@@ -12,7 +12,7 @@
 	
 	<!--CRUD Conta-->
 	<div class="container430 marginAuto paddingTop40"
-		id="criarContaContainer" th:if="${isCadastroConta}">
+		id="criarContaContainer" th:if="${crudview.isSave}">
 		<form id="form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
@@ -43,7 +43,7 @@
 	</div>
 
 	<div title="Usuários" class="container430 marginAuto paddingTop40"
-		id="exibirTodasContasContainer" th:if="${isExibirConta}">
+		id="exibirTodasContasContainer" th:if="${crudview.isSearch}">
 		<form id="form-createUser" th:action="@{/admin/exibirConta}" method="post">
 		<h1 class="text-align">Usuários</h1>
 		<table class="table">
@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="container430 marginAuto paddingTop40"
-		id="deletarUsuarioContainer" th:if="${isDeleteConta}">
+		id="deletarUsuarioContainer" th:if="${crudview.isDelete}">
 		<form id="form-createUser" th:action="@{/admin/deletarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
@@ -83,7 +83,7 @@
 	</div>
 
 	<div class="container430 marginAuto paddingTop40"
-		id="editarContaContainer" th:if="${isEditarConta}">
+		id="editarContaContainer" th:if="${crudview.isUpdate}">
 		<form id="form-editarUser" th:action="@{/admin/editarConta}" method="post">
 			<div class="input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input

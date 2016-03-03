@@ -29,16 +29,7 @@ public class ContaController {
 
     private Logger logger = Logger.getLogger("ContaController");
 
-    @RequestMapping("/conta")
-    @ViewName(name = "Conta")
-    public ModelAndView buildContaPage(ModelAndView modelAndView, @RequestParam("isCadastroConta") String isCadastroConta, @RequestParam("isEditarConta") String isEditarConta, @RequestParam("isDeleteConta") String isDeleteConta, @RequestParam("isExibirConta") String isExibirConta) {
-        modelAndView.getModelMap().addAttribute("isCadastroConta", isCadastroConta);
-        modelAndView.getModelMap().addAttribute("isEditarConta", isEditarConta);
-        modelAndView.getModelMap().addAttribute("isDeleteConta", isDeleteConta);
-        modelAndView.getModelMap().addAttribute("isExibirConta", isExibirConta);
-        exibirConta(modelAndView);
-        return modelAndView;
-    }
+
 
     @RequestMapping(value = "/cadastrarConta")
     @ViewName(name = "redirect:/admin/conta?isCadastroConta=true&isEditarConta=false&isDeleteConta=false&isExibirConta=false")
@@ -112,4 +103,13 @@ public class ContaController {
 
         return modelAndView;
     }
+
+    @RequestMapping("/conta")
+    @ViewName(name = "Conta")
+    public ModelAndView returnpage(ModelAndView modelAndView, @ModelAttribute CRUDView crudView) {
+        modelAndView.getModelMap().addAttribute("crudview", crudView);
+        exibirConta(modelAndView);
+        return modelAndView;
+    }
+
 }
