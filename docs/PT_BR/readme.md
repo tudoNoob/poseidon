@@ -27,7 +27,7 @@ ___
 
   * **OBS**: Este comando é para executar o java via linha de comando, portanto no futuro a versão do projeto pode mudar tendo que acrescentar a nova versão manualmente.
 
-* E para executar o projeto via Maven `mvn spring-boot-run`.
+* E para executar o projeto via Maven `mvn spring-boot:run`.
 
 ___
 
