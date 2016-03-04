@@ -6,6 +6,7 @@ import com.poseidon.dao.QuiropraxistaDao;
 import com.poseidon.model.CRUDView;
 import com.poseidon.model.Quiropraxista;
 
+import com.poseidon.utils.RedirectAttributesMock;
 import org.springframework.web.servlet.ModelAndView;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -41,7 +42,7 @@ public class QuiropraxistaControllerTest {
 
         when(quiropraxistaDao.save(quiropraxista)).thenReturn(quiropraxista);
 
-        ModelAndView response = quiropraxistaController.editarQuiropraxista(quiropraxista, new ModelAndView());
+        ModelAndView response = quiropraxistaController.editarQuiropraxista(quiropraxista, new ModelAndView(), new RedirectAttributesMock());
         assertNotNull(response);
         assertNull(response.getViewName());
 
@@ -119,7 +120,7 @@ public class QuiropraxistaControllerTest {
 
         when(quiropraxistaDao.findById(quiropraxista.getId())).thenReturn(quiropraxista);
 
-        ModelAndView response = quiropraxistaController.deletarQuiropraxista(quiropraxista, new ModelAndView());
+        ModelAndView response = quiropraxistaController.deletarQuiropraxista(quiropraxista, new ModelAndView(),new RedirectAttributesMock());
 
         assertNotNull(response);
 
@@ -132,7 +133,7 @@ public class QuiropraxistaControllerTest {
 
         when(quiropraxistaDao.save(quiropraxista)).thenReturn(quiropraxista);
 
-        ModelAndView response = quiropraxistaController.cadastrarQuiropraxista(quiropraxista, new ModelAndView());
+        ModelAndView response = quiropraxistaController.cadastrarQuiropraxista(quiropraxista, new ModelAndView(), new RedirectAttributesMock());
 
         assertNotNull(response);
 

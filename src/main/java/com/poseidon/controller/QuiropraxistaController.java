@@ -6,6 +6,7 @@ import com.poseidon.dao.QuiropraxistaDao;
 import com.poseidon.enums.CRUDViewEnum;
 import com.poseidon.model.CRUDView;
 import com.poseidon.model.Quiropraxista;
+import org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,46 +47,40 @@ public class QuiropraxistaController extends ControllerBase {
     }
 
     @RequestMapping(value = "/deletarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista?" +
-            "isCadastroQuiropraxista=false" +
-            "&isPesquisaQuiropraxista=false" +
-            "&isDeleteQuiropraxista=true" +
-            "&isEditarQuiropraxista=false" +
-            "&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista")
     @NotNullArgs
-    public ModelAndView deletarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
+    public ModelAndView deletarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
+                                             ModelAndView modelAndView,
+                                             RedirectAttributes redirectAttributes) {
         Quiropraxista quiropraxistaEncontrado = quiropraxistaRepository.findById(quiropraxista.getId());
         try {
             quiropraxistaRepository.delete(quiropraxistaEncontrado);
         } catch (RuntimeException exception) {
             logger.info("Deletando o quiropraxista.");
         }
+        this.buildRedirectFlashAttributes(redirectAttributes,CRUDViewEnum.IS_DELETE);
         return modelAndView;
     }
 
     @RequestMapping(value = "/cadastrarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista?" +
-            "isCadastroQuiropraxista=true" +
-            "&isPesquisaQuiropraxista=false" +
-            "&isDeleteQuiropraxista=false" +
-            "&isEditarQuiropraxista=false" +
-            "&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista")
     @NotNullArgs
-    public ModelAndView cadastrarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
+    public ModelAndView cadastrarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
+                                               ModelAndView modelAndView,
+                                               RedirectAttributes redirectAttributes) {
         quiropraxistaRepository.save(quiropraxista);
+        this.buildRedirectFlashAttributes(redirectAttributes,CRUDViewEnum.IS_SAVE);
         return modelAndView;
     }
 
     @RequestMapping(value = "/editarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista?" +
-            "isCadastroQuiropraxista=false" +
-            "&isPesquisaQuiropraxista=false" +
-            "&isDeleteQuiropraxista=false" +
-            "&isEditarQuiropraxista=true" +
-            "&isExibirQuiropraxista=false")
+    @ViewName(name = "redirect:/admin/quiropraxista")
     @NotNullArgs
-    public ModelAndView editarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
+    public ModelAndView editarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
+                                            ModelAndView modelAndView,
+                                            RedirectAttributes redirectAttributes) {
         quiropraxistaRepository.save(quiropraxista);
+        this.buildRedirectFlashAttributes(redirectAttributes,CRUDViewEnum.IS_UPDATE);
         return modelAndView;
     }
 }

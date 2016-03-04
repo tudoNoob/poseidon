@@ -94,12 +94,7 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
             this.mockMvc.perform(get("/admin/cadastrarQuiropraxista")
                     .param("nome","Legolas"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/quiropraxista?" +
-                            "isCadastroQuiropraxista=true" +
-                            "&isPesquisaQuiropraxista=false" +
-                            "&isDeleteQuiropraxista=false" +
-                            "&isEditarQuiropraxista=false" +
-                            "&isExibirQuiropraxista=false"));
+                    .andExpect(view().name("redirect:/admin/quiropraxista"));
 
     }
 
@@ -107,12 +102,7 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
     public void quiropraxistaEditarQuiropraxistaTest() throws Exception {
         this.mockMvc.perform(get("/admin/editarQuiropraxista")
                 .param("id","1")).andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/admin/quiropraxista?" +
-                        "isCadastroQuiropraxista=false" +
-                        "&isPesquisaQuiropraxista=false" +
-                        "&isDeleteQuiropraxista=false" +
-                        "&isEditarQuiropraxista=true" +
-                        "&isExibirQuiropraxista=false"));
+                .andExpect(view().name("redirect:/admin/quiropraxista"));
     }
 
 }
