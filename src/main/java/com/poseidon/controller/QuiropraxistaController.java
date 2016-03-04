@@ -6,12 +6,10 @@ import com.poseidon.dao.QuiropraxistaDao;
 import com.poseidon.enums.CRUDViewEnum;
 import com.poseidon.model.CRUDView;
 import com.poseidon.model.Quiropraxista;
-import org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,15 +20,17 @@ import java.util.logging.Logger;
 @RequestMapping("/admin")
 public class QuiropraxistaController extends ControllerBase {
 
+    public static final String REDIRECT_ADMIN_QUIROPRAXISTA = "redirect:/admin/quiropraxista";
+    public static final String QUIROPRAXISTA_VIEW_NAME = "Quiropraxista";
     @Autowired
     QuiropraxistaDao quiropraxistaRepository;
 
     private static Logger logger = Logger.getLogger("QuiropraxistaController");
 
     @RequestMapping("/quiropraxista")
-    @ViewName(name = "Quiropraxista")
+    @ViewName(name = QUIROPRAXISTA_VIEW_NAME)
     public ModelAndView criarPaginaQuiropraxista(ModelAndView modelAndView, @ModelAttribute CRUDView crudView) {
-        modelAndView.getModelMap().addAttribute("crudview", crudView);
+        modelAndView.getModelMap().addAttribute(CRUDVIEW_CLASS_NAME, crudView);
         achaTodosQuiropraxistas(modelAndView, null);
         return modelAndView;
 
@@ -47,7 +47,7 @@ public class QuiropraxistaController extends ControllerBase {
     }
 
     @RequestMapping(value = "/deletarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista")
+    @ViewName(name = REDIRECT_ADMIN_QUIROPRAXISTA)
     @NotNullArgs
     public ModelAndView deletarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
                                              ModelAndView modelAndView,
@@ -63,7 +63,7 @@ public class QuiropraxistaController extends ControllerBase {
     }
 
     @RequestMapping(value = "/cadastrarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista")
+    @ViewName(name = REDIRECT_ADMIN_QUIROPRAXISTA)
     @NotNullArgs
     public ModelAndView cadastrarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
                                                ModelAndView modelAndView,
@@ -74,7 +74,7 @@ public class QuiropraxistaController extends ControllerBase {
     }
 
     @RequestMapping(value = "/editarQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista")
+    @ViewName(name = REDIRECT_ADMIN_QUIROPRAXISTA)
     @NotNullArgs
     public ModelAndView editarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista,
                                             ModelAndView modelAndView,

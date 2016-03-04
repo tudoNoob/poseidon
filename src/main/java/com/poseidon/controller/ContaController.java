@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class ContaController extends ControllerBase {
 
     public static final String ROLE_PREFIX = "ROLE_";
-    public static final String CRUDVIEW_CLASS_NAME = "crudview";
+
     public static final String CONTAS_CLASS_NAME = "contas";
     public static final String CONTA_VIEW_NAME = "Conta";
     public static final String REDIRECT_ADMIN_CONTA = "redirect:/admin/conta";

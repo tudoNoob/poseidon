@@ -34,7 +34,8 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
                 .param("isUpdate","false")
                 .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
+                .andExpect(view().name(QuiropraxistaController.QUIROPRAXISTA_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
@@ -47,7 +48,8 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
                 .param("isUpdate","false")
                 .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
+                .andExpect(view().name(QuiropraxistaController.QUIROPRAXISTA_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
@@ -60,7 +62,8 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
                 .param("isUpdate","false")
                 .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
+                .andExpect(view().name(QuiropraxistaController.QUIROPRAXISTA_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
@@ -73,7 +76,8 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
                 .param("isUpdate","true")
                 .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
+                .andExpect(view().name(QuiropraxistaController.QUIROPRAXISTA_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
@@ -86,7 +90,8 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
                 .param("isUpdate","false")
                 .param("isToShowAll","true"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
+                .andExpect(view().name(QuiropraxistaController.QUIROPRAXISTA_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
@@ -94,7 +99,7 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
             this.mockMvc.perform(get("/admin/cadastrarQuiropraxista")
                     .param("nome","Legolas"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/quiropraxista"));
+                    .andExpect(view().name(QuiropraxistaController.REDIRECT_ADMIN_QUIROPRAXISTA));
 
     }
 
@@ -102,7 +107,7 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
     public void quiropraxistaEditarQuiropraxistaTest() throws Exception {
         this.mockMvc.perform(get("/admin/editarQuiropraxista")
                 .param("id","1")).andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/admin/quiropraxista"));
+                .andExpect(view().name(QuiropraxistaController.REDIRECT_ADMIN_QUIROPRAXISTA));
     }
 
 }
