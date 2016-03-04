@@ -5,8 +5,7 @@ public enum CRUDViewEnum {
     IS_SAVE("isSave"),
     IS_DELETE("isDelete"),
     IS_UPDATE("isUpdate"),
-    IS_SEARCH("isSearch"),
-    IS_To_SHOW_ALL("isToShowAll");
+    IS_SEARCH("isSearch");
 
 
 
