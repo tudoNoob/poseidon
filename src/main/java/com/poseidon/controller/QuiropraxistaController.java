@@ -3,6 +3,7 @@ package com.poseidon.controller;
 import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.QuiropraxistaDao;
+import com.poseidon.enums.CRUDViewEnum;
 import com.poseidon.model.CRUDView;
 import com.poseidon.model.Quiropraxista;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/admin")
-public class QuiropraxistaController {
+public class QuiropraxistaController extends ControllerBase {
 
     @Autowired
     QuiropraxistaDao quiropraxistaRepository;
@@ -28,25 +30,18 @@ public class QuiropraxistaController {
     @ViewName(name = "Quiropraxista")
     public ModelAndView criarPaginaQuiropraxista(ModelAndView modelAndView, @ModelAttribute CRUDView crudView) {
         modelAndView.getModelMap().addAttribute("crudview", crudView);
-        achaTodosQuiropraxistas(modelAndView);
+        achaTodosQuiropraxistas(modelAndView, null);
         return modelAndView;
 
     }
 
-    @RequestMapping(value = "/exibirQuiropraxista")
-    @ViewName(name = "redirect:/admin/quiropraxista?" +
-            "isCadastroQuiropraxista=false" +
-            "&isPesquisaQuiropraxista=false" +
-            "&isDeleteQuiropraxista=false" +
-            "&isEditarQuiropraxista=false" +
-            "&isExibirQuiropraxista=true")
-    @NotNullArgs
-    public void achaTodosQuiropraxistas(ModelAndView modelAndView) {
+    private void achaTodosQuiropraxistas(ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
         Iterable<Quiropraxista> listaTodosQuiropraxistas = quiropraxistaRepository.findAll();
         List<Quiropraxista> quiropraxistasView = com.google.common.collect.Lists.newArrayList();
         for (Quiropraxista quiropraxista : listaTodosQuiropraxistas) {
             quiropraxistasView.add(quiropraxista);
         }
+
         modelAndView.getModelMap().addAttribute("quiropraxistas", quiropraxistasView);
     }
 
