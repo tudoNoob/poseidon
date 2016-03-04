@@ -46,6 +46,12 @@ ___
 
 ___
 
+###How to Contribute:
+
+* [How to contribute](https://github.com/tudoNoob/poseidon/blob/master/docs/EN_US/contribute.md)
+
+___
+
 ###Helpful links:
 
 * [Team's Slack](https://tudonoob.slack.com)
@@ -58,8 +64,6 @@ ___
 
 * [Project's Code Climate](https://codeclimate.com/github/tudoNoob/poseidon/)
 
-* [How to contribute](https://github.com/tudoNoob/poseidon/blob/master/docs/EN_US/contribute.md)
-
 ___
 ###Working Team:
 
@@ -71,6 +75,24 @@ Developer    |[matuella - Guilherme M.](https://github.com/matuella)|
 Developer    |[pedrro - Pedro H.](https://github.com/pedrro)|
 Developer    |[willmenn - William A.](https://github.com/willmenn)|
 
+
+___
+
+###Poseidon's Stack
+
+* Spring boot 1.3.*
+
+* TestNG 6.9.*
+
+* Thymeleaf
+
+* Maven 3.3.9
+
+* JQuery
+
+* Bootstrap
+
+* H2
 ___
 
 ###Readme in other languages:
