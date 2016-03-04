@@ -3,6 +3,8 @@ package com.poseidon.controller;
 import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.PacienteDao;
+import com.poseidon.enums.CRUDViewEnum;
+import com.poseidon.model.CRUDView;
 import com.poseidon.model.Paciente;
 import com.poseidon.model.ViewMessage;
 import com.poseidon.utils.PoseidonUtils;
@@ -21,53 +23,42 @@ import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/user")
-public class PacienteController {
+public class PacienteController extends ControllerBase{
 	@Autowired
 	private PacienteDao pacienteRepository;
 
 	static ConcurrentHashMap<String,Integer> session=new ConcurrentHashMap<>();
+	public static final String REDIRECT_ADMIN_PACIENTE = "redirect:/admin/paciente";
+	public static final String PACIENTE_VIEW_NAME = "Paciente";
 
 	@Autowired
 	private HttpSession httpSession;
 
 	private static Logger logger = Logger.getLogger("PacienteController");
 
-    @RequestMapping("/paciente")
-    @ViewName(name = "Paciente")
-    public ModelAndView buildPacientePage(ModelAndView modelAndView,
-										  @RequestParam("isCadastroPaciente") String isCadastroPaciente,
-										  @RequestParam("isDeletePaciente") String isDeletePaciente,
-										  @RequestParam("isPesquisaPaciente") String isPesquisaPaciente){
-        modelAndView.getModelMap().addAttribute("isCadastroPaciente", isCadastroPaciente);
-        modelAndView.getModelMap().addAttribute("isDeletePaciente", isDeletePaciente);
-        modelAndView.getModelMap().addAttribute("isPesquisaPaciente", isPesquisaPaciente);
+	@RequestMapping("/paciente")
+	@ViewName(name = PACIENTE_VIEW_NAME)
+	public ModelAndView buildPacientePage(ModelAndView modelAndView, @ModelAttribute CRUDView crudView) {
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
-		ViewMessage message = new ViewMessage();
-		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
-        return  modelAndView;
-    }
+		modelAndView.getModelMap().addAttribute(CRUDVIEW_CLASS_NAME, crudView);
+		return modelAndView;
 
+	}
 
 	@RequestMapping(value = "/cadastrarPaciente")
-	@ViewName(name = "redirect:/user/paciente?" +
-			"isCadastroPaciente=true" +
-			"&isDeletePaciente=false" +
-			"&isPesquisaPaciente=false")
+	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
 	@NotNullArgs
-	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView) {
-
+	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
 		if (session.get(httpSession.getId())!=null){
 			paciente.setId(session.get(httpSession.getId()));
 		}
         pacienteRepository.save(paciente);
+		this.buildRedirectFlashAttributes(redirectAttributes, CRUDViewEnum.IS_SAVE);
         return modelAndView;
 	}
 
 	@RequestMapping("/pesquisarPaciente")
-	@ViewName(name = "redirect:/user/paciente?" +
-			"isCadastroPaciente=false" +
-			"&isDeletePaciente=false" +
-			"&isPesquisaPaciente=true")
+	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;
@@ -76,12 +67,12 @@ public class PacienteController {
 	@RequestMapping("/procurarPaciente")
 	@ViewName(name = "Paciente")
 	@NotNullArgs
-	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
+	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest, RedirectAttributes redirectAttributes) {
 		List<Paciente> pacientes = pacienteRepository.findByNome(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
-		modelAndView = this.buildPacientePage(modelAndView, "false", "false", "true");
+		this.buildRedirectFlashAttributes(redirectAttributes, CRUDViewEnum.IS_SEARCH);
 		return modelAndView;
 	}
 
@@ -96,14 +87,29 @@ public class PacienteController {
 		return modelAndView;
 	}
 
+//	@RequestMapping("/editarPaciente")
+//	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
+//	@NotNullArgs
+//	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
+//			@ModelAttribute Paciente paciente) {
+//		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
+//		session.put(httpSession.getId(),newPaciente.getId());
+//		buildPacientePage(modelAndView);
+//		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
+//		ViewMessage message = new ViewMessage();
+//		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
+//		return modelAndView;
+//	}
+
 	@RequestMapping("/editarPaciente")
-	@ViewName(name = "/paciente")
+	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
 	@NotNullArgs
-	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
-			@ModelAttribute Paciente paciente) {
+	public ModelAndView editarPaciente(@ModelAttribute Paciente paciente,
+									   ModelAndView modelAndView,
+									   RedirectAttributes redirectAttributes) {
 		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
 		session.put(httpSession.getId(),newPaciente.getId());
-		buildPacientePage(modelAndView,"true","false","false");
+		this.buildRedirectFlashAttributes(redirectAttributes, CRUDViewEnum.IS_UPDATE);
 		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
 		ViewMessage message = new ViewMessage();
 		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);

@@ -12,7 +12,7 @@
     </head>
     <body class="backgroundColorCinza">
         <div th:include="template/header :: header"></div>
-        <div id="container" style="width: 860px; margin: auto" th:if="${isCadastroPaciente}">
+        <div id="container" style="width: 860px; margin: auto" th:if="${crudview.isSave}">
             <!-- Nome, Sobrenome, CPF, E-mail,Data de Nascimente, Data da última,Consulta, Telefone, Celular, Endereço, CEP, Forma de Pagamento. -->
             <div id="container.form" style="padding-top: 20px">
                 <form th:action="@{/user/cadastrarPaciente}" method="post" th:object="${paciente}">
@@ -128,7 +128,7 @@
             </div>
         </div>
         
-		<div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
+		<div class="form-container" style="width: 860px; margin: auto" th:if="${crudview.isDelete}">
 			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
 				<!-- Text input-->
 				<div class="form-group">
@@ -168,7 +168,7 @@
 			</form>
 		</div>
 		
-		<div class="container1200 marginAuto" th:if="${isPesquisaPaciente}">
+		<div class="container1200 marginAuto" th:if="${crudview.isSearch}">
 			<div class="container-header">
 				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/user/procurarPaciente}" method="post">
 					<!-- Text input-->

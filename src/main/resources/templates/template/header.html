@@ -18,10 +18,10 @@
 											   data-toggle="dropdown" role="button" aria-haspopup="true"
 											   aria-expanded="false">Paciente<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isSave=true)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isDelete=true)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=false,isPesquisaPaciente=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
+								<li><a th:href="@{/user/paciente(isSearch=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
 							</ul>
 						</li>
 						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
