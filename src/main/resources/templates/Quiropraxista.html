@@ -13,7 +13,7 @@
 
 <!--CRUD Medico-->
 <div class="container430 marginAuto paddingTop40"
-     id="criarQuiropraxistaContainer"  th:if="${isCadastroQuiropraxista}">
+     id="criarQuiropraxistaContainer"  th:if="${crudview.isSave}">
     <form id="form-createQuiropraxista" th:action="@{/admin/cadastrarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">Nome:</span> <input tabindex="1"
@@ -29,27 +29,9 @@
     </form>
 </div>
 
-<!-- <div title="Medicos" class="container430 marginAuto paddingTop40"
-     id="pesquisarMedicoContainer" th:if="${isPesquisaMedico}">
-    <form id="form-createMedico" th:action="@{/pesquisarMedico}" method="post">
-    	<h1 class="text-align">Médicos</h1>
-    	<table class="table">
-        	<thead>
-        	<tr>
-            	<th>Nome</th>
-        	</tr>
-        	</thead>
-        	<tbody>
-        	<tr th:each="row: ${medicos}">
-            	<td th:text="${row.nome}">Nome</td>
-        </tr>
-        </tbody>
-    </table>
-    </form>
-</div> -->
 
 <div title="ExMedicos" class="container430 marginAuto paddingTop40"
-     id="exibirTodosQuiropraxistasContainer" th:if="${isExibirQuiropraxista}">
+     id="exibirTodosQuiropraxistasContainer" th:if="${crudview.isToShowAll}">
 	<form id="form-exibirQuiropraxista" th:action="@{/admin/exibirQuiropraxista}" method="post">
     	<h1 class="text-align">Quiropraxista</h1>
     	<table class="table">
@@ -69,7 +51,7 @@
     </form>
 </div>
 
-		<div class="container1200 marginAuto" th:if="${isPesquisaQuiropraxista}">
+		<div class="container1200 marginAuto" th:if="${crudview.isSearch}">
 			<div class="container-header">
 				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/admin/pesquisarQuiropraxista}" method="post">
 					<!-- Text input-->
@@ -106,7 +88,7 @@
 		</div>
 
 <div class="container430 marginAuto paddingTop40"
-     id="deletarQuiropraxistaContainer" th:if="${isDeleteQuiropraxista}">
+     id="deletarQuiropraxistaContainer" th:if="${crudview.isDelete}">
     <form id="form-deleteQuiropraxista" th:action="@{/admin/deletarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input
@@ -123,7 +105,7 @@
 </div>
 
 <div class="container430 marginAuto paddingTop40"
-     id="editarQuiropraxistaContainer" th:if="${isEditarQuiropraxista}">
+     id="editarQuiropraxistaContainer" th:if="${crudview.isUpdate}">
     <form id="form-editarQuiropraxista" th:action="@{/admin/editarQuiropraxista}" method="post">
         <div class="input-group margin10">
             <span class="input-group-addon" id="basic-addon1">ID:</span> <input

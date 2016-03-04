@@ -3,6 +3,7 @@ package com.poseidon.controller;
 import com.poseidon.annotation.NotNullArgs;
 import com.poseidon.annotation.ViewName;
 import com.poseidon.dao.QuiropraxistaDao;
+import com.poseidon.model.CRUDView;
 import com.poseidon.model.Quiropraxista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,22 +26,13 @@ public class QuiropraxistaController {
 
     @RequestMapping("/quiropraxista")
     @ViewName(name = "Quiropraxista")
-    public ModelAndView criarPaginaQuiropraxista(ModelAndView modelAndView,
-                                                 @RequestParam("isCadastroQuiropraxista") String isCadastroQuiropraxista,
-                                                 @RequestParam("isPesquisaQuiropraxista") String isPesquisaQuiropraxista,
-                                                 @RequestParam("isDeleteQuiropraxista") String isDeleteQuiropraxista,
-                                                 @RequestParam("isEditarQuiropraxista") String isEditarQuiropraxista,
-                                                 @RequestParam("isExibirQuiropraxista") String isExibirQuiropraxista){
-        modelAndView.getModelMap().addAttribute("isCadastroQuiropraxista", isCadastroQuiropraxista);
-        modelAndView.getModelMap().addAttribute("isPesquisaQuiropraxista", isPesquisaQuiropraxista);
-        modelAndView.getModelMap().addAttribute("isDeleteQuiropraxista", isDeleteQuiropraxista);
-        modelAndView.getModelMap().addAttribute("isEditarQuiropraxista", isEditarQuiropraxista);
-        modelAndView.getModelMap().addAttribute("isExibirQuiropraxista", isExibirQuiropraxista);
+    public ModelAndView criarPaginaQuiropraxista(ModelAndView modelAndView, @ModelAttribute CRUDView crudView) {
+        modelAndView.getModelMap().addAttribute("crudview", crudView);
         achaTodosQuiropraxistas(modelAndView);
-        return  modelAndView;
+        return modelAndView;
 
     }
-    
+
     @RequestMapping(value = "/exibirQuiropraxista")
     @ViewName(name = "redirect:/admin/quiropraxista?" +
             "isCadastroQuiropraxista=false" +
@@ -52,8 +44,8 @@ public class QuiropraxistaController {
     public void achaTodosQuiropraxistas(ModelAndView modelAndView) {
         Iterable<Quiropraxista> listaTodosQuiropraxistas = quiropraxistaRepository.findAll();
         List<Quiropraxista> quiropraxistasView = com.google.common.collect.Lists.newArrayList();
-        for(Quiropraxista quiropraxista : listaTodosQuiropraxistas){
-        	quiropraxistasView.add(quiropraxista);
+        for (Quiropraxista quiropraxista : listaTodosQuiropraxistas) {
+            quiropraxistasView.add(quiropraxista);
         }
         modelAndView.getModelMap().addAttribute("quiropraxistas", quiropraxistasView);
     }
@@ -69,8 +61,8 @@ public class QuiropraxistaController {
     public ModelAndView deletarQuiropraxista(@ModelAttribute Quiropraxista quiropraxista, ModelAndView modelAndView) {
         Quiropraxista quiropraxistaEncontrado = quiropraxistaRepository.findById(quiropraxista.getId());
         try {
-        	quiropraxistaRepository.delete(quiropraxistaEncontrado);
-        }catch (RuntimeException exception){
+            quiropraxistaRepository.delete(quiropraxistaEncontrado);
+        } catch (RuntimeException exception) {
             logger.info("Deletando o quiropraxista.");
         }
         return modelAndView;
@@ -88,7 +80,7 @@ public class QuiropraxistaController {
         quiropraxistaRepository.save(quiropraxista);
         return modelAndView;
     }
-    
+
     @RequestMapping(value = "/editarQuiropraxista")
     @ViewName(name = "redirect:/admin/quiropraxista?" +
             "isCadastroQuiropraxista=false" +

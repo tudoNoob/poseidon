@@ -11,6 +11,16 @@ public class CRUDView {
 
     private String isDelete;
 
+    private String isToShowAll;
+
+    public String getIsToShowAll() {
+        return isToShowAll;
+    }
+
+    public void setIsToShowAll(String isToShowAll) {
+        this.isToShowAll = isToShowAll;
+    }
+
     public String getIsSave() {
         return isSave;
     }

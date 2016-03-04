@@ -28,90 +28,65 @@ public class QuiropraxistaControlerIntegrationTest extends PoseidonApplicationTe
     public void quiropraxistaCadastro_cadastroTest() throws Exception {
 
         this.mockMvc.perform(get("/admin/quiropraxista")
-                .param("isCadastroQuiropraxista","true")
-                .param("isPesquisaQuiropraxista","false")
-                .param("isDeleteQuiropraxista","false")
-                .param("isEditarQuiropraxista","false")
-                .param("isExibirQuiropraxista","false"))
+                .param("isSave","true")
+                .param("isSearch","false")
+                .param("isDelete","false")
+                .param("isUpdate","false")
+                .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista"))
-                .andExpect(model().attribute("isCadastroQuiropraxista","true"))
-                .andExpect(model().attribute("isPesquisaQuiropraxista","false"))
-                .andExpect(model().attribute("isDeleteQuiropraxista","false"))
-                .andExpect(model().attribute("isEditarQuiropraxista","false"))
-                .andExpect(model().attribute("isExibirQuiropraxista","false"));
+                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
     }
 
     @Test
     public void quiropraxistaCadastro_pesquisaTest() throws Exception {
 
         this.mockMvc.perform(get("/admin/quiropraxista")
-                .param("isCadastroQuiropraxista","false")
-                .param("isPesquisaQuiropraxista","true")
-                .param("isDeleteQuiropraxista","false")
-                .param("isEditarQuiropraxista","false")
-                .param("isExibirQuiropraxista","false"))
+                .param("isSave","false")
+                .param("isSearch","true")
+                .param("isDelete","false")
+                .param("isUpdate","false")
+                .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista"))
-                .andExpect(model().attribute("isCadastroQuiropraxista","false"))
-                .andExpect(model().attribute("isPesquisaQuiropraxista","true"))
-                .andExpect(model().attribute("isDeleteQuiropraxista","false"))
-                .andExpect(model().attribute("isEditarQuiropraxista","false"))
-                .andExpect(model().attribute("isExibirQuiropraxista","false"));
+                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
     }
 
     @Test
     public void quiropraxistaCadastro_deleteTest() throws Exception {
 
         this.mockMvc.perform(get("/admin/quiropraxista")
-                .param("isCadastroQuiropraxista","false")
-                .param("isPesquisaQuiropraxista","false")
-                .param("isDeleteQuiropraxista","true")
-                .param("isEditarQuiropraxista","false")
-                .param("isExibirQuiropraxista","false"))
+                .param("isSave","false")
+                .param("isSearch","false")
+                .param("isDelete","true")
+                .param("isUpdate","false")
+                .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista"))
-                .andExpect(model().attribute("isCadastroQuiropraxista","false"))
-                .andExpect(model().attribute("isPesquisaQuiropraxista","false"))
-                .andExpect(model().attribute("isDeleteQuiropraxista","true"))
-                .andExpect(model().attribute("isEditarQuiropraxista","false"))
-                .andExpect(model().attribute("isExibirQuiropraxista","false"));
+                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
     }
 
     @Test
     public void quiropraxistaCadastro_editarTest() throws Exception {
 
         this.mockMvc.perform(get("/admin/quiropraxista")
-                .param("isCadastroQuiropraxista","false")
-                .param("isPesquisaQuiropraxista","false")
-                .param("isDeleteQuiropraxista","false")
-                .param("isEditarQuiropraxista","true")
-                .param("isExibirQuiropraxista","false"))
+                .param("isSave","false")
+                .param("isSearch","false")
+                .param("isDelete","false")
+                .param("isUpdate","true")
+                .param("isToShowAll","false"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista"))
-                .andExpect(model().attribute("isCadastroQuiropraxista","false"))
-                .andExpect(model().attribute("isPesquisaQuiropraxista","false"))
-                .andExpect(model().attribute("isDeleteQuiropraxista","false"))
-                .andExpect(model().attribute("isEditarQuiropraxista","true"))
-                .andExpect(model().attribute("isExibirQuiropraxista","false"));
+                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
     }
 
     @Test
     public void quiropraxistaCadastro_exibirTest() throws Exception {
 
         this.mockMvc.perform(get("/admin/quiropraxista")
-                .param("isCadastroQuiropraxista","false")
-                .param("isPesquisaQuiropraxista","false")
-                .param("isDeleteQuiropraxista","false")
-                .param("isEditarQuiropraxista","false")
-                .param("isExibirQuiropraxista","true"))
+                .param("isSave","false")
+                .param("isSearch","false")
+                .param("isDelete","false")
+                .param("isUpdate","false")
+                .param("isToShowAll","true"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("Quiropraxista"))
-                .andExpect(model().attribute("isCadastroQuiropraxista","false"))
-                .andExpect(model().attribute("isPesquisaQuiropraxista","false"))
-                .andExpect(model().attribute("isDeleteQuiropraxista","false"))
-                .andExpect(model().attribute("isEditarQuiropraxista","false"))
-                .andExpect(model().attribute("isExibirQuiropraxista","true"));
+                .andExpect(view().name("Quiropraxista")).andExpect(model().attributeExists("crudview"));
     }
 
     @Test
