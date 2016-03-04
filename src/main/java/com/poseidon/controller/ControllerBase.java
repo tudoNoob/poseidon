@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 
 public class ControllerBase {
 
+    public static final String CRUDVIEW_CLASS_NAME = "crudview";
 
     protected RedirectAttributes buildRedirectFlashAttributes(RedirectAttributes redirectAttributes, CRUDViewEnum crudViewEnum) {
 

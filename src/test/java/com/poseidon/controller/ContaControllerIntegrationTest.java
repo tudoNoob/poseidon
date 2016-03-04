@@ -37,9 +37,9 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
                     .param("isDelete","false")
                     .param("isSearch","false"))
                     .andExpect(status().isOk())
-                    .andExpect(view().name("Conta"))
-                    .andExpect(model().attributeExists("contas"))
-                    .andExpect(model().attributeExists("crudview"));
+                    .andExpect(view().name(ContaController.CONTA_VIEW_NAME))
+                    .andExpect(model().attributeExists(ContaController.CONTAS_CLASS_NAME))
+                    .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
         }
 
         @Test
@@ -49,7 +49,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
                     .param("password","1234")
                     .param("role","ROLE_ADMIN"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta"));
+                    .andExpect(view().name(ContaController.REDIRECT_ADMIN_CONTA));
         }
 
         @Test
@@ -57,7 +57,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
             this.mockMvc.perform(get("/admin/editarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta" ));
+                    .andExpect(view().name(ContaController.REDIRECT_ADMIN_CONTA));
         }
 
         @Test
@@ -65,7 +65,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
             this.mockMvc.perform(get("/admin/deletarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta"));
+                    .andExpect(view().name(ContaController.REDIRECT_ADMIN_CONTA));
         }
 
 

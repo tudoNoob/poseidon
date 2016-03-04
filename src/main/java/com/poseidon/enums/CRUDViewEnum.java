@@ -8,6 +8,7 @@ public enum CRUDViewEnum {
     IS_SEARCH("isSearch");
 
 
+
     private String operation;
 
     CRUDViewEnum(String operation) {
