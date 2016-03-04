@@ -7,6 +7,7 @@ import com.poseidon.dao.AuthoritiesRepository;
 
 import com.poseidon.dao.UserRepository;
 import com.poseidon.model.*;
+import com.poseidon.utils.RedirectAttributesMock;
 import org.springframework.web.servlet.ModelAndView;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -162,7 +163,7 @@ public class ContaControllerTest {
         Users  users = new UsersBuilder().withPassword("Bulma").withUsername("Veggeta").build();
         ContaView conta = new ContaViewBuilder().convertUsersThroughContaView(users).withAuthority("ROLE_ADMIN").build();
 
-        ModelAndView response = contaController.cadastrarConta(conta, "ROLE_ADMIN", new ModelAndView());
+        ModelAndView response = contaController.cadastrarConta(conta, "ROLE_ADMIN", new ModelAndView(), new RedirectAttributesMock());
         assertNotNull(response);
         assertNull(response.getViewName());
 
@@ -178,7 +179,7 @@ public class ContaControllerTest {
 
         when(userRepository.findByUsername(conta.getUsername())).thenReturn(users);
 
-        ModelAndView response = contaController.deletarConta(conta,new ModelAndView());
+        ModelAndView response = contaController.deletarConta(conta,new ModelAndView(),new RedirectAttributesMock());
         assertNotNull(response);
         assertNull(response.getViewName());
 
@@ -194,7 +195,7 @@ public class ContaControllerTest {
 
         when(userRepository.findByUsername(conta.getUsername())).thenReturn(users);
 
-        ModelAndView response = contaController.editarConta(new ModelAndView(),conta);
+        ModelAndView response = contaController.editarConta(new ModelAndView(),conta, new RedirectAttributesMock());
         assertNotNull(response);
         assertNull(response.getViewName());
 

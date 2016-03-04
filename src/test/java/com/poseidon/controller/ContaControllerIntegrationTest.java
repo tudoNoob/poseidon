@@ -49,11 +49,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
                     .param("password","1234")
                     .param("role","ROLE_ADMIN"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta?" +
-                            "isCadastroConta=true" +
-                            "&isEditarConta=false" +
-                            "&isDeleteConta=false" +
-                            "&isExibirConta=false"));
+                    .andExpect(view().name("redirect:/admin/conta"));
         }
 
         @Test
@@ -61,11 +57,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
             this.mockMvc.perform(get("/admin/editarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta?" +
-                            "isCadastroConta=false" +
-                            "&isEditarConta=true" +
-                            "&isDeleteConta=false" +
-                            "&isExibirConta=false"));
+                    .andExpect(view().name("redirect:/admin/conta" ));
         }
 
         @Test
@@ -73,11 +65,7 @@ public class ContaControllerIntegrationTest extends PoseidonApplicationTests {
             this.mockMvc.perform(get("/admin/deletarConta")
                     .param("username","user"))
                     .andExpect(status().is3xxRedirection())
-                    .andExpect(view().name("redirect:/admin/conta?" +
-                            "isCadastroConta=false" +
-                            "&isEditarConta=false" +
-                            "&isDeleteConta=true" +
-                            "&isExibirConta=false"));
+                    .andExpect(view().name("redirect:/admin/conta"));
         }
 
 
