@@ -28,7 +28,7 @@ public class PacienteController extends ControllerBase{
 	private PacienteDao pacienteRepository;
 
 	static ConcurrentHashMap<String,Integer> session=new ConcurrentHashMap<>();
-	public static final String REDIRECT_ADMIN_PACIENTE = "redirect:/admin/paciente";
+	public static final String REDIRECT_USER_PACIENTE = "redirect:/user/paciente";
 	public static final String PACIENTE_VIEW_NAME = "Paciente";
 
 	@Autowired
@@ -46,7 +46,7 @@ public class PacienteController extends ControllerBase{
 	}
 
 	@RequestMapping(value = "/cadastrarPaciente")
-	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
+	@ViewName(name = REDIRECT_USER_PACIENTE)
 	@NotNullArgs
 	public ModelAndView createUser(@ModelAttribute Paciente paciente, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
 		if (session.get(httpSession.getId())!=null){
@@ -58,14 +58,14 @@ public class PacienteController extends ControllerBase{
 	}
 
 	@RequestMapping("/pesquisarPaciente")
-	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
+	@ViewName(name = REDIRECT_USER_PACIENTE)
 	public ModelAndView pesquisarPaciente(ModelAndView modelAndView) {
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
 		return modelAndView;
 	}
 
 	@RequestMapping("/procurarPaciente")
-	@ViewName(name = "Paciente")
+	@ViewName(name = REDIRECT_USER_PACIENTE)
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest, RedirectAttributes redirectAttributes) {
 		List<Paciente> pacientes = pacienteRepository.findByNome(pacienteRequest.getNome());
@@ -77,7 +77,7 @@ public class PacienteController extends ControllerBase{
 	}
 
 	@RequestMapping("/deletarPaciente")
-	@ViewName(name = "deletePaciente")
+	@ViewName(name = REDIRECT_USER_PACIENTE)
 	@NotNullArgs
 	public ModelAndView deletarPaciente(ModelAndView modelAndView, @ModelAttribute Paciente paciente) {
 		pacienteRepository.delete(paciente);
@@ -87,22 +87,8 @@ public class PacienteController extends ControllerBase{
 		return modelAndView;
 	}
 
-//	@RequestMapping("/editarPaciente")
-//	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
-//	@NotNullArgs
-//	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
-//			@ModelAttribute Paciente paciente) {
-//		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
-//		session.put(httpSession.getId(),newPaciente.getId());
-//		buildPacientePage(modelAndView);
-//		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
-//		ViewMessage message = new ViewMessage();
-//		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
-//		return modelAndView;
-//	}
-
 	@RequestMapping("/editarPaciente")
-	@ViewName(name = REDIRECT_ADMIN_PACIENTE)
+	@ViewName(name = REDIRECT_USER_PACIENTE)
 	@NotNullArgs
 	public ModelAndView editarPaciente(@ModelAttribute Paciente paciente,
 									   ModelAndView modelAndView,
@@ -111,8 +97,8 @@ public class PacienteController extends ControllerBase{
 		session.put(httpSession.getId(),newPaciente.getId());
 		this.buildRedirectFlashAttributes(redirectAttributes, CRUDViewEnum.IS_UPDATE);
 		modelAndView.getModelMap().addAttribute("paciente", newPaciente);
-		ViewMessage message = new ViewMessage();
-		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
+//		ViewMessage message = new ViewMessage();                  -> FAZER COM QUE A PARTIR DAQUI REDIRECIONE PARA O CADASTRAR POIS TERÁ A SESSION PREENCHIDA
+//		modelAndView.getModelMap().addAttribute("cadastroPageModel", message);
 		return modelAndView;
 	}
 

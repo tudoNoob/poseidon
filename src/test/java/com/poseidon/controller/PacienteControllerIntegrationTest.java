@@ -8,8 +8,7 @@ import org.testng.annotations.Test;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 
@@ -28,95 +27,71 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
     @Test
     public void paciente_cadastro() throws Exception {
         this.mockMvc.perform(get("/user/paciente")
-                .param("isCadastroPaciente","true")
-                .param("isDeletePaciente","false")
-                .param("isPesquisaPaciente","false"))
-                .andExpect(view().name("Paciente"))
-                .andExpect(model().attribute("isCadastroPaciente","true"))
-                .andExpect(model().attribute("isDeletePaciente","false"))
-                .andExpect(model().attribute("isPesquisaPaciente","false"))
-                .andExpect(model().attributeExists("cadastroPageModel"))
-                .andExpect(model().attributeExists("paciente"));
+            .param("isSave","true")
+            .param("isSearch","false")
+            .param("isDelete","false")
+            .param("isUpdate","false")
+            .param("isToShowAll","false"))
+            .andExpect(status().isOk())
+            .andExpect(view().name(PacienteController.PACIENTE_VIEW_NAME))
+            .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
 
     @Test
     public void paciente_delete() throws Exception {
         this.mockMvc.perform(get("/user/paciente")
-                .param("isCadastroPaciente","false")
-                .param("isDeletePaciente","true")
-                .param("isPesquisaPaciente","false"))
-                .andExpect(view().name("Paciente"))
-                .andExpect(model().attribute("isCadastroPaciente","false"))
-                .andExpect(model().attribute("isDeletePaciente","true"))
-                .andExpect(model().attribute("isPesquisaPaciente","false"))
-                .andExpect(model().attributeExists("cadastroPageModel"))
-                .andExpect(model().attributeExists("paciente"));
+                .param("isSave","false")
+                .param("isSearch","false")
+                .param("isDelete","true"))
+                .andExpect(status().isOk())
+                .andExpect(view().name(PacienteController.PACIENTE_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
     public void paciente_pesquisa() throws Exception {
         this.mockMvc.perform(get("/user/paciente")
-                .param("isCadastroPaciente","false")
-                .param("isDeletePaciente","false")
-                .param("isPesquisaPaciente","true"))
-                .andExpect(view().name("Paciente"))
-                .andExpect(model().attribute("isCadastroPaciente","false"))
-                .andExpect(model().attribute("isDeletePaciente","false"))
-                .andExpect(model().attribute("isPesquisaPaciente","true"))
-                .andExpect(model().attributeExists("cadastroPageModel"))
-                .andExpect(model().attributeExists("paciente"));
-    }
-
-    @Test
-    public void pesquisarPaciente() throws Exception {
-        this.mockMvc.perform(get("/user/pesquisarPaciente"))
-                .andExpect(view().name("redirect:/user/paciente?" +
-                        "isCadastroPaciente=false" +
-                        "&isDeletePaciente=false" +
-                        "&isPesquisaPaciente=true"));
+                .param("isSave","false")
+                .param("isSearch","false")
+                .param("isDelete","true"))
+                .andExpect(status().isOk())
+                .andExpect(view().name(PacienteController.PACIENTE_VIEW_NAME))
+                .andExpect(model().attributeExists(ControllerBase.CRUDVIEW_CLASS_NAME));
     }
 
     @Test
     public void cadastrarPaciente() throws Exception {
         this.mockMvc.perform(get("/user/cadastrarPaciente")
                 .param("nome","Frodo"))
-                .andExpect(view().name("redirect:/user/paciente?" +
-                        "isCadastroPaciente=true" +
-                        "&isDeletePaciente=false" +
-                        "&isPesquisaPaciente=false"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name(PacienteController.REDIRECT_USER_PACIENTE));
     }
 
-
-
-    @Test
-    public void editarPaciente() throws Exception {
-        this.mockMvc.perform(get("/user/cadastrarPaciente")
-                .param("nome","Sam"))
-                .andExpect(view().name("redirect:/user/paciente?" +
-                        "isCadastroPaciente=true" +
-                        "&isDeletePaciente=false&" +
-                        "isPesquisaPaciente=false"));
-
-        this.mockMvc.perform(get("/user/editarPaciente")
-                .param("id","76")
-                .param("nome","Mordor"))
-                .andExpect(view().name("/paciente"));
-    }
-
-    @Test
-    public void procurarPaciente() throws Exception {
-        this.mockMvc.perform(get("/user/cadastrarPaciente")
-                .param("nome","Saruman"))
-                .andExpect(view().name("redirect:/user/paciente?" +
-                        "isCadastroPaciente=true" +
-                        "&isDeletePaciente=false" +
-                        "&isPesquisaPaciente=false"));
-
-
-        this.mockMvc.perform(get("/user/procurarPaciente")
-                .param("nome","Saruman"))
-                .andExpect(view().name("Paciente"));
-    }
+//    @Test
+//    public void editarPaciente() throws Exception {
+//        this.mockMvc.perform(get("/user/cadastrarPaciente")
+//                .param("nome","Sam"))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(view().name(PacienteController.REDIRECT_USER_PACIENTE));
+//
+//        this.mockMvc.perform(get("/user/editarPaciente")
+//                .param("id","76")
+//                .param("nome","Mordor"))
+//                .andExpect(view().name(PacienteController.REDIRECT_USER_PACIENTE));
+//    }
+//
+//    @Test
+//    public void procurarPaciente() throws Exception {
+//        this.mockMvc.perform(get("/user/cadastrarPaciente")
+//                .param("nome","Saruman"))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(view().name(PacienteController.REDIRECT_USER_PACIENTE));
+//
+//
+//        this.mockMvc.perform(get("/user/procurarPaciente")
+//                .param("nome","Saruman"))
+//                .andExpect(view().name(PacienteController.REDIRECT_USER_PACIENTE));
+//    }
 
 }
