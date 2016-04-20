@@ -6,7 +6,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -105,18 +105,19 @@ public class PacienteControllerIntegrationTest extends PoseidonApplicationTests 
     }
 
     @Test
-    public void procurarPaciente() throws Exception {
-        this.mockMvc.perform(get("/user/cadastrarPaciente")
-                .param("nome","Saruman"))
-                .andExpect(view().name("redirect:/user/paciente?" +
-                        "isCadastroPaciente=true" +
-                        "&isDeletePaciente=false" +
-                        "&isPesquisaPaciente=false"));
-
-
+    public void procurarPacienteCaseInsensitive() throws Exception {
         this.mockMvc.perform(get("/user/procurarPaciente")
-                .param("nome","Saruman"))
-                .andExpect(view().name("Paciente"));
+                .param("nome","gan"))
+                .andExpect(view().name("Paciente"))
+                .andExpect(model().attribute("pacientesJSON", containsString("Gandalf")));
+    }
+
+    @Test
+    public void procurarPacienteCaseSensitive() throws Exception {
+        this.mockMvc.perform(get("/user/procurarPaciente")
+                .param("nome","gandalf"))
+                .andExpect(view().name("Paciente"))
+                .andExpect(model().attribute("pacientesJSON", containsString("Gandalf")));
     }
 
 }
