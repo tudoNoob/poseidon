@@ -29,7 +29,7 @@ public class ControllerThrowsAdvice {
 		Class<?>[] exceptionTypes = method.getExceptionTypes();
 		
 		if(exceptionTypes != null && exceptionTypes.length>0){
-			throw new MethodDeclarationException("Nao pode declrar throws em um com.poseidon.controller.Controller: "+method.getName());
+			throw new MethodDeclarationException("Nao pode declarar throws em um com.poseidon.controller.Controller: "+method.getName());
 		}
 		
 	}
