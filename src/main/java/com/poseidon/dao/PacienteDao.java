@@ -11,6 +11,6 @@ import java.util.List;
 @Qualifier()
 public interface PacienteDao extends CrudRepository<Paciente, Integer> {
 	
-	public List<Paciente> findByNome(String nome);
+	List<Paciente> findByNomeContainingIgnoreCase(String nome);
 	
 }

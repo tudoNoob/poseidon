@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -77,7 +76,7 @@ public class PacienteController {
 	@ViewName(name = "Paciente")
 	@NotNullArgs
 	public ModelAndView pesquisaPacientes(ModelAndView modelAndView, @ModelAttribute Paciente pacienteRequest) {
-		List<Paciente> pacientes = pacienteRepository.findByNome(pacienteRequest.getNome());
+		List<Paciente> pacientes = pacienteRepository.findByNomeContainingIgnoreCase(pacienteRequest.getNome());
 		modelAndView.getModelMap().addAttribute("pacientes", pacientes);
 		modelAndView.getModelMap().addAttribute("pacientesJSON", PoseidonUtils.convertStringtoJSON(pacientes));
 		modelAndView.getModelMap().addAttribute("paciente", new Paciente());
@@ -99,8 +98,8 @@ public class PacienteController {
 	@RequestMapping("/editarPaciente")
 	@ViewName(name = "/paciente")
 	@NotNullArgs
-	public ModelAndView editarPaciente(ModelAndView modelAndView, RedirectAttributes redirectAttributes,
-			@ModelAttribute Paciente paciente) {
+	public ModelAndView editarPaciente(ModelAndView modelAndView,
+									   @ModelAttribute Paciente paciente) {
 		Paciente newPaciente = pacienteRepository.findOne(paciente.getId());
 		session.put(httpSession.getId(),newPaciente.getId());
 		buildPacientePage(modelAndView,"true","false","false");
