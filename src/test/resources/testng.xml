@@ -7,7 +7,7 @@
             <class name="com.poseidon.controller.HomeControllerIntegrationTest" />
             <class name="com.poseidon.controller.LoginControllerIntgrationTest" />
             <class name="com.poseidon.controller.PacienteControllerIntegrationTest" />
-            <class name="com.poseidon.controller.QuiropraxistaControlerIntegrationTest"/>
+            <class name="com.poseidon.controller.QuiropraxistaControllerIntegrationTest"/>
             <class name="com.poseidon.controller.SobreControllerIntegrationTest" />
         </classes>
     </test>
