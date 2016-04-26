@@ -90,11 +90,6 @@ public class ContaControllerTest {
         Authorities authoritiesVeggeta = new AuthoritiesBuilder().withAuthority("ROLE_USER").withUsername("Veggeta").build();
         when(authoritiesRepository.findByUsername(usersList.get(0).getUsername())).thenReturn(authoritiesVeggeta);
 
-        String isCadastroConta = "false";
-        String isEditarConta = "true";
-        String isDeleteConta = "false";
-        String isExibirConta = "false";
-
         ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
         assertNotNull(response);
@@ -117,11 +112,6 @@ public class ContaControllerTest {
 
         Authorities authoritiesVeggeta = new AuthoritiesBuilder().withAuthority("ROLE_USER").withUsername("Veggeta").build();
         when(authoritiesRepository.findByUsername(usersList.get(0).getUsername())).thenReturn(authoritiesVeggeta);
-
-        String isCadastroConta = "false";
-        String isEditarConta = "false";
-        String isDeleteConta = "true";
-        String isExibirConta = "false";
 
         ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
@@ -146,10 +136,6 @@ public class ContaControllerTest {
         Authorities authoritiesVeggeta = new AuthoritiesBuilder().withAuthority("ROLE_USER").withUsername("Veggeta").build();
         when(authoritiesRepository.findByUsername(usersList.get(0).getUsername())).thenReturn(authoritiesVeggeta);
 
-        String isCadastroConta = "false";
-        String isEditarConta = "false";
-        String isDeleteConta = "false";
-        String isExibirConta = "true";
 
         ModelAndView response = contaController.returnpage(new ModelAndView(), new CRUDView());
 
