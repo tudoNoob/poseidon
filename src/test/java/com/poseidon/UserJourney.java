@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.testng.Assert.assertTrue;
 
 public class UserJourney {
 
@@ -33,6 +34,8 @@ public class UserJourney {
             webDriver = new HtmlUnitDriver();
         }
         wait = new WebDriverWait(webDriver, 10);
+        webDriver.get("http://localhost:8080");
+        webDriver.manage().window().maximize();
     }
 
     @AfterMethod
@@ -42,7 +45,6 @@ public class UserJourney {
 
     @Test
     public void shouldLoginWithAdminUser() throws Exception {
-        webDriver.get("http://localhost:8080");
         WebElement loginInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user.login")));
         loginInput.sendKeys(USER_LOGIN);
         webDriver.findElement(By.id("password.login")).sendKeys(USER_PASSWORD);
@@ -52,13 +54,16 @@ public class UserJourney {
     }
 
     @Test
-    public void shouldRegistryPacient() throws Exception {
-        webDriver.get("http://localhost:8080");
-        wait = new WebDriverWait(webDriver, 10);
+    public void shouldShowRegistryPage() throws Exception {
+        shouldLoginWithAdminUser();
         WebElement pacientTab = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("paciente-dropdown")));
         pacientTab.click();
 
-        WebElement pacienteCadastro = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn-criarPaciente")));
+        WebElement pacienteCadastro = wait
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("btn-criarPaciente")));
         pacienteCadastro.click();
+
+        assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
+
     }
 }
