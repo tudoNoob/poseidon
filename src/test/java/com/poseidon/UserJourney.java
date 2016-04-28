@@ -11,8 +11,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Map;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -26,11 +24,14 @@ public class UserJourney {
 
     @BeforeMethod
     public void setUp() throws Exception {
+
         final String chrome_driver = System.getenv("CHROME_DRIVER");
-        System.out.println(chrome_driver);
-        System.setProperty("webdriver.chrome.driver",chrome_driver);
-        webDriver = new ChromeDriver();
-        //webDriver = new HtmlUnitDriver();
+        if (chrome_driver != null) {
+            System.setProperty("webdriver.chrome.driver", chrome_driver);
+            webDriver = new ChromeDriver();
+        } else {
+            webDriver = new HtmlUnitDriver();
+        }
         wait = new WebDriverWait(webDriver, 10);
     }
 
@@ -47,7 +48,7 @@ public class UserJourney {
         webDriver.findElement(By.id("password.login")).sendKeys(USER_PASSWORD);
         webDriver.findElement(By.id("submit.login")).click();
         String welcomeToPoseidon = webDriver.findElement(By.id("welcome-text")).getText();
-        assertThat(welcomeToPoseidon,notNullValue());
+        assertThat(welcomeToPoseidon, notNullValue());
     }
 
     @Test
