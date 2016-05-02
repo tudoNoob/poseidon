@@ -33,8 +33,8 @@ public class UserJourney {
     public static final String SOME_BIRTH_DATE = "09//11//1990";
     public static final String SOME_LAST_SCHEDULE = "11//11//1990";
     public static final String SOME_CARD = "Cartao";
-    public static final String BTN_CRIAR_PACIENTE = "btn-criarPaciente";
-    public static final String BOTTUN_PESQUISAR_PACIENTE = "btn-pesquisarPaciente";
+    public static final String BUTTON_CREATE_PATIENT = "btn-criarPaciente";
+    public static final String BUTTON_SEARCH_PATIENT = "btn-pesquisarPaciente";
 
     private WebDriver webDriver;
     private WebDriverWait wait;
@@ -64,9 +64,9 @@ public class UserJourney {
     @Test
     public void userJourneyFunctionalTest() throws Exception {
         shouldLoginWithAdminUser();
-        shouldExecuteActionIntoDropdownFromPacient(BTN_CRIAR_PACIENTE);
+        shouldExecuteActionIntoDropdownFromPacient(BUTTON_CREATE_PATIENT);
         shouldRegistryOnePacient();
-        shouldExecuteActionIntoDropdownFromPacient(BOTTUN_PESQUISAR_PACIENTE);
+        shouldExecuteActionIntoDropdownFromPacient(BUTTON_SEARCH_PATIENT);
         shouldSearchForPacient(SOME_NAME);
         shouldLogout();
     }
@@ -84,9 +84,9 @@ public class UserJourney {
         WebElement pacientTab = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("paciente-dropdown")));
         pacientTab.click();
 
-        WebElement pacienteCadastro = wait
+        WebElement registryPacient = wait
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id(action)));
-        pacienteCadastro.click();
+        registryPacient.click();
 
         assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
 
@@ -116,8 +116,8 @@ public class UserJourney {
         WebElement inputForSearch = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nome")));
         inputForSearch.sendKeys(pacientName);
         webDriver.findElement(By.id("idpesquisar")).click();
-        List<WebElement> listOfPacients = webDriver.findElements(By.tagName("tr"));
-        if (!verifyIfHasTextInTable(SOME_NAME, listOfPacients)) {
+        List<WebElement> patientsList = webDriver.findElements(By.tagName("tr"));
+        if (!verifyIfHasTextInTable(SOME_NAME, patientsList)) {
             fail();
         }
 
