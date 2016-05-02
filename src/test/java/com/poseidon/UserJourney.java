@@ -11,14 +11,29 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 public class UserJourney {
 
     public static final String USER_LOGIN = "user";
     public static final String USER_PASSWORD = "user";
+    public static final String SOME_NAME = "Voldemort";
+    public static final String SOME_LAST_NAME = "Das Magia";
+    public static final String SOME_CPF = "02759756734";
+    public static final String SOME_EMAIL = "voldermort_94@mmagia.com";
+    public static final String SOME_PHONE = "998778987";
+    public static final String SOME_CEL_PHONE = "87787765";
+    public static final String SOME_ADDRESS = "Rua assombrada";
+    public static final String SOME_CEP = "90570022";
+    public static final String SOME_BIRTH_DATE = "09//11//1990";
+    public static final String SOME_LAST_SCHEDULE = "11//11//1990";
+    public static final String SOME_CARD = "Cartao";
+
     private WebDriver webDriver;
     private WebDriverWait wait;
 
@@ -50,6 +65,7 @@ public class UserJourney {
         shouldExecuteActionIntoDropdownFromPacient("btn-criarPaciente");
         shouldRegistryOnePacient();
         shouldExecuteActionIntoDropdownFromPacient("btn-pesquisarPaciente");
+        shouldSearchForPacient(SOME_NAME);
     }
 
     public void shouldLoginWithAdminUser() throws Exception {
@@ -76,20 +92,43 @@ public class UserJourney {
     public void shouldRegistryOnePacient() throws Exception {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("submitcadastrarpaciente")));
 
-        webDriver.findElement(By.id("nomecadastro")).sendKeys("Voldemort");
-        webDriver.findElement(By.id("sobrenomecadastro")).sendKeys("Das Magia");
-        webDriver.findElement(By.id("cpfcadastro")).sendKeys("02759756734");
-        webDriver.findElement(By.id("emailcadastro")).sendKeys("voldermort_94@mmagia.com");
-        webDriver.findElement(By.id("telefonecadastro")).sendKeys("998778987");
-        webDriver.findElement(By.id("celularcadastro")).sendKeys("87787765");
-        webDriver.findElement(By.id("enderecocadastro")).sendKeys("Rua assombrada");
-        webDriver.findElement(By.id("cepcadastro")).sendKeys("90570022");
-        webDriver.findElement(By.id("datanscimentocadastro")).sendKeys("09//11//1990");
-        webDriver.findElement(By.id("dataultimaconsultacadastro")).sendKeys("11//11//1990");
-        webDriver.findElement(By.id("formadepagamentocadastro")).sendKeys("Cartao");
+        webDriver.findElement(By.id("nomecadastro")).sendKeys(SOME_NAME);
+        webDriver.findElement(By.id("sobrenomecadastro")).sendKeys(SOME_LAST_NAME);
+        webDriver.findElement(By.id("cpfcadastro")).sendKeys(SOME_CPF);
+        webDriver.findElement(By.id("emailcadastro")).sendKeys(SOME_EMAIL);
+        webDriver.findElement(By.id("telefonecadastro")).sendKeys(SOME_PHONE);
+        webDriver.findElement(By.id("celularcadastro")).sendKeys(SOME_CEL_PHONE);
+        webDriver.findElement(By.id("enderecocadastro")).sendKeys(SOME_ADDRESS);
+        webDriver.findElement(By.id("cepcadastro")).sendKeys(SOME_CEP);
+        webDriver.findElement(By.id("datanscimentocadastro")).sendKeys(SOME_BIRTH_DATE);
+        webDriver.findElement(By.id("dataultimaconsultacadastro")).sendKeys(SOME_LAST_SCHEDULE);
+        webDriver.findElement(By.id("formadepagamentocadastro")).sendKeys(SOME_CARD);
 
         webDriver.findElement(By.id("submitcadastrarpaciente")).click();
 
         assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
+    }
+
+    public void shouldSearchForPacient(String pacientName) throws Exception {
+        WebElement inputForSearch = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nome")));
+        inputForSearch.sendKeys(pacientName);
+        webDriver.findElement(By.id("idpesquisar")).click();
+        List<WebElement> listOfPacients = webDriver.findElements(By.tagName("tr"));
+        if (!verifyIfHasTextInTable(SOME_NAME, listOfPacients)) {
+            fail();
+        }
+
+    }
+
+    private boolean verifyIfHasTextInTable(String toEqual, List<WebElement> trList) {
+        for (int i = 1; i < trList.size(); i++) {
+            List<WebElement> td = trList.get(i).findElements(By.tagName("td"));
+            for (int j = 0; j < td.size(); j++) {
+                if (td.get(j).getText().equals(toEqual)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
