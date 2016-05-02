@@ -43,11 +43,12 @@ public class UserJourney {
         webDriver.quit();
     }
 
+
     @Test
     public void userJourneyFunctionalTest() throws Exception {
         shouldLoginWithAdminUser();
         shouldShowRegistryPage();
-
+        shouldRegistryOnePacient();
     }
 
     public void shouldLoginWithAdminUser() throws Exception {
@@ -68,6 +69,25 @@ public class UserJourney {
         pacienteCadastro.click();
 
         assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
+
+    }
+
+    public void shouldRegistryOnePacient() throws Exception {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("submitcadastrarpaciente")));
+
+        webDriver.findElement(By.id("nomecadastro")).sendKeys("Voldemort");
+        webDriver.findElement(By.id("sobrenomecadastro")).sendKeys("Das Magia");
+        webDriver.findElement(By.id("cpfcadastro")).sendKeys("02759756734");
+        webDriver.findElement(By.id("emailcadastro")).sendKeys("voldermort_94@mmagia.com");
+        webDriver.findElement(By.id("telefonecadastro")).sendKeys("998778987");
+        webDriver.findElement(By.id("celularcadastro")).sendKeys("87787765");
+        webDriver.findElement(By.id("enderecocadastro")).sendKeys("Rua assombrada");
+        webDriver.findElement(By.id("cepcadastro")).sendKeys("90570022");
+        webDriver.findElement(By.id("datanscimentocadastro")).sendKeys("09//11//1990");
+        webDriver.findElement(By.id("dataultimaconsultacadastro")).sendKeys("11//11//1990");
+        webDriver.findElement(By.id("formadepagamentocadastro")).sendKeys("Cartao");
+
+        webDriver.findElement(By.id("submitcadastrarpaciente")).click();
 
     }
 }
