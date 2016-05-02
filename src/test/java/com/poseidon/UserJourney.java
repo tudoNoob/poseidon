@@ -33,6 +33,8 @@ public class UserJourney {
     public static final String SOME_BIRTH_DATE = "09//11//1990";
     public static final String SOME_LAST_SCHEDULE = "11//11//1990";
     public static final String SOME_CARD = "Cartao";
+    public static final String BTN_CRIAR_PACIENTE = "btn-criarPaciente";
+    public static final String BOTTUN_PESQUISAR_PACIENTE = "btn-pesquisarPaciente";
 
     private WebDriver webDriver;
     private WebDriverWait wait;
@@ -62,10 +64,11 @@ public class UserJourney {
     @Test
     public void userJourneyFunctionalTest() throws Exception {
         shouldLoginWithAdminUser();
-        shouldExecuteActionIntoDropdownFromPacient("btn-criarPaciente");
+        shouldExecuteActionIntoDropdownFromPacient(BTN_CRIAR_PACIENTE);
         shouldRegistryOnePacient();
-        shouldExecuteActionIntoDropdownFromPacient("btn-pesquisarPaciente");
+        shouldExecuteActionIntoDropdownFromPacient(BOTTUN_PESQUISAR_PACIENTE);
         shouldSearchForPacient(SOME_NAME);
+        shouldLogout();
     }
 
     public void shouldLoginWithAdminUser() throws Exception {
@@ -118,6 +121,12 @@ public class UserJourney {
             fail();
         }
 
+    }
+
+    public void shouldLogout() throws Exception {
+        webDriver.findElement(By.id("btn-logout")).click();
+
+        assertTrue(wait.until(ExpectedConditions.titleContains("Login")));
     }
 
     private boolean verifyIfHasTextInTable(String toEqual, List<WebElement> trList) {
