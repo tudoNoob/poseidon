@@ -47,8 +47,9 @@ public class UserJourney {
     @Test
     public void userJourneyFunctionalTest() throws Exception {
         shouldLoginWithAdminUser();
-        shouldShowRegistryPage();
+        shouldExecuteActionIntoDropdownFromPacient("btn-criarPaciente");
         shouldRegistryOnePacient();
+        shouldExecuteActionIntoDropdownFromPacient("btn-pesquisarPaciente");
     }
 
     public void shouldLoginWithAdminUser() throws Exception {
@@ -60,12 +61,12 @@ public class UserJourney {
         assertThat(welcomeToPoseidon, notNullValue());
     }
 
-    public void shouldShowRegistryPage() throws Exception {
+    public void shouldExecuteActionIntoDropdownFromPacient(String action) throws Exception {
         WebElement pacientTab = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("paciente-dropdown")));
         pacientTab.click();
 
         WebElement pacienteCadastro = wait
-                .until(ExpectedConditions.visibilityOfElementLocated(By.id("btn-criarPaciente")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id(action)));
         pacienteCadastro.click();
 
         assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
@@ -89,5 +90,6 @@ public class UserJourney {
 
         webDriver.findElement(By.id("submitcadastrarpaciente")).click();
 
+        assertTrue(wait.until(ExpectedConditions.titleContains("Paciente")));
     }
 }
