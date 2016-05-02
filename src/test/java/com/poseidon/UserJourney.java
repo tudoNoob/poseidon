@@ -44,6 +44,12 @@ public class UserJourney {
     }
 
     @Test
+    public void userJourneyFunctionalTest() throws Exception {
+        shouldLoginWithAdminUser();
+        shouldShowRegistryPage();
+
+    }
+
     public void shouldLoginWithAdminUser() throws Exception {
         WebElement loginInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user.login")));
         loginInput.sendKeys(USER_LOGIN);
@@ -53,9 +59,7 @@ public class UserJourney {
         assertThat(welcomeToPoseidon, notNullValue());
     }
 
-    @Test
     public void shouldShowRegistryPage() throws Exception {
-        shouldLoginWithAdminUser();
         WebElement pacientTab = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("paciente-dropdown")));
         pacientTab.click();
 
