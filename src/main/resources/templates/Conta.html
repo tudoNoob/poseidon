@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Conta</title>
-
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
 </head>
 <body class="backgroundColorCinza">
@@ -89,20 +88,20 @@
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.editar" type="text" class="form-control"
 					placeholder="Username do usuário" aria-describedby="basic-addon1"
-					name="username" required="true"
-					data-toggle="tooltip" data-placement="right"
-					title="Usuário tem que ser único." />
+					name="username" required="true" data-toggle="tooltip" data-placement="right"
+					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
 			</div>
 			<div class="input-group margin10" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
 					tabindex="2" id="pass.editar" type="text" class="form-control"
 					placeholder="Senha do usuário" aria-describedby="basic-addon1"
-					name="password" required="true"/>
+					name="password" required="true" data-toggle="tooltip"
+					data-placement="right" title="Senha do usuário" rel="txtTooltip"/>
 			</div>
 			<div class="form-group margin10">
 				<label for="sel1">Selecione a role(permissão):</label> <select
 					tabindex="3" class="form-control" id="sel1" name="role" data-toggle="tooltip"
-					data-placement="right" title="Roles são as permissões do usuário.">
+					data-placement="right" title="Roles são as permissões do usuário" rel="txtTooltip">
 					<option value="ADMIN">ADMIN</option>
 					<option value="USER">USER</option>
 				</select>
@@ -113,9 +112,13 @@
 			</div>
 		</form>
 	</div>
-	<script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-	<script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
 	<script type="text/javascript" src="/js/menu.js"></script>
+        <script>
+            $(function(){
+                $('[rel="txtTooltip"]').tooltip();   
+            });
+        </script>
 </body>
 </html>
