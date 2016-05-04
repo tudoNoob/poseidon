@@ -58,16 +58,15 @@
 
 .navBarPoseidon {
 	background-color: #31b0d5;
-	color: #fff;
 }
 
 .colorBranco {
 	color: #fff !important;
 }
 
-.colorBranco:hover {
+.colorBranco:hover{
     background-color: #e7e7e7 !important;
-    color: #fff !important;
+    color: black !important;
 }
 
 .focusedMenu {
@@ -134,4 +133,10 @@
 .container215 {
 	width:215px;
 	margin: auto;
+}
+
+.tooltip-position {
+
+    position: inherit;
+
 }

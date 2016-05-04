@@ -20,91 +20,108 @@
                         <div><label>Nome:</label></div> <label for="nomecadastro" style="display:none"></label>
                         <div class="input-group" id="nomediv">
                             <input tabindex="1" type="text" class="form-control" placeholder="Nome"
-                                   aria-describedby="basic-addon1" name="nome" id="nomecadastro" maxlength="30" th:field="${paciente.nome}"/><span
-                                   class="input-group-addon" id="addon-email1">João</span>
+                                   aria-describedby="basic-addon1" name="nome" id="nomecadastro" maxlength="30" th:field="${paciente.nome}"
+                                   data-toggle="tooltip" data-placement="left" title="Nome do Paciente" rel="txtTooltip"/>
+                            <span class="input-group-addon" id="addon-email1">João</span>
                         </div>
                         <label for="sobrenomecadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Sobrenome:</label></div> 
                         <div class="input-group" id="sobrenomediv">
                             <input tabindex="2" type="text" class="form-control" placeholder="Sobrenome"
                                    aria-describedby="basic-addon1" name="sobrenome"
-                                   id="sobrenomecadastro" maxlength="30"  th:field="${paciente.sobrenome}" /><span class="input-group-addon"
-                                   id="addon-email">Silva</span>
-
+                                   id="sobrenomecadastro" maxlength="30"  th:field="${paciente.sobrenome}" data-toggle="tooltip"
+                                   data-placement="left" title="Sobrenome do Paciente" rel="txtTooltip"/>
+                            <span class="input-group-addon" id="addon-email" >Silva</span>
                         </div>
                         <label for="cpfcadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">CPF:</label></div>
                         <div class="input-group" id="cpfdiv">
                             <input tabindex="3" type="text" class="form-control cpf"
                                    placeholder="CPF" aria-describedby="basic-addon1"
-                                   name="cpf" id="cpfcadastro" maxlength="14" th:field="${paciente.cpf}" /><span
-                                   class="input-group-addon" id="addon-cpf">999.999.999-99</span>
+                                   name="cpf" id="cpfcadastro" maxlength="14" th:field="${paciente.cpf}"
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="CPF do Paciente" rel="txtTooltip"/>
+                            <span class="input-group-addon" id="addon-cpf">999.999.999-99</span>                            
                         </div>
                         <label for="emailcadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">E-mail:</label></div>
                         <div class="input-group" id="emaildiv">
                             <input tabindex="4" type="text" class="form-control" placeholder="E-mail"
                                    aria-describedby="basic-addon1" name="email"
-                                   id="emailcadastro" maxlength="30"  th:field="${paciente.email}" /> <span class="input-group-addon"
-                                   id="addon-email">@example.com</span>
+                                   id="emailcadastro" maxlength="30"  th:field="${paciente.email}"  
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="E-mail do Paciente" rel="txtTooltip"/>
+                            <span class="input-group-addon" id="addon-email">@example.com</span>                            
                         </div>
                         <label for="telefonecadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Telefone:</label></div>
                         <div class="input-group" id="telefonediv">
                             <input tabindex="5" type="text" class="form-control phone"
                                    placeholder="Telefone" aria-describedby="basic-addon1"
-                                   name="telefone" id="telefonecadastro"  maxlength="16"  th:field="${paciente.telefone}" /> <span
-                                   class="input-group-addon" id="addon-telefone">(000) 9999-99999</span>
+                                   name="telefone" id="telefonecadastro"  maxlength="16"  th:field="${paciente.telefone}" 
+                                   data-toggle="tooltip" data-placement="left" title="Telefone do Paciente" rel="txtTooltip"/> 
+                            <span class="input-group-addon" id="addon-telefone">(000) 9999-99999</span>                            
                         </div>
                         <label for="celularcadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Celular:</label></div>
                         <div class="input-group" id="celulardiv">
                             <input tabindex="6" type="text" class="form-control phone"
                                    placeholder="Celular" aria-describedby="basic-addon1"
-                                   name="celular" id="celularcadastro" maxlength="16"  th:field="${paciente.celular}" /><span
-                                   class="input-group-addon" id="addon-telefone">(000) 9999-99999</span>
+                                   name="celular" id="celularcadastro" maxlength="16"  th:field="${paciente.celular}" 
+                                   data-toggle="tooltip" data-placement="left" title="Celular do Paciente" rel="txtTooltip"/>
+                            <span class="input-group-addon" id="addon-telefone">(000) 9999-99999</span>                            
                         </div>
                     </div>
                     <div id="rigth.container" style="float: right; width: 48%">
                         <label for="enderecocadastro" style="display:none"></label>
                         <div><label>Endereço:</label></div>
                         <div class="input-group" id="enderecodiv" >
+                            <span class="input-group-addon" id="addon-telefone">Rua, Avenida</span>
                             <input tabindex="7" type="text" class="form-control" placeholder="Endereço"
                                    aria-describedby="basic-addon1" name="endereco"
-                                   id="enderecocadastro" maxlength="30"  th:field="${paciente.endereco}" /> <span class="input-group-addon"
-                                   id="addon-telefone">Rua, Avenida</span>
+                                   id="enderecocadastro" maxlength="30"  th:field="${paciente.endereco}" 
+                                   data-toggle="tooltip" data-placement="right"
+                                   title="Endereço do Paciente" rel="txtTooltip"/> 
                         </div>
                         <label for="cepcadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">CEP:</label></div>
                         <div class="input-group" id="cepdiv">
+                            <span class="input-group-addon" id="addon-cep">99999-999</span>
                             <input tabindex="8" type="text" class="form-control cep" placeholder="CEP"
-                                   aria-describedby="basic-addon1" name="cep" id="cepcadastro" maxlength="9"  th:field="${paciente.cep}" /><span
-                                   class="input-group-addon" id="addon-cep">99999-999</span>
+                                   aria-describedby="basic-addon1" name="cep" id="cepcadastro" maxlength="9"
+                                   th:field="${paciente.cep}" data-toggle="tooltip" data-placement="right"
+                                   title="CEP do Paciente" rel="txtTooltip"/>
                         </div>
                         <label for="datanscimentocadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Data de Nascimento:</label></div>
                         <div class="input-group" id="data_de_nascimentodiv">
+                            <span class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
                             <input tabindex="9" type="text" class="form-control  data"
                                    placeholder="Data de Nascimento" aria-describedby="basic-addon1"
-                                   name="data_de_nascimento" id="datanscimentocadastro" maxlength="10"  th:field="${paciente.data_de_nascimento}" /><span
-                                   class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
+                                   name="data_de_nascimento" id="datanscimentocadastro" maxlength="10"
+                                   th:field="${paciente.data_de_nascimento}" data-toggle="tooltip" data-placement="right"
+                                   title="Data de nascimento do Paciente" rel="txtTooltip"/>
                         </div>
                         <label for="dataultimaconsultacadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Data da última consulta:</label></div>
                         <div class="input-group" id="data_da_ultima_consultadiv">
+                            <span class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
                             <input tabindex="10" type="text" class="form-control data"
                                    placeholder="Data da última consulta"
                                    aria-describedby="basic-addon1" name="data_da_ultima_consulta"
-                                   id="dataultimaconsultacadastro" maxlength="10" th:field="${paciente.data_da_ultima_consulta}"/><span
-                                   class="input-group-addon" id="addon-cep">dd/mm/yyyy</span>
+                                   id="dataultimaconsultacadastro" maxlength="10" th:field="${paciente.data_da_ultima_consulta}"
+                                   data-toggle="tooltip" data-placement="right" title="Data da última consulta do Paciente"
+                                   rel="txtTooltip"/>
                         </div>
                         <label for="formadepagamentocadastro" style="display:none"></label>
                         <div><label style="padding-top: 10px">Forma de Pagamento:</label></div>
                         <div class="input-group" id="forma_de_pagamentodiv">
+                            <span class="input-group-addon" id="addon-cep">R$,Cartão...</span>
                             <input tabindex="11" type="text" class="form-control"
                                    placeholder="Forma de Pagamento" aria-describedby="basic-addon1"
-                                   name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30" th:field="${paciente.forma_de_pagamento}"/><span
-                                   class="input-group-addon" id="addon-cep">R$,Cartão...</span>
+                                   name="forma_de_pagamento" id="formadepagamentocadastro" maxlength="30"
+                                   th:field="${paciente.forma_de_pagamento}" data-toggle="tooltip" data-placement="right"
+                                   title="Forma de pagamento do Paciente" rel="txtTooltip"/>
                         </div>
                         <div style="padding-top: 25px; padding-left: 226px">
                             <input tabindex="12" type="submit" value="Cadastrar Paciente"
@@ -131,20 +148,22 @@
 		<div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
 			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
 				<!-- Text input-->
-				<div class="form-group">
+				<div class="tooltip-position form-group">
 					<label class="col-md-4 control-label" for="nome">ID:</label>
 					<div class="col-md-4">
 						<input tabindex="1" id="id.paciente" name="id" type="text" placeholder="ID do Paciente"
-							class="form-control input-md" required="true" />
+							class="form-control input-md" required="true" data-toggle="tooltip" data-placement="right"
+                                                        title="ID do Paciente" rel="txtTooltip"/>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="tooltip-position form-group">
 					<label class="col-md-4 control-label" for="nome">Nome:</label>
 					<div class="col-md-4">
 						<input tabindex="2" id="id.nome" name="nome" type="text"
 							placeholder="Nome do Paciente" class="form-control input-md"
-							required="true" />
+							required="true" data-toggle="tooltip" data-placement="right"
+                                                        title="Nome do Paciente" rel="txtTooltip"/>
 					</div>
 				</div>
 				<!-- Button -->
@@ -176,7 +195,8 @@
 						<label class="col-md-4 control-label" for="nome">Nome:</label>
 						<div class="col-md-2 paddingRight5">
 							<input tabindex="1" id="nome" name="nome" type="text" placeholder=""
-								class="form-control input-md"  required="true" /> <!-- th:field="*{nome}"  -->
+								class="form-control input-md"  required="true" data-toggle="tooltip" data-placement="bottom"
+                                                                title="Nome do Paciente" rel="txtTooltip"/> <!-- th:field="*{nome}"  -->
 						</div>
 						<div class="col-md-4 paddingLeft5">
 							<p>
@@ -248,6 +268,8 @@
         <script type="text/javascript" th:src="@{/jquery/jquery.bootpag.min.js}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
+                $('[rel="txtTooltip"]').tooltip();   
+
                 $('.phone').mask('(000) 0000-00000');
                 $('.cep').mask('00000-000');
                 $('.cpf').mask('000.000.000-00');
@@ -295,11 +317,7 @@
 
                 $('#dataultimaconsultacadastro').datepicker();
                 $('#datanscimentocadastro').datepicker();
-
-
             });
         </script>
-
-
     </body>
 </html>
