@@ -12,15 +12,15 @@
 	<!--CRUD Conta-->
 	<div class="container430 marginAuto paddingTop40"
 		id="criarContaContainer" th:if="${crudview.isSave}">
-		<form id="form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
-			<div class="input-group margin10">
+		<form id="tooltip-position form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
+			<div class="tooltip-position input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.create" type="text" class="form-control"
 					placeholder="Username do usuário" aria-describedby="basic-addon1"
 					name="username" required="true" data-toggle="tooltip" data-placement="right"
 					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
 			</div>
-			<div class="input-group margin10" style="padding-top: 5px">
+			<div class="tooltip-position input-group margin10" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
 					tabindex="2" id="pass.create" type="password" class="form-control"
 					placeholder="Senha do usuário" aria-describedby="basic-addon1"
@@ -68,7 +68,7 @@
 	<div class="container430 marginAuto paddingTop40"
 		id="deletarUsuarioContainer" th:if="${crudview.isDelete}">
 		<form id="form-createUser" th:action="@{/admin/deletarConta}" method="post">
-			<div class="input-group margin10">
+			<div class="tooltip-position input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.create" type="text" class="form-control"
 					placeholder="Username do usuário" aria-describedby="basic-addon1"
@@ -86,14 +86,14 @@
 	<div class="container430 marginAuto paddingTop40"
 		id="editarContaContainer" th:if="${crudview.isUpdate}">
 		<form id="form-editarUser" th:action="@{/admin/editarConta}" method="post">
-			<div class="input-group margin10">
+			<div class="tooltip-position input-group margin10">
 				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
 					tabindex="1" id="user.editar" type="text" class="form-control"
 					placeholder="Username do usuário" aria-describedby="basic-addon1"
 					name="username" required="true" data-toggle="tooltip" data-placement="right"
 					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
 			</div>
-			<div class="input-group margin10" style="padding-top: 5px">
+			<div class="tooltip-position input-group margin10" style="padding-top: 5px">
 				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
 					tabindex="2" id="pass.editar" type="text" class="form-control"
 					placeholder="Senha do usuário" aria-describedby="basic-addon1"

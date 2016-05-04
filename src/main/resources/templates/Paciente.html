@@ -148,7 +148,7 @@
 		<div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
 			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
 				<!-- Text input-->
-				<div class="form-group">
+				<div class="tooltip-position form-group">
 					<label class="col-md-4 control-label" for="nome">ID:</label>
 					<div class="col-md-4">
 						<input tabindex="1" id="id.paciente" name="id" type="text" placeholder="ID do Paciente"
@@ -157,7 +157,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="tooltip-position form-group">
 					<label class="col-md-4 control-label" for="nome">Nome:</label>
 					<div class="col-md-4">
 						<input tabindex="2" id="id.nome" name="nome" type="text"
