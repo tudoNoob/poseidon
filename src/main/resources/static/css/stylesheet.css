@@ -1,17 +1,17 @@
 .textoDeAbertura {
-	text-align: center;
-	color: blue;
-	width: 50%;
-	height: 60px;
-	margin:auto;
+    text-align: center;
+    color: blue;
+    width: 50%;
+    height: 60px;
+    margin:auto;
 }
 
 .footer {
     position: absolute;
-	bottom: 0px;
-	width: 100%;
-	height: 60px;
-	background-color: #E8E8E3;;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: #E8E8E3;;
 }
 
 .logout-menu {
@@ -21,83 +21,88 @@
 }
 
 .text-align {
-	text-align: center;
+    text-align: center;
 }
 
 .container860 {
-	width: 860px;
+    width: 860px;
 }
 
 .container430 {
-	width: 430px;
+    width: 430px;
 }
 
 .marginAuto {
-	margin: auto;
+    margin: auto;
 }
 
 .containerPaddingTop200 {
-	padding-top: 200px;
+    padding-top: 200px;
 }
 
 .backgroundColorCinza {
-	background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
 .fontSizeLarge {
-	font-size: xx-large;
+    font-size: xx-large;
 }
 
 .negrito {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .padding182 {
-	padding-left: 182px;
+    padding-left: 182px;
 }
 
 .navBarPoseidon {
-	background-color: #31b0d5;
+    background-color: #31b0d5;
 }
 
 .colorBranco {
-	color: #fff !important;
+    color: #fff !important;
 }
 
-.colorBranco:hover{
-    background-color: #e7e7e7 !important;
+.colorBrancoActive {
+    background-color: #9BC8FC !important;
+    color: black !important;
+}
+
+.colorBranco:hover, .colorBrancoClicked{
+    background-color: #C9FCDF !important;
     color: black !important;
 }
 
 .focusedMenu {
-	color: black;
+    color: black;
 }
 
 .paddingLeft5 {
-	padding-left: 5px;
+    padding-left: 5px;
 }
 
 .paddingRight5 {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 .marginLeft5 {
-	margin-left: 5px ;
+    margin-left: 5px ;
 }
 
 .logout {
-	margin: 0 ;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 5px;
+    margin: 0 ;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
 }
 
 .margin10 {
-	margin: 10px;
+    margin: 10px;
 }
 
 .paddingTop40 {
-	padding-top: 40px;
+    padding-top: 40px;
 }
 
 .tooltip-inner {
@@ -122,17 +127,17 @@
 }
 
 .container1200 {
-	width: 1200px;
+    width: 1200px;
 }
 
 .marginleftRigth10 {
-	margin-left: 10px;
+    margin-left: 10px;
     margin-right: 10px;
 }
 
 .container215 {
-	width:215px;
-	margin: auto;
+    width:215px;
+    margin: auto;
 }
 
 .tooltip-position {

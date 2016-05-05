@@ -4,16 +4,15 @@
         <meta charset="UTF-8" />
         <title>Paciente</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}"/>
-        <link rel="stylesheet" type = "text/css" th:href="@{/css/stylesheet.css}" />
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
     </head>
     <body class="backgroundColorCinza">
         <div th:include="template/header :: header"></div>
         <div id="container" style="width: 860px; margin: auto" th:if="${isCadastroPaciente}">
-            <!-- Nome, Sobrenome, CPF, E-mail,Data de Nascimente, Data da última,Consulta, Telefone, Celular, Endereço, CEP, Forma de Pagamento. -->
             <div id="container.form" style="padding-top: 20px">
                 <form th:action="@{/user/cadastrarPaciente}" method="post" th:object="${paciente}">
                     <div id="left.container" style="float: left; width: 48%">
@@ -128,147 +127,133 @@
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submitcadastrarpaciente" />
                         </div>
-<!--                         <div title="All Persons" th:if="${cadastroPageModel.error!=null}"
-                             style="padding-top: 10px; text-align: right">
-                            <label id="error.cadastro.label"
-                                   th:text="${cadastroPageModel.error}"></label>
-                        </div>
-                        <div title="All Persons"
-                             th:if="${cadastroPageModel.success!=null}"
-                             style="padding-top: 10px; text-align: right">
-                            <label id="success.cadastro.label"
-                                   th:text="${cadastroPageModel.success}"></label>
-                        </div> -->
-
                     </div>
                 </form>
             </div>
         </div>
-        
-		<div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
-			<form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
-				<!-- Text input-->
-				<div class="tooltip-position form-group">
-					<label class="col-md-4 control-label" for="nome">ID:</label>
-					<div class="col-md-4">
-						<input tabindex="1" id="id.paciente" name="id" type="text" placeholder="ID do Paciente"
-							class="form-control input-md" required="true" data-toggle="tooltip" data-placement="right"
-                                                        title="ID do Paciente" rel="txtTooltip"/>
-					</div>
-				</div>
 
-				<div class="tooltip-position form-group">
-					<label class="col-md-4 control-label" for="nome">Nome:</label>
-					<div class="col-md-4">
-						<input tabindex="2" id="id.nome" name="nome" type="text"
-							placeholder="Nome do Paciente" class="form-control input-md"
-							required="true" data-toggle="tooltip" data-placement="right"
-                                                        title="Nome do Paciente" rel="txtTooltip"/>
-					</div>
-				</div>
-				<!-- Button -->
-				<div class="form-group">
-					<div class="col-md-4"></div>
-					<div class="col-md-4">
-						<p><input tabindex="3" id="submitdeletar" type="submit" value="Deletar" class="btn btn-success" /></p>
-					</div>
-<!-- 					<div class="col-md-4"></div>
-					<div th:if="${deletePageModel.error!=null}"
-								style="padding-top: 10px; text-align: right">
-						<label id="error.cadastro.label"
-									th:text="${deletePageModel.error}"></label>
-					</div>
-					<div th:if="${deletePageModel.success!=null}"
-								style="padding-top: 10px; text-align: right">
-						<label id="success.cadastro.label"
-									th:text="${deletePageModel.success}"></label>
-					</div> -->
-				</div>
-			</form>
-		</div>
-		
-		<div class="container1200 marginAuto" th:if="${isPesquisaPaciente}">
-			<div class="container-header">
-				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/user/procurarPaciente}" method="post">
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 control-label" for="nome">Nome:</label>
-						<div class="col-md-2 paddingRight5">
-							<input tabindex="1" id="nome" name="nome" type="text" placeholder=""
-								class="form-control input-md"  required="true" data-toggle="tooltip" data-placement="bottom"
-                                                                title="Nome do Paciente" rel="txtTooltip"/> <!-- th:field="*{nome}"  -->
-						</div>
-						<div class="col-md-4 paddingLeft5">
-							<p>
-								<input tabindex="2" id="idpesquisar" type="submit" value="Pesquisar" class="btn btn-success" />
-								<input tabindex="3" type="button" value="Editar"
-									class="btn btn-warning marginLeft5" id="editarPaciente" />
-							</p>
-						</div>
-					</div>
+        <div class="form-container" style="width: 860px; margin: auto" th:if="${isDeletePaciente}">
+            <form id="form-cadastro" class="form-horizontal" action="#" th:action="@{/user/deletarPaciente}" method="post">
+                <div class="tooltip-position form-group">
+                    <label class="col-md-4 control-label" for="nome">ID:</label>
+                    <div class="col-md-4">
+                        <input tabindex="1" id="id.paciente" name="id" type="text" placeholder="ID do Paciente"
+                               class="form-control input-md" required="true" data-toggle="tooltip" data-placement="right"
+                               title="ID do Paciente" rel="txtTooltip"/>
+                    </div>
+                </div>
 
-				</form>
-			</div>
+                <div class="tooltip-position form-group">
+                    <label class="col-md-4 control-label" for="nome">Nome:</label>
+                    <div class="col-md-4">
+                        <input tabindex="2" id="id.nome" name="nome" type="text"
+                               placeholder="Nome do Paciente" class="form-control input-md"
+                               required="true" data-toggle="tooltip" data-placement="right"
+                               title="Nome do Paciente" rel="txtTooltip"/>
+                    </div>
+                </div>
+                <!-- Button -->
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <p><input tabindex="3" id="submitdeletar" type="submit" value="Deletar" class="btn btn-success" /></p>
+                    </div>
+                    <!-- 					<div class="col-md-4"></div>
+                                                            <div th:if="${deletePageModel.error!=null}"
+                                                                                    style="padding-top: 10px; text-align: right">
+                                                                    <label id="error.cadastro.label"
+                                                                                            th:text="${deletePageModel.error}"></label>
+                                                            </div>
+                                                            <div th:if="${deletePageModel.success!=null}"
+                                                                                    style="padding-top: 10px; text-align: right">
+                                                                    <label id="success.cadastro.label"
+                                                                                            th:text="${deletePageModel.success}"></label>
+                                                            </div> -->
+                </div>
+            </form>
+        </div>
 
-			<div title="Pacientes" class="marginAuto">
-				<h1 class="text-align">Pacientes</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nome</th>
-							<th>Cpf</th>
-							<th>Email</th>
-							<th>Telefone</th>
-							<th>Celular</th>
-							<th>Endereço</th>
-							<th>CEP</th>
-							<th>Data Nasc</th>
-							<th>Data Ultima Consulta</th>
-						</tr>
-					</thead>
-					<tbody id="tbodyDynamic">
-					<tr id="firstRow"  style="display:none"/>
-					</tbody>
-				</table>
-				<div id="page-selection" class="container430 marginAuto"></div>
-			</div>
-		</div>
-		
-		<div id="dialog-newUser" style="display: none; width: 200px"
-			title="Editando Paciente">
-			<form id="form-createUser" th:action="@{/user/editarPaciente}"
-				method="post">
-				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1">ID:</span><input
-						id="user.create" type="text" class="form-control" placeholder="id"
-						aria-describedby="basic-addon1" name="id" required="true" />
-				</div>
-				<div style="padding-top: 10px">
-					<input tabindex="1" type="submit" value="Editar Paciente"
-						class="btn btn-lg btn-success" id="editarPaciente.submit" />
-				</div>
+        <div class="container1200 marginAuto" th:if="${isPesquisaPaciente}">
+            <div class="container-header">
+                <form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/user/procurarPaciente}" method="post">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nome">Nome:</label>
+                        <div class="col-md-2 paddingRight5">
+                            <input tabindex="1" id="nome" name="nome" type="text" placeholder=""
+                                   class="form-control input-md"  required="true" data-toggle="tooltip" data-placement="bottom"
+                                   title="Nome do Paciente" rel="txtTooltip"/> <!-- th:field="*{nome}"  -->
+                        </div>
+                        <div class="col-md-4 paddingLeft5">
+                            <p>
+                                <input tabindex="2" id="idpesquisar" type="submit" value="Pesquisar" class="btn btn-success" />
+                                <input tabindex="3" type="button" value="Editar"
+                                       class="btn btn-warning marginLeft5" id="editarPaciente" />
+                            </p>
+                        </div>
+                    </div>
 
-			</form>
-		</div>
-		
-		<form>
-			<input type="hidden" id="pacientesJSON" th:value="${pacientesJSON}" />
-		</form>
+                </form>
+            </div>
+
+            <div title="Pacientes" class="marginAuto">
+                <h1 class="text-align">Pacientes</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cpf</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Celular</th>
+                            <th>Endereço</th>
+                            <th>CEP</th>
+                            <th>Data Nasc</th>
+                            <th>Data Ultima Consulta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyDynamic">
+                        <tr id="firstRow"  style="display:none"/>
+                    </tbody>
+                </table>
+                <div id="page-selection" class="container430 marginAuto"></div>
+            </div>
+        </div>
+
+        <div id="dialog-newUser" style="display: none; width: 200px"
+             title="Editando Paciente">
+            <form id="form-createUser" th:action="@{/user/editarPaciente}"
+                  method="post">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">ID:</span><input
+                        id="user.create" type="text" class="form-control" placeholder="id"
+                        aria-describedby="basic-addon1" name="id" required="true" />
+                </div>
+                <div style="padding-top: 10px">
+                    <input tabindex="1" type="submit" value="Editar Paciente"
+                           class="btn btn-lg btn-success" id="editarPaciente.submit" />
+                </div>
+
+            </form>
+        </div>
+        <form>
+            <input type="hidden" id="pacientesJSON" th:value="${pacientesJSON}" />
+        </form>
 
         <div th:include="template/footer :: footer"></div>
-        <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-        <script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
-        <script type="text/javascript"  th:src="@{/webjars/jquery-mask-plugin/1.13.4/dist/jquery.mask.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-mask-plugin/1.13.4/dist/jquery.mask.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/jquery-validation/1.14.0/jquery.validate.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}"></script>
-        <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
         <script type="text/javascript" th:src="@{/js/menu.js}"></script>
         <script type="text/javascript" th:src="@{/js/pesquisarPaciente.js}"></script>
         <script type="text/javascript" th:src="@{/jquery/jquery.bootpag.min.js}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('[rel="txtTooltip"]').tooltip();   
+                $('[rel="txtTooltip"]').tooltip();
 
                 $('.phone').mask('(000) 0000-00000');
                 $('.cep').mask('00000-000');

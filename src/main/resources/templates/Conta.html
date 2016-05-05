@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-<meta charset="UTF-8" />
-<title>Conta</title>
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
-</head>
-<body class="backgroundColorCinza">
-	<div th:include="template/header :: header">...</div>
-	
-	<!--CRUD Conta-->
-	<div class="container430 marginAuto paddingTop40"
-		id="criarContaContainer" th:if="${crudview.isSave}">
-		<form id="tooltip-position form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
-			<div class="tooltip-position input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
-					tabindex="1" id="user.create" type="text" class="form-control"
-					placeholder="Username do usuário" aria-describedby="basic-addon1"
-					name="username" required="true" data-toggle="tooltip" data-placement="right"
-					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
-			</div>
-			<div class="tooltip-position input-group margin10" style="padding-top: 5px">
-				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
-					tabindex="2" id="pass.create" type="password" class="form-control"
-					placeholder="Senha do usuário" aria-describedby="basic-addon1"
-					name="password" required="true" data-toggle="tooltip" data-placement="right"
-					title="Senha do usuário" rel="txtTooltip"/>
-			</div>
-			<div class="form-group margin10">
-				<label for="sel1">Selecione a role(permissão):</label> <select
-					tabindex="3" class="form-control" id="sel1" name="role" data-toggle="tooltip"
-                                        data-placement="right" title="Roles são as permissões do usuário" rel="txtTooltip">
-					<option>ADMIN</option>
-					<option>USER</option>
-				</select>
-			</div>
-			<div class="margin10" style="padding-top: 10px">
-				<input tabindex="4" type="submit" value="Cadastrar Conta"
-					class="btn btn-lg btn-success" id="cadastrarConta.submit" />
-			</div>
-		</form>
-	</div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Conta</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
+    </head>
+    <body class="backgroundColorCinza">
+        <div th:include="template/header :: header">...</div>
 
-	<div title="Usuários" class="container430 marginAuto paddingTop40"
-		id="exibirTodasContasContainer" th:if="${crudview.isSearch}">
-		<form id="form-createUser" th:action="@{/admin/exibirConta}" method="post">
-		<h1 class="text-align">Usuários</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Username</th>
-					<th>Senha</th>
-					<th>Role</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="row: ${contas}">
-					<td th:text="${row.username}">Username</td>
-					<td th:text="${row.password}">Password</td>
-					<td th:text="${row.role}">Role</td>
-				</tr>
-			</tbody>
-		</table>
-		</form>
-	</div>
+        <div class="container430 marginAuto paddingTop40"
+             id="criarContaContainer" th:if="${crudview.isSave}">
+            <form id="tooltip-position form-createUser" th:action="@{/admin/cadastrarConta}" method="post">
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
+                        tabindex="1" id="user.create" type="text" class="form-control"
+                        placeholder="Username do usuário" aria-describedby="basic-addon1"
+                        name="username" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
+                </div>
+                <div class="tooltip-position input-group margin10" style="padding-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">Senha:</span> <input
+                        tabindex="2" id="pass.create" type="password" class="form-control"
+                        placeholder="Senha do usuário" aria-describedby="basic-addon1"
+                        name="password" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Senha do usuário" rel="txtTooltip"/>
+                </div>
+                <div class="form-group margin10">
+                    <label for="sel1">Selecione a role(permissão):</label> <select
+                        tabindex="3" class="form-control" id="sel1" name="role" data-toggle="tooltip"
+                        data-placement="right" title="Roles são as permissões do usuário" rel="txtTooltip">
+                        <option>ADMIN</option>
+                        <option>USER</option>
+                    </select>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="4" type="submit" value="Cadastrar Conta"
+                           class="btn btn-lg btn-success" id="cadastrarConta.submit" />
+                </div>
+            </form>
+        </div>
 
-	<div class="container430 marginAuto paddingTop40"
-		id="deletarUsuarioContainer" th:if="${crudview.isDelete}">
-		<form id="form-createUser" th:action="@{/admin/deletarConta}" method="post">
-			<div class="tooltip-position input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
-					tabindex="1" id="user.create" type="text" class="form-control"
-					placeholder="Username do usuário" aria-describedby="basic-addon1"
-					name="username" required="true" data-toggle="tooltip" data-placement="right"
-					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
-			</div>
-			<div class="margin10" style="padding-top: 10px">
-				<input tabindex="2" type="submit" value="Deletar Conta"
-					class="btn btn-lg btn-success" id="deletarConta.submit" />
-			</div>
-		</form>
+        <div title="Usuários" class="container430 marginAuto paddingTop40"
+             id="exibirTodasContasContainer" th:if="${crudview.isSearch}">
+            <form id="form-createUser" th:action="@{/admin/exibirConta}" method="post">
+                <h1 class="text-align">Usuários</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Senha</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="row: ${contas}">
+                            <td th:text="${row.username}">Username</td>
+                            <td th:text="${row.password}">Password</td>
+                            <td th:text="${row.role}">Role</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
 
-	</div>
+        <div class="container430 marginAuto paddingTop40"
+             id="deletarUsuarioContainer" th:if="${crudview.isDelete}">
+            <form id="form-createUser" th:action="@{/admin/deletarConta}" method="post">
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
+                        tabindex="1" id="user.create" type="text" class="form-control"
+                        placeholder="Username do usuário" aria-describedby="basic-addon1"
+                        name="username" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="2" type="submit" value="Deletar Conta"
+                           class="btn btn-lg btn-success" id="deletarConta.submit" />
+                </div>
+            </form>
 
-	<div class="container430 marginAuto paddingTop40"
-		id="editarContaContainer" th:if="${crudview.isUpdate}">
-		<form id="form-editarUser" th:action="@{/admin/editarConta}" method="post">
-			<div class="tooltip-position input-group margin10">
-				<span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
-					tabindex="1" id="user.editar" type="text" class="form-control"
-					placeholder="Username do usuário" aria-describedby="basic-addon1"
-					name="username" required="true" data-toggle="tooltip" data-placement="right"
-					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
-			</div>
-			<div class="tooltip-position input-group margin10" style="padding-top: 5px">
-				<span class="input-group-addon" id="basic-addon1">Senha:</span> <input
-					tabindex="2" id="pass.editar" type="text" class="form-control"
-					placeholder="Senha do usuário" aria-describedby="basic-addon1"
-					name="password" required="true" data-toggle="tooltip"
-					data-placement="right" title="Senha do usuário" rel="txtTooltip"/>
-			</div>
-			<div class="form-group margin10">
-				<label for="sel1">Selecione a role(permissão):</label> <select
-					tabindex="3" class="form-control" id="sel1" name="role" data-toggle="tooltip"
-					data-placement="right" title="Roles são as permissões do usuário" rel="txtTooltip">
-					<option value="ADMIN">ADMIN</option>
-					<option value="USER">USER</option>
-				</select>
-			</div>
-			<div class="margin10" style="padding-top: 10px">
-				<input tabindex="4" type="submit" value="Editar Conta"
-					class="btn btn-lg btn-warning" id="editarConta.submit" />
-			</div>
-		</form>
-	</div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-	<script type="text/javascript" src="/js/menu.js"></script>
+        </div>
+
+        <div class="container430 marginAuto paddingTop40"
+             id="editarContaContainer" th:if="${crudview.isUpdate}">
+            <form id="form-editarUser" th:action="@{/admin/editarConta}" method="post">
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">Usuário:</span> <input
+                        tabindex="1" id="user.editar" type="text" class="form-control"
+                        placeholder="Username do usuário" aria-describedby="basic-addon1"
+                        name="username" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
+                </div>
+                <div class="tooltip-position input-group margin10" style="padding-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">Senha:</span> <input
+                        tabindex="2" id="pass.editar" type="text" class="form-control"
+                        placeholder="Senha do usuário" aria-describedby="basic-addon1"
+                        name="password" required="true" data-toggle="tooltip"
+                        data-placement="right" title="Senha do usuário" rel="txtTooltip"/>
+                </div>
+                <div class="form-group margin10">
+                    <label for="sel1">Selecione a role(permissão):</label> <select
+                        tabindex="3" class="form-control" id="sel1" name="role" data-toggle="tooltip"
+                        data-placement="right" title="Roles são as permissões do usuário" rel="txtTooltip">
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="USER">USER</option>
+                    </select>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="4" type="submit" value="Editar Conta"
+                           class="btn btn-lg btn-warning" id="editarConta.submit" />
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+        <script type="text/javascript" src="/js/menu.js"></script>
         <script>
-            $(function(){
-                $('[rel="txtTooltip"]').tooltip();   
+            $(function () {
+                $('[rel="txtTooltip"]').tooltip();
             });
         </script>
-</body>
+    </body>
 </html>

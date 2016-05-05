@@ -1,142 +1,137 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Quiropraxista</title>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Quiropraxista</title>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
+    </head>
+    <body class="backgroundColorCinza">
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
-</head>
-<body class="backgroundColorCinza">
-
-<div th:include="template/header :: header">...</div>
-
-<!--CRUD Medico-->
-<div class="container430 marginAuto paddingTop40"
-     id="criarQuiropraxistaContainer"  th:if="${crudview.isSave}">
-    <form id="form-createQuiropraxista" th:action="@{/admin/cadastrarQuiropraxista}" method="post">
-        <div class="tooltip-position input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">Nome:</span> <input tabindex="1"
-                id="user.create" type="text" class="form-control"
-                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
-                name="nome" required="true" data-toggle="tooltip" data-placement="right"
-		title="Nome do Quiropraxista (tem que ser único)" rel="txtTooltip"/>
+        <div th:include="template/header :: header"/>
+        <div class="container430 marginAuto paddingTop40"
+             id="criarQuiropraxistaContainer" th:if="${crudview.isSave}">
+            <form id="form-createQuiropraxista" th:action="@{/admin/cadastrarQuiropraxista}" method="post">
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">Nome:</span>
+                    <input tabindex="1" id="user.create" type="text" class="form-control"
+                           placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
+                           name="nome" required="true" data-toggle="tooltip" data-placement="right"
+                           title="Nome do Quiropraxista (tem que ser único)" rel="txtTooltip"/>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="2" type="submit" value="Cadastrar Quiropraxista"
+                           class="btn btn-lg btn-success" id="cadastrarQuiropraxista.submit" />
+                </div>
+            </form>
         </div>
-        <div class="margin10" style="padding-top: 10px">
-            <input tabindex="2" type="submit" value="Cadastrar Quiropraxista"
-                   class="btn btn-lg btn-success" id="cadastrarQuiropraxista.submit" />
+
+        <div title="ExMedicos" class="container430 marginAuto paddingTop40"
+             id="exibirTodosQuiropraxistasContainer" th:if="${crudview.isToShowAll}">
+            <form id="form-exibirQuiropraxista" th:action="@{/admin/exibirQuiropraxista}" method="post">
+                <h1 class="text-align">Quiropraxista</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="row: ${quiropraxistas}">
+                            <td th:text="${row.id}">ID</td>
+                            <td th:text="${row.nome}">Nome</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
-    </form>
-</div>
 
+        <div class="container1200 marginAuto" th:if="${crudview.isSearch}">
+            <div class="container-header">
+                <form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/admin/pesquisarQuiropraxista}" method="post">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nome">Nome:</label>
+                        <div class="col-md-2 paddingRight5">
+                            <input tabindex="1" id="nome" name="nome" type="text" placeholder=""
+                                   class="form-control input-md" required="true" data-toggle="tooltip" 
+                                   data-placement="bottom" title="Nome do Quiropraxista" rel="txtTooltip"/>
+                        </div>
+                        <div class="col-md-4 paddingLeft5">
+                            <p>
+                                <input tabindex="2" type="submit" value="Pesquisar" class="btn btn-success" />
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-<div title="ExMedicos" class="container430 marginAuto paddingTop40"
-     id="exibirTodosQuiropraxistasContainer" th:if="${crudview.isToShowAll}">
-	<form id="form-exibirQuiropraxista" th:action="@{/admin/exibirQuiropraxista}" method="post">
-    	<h1 class="text-align">Quiropraxista</h1>
-    	<table class="table">
-        <thead>
-        	<tr>
-           	 <th>ID</th>
-                 <th>Nome</th>
-        	</tr>
-        </thead>
-        <tbody>
-        	<tr th:each="row: ${quiropraxistas}">
-            	<td th:text="${row.id}">ID</td>
-           		<td th:text="${row.nome}">Nome</td>
-        	</tr>
-        </tbody>
-    	</table>
-    </form>
-</div>
-
-		<div class="container1200 marginAuto" th:if="${crudview.isSearch}">
-			<div class="container-header">
-				<form id="form-cadastro" class="form-horizontal" action="#"	th:action="@{/admin/pesquisarQuiropraxista}" method="post">
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 control-label" for="nome">Nome:</label>
-						<div class="col-md-2 paddingRight5">
-							<input tabindex="1" id="nome" name="nome" type="text" placeholder=""
-								class="form-control input-md" required="true" data-toggle="tooltip" 
-                                                                data-placement="bottom" title="Nome do Quiropraxista" rel="txtTooltip"/> <!-- th:field="*{nome}"  -->
-						</div>
-						<div class="col-md-4 paddingLeft5">
-							<p>
-								<input tabindex="2" type="submit" value="Pesquisar" class="btn btn-success" />
-							</p>
-						</div>
-					</div>
-
-				</form>
-			</div>
-			<div title="Quiropraxistas" class="container430 marginAuto paddingTop40">
-				<h1 class="text-align">Quiropraxista</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nome</th>
-						</tr>
-					</thead>
-					<tbody id="tbodyDynamic">
-					<tr id="firstRow"  style="display:none"/>
-					</tbody>
-				</table>
-				<div id="page-selection" class="container430 marginAuto"></div>
-			</div>
-		</div>
-
-<div class="container430 marginAuto paddingTop40"
-     id="deletarQuiropraxistaContainer" th:if="${crudview.isDelete}">
-    <form id="form-deleteQuiropraxista" th:action="@{/admin/deletarQuiropraxista}" method="post">
-        <div class="input-group margin10">
-            <span class="tooltip-position input-group-addon" id="basic-addon1">ID:</span> <input
-                tabindex="1" id="id.quiropraxista" type="text" class="form-control"
-                placeholder="ID do Quiropraxista" aria-describedby="basic-addon1"
-                name="id" required="true" data-toggle="tooltip"
-                data-placement="right" title="ID do Quiropraxista" rel="txtTooltip"/>
+            <div title="Quiropraxistas" class="container430 marginAuto paddingTop40">
+                <h1 class="text-align">Quiropraxista</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyDynamic">
+                        <tr id="firstRow"  style="display:none"/>
+                    </tbody>
+                </table>
+                <div id="page-selection" class="container430 marginAuto"></div>
+            </div>
         </div>
-        <div class="margin10" style="padding-top: 10px">
-            <input tabindex="2" type="submit" value="Deletar Quiropraxista"
-                   class="btn btn-lg btn-success" id="deleteQuiropraxista.submit" />
-        </div>
-    </form>
-</div>
 
-<div class="container430 marginAuto paddingTop40"
-     id="editarQuiropraxistaContainer" th:if="${crudview.isUpdate}">
-    <form id="form-editarQuiropraxista" th:action="@{/admin/editarQuiropraxista}" method="post">
-        <div class="tooltip-position input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">ID:</span> <input
-                tabindex="1" id="id.quiropraxista" type="text" class="form-control"
-                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
-                name="id" required="true" data-toggle="tooltip" data-placement="right"
-		title="ID do Quiropraxista" rel="txtTooltip"/>
+        <div class="container430 marginAuto paddingTop40"
+             id="deletarQuiropraxistaContainer" th:if="${crudview.isDelete}">
+            <form id="form-deleteQuiropraxista" th:action="@{/admin/deletarQuiropraxista}" method="post">
+                <div class="input-group margin10">
+                    <span class="tooltip-position input-group-addon" id="basic-addon1">ID:</span>
+                    <input tabindex="1" id="id.quiropraxista" type="text" class="form-control"
+                           placeholder="ID do Quiropraxista" aria-describedby="basic-addon1"
+                           name="id" required="true" data-toggle="tooltip"
+                           data-placement="right" title="ID do Quiropraxista" rel="txtTooltip"/>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="2" type="submit" value="Deletar Quiropraxista"
+                           class="btn btn-lg btn-success" id="deleteQuiropraxista.submit" />
+                </div>
+            </form>
         </div>
-        <div class="tooltip-position input-group margin10">
-            <span class="input-group-addon" id="basic-addon1">Novo nome:</span> <input
-                tabindex="2" id="nome.quiropraxista" type="text" class="form-control"
-                placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
-                name="nome" required="true" data-toggle="tooltip" data-placement="right"
-		title="Novo nome do Quiropraxista" rel="txtTooltip"/>
-        </div>
-        <div class="margin10" style="padding-top: 10px">
-            <input tabindex="3" type="submit" value="Editar Quiropraxista"
-                   class="btn btn-lg btn-success" id="editarQuiropraxista.submit" />
-        </div>
-    </form>
-</div>
 
-<script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-<script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-<script type="text/javascript" th:src="@{/js/menu.js}"></script>
-<script type="text/javascript">
-    $(function() {
-        $('[rel="txtTooltip"]').tooltip();   
-    });
-</script>
-</body>
+        <div class="container430 marginAuto paddingTop40"
+             id="editarQuiropraxistaContainer" th:if="${crudview.isUpdate}">
+            <form id="form-editarQuiropraxista" th:action="@{/admin/editarQuiropraxista}" method="post">
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">ID:</span>
+                    <input tabindex="1" id="id.quiropraxista" type="text" class="form-control"
+                           placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
+                           name="id" required="true" data-toggle="tooltip" data-placement="right"
+                           title="ID do Quiropraxista" rel="txtTooltip"/>
+                </div>
+                <div class="tooltip-position input-group margin10">
+                    <span class="input-group-addon" id="basic-addon1">Novo nome:</span>
+                    <input tabindex="2" id="nome.quiropraxista" type="text" class="form-control"
+                           placeholder="Nome do Quiropraxista" aria-describedby="basic-addon1"
+                           name="nome" required="true" data-toggle="tooltip" data-placement="right"
+                           title="Novo nome do Quiropraxista" rel="txtTooltip"/>
+                </div>
+                <div class="margin10" style="padding-top: 10px">
+                    <input tabindex="3" type="submit" value="Editar Quiropraxista"
+                           class="btn btn-lg btn-success" id="editarQuiropraxista.submit" />
+                </div>
+            </form>
+        </div>
+
+        <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+        <script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('[rel="txtTooltip"]').tooltip();
+            });
+        </script>
+    </body>
 </html>

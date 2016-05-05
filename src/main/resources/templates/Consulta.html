@@ -4,13 +4,13 @@
         <meta charset="UTF-8" />
         <title>Consulta</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}"/>
-        <link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}"/>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     </head>
-    <!--CRUD Consulta-->
+
     <body class="backgroundColorCinza">
         <div th:include="template/header :: header"></div>
         <div id="container" style="width: 860px; margin: auto">
@@ -64,33 +64,21 @@
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submitcadastrarconsulta" />
                         </div>
-                        <!--                        <div title="All Persons" th:if="${cadastroPageModel.error!=null}"
-                                                     style="padding-top: 10px; text-align: right">
-                                                    <label id="error.cadastro.label"
-                                                           th:text="${cadastroPageModel.error}"></label>
-                                                </div>
-                                                <div title="All Persons"
-                                                     th:if="${cadastroPageModel.success!=null}"
-                                                     style="padding-top: 10px; text-align: right">
-                                                    <label id="success.cadastro.label"
-                                                           th:text="${cadastroPageModel.success}"></label>
-                                                </div>-->
-
                     </div>
                 </form>
             </div>
         </div>
 
         <div th:include="template/footer :: footer"></div>
-        <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-        <script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-        <script type="text/javascript"  th:src="@{/webjars/jquery-mask-plugin/1.13.4/dist/jquery.mask.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-mask-plugin/1.13.4/dist/jquery.mask.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/jquery-validation/1.14.0/jquery.validate.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}"></script>
         <script type="text/javascript" src="/js/menu.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(function () {
                 $('.data').mask('00/00/0000');
                 $('.horario').mask('00:00:00');
                 $('.valor').mask('0000.00');
@@ -115,7 +103,6 @@
                         console.log(element.attr('name'));
                         error.insertAfter('#' + element.attr('name') + 'div'); //So i putted it after the .form-group so it will not include to your append/prepend group.
                     }
-
                 });
 
                 $('#formCadastro').submit(function () {

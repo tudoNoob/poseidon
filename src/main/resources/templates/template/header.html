@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-<meta charset="utf-8" />
-<title>Insert title here</title>
-</head>
-<body>
-	<div th:fragment="header">
-		<nav class="navBarPoseidon navbar navbar-default">
-			<div class="navBarPoseidon container-fluid">
-				<div class="navbar-header">
-					<a class="colorBranco navbar-brand" th:href="@{/user/homePage}">Poseidon</a>
-				</div>
-				<div>
-					<ul class="nav navbar-nav">
-						<li class="menu active"><a class="colorBranco" url="/home" th:href="@{/user/homePage}">Home</a></li>
-						<li class="dropdown"><a href="#" class="colorBranco dropdown-toggle"
-											   data-toggle="dropdown" role="button" id="paciente-dropdown" aria-haspopup="true"
-											   aria-expanded="false">Paciente<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=false,isPesquisaPaciente=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
-							</ul>
-						</li>
-						<li role="menu"><a href="#" class="colorBranco dropdown-toggle"
-												   data-toggle="dropdown" role="button" aria-haspopup="true"
-												   aria-expanded="false">Consultas<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a th:href="@{/consulta(isCadastroConsulta=true,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-cadastrarConsulta">Cadastrar Consulta</a></li>
-								<li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=true,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-deletarConsulta">Deletar Consulta</a></li>
-								<li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=false,isEditarConsulta=true,isExibirConsulta=false)}" id="btn-editarConsulta">Editar Consulta</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=true)}" id="btn-exibirConsulta">Exibir calendário de Consultas</a></li>
-							</ul>
-						</li>
-						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
-												   data-toggle="dropdown" role="button" aria-haspopup="true"
-												   aria-expanded="false">Quiropraxista<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a th:href="@{/admin/quiropraxista(isSave=true)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
-								<li><a th:href="@{/admin/quiropraxista(isSearch=true)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
-								<li><a th:href="@{/admin/quiropraxista(isDelete=true)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
-								<li><a th:href="@{/admin/quiropraxista(isUpdate=true)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/admin/quiropraxista(isToShowAll=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
-							</ul>
-						</li>
-						<li role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><a href="#" class="colorBranco dropdown-toggle"
-												   data-toggle="dropdown" role="button" aria-haspopup="true"
-												   aria-expanded="false">Contas<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a th:href="@{/admin/conta(isSave=true)}" id="btn-criarConta">Criar Conta</a></li>
-								<li><a th:href="@{/admin/conta(isUpdate=true)}" id="btn-editarConta">Editar Conta</a></li>
-								<li><a th:href="@{/admin/conta(isDelete=true)}" id="btn-deletarConta">Deletar Conta</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a th:href="@{/admin/conta(isSearch=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
-							</ul>
-						</li>
-						<li class="menu"><a class="colorBranco" url="/sobre" th:href="@{/sobrePage}">Sobre</a></li>
-						<li class="menu"><p class="logout"><span class="glyphicon glyphicon-log-out"></span><a id="btn-logout" class="colorBranco marginLeft5" url="/logout" th:href="@{/logout}">Logout</a></p></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</div>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <div th:fragment="header">
+            <nav class="navBarPoseidon navbar navbar-default">
+                <div class="navBarPoseidon container-fluid">
+                    <div class="navbar-header">
+                        <a class="colorBranco navbar-brand" th:href="@{/user/homePage}">Poseidon</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav menu">
+                            <li class="active">
+                                <a class="colorBranco" url="/home" th:href="@{/user/homePage}">Home</a>
+                            </li>
+                            <li name="/user/paciente" class="dropdown"> 
+                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown" role="button"
+                                   id="paciente-dropdown" aria-haspopup="true" aria-expanded="false">Paciente<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="@{/user/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
+                                    <li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=true,isPesquisaPaciente=false)}" id="btn-deletarPaciente">Deletar Paciente</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a th:href="@{/user/paciente(isCadastroPaciente=false,isDeletePaciente=false,isPesquisaPaciente=true)}" id="btn-pesquisarPaciente">Pesquisar Paciente</a></li>
+                                </ul>
+                            </li>
+                            <li name="/user/consulta" role="menu">
+                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="@{/consulta(isCadastroConsulta=true,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-cadastrarConsulta">Cadastrar Consulta</a></li>
+                                    <li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=true,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-deletarConsulta">Deletar Consulta</a></li>
+                                    <li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=false,isEditarConsulta=true,isExibirConsulta=false)}" id="btn-editarConsulta">Editar Consulta</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a th:href="@{/consulta(isCadastroConsulta=false,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=true)}" id="btn-exibirConsulta">Exibir calendário de Consultas</a></li>
+                                </ul>
+                            </li>
+                            <li name="/admin/quiropraxista" role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Quiropraxista<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="@{/admin/quiropraxista(isSave=true)}" id="btn-criarQuiropraxista">Cadastrar Quiropraxista</a></li>
+                                    <li><a th:href="@{/admin/quiropraxista(isSearch=true)}" id="btn-pesquisarQuiropraxista">Pesquisar Quiropraxista</a></li>
+                                    <li><a th:href="@{/admin/quiropraxista(isDelete=true)}" id="btn-deletarQuiropraxista">Deletar Quiropraxista</a></li>
+                                    <li><a th:href="@{/admin/quiropraxista(isUpdate=true)}" id="btn-editarQuiropraxista">Editar Quiropraxista</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a th:href="@{/admin/quiropraxista(isToShowAll=true)}" id="btn-exibirTodosQuiropraxistas">Exibir todos Quiropraxistas</a></li>
+                                </ul>
+                            </li>
+                            <li name="/admin/conta" role="menu" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Contas<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="@{/admin/conta(isSave=true)}" id="btn-criarConta">Criar Conta</a></li>
+                                    <li><a th:href="@{/admin/conta(isUpdate=true)}" id="btn-editarConta">Editar Conta</a></li>
+                                    <li><a th:href="@{/admin/conta(isDelete=true)}" id="btn-deletarConta">Deletar Conta</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a th:href="@{/admin/conta(isSearch=true)}" id="btn-exibirTodasContas">Exibir todas Contas</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="colorBranco" name="/sobre" th:href="@{/sobrePage}">Sobre</a></li>
+                            <li><p class="logout"><span class="glyphicon glyphicon-log-out"></span><a id="btn-logout" class="colorBranco marginLeft5" url="/logout" th:href="@{/logout}">Logout</a></p></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </body>
 </html>

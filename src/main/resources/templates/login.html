@@ -1,88 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title>Login</title>
-<link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.css}" />
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
-<!-- 3.3.5 -->
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
-<link rel="stylesheet" type = "text/css" href="css/stylesheet.css" />
-</head>
-<body class="backgroundColorCinza">
-	<div th:include="template/headerLogin :: header">...</div>
-	<div class="container" style="width: 800px">
-		<div class="form-container"
-			style="padding-top: 260px; width: 600px; margin: auto">
-			<div class="alert alert-danger" role="alert" th:if="${error}" ><strong>Usuário ou Senha</strong> inválidos, por favor digite novamente.</div>
-			<form th:action="@{/loginPage}" method="post">
-				<div class="tooltip-position input-group">
-					<span class="input-group-addon" id="basic-addon1">@</span> <input
-						type="text" class="form-control" placeholder="Username"
-						aria-describedby="basic-addon1" name="username" id="user.login" 
-                                                required="true"  tabindex="1" data-toggle="tooltip" 
-                                                data-placement="right" title="Nome do usuário" rel="txtTooltip"/>
-				</div>
-				<div class="tooltip-position input-group" style="padding-top: 5px">
-					<span class="input-group-addon" id="basic-addon1">X</span> <input
-						type="password" class="form-control" placeholder="Password"
-						aria-describedby="basic-addon1" name="password"
-						id="password.login" required="true" tabindex="2" 
-                                                data-toggle="tooltip" data-placement="right" 
-                                                title="Senha do usuário" rel="txtTooltip"/>
-				</div>
-				<div style="padding-top: 10px; padding-left: 365px">
-					<input value="Novo usuário" class=" btn btn-lg btn-primary"
-						style="width: 140px" id="btn-newuser" /> <input type="submit"
-						value="Entrar" class="btn btn-lg btn-success" id="submit.login" tabindex="3"/>
-				</div>
-			</form>
-		</div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.css}" />
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+    </head>
+    <body class="backgroundColorCinza">
+        <div th:include="template/headerLogin :: header">...</div>
+        <div class="container" style="width: 800px">
+            <div class="form-container"
+                 style="padding-top: 260px; width: 600px; margin: auto">
+                <div class="alert alert-danger" role="alert" th:if="${error}" ><strong>Usuário ou Senha</strong> inválidos, por favor digite novamente.</div>
+                <form th:action="@{/loginPage}" method="post">
+                    <div class="tooltip-position input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span> <input
+                            type="text" class="form-control" placeholder="Username"
+                            aria-describedby="basic-addon1" name="username" id="user.login" 
+                            required="true"  tabindex="1" data-toggle="tooltip" 
+                            data-placement="right" title="Nome do usuário" rel="txtTooltip"/>
+                    </div>
+                    <div class="tooltip-position input-group" style="padding-top: 5px">
+                        <span class="input-group-addon" id="basic-addon1">X</span> <input
+                            type="password" class="form-control" placeholder="Password"
+                            aria-describedby="basic-addon1" name="password"
+                            id="password.login" required="true" tabindex="2" 
+                            data-toggle="tooltip" data-placement="right" 
+                            title="Senha do usuário" rel="txtTooltip"/>
+                    </div>
+                    <div style="padding-top: 10px; padding-left: 365px">
+                        <input value="Novo usuário" class=" btn btn-lg btn-primary"
+                               style="width: 140px" id="btn-newuser" /> <input type="submit"
+                               value="Entrar" class="btn btn-lg btn-success" id="submit.login" tabindex="3"/>
+                    </div>
+                </form>
+            </div>
 
-	</div>
-	<div id="dialog-newUser" style="display: none; width: 200px"
-		title="Criando novo usuário">
-		<form id="form-createUser" th:action="@{/createSimpleUser}"
-			 method="post">
-			<div class="input-group" style="padding-right: 75px;">
-				<span class="input-group-addon" id="basic-addon1">@</span> <input
-					id="user.create" type="text" class="form-control"
-					placeholder="Username" aria-describedby="basic-addon1"
-					name="username" required="true" data-toggle="tooltip" data-placement="right"
-					title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
-			</div>
-			<div class="input-group" style="padding-top: 5px; padding-right: 75px;">
-				<span class="input-group-addon" id="basic-addon1">X</span> <input
-					id="pass.create" type="password" class="form-control"
-					placeholder="Password" aria-describedby="basic-addon1"
-					name="password" required="true" data-toggle="tooltip" data-placement="right"
-					title="Senha do usuário" rel="txtTooltip" />
-			</div>
-			<div style="padding-top: 10px">
-				<input type="submit" value="Criar Usuário"
-					class="btn btn-lg btn-success" id="createUser.submit" data-toggle="tooltip"
-                                        data-placement="right" title="Só cria com ROLE_USER!" rel="txtTooltip" />
-			</div>
+        </div>
+        <div id="dialog-newUser" style="display: none; width: 200px"
+             title="Criando novo usuário">
+            <form id="form-createUser" th:action="@{/createSimpleUser}"
+                  method="post">
+                <div class="input-group" style="padding-right: 75px;">
+                    <span class="input-group-addon" id="basic-addon1">@</span> <input
+                        id="user.create" type="text" class="form-control"
+                        placeholder="Username" aria-describedby="basic-addon1"
+                        name="username" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Nome do usuário (tem que ser único)" rel="txtTooltip"/>
+                </div>
+                <div class="input-group" style="padding-top: 5px; padding-right: 75px;">
+                    <span class="input-group-addon" id="basic-addon1">X</span> <input
+                        id="pass.create" type="password" class="form-control"
+                        placeholder="Password" aria-describedby="basic-addon1"
+                        name="password" required="true" data-toggle="tooltip" data-placement="right"
+                        title="Senha do usuário" rel="txtTooltip" />
+                </div>
+                <div style="padding-top: 10px">
+                    <input type="submit" value="Criar Usuário"
+                           class="btn btn-lg btn-success" id="createUser.submit" data-toggle="tooltip"
+                           data-placement="right" title="Só cria com ROLE_USER!" rel="txtTooltip" />
+                </div>
 
-		</form>
-	</div>
+            </form>
+        </div>
         <div th:include="template/footer :: footer"></div>
-	<script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
-	<script th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-	<!-- 3.3.5 -->
-	<script type="text/javascript">
-            $(document).ready(function() {
-                $('[rel="txtTooltip"]').tooltip();   
-                $('#btn-newuser').on('click', function() {
-                        $('#dialog-newUser').dialog({
-                            height: 200,
-                            width: 400,
-                            modal: true,
-                            resizable: false
-                        });
+        <script type="text/javascript" th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/jquery-ui/1.11.3/jquery-ui.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('[rel="txtTooltip"]').tooltip();
+                
+                $('#btn-newuser').on('click', function () {
+                    $('#dialog-newUser').dialog({
+                        height: 200,
+                        width: 400,
+                        modal: true,
+                        resizable: false
+                    });
                 });
             });
-	</script>
-</body>
+        </script>
+    </body>
 </html>
