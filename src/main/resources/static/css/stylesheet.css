@@ -64,13 +64,8 @@
     color: #fff !important;
 }
 
-.colorBrancoActive {
+.colorBranco:hover, .colorBrancoActive {
     background-color: #9BC8FC !important;
-    color: black !important;
-}
-
-.colorBranco:hover, .colorBrancoClicked{
-    background-color: #C9FCDF !important;
     color: black !important;
 }
 

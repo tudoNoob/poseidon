@@ -13,11 +13,11 @@
                     </div>
                     <div>
                         <ul class="nav navbar-nav menu">
-                            <li class="active">
-                                <a class="colorBranco" url="/home" th:href="@{/user/homePage}">Home</a>
+                            <li name="/home">
+                                <a class="colorBranco colorBrancoActive" url="/home" th:href="@{/user/homePage}">Home</a>
                             </li>
                             <li name="/user/paciente" class="dropdown"> 
-                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown" role="button"
+                                <a href="#" class="colorBranco" data-toggle="dropdown" role="button"
                                    id="paciente-dropdown" aria-haspopup="true" aria-expanded="false">Paciente<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a th:href="@{/user/paciente(isCadastroPaciente=true,isDeletePaciente=false,isPesquisaPaciente=false)}" id="btn-criarPaciente">Cadastrar Paciente</a></li>
@@ -27,7 +27,7 @@
                                 </ul>
                             </li>
                             <li name="/user/consulta" role="menu">
-                                <a href="#" class="colorBranco dropdown-toggle" data-toggle="dropdown"
+                                <a href="#" class="colorBranco" data-toggle="dropdown"
                                    role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a th:href="@{/consulta(isCadastroConsulta=true,isDeleteConsulta=false,isEditarConsulta=false,isExibirConsulta=false)}" id="btn-cadastrarConsulta">Cadastrar Consulta</a></li>
