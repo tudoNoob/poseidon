@@ -24,9 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/createSimpleUser","/createUser").permitAll();
 		http.authorizeRequests().antMatchers("/user/*").hasAnyRole("USER","ADMIN");
 		http.authorizeRequests().antMatchers("/admin/*").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**","/webjars/**").permitAll();
+		http.authorizeRequests()
+			.antMatchers("/css/**","/jquery/**","/bootstrap/**","/jquery/images/**","/webjars/**").permitAll();
 		http.formLogin().loginPage("/loginPage").defaultSuccessUrl("/user/homePage").failureUrl("/login-Error")
-		.permitAll().and().logout().addLogoutHandler(new CustomLogoutHandler()).logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
+		.permitAll().and().logout()
+			.addLogoutHandler(new CustomLogoutHandler())
+			.logoutRequestMatcher(new LogoutRequestMatcher()).invalidateHttpSession(true);
 
 		http.headers()
 				.contentTypeOptions()
@@ -34,9 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().cacheControl()
 				.and().httpStrictTransportSecurity()
 				.and().frameOptions()
-				.and().addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self'"))
+				.and().addHeaderWriter(new StaticHeadersWriter(
+					"X-Content-Security-Policy","script-src 'self'"))
 				.addHeaderWriter(new XXssProtectionHeaderWriter())
-				.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+				.addHeaderWriter(new XFrameOptionsHeaderWriter(
+					XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
 				.addHeaderWriter(new XContentTypeOptionsHeaderWriter())
 				.addHeaderWriter(new CacheControlHeadersWriter())
 				.addHeaderWriter(new HstsHeaderWriter());
